@@ -1,0 +1,54 @@
+.mat-card-title{
+    font-size: 1vw;
+  }
+  .mat-card{
+    margin-left: 5%;
+    padding-top: 1%;
+  }
+  .result{
+    margin-top: 19px;
+    margin-left: 35px;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    position: relative;
+  
+  }
+  .icon-card{
+    background-color: #f75151;
+    width: 26%;
+    margin-left: 90%;
+    margin-top: -70px;
+    padding-top: 9px!important;
+    padding-bottom: 9px!important;
+  }
+  .icon-card-homework{
+    @extend .icon-card;
+    background-color: #e8e81cb8;
+  }
+  .icon-card-approved{
+    @extend .icon-card;
+    background-color:#10b810;
+  }
+  .icon-card-attendance{
+    @extend .icon-card;
+    background-color:#3c3cbae0;
+  }
+  .icon{
+    color: white;
+    font-size: 1.5vw;  
+  }
+  .dashboard{
+    height:105px;
+    width: 19%;
+  }
+//   .mat-card-title{
+//     font-size: 1vw;
+//   }
+//   .mat-card{
+//     margin-left: 5%;
+//     padding-top: 1%;
+//   }
+//   .container{
+//     //max-width: 100%;
+//     width: 235px;;
+//   }

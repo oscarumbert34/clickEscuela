@@ -1,0 +1,31 @@
+<div class="container" autosize>
+    <div class="row">
+      <div class="col-12">
+          <mat-icon mat-list-icon>notifications_active</mat-icon>
+          <h5>Notificaciones</h5>
+      </div>
+    </div>
+       
+    <div class="row">
+        <div class="col-12">
+                <mat-slide-toggle (click)="changeNotification()" >Fijo</mat-slide-toggle>
+
+                <mat-list>
+                    <div mat-subheader>Notificaciones</div>
+                    <mat-list-item *ngFor="let notificationHomework of notificationsHomework">
+                        <mat-icon mat-list-icon>notifications_active</mat-icon>
+                        <div mat-line>{{notificationHomework.type}}</div>
+                      <div mat-line> {{notificationHomework.tittle}} </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <div mat-subheader>Notificaciones-chat</div>
+                    <mat-list-item *ngFor="let notificationChat of notificationsChat">
+                        <mat-icon mat-list-icon>chat</mat-icon>
+                        <div mat-line>{{notificationChat.type}}</div>
+                      <div mat-line> {{notificationChat.tittle }} </div>
+                    </mat-list-item>
+                  </mat-list>
+        </div>
+    
+    </div>
+</div>
