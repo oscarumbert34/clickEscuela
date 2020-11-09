@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Dashboardproperties } from 'src/app/models/dashboard-properties';
+import { trabajoPractico } from '../../commons/data';
+import { examen } from '../../commons/data2';
+import { tareas } from '../../commons/data3';
 
 @Component({
   selector: 'app-courses',
@@ -14,20 +17,22 @@ export class CoursesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dashBoardsProperties.push(new Dashboardproperties('Entrega TP', '50%', 'icon-card-homework'));
-    this.dashBoardsProperties.push(new Dashboardproperties('Tareas sin Corregir', '20/20', 'icon-card'));
-    this.dashBoardsProperties.push(new Dashboardproperties('Asistencia de alumnos', '5/20', 'icon-card-attendance'));
-    this.dashBoardsProperties.push(new Dashboardproperties('Cantidad de aprobados', '2/20', 'icon-card-approved'));
 
-    this.dashBoardsProperties1.push(new Dashboardproperties('Entrega TP', '100%', 'icon-card-homework'));
-    this.dashBoardsProperties1.push(new Dashboardproperties('Tareas sin Corregir', '0/20', 'icon-card'));
-    this.dashBoardsProperties1.push(new Dashboardproperties('Asistencia de alumnos', '20/20', 'icon-card-attendance'));
-    this.dashBoardsProperties1.push(new Dashboardproperties('Cantidad de aprobados', '20/20', 'icon-card-approved'));
+    this.dashBoardsProperties.push(new Dashboardproperties('Trabajo Practico', '80%', 'icon-card-homework', null, trabajoPractico));
+    this.dashBoardsProperties.push(new Dashboardproperties('Tareas', '13/20', 'icon-card', null ,tareas));
+    this.dashBoardsProperties.push(new Dashboardproperties('Asistencia de alumnos', '20/20', 'icon-card-attendance', null, null));
+    this.dashBoardsProperties.push(new Dashboardproperties('Cantidad de aprobados', '15/20', 'icon-card-approved', null, examen));
 
-    this.dashBoardsProperties2.push(new Dashboardproperties('Entrega TP', '75%', 'icon-card-homework'));
-    this.dashBoardsProperties2.push(new Dashboardproperties('Tareas sin Corregir', '10/20', 'icon-card'));
-    this.dashBoardsProperties2.push(new Dashboardproperties('Asistencia de alumnos', '10/20', 'icon-card-attendance'));
-    this.dashBoardsProperties2.push(new Dashboardproperties('Cantidad de aprobados', '10/20', 'icon-card-approved'));
+    this.dashBoardsProperties.push(new Dashboardproperties('Trabajo Practico', '80%', 'icon-card-homework', null, trabajoPractico));
+    this.dashBoardsProperties.push(new Dashboardproperties('Tareas', '13/20', 'icon-card', null ,tareas));
+    this.dashBoardsProperties.push(new Dashboardproperties('Asistencia de alumnos', '20/20', 'icon-card-attendance', null, null));
+    this.dashBoardsProperties.push(new Dashboardproperties('Cantidad de aprobados', '15/20', 'icon-card-approved', null, examen));
+
+    this.dashBoardsProperties.push(new Dashboardproperties('Trabajo Practico', '80%', 'icon-card-homework', null, trabajoPractico));
+    this.dashBoardsProperties.push(new Dashboardproperties('Tareas', '13/20', 'icon-card', null ,tareas));
+    this.dashBoardsProperties.push(new Dashboardproperties('Asistencia de alumnos', '20/20', 'icon-card-attendance', null, null));
+    this.dashBoardsProperties.push(new Dashboardproperties('Cantidad de aprobados', '15/20', 'icon-card-approved', null, examen));
+
   }
 
 }

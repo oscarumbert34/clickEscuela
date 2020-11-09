@@ -2,22 +2,28 @@
     <!--TODO hacer mas generico esto-->
     <div class="col-3">
         <mat-card class="dashboard">
-            <app-dashboard [dashBoardProperties]="dashBoardsProperties[0]"></app-dashboard>
+            <app-dashboard-chart [dashBoardProperties]="dashBoardsProperties[0]"></app-dashboard-chart>
+            <!-- <app-dashboard [dashBoardProperties]="dashBoardsProperties[0]"></app-dashboard> -->
           </mat-card>
     </div>
     <div class="col-3">
         <mat-card class="dashboard">
-            <app-dashboard [dashBoardProperties]="dashBoardsProperties[1]"></app-dashboard>
+            <app-dashboard-chart [dashBoardProperties]="dashBoardsProperties[1]"></app-dashboard-chart>
+
+            <!-- <app-dashboard [dashBoardProperties]="dashBoardsProperties[1]"></app-dashboard> -->
           </mat-card>
     </div>
-    <div class="col-3">
+    <!-- <div class="col-3">
         <mat-card class="dashboard">
-            <app-dashboard [dashBoardProperties]="dashBoardsProperties[2]"></app-dashboard>
+            <app-dashboard-chart></app-dashboard-chart>
+
+             <app-dashboard [dashBoardProperties]="dashBoardsProperties[2]"></app-dashboard> 
           </mat-card>
-    </div>
-    <div class="col-3">
+    </div> -->
+    <div class="col-5">
         <mat-card class="dashboard">
-            <app-dashboard [dashBoardProperties]="dashBoardsProperties[3]"></app-dashboard>
+            <app-dashboard-chart-advance [dashBoardProperties]="dashBoardsProperties[3]"></app-dashboard-chart-advance>
+            <!-- <app-dashboard [dashBoardProperties]="dashBoardsProperties[3]"></app-dashboard> -->
           </mat-card>    
     </div>    
 </div>

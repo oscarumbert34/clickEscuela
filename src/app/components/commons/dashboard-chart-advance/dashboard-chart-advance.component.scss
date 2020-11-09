@@ -1,0 +1,45 @@
+::ng-deep.advanced-pie-legend .total-value {
+    font-size: 28px!important;
+}
+
+::ng-deep .total-label{
+    font-size: 20px!important;
+
+}
+::ng-deep .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label {
+    font-size: 10px!important;
+}
+::ng-deep .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-value {
+    font-size: 18px!important;
+}
+::ng-deep .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-percent {
+    font-size: 18px!important;
+}
+.container{
+    margin-left: -32px;
+}
+.icon-card{
+    background-color: #f75151;
+    width: 13%;
+    margin-left: 109%;
+    margin-top: -147px;
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+    height: 43px;
+  }
+  .icon-card-homework{
+    @extend .icon-card;
+    background-color: #e8e81cb8;
+  }
+  .icon-card-approved{
+    @extend .icon-card;
+    background-color:#10b810;
+  }
+  .icon-card-attendance{
+    @extend .icon-card;
+    background-color:#3c3cbae0;
+  }
+  .icon{
+    color: white;
+    font-size: 1.5vw;  
+  }

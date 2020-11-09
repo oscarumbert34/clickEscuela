@@ -28,11 +28,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { DashboardChartComponent } from '../commons/dashboard-chart/dashboard-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advance/dashboard-chart-advance.component';
 
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
-                 HomeComponent, CoursesComponent, LoadDashboardComponent, DashboardComponent],
+                 HomeComponent, CoursesComponent, LoadDashboardComponent, DashboardComponent,
+                 DashboardChartComponent,DashboardChartAdvanceComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -52,7 +56,8 @@ import {MatListModule} from '@angular/material/list';
     MatCardModule,
     MatSlideToggleModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    NgxChartsModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

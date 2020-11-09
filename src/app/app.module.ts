@@ -15,10 +15,16 @@ import { NotificationComponent } from './components/commons/notification/notific
 import { DashboardComponent } from './components/commons/dashboard/dashboard.component';
 import { LoadDashboardComponent } from './components/commons/load-dashboard/load-dashboard.component';
 import { DetailStudentComponent } from './components/commons/detail-student/detail-student.component';
+import { DashboardChartComponent } from './components/commons/dashboard-chart/dashboard-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
+import { DashboardChartAdvanceComponent } from './components/commons/dashboard-chart-advance/dashboard-chart-advance.component';
+import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DetailStudentComponent
+    DetailStudentComponent,
+    VerticalBarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,8 @@ import { DetailStudentComponent } from './components/commons/detail-student/deta
     TeacherModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
