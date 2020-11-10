@@ -1,11 +1,7 @@
-.container{
-   /* background-color: #54c05ac7;*/
-    width: 100%;
-    background-color: #fff;
-    border-left: solid 1px rgba(0,0,0,.12);
-    height: 722px;
 
-}
+@import '../../../stylings/color-pallete';
+
+
 .mat-list-icon {
     color:rgba(0,0,0,.87)
 }
@@ -19,4 +15,20 @@
     margin-left: -14px
 
 }
+
+//Estilos de la barra lateral derecha
+.notification-nav
+{
+    background-color: $custom-blue;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -12px 1px 20px 0px rgba(0,0,0,0.2);
+    position: absolute;
+    margin-right: 0;
+    
+}
+.mat-list
+  {
+    background-color: transparent
+
+  }
 
