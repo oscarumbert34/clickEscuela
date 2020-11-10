@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Directive, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Directive, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { Student } from 'src/app/models/student';
@@ -33,7 +33,9 @@ export class MenuComponent implements OnInit {
   classMenu  ='menu';
   blockDinamicActually = 'home';
   sidenavClass = 'sidenav';
+
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
+  @ViewChild('showButton',{static:true}) showButton : ElementRef;
   @Input() delay = 300;
 
   constructor() { }
@@ -45,9 +47,11 @@ export class MenuComponent implements OnInit {
   changedDisplayNotification(){
     this.notificationShow = this.notificationShow ? false : true;
     this.dinamicDisplay = this.notificationShow ? 'col-9' : 'col-10';
+  
   }
   hideNotificaction(){
-    if(!this.notificationChild){
+    if(!this.notificationChild)
+    {
       debounceTime(3000);
       this.notificationShow = false;
       this.dinamicDisplay = 'col-10';
@@ -63,11 +67,15 @@ export class MenuComponent implements OnInit {
   showMenu(){
     this.sidenavClass = 'sidenav-open';
     this.sidenav.open();
+    this.showButton.nativeElement.style.opacity="0"
+   
+
   }
   changeClassMenu(){
     if(!this.checked){
       this.sidenavClass = 'sidenav';
       this.sidenav.close();
+      this.showButton.nativeElement.style.opacity="1"
 
     }
   }

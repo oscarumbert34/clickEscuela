@@ -1,15 +1,16 @@
-<mat-drawer-container [ngClass]="clasMenu" autosize>
-    <mat-drawer #drawer [ngClass]="sidenavClass" mode="side" >
+<mat-drawer-container [ngClass]="clasMenu" autosize class="h-100">
+    <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side" >
       <div class="row">
         <div class="col-12 container-icon">
 
           <i class="fa fa-user-circle-o user" aria-hidden="true"></i>
           <p>Marta Lopez</p>
-          <mat-slide-toggle (click)="changeVisibilityMenu()" >Fijo</mat-slide-toggle>
+          <mat-slide-toggle color='primary'
+          (click)="changeVisibilityMenu()" >Fijo</mat-slide-toggle>
         </div>
       </div>
       <mat-list>
-        <mat-list-item><button class="button-menu" mat-button color (click)="changeBlock('course')">
+        <mat-list-item class="transparent-background"><button class="button-menu" mat-button color (click)="changeBlock('course')">
             <i class="fa fa-users menu-icon" aria-hidden="true"></i>Cursos</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item><button class="button-menu" mat-button color>
@@ -30,7 +31,7 @@
     <div class="sidenav-content" >
       <div class="container">
         <div class="row">
-          <div class="col-1"> <button type="button"  mat-button (click)="showMenu()">
+          <div class="col-1" #showButton> <button type="button"  mat-button (click)="showMenu()">
               <i class="fa fa-bars" aria-hidden="true"></i>
             </button></div>
           <!-- <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" (mouseover)="changeClassMenu()">
