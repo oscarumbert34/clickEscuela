@@ -6,14 +6,20 @@ menu {
     height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     
+    
   }
   //estilos de la barra lateral izquierda
   .menu-nav{
     background-color: $custom-blue;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 12px 1px 20px 0px rgba(0,0,0,0.2)
-    ;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 12px 1px 20px 0px rgba(0,0,0,0.2); 
+    color: white;
   }
+
+  .home-button
+{
+    //background-color: white;
+}
   .menu-hide {
     display:hide;
   }
@@ -40,19 +46,23 @@ menu {
   }
   .mat-list
   {
-    background-color: transparent
-
+    background-color: transparent;
+    
   }
 
   .mat-divider{
     margin-bottom: 1em;
     margin-top: 1em;
+    background-color: whi5;
   }
 
-  .mat-focus-indicator i{
-    font-size: 1.5em;
+  .mat-focus-indicator {
+    font-size: 1.05em;
+    color: white;
 
   }
+
+  
 
   .mat-list-item
   {

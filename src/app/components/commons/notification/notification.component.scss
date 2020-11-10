@@ -17,6 +17,11 @@
 }
 
 //Estilos de la barra lateral derecha
+.overflow{
+    position: unset !important;
+    overflow-y: scroll;
+ }
+
 .notification-nav
 {
     background-color: $custom-blue;
@@ -24,8 +29,11 @@
     box-shadow: -12px 1px 20px 0px rgba(0,0,0,0.2);
     position: absolute;
     margin-right: 0;
+    color: white;
     
 }
+
+
 .mat-list
   {
     background-color: transparent
