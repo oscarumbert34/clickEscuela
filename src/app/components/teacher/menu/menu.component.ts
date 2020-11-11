@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
   checked  = false;
   classMenu  ='menu';
   blockDinamicActually = 'home';
-  sidenavClass = 'sidenav';
+  sidenavClass = 'sidenav-open';
 
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
   @ViewChild('showButton',{static:true}) showButton : ElementRef;
@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    this.sidenav.open()
   }
 
   changedDisplayNotification(){
@@ -61,24 +61,7 @@ export class MenuComponent implements OnInit {
   receiveChange($event) {
     this.notificationChild = $event;
   }
-  changeVisibilityMenu() {
-    this.checked = this.checked ? false : true;
-  }
-  showMenu(){
-    this.sidenavClass = 'sidenav-open';
-    this.sidenav.open();
-    this.showButton.nativeElement.style.opacity="0"
-   
-
-  }
-  changeClassMenu(){
-    if(!this.checked){
-      this.sidenavClass = 'sidenav';
-      this.sidenav.close();
-      this.showButton.nativeElement.style.opacity="1"
-
-    }
-  }
+ 
   changeBlock(newBlock: string){
     this.blockDinamicActually = newBlock;
   }
