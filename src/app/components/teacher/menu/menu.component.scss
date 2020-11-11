@@ -156,15 +156,23 @@ menu {
     transition: 0.5s ease-in-out;
   }
 
-  .mat-button:hover{
+  .mat-button:hover
+  {
     background-color: rgba(0, 0, 0, 0.349);
   }
 
+  //Estilos de las tablas principales
   
-
   .option-selected
   {
-    background-color: rgba(0, 0, 0, 0.349);
+    border-top: 6px solid $custom-blue; 
+    border-bottom: 6px solid $custom-blue; 
+
+    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.253);
+
+  }
+  .option-selected:hover{
+    background-color: transparent;
   }
 
   

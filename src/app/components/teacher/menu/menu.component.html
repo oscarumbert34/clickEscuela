@@ -26,7 +26,11 @@
       </div>
       <mat-list>
         <mat-list-item class="button-menu-container">
-          <button class="button-menu" [ngClass]="{'option-selected': blockDinamicActually=='course'}" mat-button color (click)="changeBlock('course')">
+          <button class="button-menu" 
+          [ngClass]="{'option-selected': blockDinamicActually=='course'}" 
+          mat-button color 
+          (click)="changeBlock('course')">
+
             <img class="icon-svg" src="./assets/images/user.svg" alt="">
             <!-- <i class="fa fa-users menu-icon" aria-hidden="true"></i> -->
             Cursos</button>
@@ -35,27 +39,46 @@
         <mat-divider></mat-divider>
 
         <mat-list-item  class="button-menu-container">
-          <button [ngClass]="{'option-selected': blockDinamicActually=='homework'}"  class="button-menu" mat-button color (click)="changeBlock('homework')">
+          <button [ngClass]="{'option-selected': blockDinamicActually=='homework'}"  
+          class="button-menu" 
+          mat-button color
+          (click)="changeBlock('homework')">
+          
             <!-- <i class="fa fa-file-text menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/tareas.svg" alt="">
 
             Tareas</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  class="button-menu-container">
-          <button  [ngClass]="{'option-selected': blockDinamicActually=='grade'}"  class="button-menu" mat-button color (click)="changeBlock('grade')">
+          <button  
+          [ngClass]="{'option-selected': blockDinamicActually=='grade'}"  
+          class="button-menu" 
+          mat-button color 
+          (click)="changeBlock('grade')"
+          >
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/boletin.svg" alt="">
 
             Notas</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  class="button-menu-container">
-          <button [ngClass]="{'option-selected': blockDinamicActually=='bulletin'}"  class="button-menu" mat-button color (click)="changeBlock('bulletin')">
+          <button 
+          [ngClass]="{'option-selected': blockDinamicActually=='bulletin'}"  
+          class="button-menu" 
+          mat-button color 
+          (click)="changeBlock('bulletin')">
+
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
+
             <img class="icon-svg" src="./assets/images/notes.svg" alt="">
             Boletin</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  class="button-menu-container">
-          <button [ngClass]="{'option-selected': blockDinamicActually=='asistance'}"  class="button-menu" mat-button color (click)="changeBlock('asistance')">
+          <button [ngClass]="{'option-selected': blockDinamicActually=='asistance'}"
+          class="button-menu" 
+          mat-button color 
+          (click)="changeBlock('asistance')">
+
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/hand.svg" alt="">
             Presentes</button></mat-list-item>
@@ -79,9 +102,14 @@
             </div>  
             <div *ngSwitchCase="'course'"><app-courses></app-courses></div>  
             <div *ngSwitchCase="'homework'"><app-homework></app-homework></div>  
+            <div *ngSwitchCase="'grade'"><app-grades></app-grades></div>  
+            <div *ngSwitchCase="'asistance'"><app-asistance></app-asistance></div>  
+            <div *ngSwitchCase="'bulletin'"><app-bulletins></app-bulletins></div>  
 
-            <div *ngSwitchDefault>Default Option</div>  
-          </div>  
+
+
+
+            <div *ngSwitchDefault>Default Option</div></div>  
 
           <div [@changeDisplay]="notificationShow" *ngIf="notificationShow; else notShow">
                   <app-notification (messageEvent)="receiveChange($event)"></app-notification>

@@ -1,3 +1,6 @@
+import { AsistanceComponent } from './asistance/asistance.component';
+import { GradesComponent } from './grades/grades.component';
+import { BulletinsComponent } from './bulletins/bulletins.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -38,7 +41,7 @@ import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advan
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent, DashboardComponent,
                  DashboardChartComponent,DashboardChartAdvanceComponent,
-                HomeworkComponent],
+                HomeworkComponent,GradesComponent,BulletinsComponent,AsistanceComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
