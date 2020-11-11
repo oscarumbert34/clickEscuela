@@ -2,5 +2,16 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~bootstrap/dist/css/bootstrap.css";
 
+@font-face 
+{
+    font-family: TenorSans;
+    src: url(./assets/fonts/TenorSans-Regular.ttf);
+}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
+
+*{
+    font-family: 'TenorSans', sans-serif;
+
+}
+
