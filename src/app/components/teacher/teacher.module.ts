@@ -1,3 +1,4 @@
+import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
@@ -36,7 +37,8 @@ import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advan
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent, DashboardComponent,
-                 DashboardChartComponent,DashboardChartAdvanceComponent],
+                 DashboardChartComponent,DashboardChartAdvanceComponent,
+                HomeworkComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

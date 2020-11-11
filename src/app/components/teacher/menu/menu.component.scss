@@ -12,7 +12,7 @@ menu {
   .menu-nav{
     background-color: $custom-blue;
     border-radius: 0 5px 5px 0;
-    box-shadow: 12px 1px 20px 0px rgba(0,0,0,0.2); 
+    box-shadow: 12px 1px 20px 0px rgba(0,0,0,0.4); 
     color: white;
   }
 
@@ -26,14 +26,6 @@ menu {
     cursor: pointer;
 
   }
-
-  .icon-svg{
-    width: 1.6em;
-    margin: 0.5em;
-  }
-
-
-
 
   .circle-user:hover
   {
@@ -49,6 +41,19 @@ menu {
     //background-color: white;
     cursor: pointer;
     transition: 0.5s ease-in-out;
+
+}
+
+.icon-svg{
+  width: 1.6em;
+  margin: 0.5em;
+  transition: 0.5s ease-in-out;
+}
+
+.button-menu-container:hover .icon-svg
+{
+ transform: scale(1.2);
+ 
 
 }
 
@@ -143,6 +148,23 @@ menu {
   
   ::ng-deep .mat-drawer-container{
     background-color:#fff;
+  }
+
+  .mat-button
+  {
+    outline: none;
+    transition: 0.5s ease-in-out;
+  }
+
+  .mat-button:hover{
+    background-color: rgba(0, 0, 0, 0.349);
+  }
+
+  
+
+  .option-selected
+  {
+    background-color: rgba(0, 0, 0, 0.349);
   }
 
   

@@ -33,9 +33,10 @@ export class MenuComponent implements OnInit {
   classMenu  ='menu';
   blockDinamicActually = 'home';
   sidenavClass = 'sidenav-open';
+  showHomeButton=false;
 
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
-  @ViewChild('showButton',{static:true}) showButton : ElementRef;
+  @ViewChild('homebutton',{static:true}) homeButton : ElementRef;
   @Input() delay = 300;
 
   constructor() { }
@@ -44,27 +45,45 @@ export class MenuComponent implements OnInit {
     this.sidenav.open()
   }
 
-  changedDisplayNotification(){
+  changedDisplayNotification()
+  {
     this.notificationShow = this.notificationShow ? false : true;
     this.dinamicDisplay = this.notificationShow ? 'col-9' : 'col-10';
   
   }
+
+
   hideNotificaction(){
     if(!this.notificationChild)
     {
       debounceTime(3000);
       this.notificationShow = false;
-      this.dinamicDisplay = 'col-10';
+      this.dinamicDisplay = 'col-10';    
+
     }
+
+
+
 
   }
   receiveChange($event) {
     this.notificationChild = $event;
   }
  
-  changeBlock(newBlock: string){
+  changeBlock(newBlock: string)
+  {
+    console.log(this.showHomeButton)
+    if (newBlock!='home')
+    {
+      this.showHomeButton=true;
+     
+    }
+    else{
+      this.showHomeButton=false;
+    }
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
+
   }
 
   printSomething(){
