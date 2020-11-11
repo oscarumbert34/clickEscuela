@@ -4,7 +4,7 @@
     <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side" >
 
       <div class="row mb-4 px-2 home-button ">
-        <div class="col-12">
+        <div class="col-12" (click)="changeBlock('home')">
           <div>
             <img class="image-fluid" src="./assets/images/logo.svg" alt="">
           </div>
@@ -12,10 +12,11 @@
       </div>
 
       <div class="row">
-        <div class="col-12 container-icon">
+        <div class="col-12 container-icon" >
 
           <!-- <i class="fa fa-user-circle-o user" aria-hidden="true"></i> -->
           <div class=" user-image-container text-center mb-2">
+            
             <img class="image-fluid circle-user" src="./assets/images/teacher.jpg" alt="">
 
           </div>
@@ -26,19 +27,31 @@
       <mat-list>
         <mat-list-item class="transparent-background">
           <button class="button-menu" mat-button color (click)="changeBlock('course')">
-            <i class="fa fa-users menu-icon" aria-hidden="true"></i>Cursos</button></mat-list-item>
+            <img class="icon-svg" src="./assets/images/user.svg" alt="">
+            <!-- <i class="fa fa-users menu-icon" aria-hidden="true"></i> -->
+            Cursos</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item><button class="button-menu" mat-button color>
-            <i class="fa fa-file-text menu-icon" aria-hidden="true"></i>Tareas</button></mat-list-item>
+            <!-- <i class="fa fa-file-text menu-icon" aria-hidden="true"></i> -->
+            <img class="icon-svg" src="./assets/images/tareas.svg" alt="">
+
+            Tareas</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item><button class="button-menu" mat-button color>
-            <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i>Notas</button></mat-list-item>
+            <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
+            <img class="icon-svg" src="./assets/images/boletin.svg" alt="">
+
+            Notas</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item><button class="button-menu" mat-button color>
-            <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i>Boletin</button></mat-list-item>
+            <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
+            <img class="icon-svg" src="./assets/images/notes.svg" alt="">
+            Boletin</button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item><button class="button-menu" mat-button color>
-            <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i>Presentes</button></mat-list-item>
+            <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
+            <img class="icon-svg" src="./assets/images/hand.svg" alt="">
+            Presentes</button></mat-list-item>
       
       </mat-list>
     </mat-drawer>

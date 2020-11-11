@@ -64,6 +64,11 @@ export class MenuComponent implements OnInit {
  
   changeBlock(newBlock: string){
     this.blockDinamicActually = newBlock;
+    console.log(newBlock)
+  }
+
+  printSomething(){
+    console.log("hello")
   }
 
 }
