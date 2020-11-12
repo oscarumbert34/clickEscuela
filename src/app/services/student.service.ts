@@ -66,9 +66,9 @@ export class studentService {
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
       console.log(result);
-      
-      this._students$.next(result.students);
-      this._total$.next(result.total);
+
+     // this._students$.next(result.students);
+     // this._total$.next(result.total);
     });
 
     this._search$.next();

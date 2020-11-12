@@ -20,6 +20,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { DashboardChartAdvanceComponent } from './components/commons/dashboard-chart-advance/dashboard-chart-advance.component';
 import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
+import { DashboardVerticalComponent } from './components/commons/dashboard-vertical/dashboard-vertical.component';
 @NgModule({
   declarations: [
     AppComponent,

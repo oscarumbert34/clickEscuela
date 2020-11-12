@@ -31,12 +31,13 @@ import {MatListModule} from '@angular/material/list';
 import { DashboardChartComponent } from '../commons/dashboard-chart/dashboard-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advance/dashboard-chart-advance.component';
+import { DashboardVerticalComponent } from '../commons/dashboard-vertical/dashboard-vertical.component';
 
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent, DashboardComponent,
-                 DashboardChartComponent,DashboardChartAdvanceComponent],
+                 DashboardChartComponent,DashboardChartAdvanceComponent, DashboardVerticalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
