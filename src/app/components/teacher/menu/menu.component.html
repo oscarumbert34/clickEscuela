@@ -109,7 +109,7 @@
     <div class="sidenav-content" >
       <div class="container">
         <div class="row">
-          <div class="col-1"></div>
+          <div class="col-1"></div> 
   
 
           <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">  
@@ -132,8 +132,10 @@
             </div>
             
             <ng-template  #notShow>
-              <div class="col-1">
-                  <button (click)="changedDisplayNotification()"><mat-icon mat-list-icon>notifications_active</mat-icon></button>
+              <div  class="col-1" >
+                  <button id="notification-button"  mat-mini-fab color="primary" matBadge="15" matBadgeColor="warn" (click)="changedDisplayNotification()">
+                    
+                    <mat-icon  mat-list-icon>notifications_active</mat-icon></button>
 
               </div>
             </ng-template>
