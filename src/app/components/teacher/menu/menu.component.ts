@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component, OnInit, Input, Directive, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
@@ -36,7 +37,7 @@ export class MenuComponent implements OnInit {
   showHomeButton=false;
 
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
-  @ViewChild('homebutton',{static:true}) homeButton : ElementRef;
+  @ViewChild('menuNav',{static:true}) menuNav : ElementRef;
   @Input() delay = 300;
 
   constructor() { }
@@ -84,10 +85,11 @@ export class MenuComponent implements OnInit {
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
 
+    
+
+
   }
 
-  printSomething(){
-    console.log("hello")
-  }
+  
 
 }

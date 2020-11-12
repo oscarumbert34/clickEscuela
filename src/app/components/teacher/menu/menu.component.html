@@ -3,7 +3,7 @@
   
     <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side" >
 
-      <div *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
+      <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
         <div class="col-12" (click)="changeBlock('home')">
           <div>
             <img class="image-fluid" src="./assets/images/logo.svg" alt="">
@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="user-information">
         <div class="col-12 container-icon" >
 
           <!-- <i class="fa fa-user-circle-o user" aria-hidden="true"></i> -->
@@ -25,6 +25,20 @@
         </div>
       </div>
       <mat-list>
+        <mat-list-item  class="button-menu-container" id="responsivehomeButton" *ngIf="showHomeButton">
+
+          <button class="button-menu" 
+          [ngClass]="{'option-selected': blockDinamicActually=='home'}" 
+          mat-button color 
+          (click)="changeBlock('home')">
+
+          <img width="50px" src="./assets/images/logo-reduced.svg" alt="">
+          <!-- <i class="fa fa-users menu-icon" aria-hidden="true"></i> -->
+          </button>
+
+
+        </mat-list-item>
+
         <mat-list-item class="button-menu-container">
           <button class="button-menu" 
           [ngClass]="{'option-selected': blockDinamicActually=='course'}" 
@@ -33,7 +47,8 @@
 
             <img class="icon-svg" src="./assets/images/user.svg" alt="">
             <!-- <i class="fa fa-users menu-icon" aria-hidden="true"></i> -->
-            Cursos</button>
+            <span>Cursos</span>
+          </button>
           </mat-list-item>
 
         <mat-divider></mat-divider>
@@ -47,7 +62,8 @@
             <!-- <i class="fa fa-file-text menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/tareas.svg" alt="">
 
-            Tareas</button></mat-list-item>
+            <span class="name-button">Tareas</span>          
+          </button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  class="button-menu-container">
           <button  
@@ -59,7 +75,8 @@
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/boletin.svg" alt="">
 
-            Notas</button></mat-list-item>
+            <span>Notas</span>
+          </button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  class="button-menu-container">
           <button 
@@ -71,7 +88,9 @@
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
 
             <img class="icon-svg" src="./assets/images/notes.svg" alt="">
-            Boletin</button></mat-list-item>
+
+            <span>Boletin</span>
+          </button></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item  class="button-menu-container">
           <button [ngClass]="{'option-selected': blockDinamicActually=='asistance'}"
@@ -81,7 +100,8 @@
 
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/hand.svg" alt="">
-            Presentes</button></mat-list-item>
+            <span>Presentes</span>
+          </button></mat-list-item>
       
       </mat-list>
     </mat-drawer>
@@ -89,12 +109,8 @@
     <div class="sidenav-content" >
       <div class="container">
         <div class="row">
-          <div class="col-1" #showButton> <button type="button"  mat-button (click)="showMenu()">
-              <i class="fa fa-bars" aria-hidden="true"></i>
-            </button></div>
-          <!-- <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" (mouseover)="changeClassMenu()">
-            <app-home></app-home>
-          </div> -->
+          <div class="col-1"></div>
+  
 
           <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">  
             <div *ngSwitchCase="'home'">
