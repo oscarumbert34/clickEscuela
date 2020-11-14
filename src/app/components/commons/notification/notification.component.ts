@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export interface Notification {
   type: string;
   tittle: string;
@@ -11,6 +11,8 @@ export interface Notification {
 export class NotificationComponent implements OnInit {
   checked: boolean = false;
   @Output() messageEvent = new EventEmitter<boolean>();
+  @Input() chat: Notification;
+  @Input() homework: Notification;
 
   changeNotification() {
     this.checked = this.checked ? false : true;
@@ -43,7 +45,10 @@ export class NotificationComponent implements OnInit {
   ];
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
   }
+
+ 
 
 }

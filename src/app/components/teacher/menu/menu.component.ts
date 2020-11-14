@@ -4,6 +4,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Notification } from '../../commons/notification/notification.component';
 
 @Component({
   selector: 'app-menu',

@@ -15,21 +15,28 @@
                 <mat-list>
                     <div mat-subheader>Notificaciones</div>
                     <mat-list-item *ngFor="let notificationHomework of notificationsHomework">
-                        <mat-icon mat-list-icon>notifications_active</mat-icon>
+                        <mat-icon class="notification-icon" mat-list-icon>notifications_active</mat-icon>
                         <div mat-line>{{notificationHomework.type}}</div>
-                      <div mat-line> {{notificationHomework.tittle}} </div>
+                      <div mat-line [title]="[notificationHomework.tittle]"> {{notificationHomework.tittle}} </div>
                     </mat-list-item>
+
                     <mat-divider></mat-divider>
+
                     <div mat-subheader>Notificaciones-chat</div>
+
                     <mat-list-item *ngFor="let notificationChat of notificationsChat">
-                        <mat-icon mat-list-icon>chat</mat-icon>
+                        <mat-icon class="chat-icon" mat-list-icon>chat</mat-icon>
                         <div mat-line>{{notificationChat.type}}</div>
-                      <div mat-line> {{notificationChat.tittle }} </div>
+                      <div mat-line [title]="[notificationChat.tittle]"> {{notificationChat.tittle }} </div>
                     </mat-list-item>
                   </mat-list>
         </div>
     
     </div>
+
+    <button class="button-primary"  class="row" (click)="showDescription()">
+      ver current
+    </button >
 </div>
 </div>
 
