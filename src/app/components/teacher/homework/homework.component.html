@@ -1,5 +1,18 @@
-<p>
+
+<div *ngIf="isNotification" class="row">
+  <div class="col-12">
+  <p>
   Mostrando la informacion para</p>
   <p>
   {{currentNotification.tittle}}
 </p>
+  </div>
+</div>
+
+<div *ngIf="!isNotification" class="row">
+  <div class="col-12">
+    <p>Aqui van las tareas</p>
+  </div>
+</div>
+
+

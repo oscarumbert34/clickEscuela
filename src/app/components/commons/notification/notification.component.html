@@ -25,7 +25,7 @@
                     <div mat-subheader>Notificaciones-chat</div>
 
                     <mat-list-item *ngFor="let notificationChat of notificationsChat"
-                    [chat]="notificationChat" (click)="showNotification(notificationChat)"  >
+                    (click)="showNotification(notificationChat)">
                         <mat-icon class="chat-icon" mat-list-icon>chat</mat-icon>
                         <div mat-line>{{notificationChat.type}}</div>
                       <div mat-line [title]="[notificationChat.tittle]"> {{notificationChat.tittle }} </div>

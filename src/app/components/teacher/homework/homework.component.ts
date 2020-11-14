@@ -12,7 +12,8 @@ export class HomeworkComponent implements OnInit
 {
 
   @Input() currentNotification: Notification;
-    
+  @Input() isNotification: boolean;
+
   constructor() { 
   
   }
@@ -21,5 +22,7 @@ export class HomeworkComponent implements OnInit
 
   ngOnInit() {
   }
+
+
 
 }

@@ -38,10 +38,8 @@ export class MenuComponent implements OnInit {
   sidenavClass = 'sidenav-open';
   showHomeButton=false;
 
-  //currentNotification: Notification;
-
-
   currentNotification: Notification;
+  isNotification: boolean;
 
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
   @ViewChild('menuNav',{static:true}) menuNav : ElementRef;
@@ -81,6 +79,8 @@ export class MenuComponent implements OnInit {
   receiveNotification($event)
   {
     this.currentNotification=$event;
+    this.isNotification=true;
+    
     if ($event.type=="Tarea")
     {
     this.changeBlock("homework")
@@ -105,10 +105,11 @@ export class MenuComponent implements OnInit {
     }
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
+  }
 
-    
-
-
+  notNotification()
+  {
+    this.isNotification=false;
   }
 
   
