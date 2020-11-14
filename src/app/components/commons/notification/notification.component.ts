@@ -1,8 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-export interface Notification {
-  type: string;
-  tittle: string;
-}
+import { Notification } from '../../interfaces/Notification';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -11,12 +8,15 @@ export interface Notification {
 export class NotificationComponent implements OnInit {
   checked: boolean = false;
   @Output() messageEvent = new EventEmitter<boolean>();
-  @Input() chat: Notification;
-  @Input() homework: Notification;
+  @Output() openNotification=new EventEmitter<Notification>();
 
   changeNotification() {
     this.checked = this.checked ? false : true;
     this.messageEvent.emit(this.checked);
+  }
+
+  showNotification(notification:Notification){
+    this.openNotification.emit(notification)
   }
 
   notificationsHomework: Notification[] = [
@@ -45,10 +45,7 @@ export class NotificationComponent implements OnInit {
   ];
   constructor() { }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
   }
-
- 
 
 }

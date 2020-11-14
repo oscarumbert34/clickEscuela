@@ -14,7 +14,7 @@
 
                 <mat-list>
                     <div mat-subheader>Notificaciones</div>
-                    <mat-list-item *ngFor="let notificationHomework of notificationsHomework">
+                    <mat-list-item *ngFor="let notificationHomework of notificationsHomework; let index=index" (click)="showNotification(notificationHomework)"                    >
                         <mat-icon class="notification-icon" mat-list-icon>notifications_active</mat-icon>
                         <div mat-line>{{notificationHomework.type}}</div>
                       <div mat-line [title]="[notificationHomework.tittle]"> {{notificationHomework.tittle}} </div>
@@ -24,7 +24,8 @@
 
                     <div mat-subheader>Notificaciones-chat</div>
 
-                    <mat-list-item *ngFor="let notificationChat of notificationsChat">
+                    <mat-list-item *ngFor="let notificationChat of notificationsChat"
+                    [chat]="notificationChat" (click)="showNotification(notificationChat)"  >
                         <mat-icon class="chat-icon" mat-list-icon>chat</mat-icon>
                         <div mat-line>{{notificationChat.type}}</div>
                       <div mat-line [title]="[notificationChat.tittle]"> {{notificationChat.tittle }} </div>
@@ -34,9 +35,7 @@
     
     </div>
 
-    <button class="button-primary"  class="row" (click)="showDescription()">
-      ver current
-    </button >
+
 </div>
 </div>
 

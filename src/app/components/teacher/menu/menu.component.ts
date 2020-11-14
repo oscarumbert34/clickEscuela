@@ -1,10 +1,11 @@
+import { NotificationComponent } from './../../commons/notification/notification.component';
 import { element } from 'protractor';
-import { Component, OnInit, Input, Directive, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Directive, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Notification } from '../../commons/notification/notification.component';
+import { Notification } from '../../interfaces/Notification';
 
 @Component({
   selector: 'app-menu',
@@ -36,6 +37,11 @@ export class MenuComponent implements OnInit {
   blockDinamicActually = 'home';
   sidenavClass = 'sidenav-open';
   showHomeButton=false;
+
+  //currentNotification: Notification;
+
+
+  currentNotification: Notification;
 
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
   @ViewChild('menuNav',{static:true}) menuNav : ElementRef;
@@ -70,6 +76,20 @@ export class MenuComponent implements OnInit {
   }
   receiveChange($event) {
     this.notificationChild = $event;
+  }
+
+  receiveNotification($event)
+  {
+    this.currentNotification=$event;
+    if ($event.type=="Tarea")
+    {
+    this.changeBlock("homework")
+    }
+    else{
+      this.changeBlock("grade")
+    }
+    
+    
   }
  
   changeBlock(newBlock: string)

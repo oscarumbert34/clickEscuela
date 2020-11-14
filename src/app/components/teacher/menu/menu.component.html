@@ -117,7 +117,7 @@
               <app-home></app-home>
             </div>  
             <div *ngSwitchCase="'course'"><app-courses></app-courses></div>  
-            <div *ngSwitchCase="'homework'"><app-homework></app-homework></div>  
+            <div *ngSwitchCase="'homework'"><app-homework [currentNotification]="currentNotification"></app-homework></div>  
             <div *ngSwitchCase="'grade'"><app-grades></app-grades></div>  
             <div *ngSwitchCase="'asistance'"><app-asistance></app-asistance></div>  
             <div *ngSwitchCase="'bulletin'"><app-bulletins></app-bulletins></div>  
@@ -128,7 +128,7 @@
             <div *ngSwitchDefault>Default Option</div></div>  
 
           <div [@changeDisplay]="notificationShow" *ngIf="notificationShow; else notShow">
-                  <app-notification (messageEvent)="receiveChange($event)"></app-notification>
+                  <app-notification (messageEvent)="receiveChange($event)" (openNotification)="receiveNotification($event)"></app-notification>
             </div>
             
             <ng-template  #notShow>
