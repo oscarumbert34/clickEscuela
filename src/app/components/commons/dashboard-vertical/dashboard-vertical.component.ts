@@ -17,7 +17,7 @@ export class DashboardVerticalComponent implements OnInit {
   single: any[];
   multi: any[];
 
-  view: any[] = [650, 300];
+  view: any[] = [400, 200];
 
   // options
   showXAxis = true;
@@ -25,9 +25,9 @@ export class DashboardVerticalComponent implements OnInit {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  xAxisLabel = 'Grados';
   showYAxisLabel = true;
-  yAxisLabel = 'Population';
+  yAxisLabel = 'Tareas';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']

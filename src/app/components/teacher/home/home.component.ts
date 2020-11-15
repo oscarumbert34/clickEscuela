@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Dashboardproperties } from 'src/app/models/dashboard-properties';
 import { trabajoPractico } from '../../commons/data';
 import { examen } from '../../commons/data2';
 import { tareas } from '../../commons/data3';
+import { LoadDashboardComponent } from '../../commons/load-dashboard/load-dashboard.component';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import { tareas } from '../../commons/data3';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild(LoadDashboardComponent) loadDashboardComponent: LoadDashboardComponent;
 
   dashBoardsProperties: Dashboardproperties[] = new Array(0);
   constructor() { }
@@ -21,5 +23,10 @@ export class HomeComponent implements OnInit {
     this.dashBoardsProperties.push(new Dashboardproperties('Cantidad de aprobados', '15/20', 'icon-card-approved', null, examen));
 
   }
+
+  changeSizeDashboard(expandNotification: boolean){
+    this.loadDashboardComponent.changeSizeDashboard(expandNotification);
+  }
+
 
 }

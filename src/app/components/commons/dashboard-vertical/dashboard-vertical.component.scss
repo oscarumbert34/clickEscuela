@@ -1,0 +1,21 @@
+::ng-deep .container-vertical .chart-legend .legend-labels{
+    width: 165%!important;
+}
+
+.icon-card{
+    background-color: #f75151;
+    width: 55px;
+    margin-left: 94%;
+    margin-top: -78px;
+    padding-top: 9px!important;
+    padding-bottom: 9px!important;
+    height: 43px;
+}
+.icon-card-attendance{
+    @extend .icon-card;
+    background-color:#3c3cbae0;
+}
+.icon{
+    color: white;
+    font-size: 1.5vw;  
+}

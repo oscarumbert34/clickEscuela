@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-menu',
@@ -26,7 +27,7 @@ export class MenuComponent implements OnInit {
   showFiller = true;
   notificationShow = false;
   notificationsDisplay = 'col-2 notifications-show';
-  dinamicDisplay  = 'col-10';
+  dinamicDisplay  = 'col-10 size-display-dinamic';
   notificationChild = false;
   dashboard = 'Cant. Aprobados';
   checked  = false;
@@ -34,6 +35,7 @@ export class MenuComponent implements OnInit {
   blockDinamicActually = 'home';
   sidenavClass = 'sidenav';
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
+  @ViewChild(HomeComponent) home: HomeComponent;
   @Input() delay = 300;
 
   constructor() { }
@@ -44,13 +46,22 @@ export class MenuComponent implements OnInit {
 
   changedDisplayNotification(){
     this.notificationShow = this.notificationShow ? false : true;
-    this.dinamicDisplay = this.notificationShow ? 'col-9' : 'col-10';
+    if(this.notificationShow){
+      this.dinamicDisplay = 'col-9';
+      this.home.changeSizeDashboard(true);
+    }else{
+      this.dinamicDisplay = 'col-10 size-display-dinamic';
+      this.home.changeSizeDashboard(false);
+    }
+   // this.dinamicDisplay = this.notificationShow ? 'col-9' : 'col-10 size-display-dinamic';
   }
   hideNotificaction(){
     if(!this.notificationChild){
-      debounceTime(3000);
+     // debounceTime(3000);
       this.notificationShow = false;
-      this.dinamicDisplay = 'col-10';
+      this.dinamicDisplay = 'col-10 size-display-dinamic';
+      this.home.changeSizeDashboard(false);
+
     }
 
   }

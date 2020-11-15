@@ -1,27 +1,18 @@
 <div class="row">
     <!--TODO hacer mas generico esto-->
-    <div class="col-6">
-        <mat-card class="dashboard">
-            <app-dashboard-chart [dashBoardProperties]="dashBoardsProperties[0]"></app-dashboard-chart>
-            <!-- <app-dashboard [dashBoardProperties]="dashBoardsProperties[0]"></app-dashboard> -->
-          </mat-card>
-    </div>
-    <div class="col-6">
-        <mat-card class="dashboard">
-            <app-dashboard-chart [dashBoardProperties]="dashBoardsProperties[1]"></app-dashboard-chart>
-
-            <!-- <app-dashboard [dashBoardProperties]="dashBoardsProperties[1]"></app-dashboard> -->
-          </mat-card>
-    </div>
-     <div class="col-7">
+    <div [ngClass]="firstDashboard">
         <mat-card class="dashboard">
             <app-dashboard-vertical [dashBoardProperties]="dashBoardsProperties[2]"></app-dashboard-vertical>
           </mat-card>
-    </div> 
-    <div class="col-5">
+    </div>
+    <div [ngClass]="secondDashboard">
+        <mat-card class="dashboard">
+            <app-dashboard-chart [dashBoardProperties]="dashBoardsProperties[0]"></app-dashboard-chart>
+          </mat-card>
+    </div>
+    <div [ngClass]="thirdDashboard">
         <mat-card class="dashboard">
             <app-dashboard-chart-advance [dashBoardProperties]="dashBoardsProperties[3]"></app-dashboard-chart-advance>
-            <!-- <app-dashboard [dashBoardProperties]="dashBoardsProperties[3]"></app-dashboard> -->
           </mat-card>    
     </div>    
 </div>
