@@ -40,6 +40,7 @@ export class MenuComponent implements OnInit {
 
   currentNotification: Notification;
   isNotification: boolean;
+  numberNotifications: number;
 
   @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
   @ViewChild('menuNav',{static:true}) menuNav : ElementRef;
@@ -47,9 +48,7 @@ export class MenuComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.sidenav.open()
-  }
+ 
 
   changedDisplayNotification()
   {
@@ -74,6 +73,11 @@ export class MenuComponent implements OnInit {
   }
   receiveChange($event) {
     this.notificationChild = $event;
+  }
+
+  receiveNotificationsNumber($event)
+  {
+    this.numberNotifications=$event;
   }
 
   receiveNotification($event)
@@ -112,6 +116,9 @@ export class MenuComponent implements OnInit {
     this.isNotification=false;
   }
 
-  
+   ngOnInit() {
+    this.sidenav.open()
+    
+  }
 
 }
