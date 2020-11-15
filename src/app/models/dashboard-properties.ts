@@ -9,6 +9,7 @@ export class Dashboardproperties {
         return this.title;
     }
 
+
     public setTitle(title: string): void {
         this.title = title;
     }
