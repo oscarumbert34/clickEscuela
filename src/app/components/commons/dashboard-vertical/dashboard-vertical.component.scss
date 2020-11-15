@@ -2,8 +2,8 @@
     width: 165%!important;
 }
 
-.icon-card{
-    background-color: #f75151;
+.icon-card-attendance{
+    background-color: #3c3cbae0;
     width: 55px;
     margin-left: 94%;
     margin-top: -78px;
@@ -11,10 +11,7 @@
     padding-bottom: 9px!important;
     height: 43px;
 }
-.icon-card-attendance{
-    @extend .icon-card;
-    background-color:#3c3cbae0;
-}
+
 .icon{
     color: white;
     font-size: 1.5vw;  

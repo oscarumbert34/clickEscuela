@@ -18,8 +18,8 @@
 .container{
     margin-left: -32px;
 }
-.icon-card{
-    background-color: #f75151;
+.icon-card-approved{
+    background-color: #10b810;
     width: 55px;
     margin-left: 107%;
     margin-top: -147px;
@@ -27,19 +27,7 @@
     padding-bottom: 9px !important;
     height: 43px;
   }
-  .icon-card-homework{
-    @extend .icon-card;
-    background-color: #e8e81cb8;
-  }
-  .icon-card-approved{
-    @extend .icon-card;
-    background-color:#10b810;
-  }
-  .icon-card-attendance{
-    @extend .icon-card;
-    background-color:#3c3cbae0;
-  }
-  .icon{
+ .icon{
     color: white;
     font-size: 1.5vw;  
   }
