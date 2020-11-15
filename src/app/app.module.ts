@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotificationComponent } from './components/commons/notification/notification.component';
-import { DashboardComponent } from './components/commons/dashboard/dashboard.component';
 import { LoadDashboardComponent } from './components/commons/load-dashboard/load-dashboard.component';
 import { DetailStudentComponent } from './components/commons/detail-student/detail-student.component';
 import { DashboardChartComponent } from './components/commons/dashboard-chart/dashboard-chart.component';
