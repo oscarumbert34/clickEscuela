@@ -14,7 +14,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { StudentListComponent } from './student-list/student-list.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
-import { DashboardComponent } from '../commons/dashboard/dashboard.component';
 import { LoadDashboardComponent } from '../commons/load-dashboard/load-dashboard.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -37,7 +36,7 @@ import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
-                 HomeComponent, CoursesComponent, LoadDashboardComponent, DashboardComponent,
+                 HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent,DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent],
   imports: [
