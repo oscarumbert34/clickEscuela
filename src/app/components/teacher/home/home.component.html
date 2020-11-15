@@ -1,12 +1,26 @@
 <div class="container">
-        <div class="row">
+  
+  <div class="row mt-4 mb-4">
+            <div class="col-12 text-center">
+              <img width="250px" class="image-fluid mb-2" src="./assets/images/logo-dark.svg" alt="">
+
+              <h3>Bienvenidos</h3>
+
+            </div>
+
+          </div>
+
+        <div class="row mb-4" >
+          <div class="col-12">
+            <mat-tab-group  mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+              <mat-tab class="mat-tab" label="Curso 3B"><app-student-list></app-student-list></mat-tab>
+              <mat-tab class="mat-tab" label="Curso 2A"><app-student-list></app-student-list></mat-tab>
+              <mat-tab class="mat-tab" label="Curso 5C"><app-student-list></app-student-list></mat-tab>
+            </mat-tab-group>
+          </div>
      
   
-            <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
-              <mat-tab label="Curso 3B"><app-student-list></app-student-list></mat-tab>
-              <mat-tab label="Curso 2A"><app-student-list></app-student-list></mat-tab>
-              <mat-tab label="Curso 5C"><app-student-list></app-student-list></mat-tab>
-            </mat-tab-group>
+            
       </div>
       <app-load-dashboard [dashBoardsProperties]="dashBoardsProperties"></app-load-dashboard>
     </div>

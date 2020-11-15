@@ -1,9 +1,12 @@
-import { Component, OnInit, Input, Directive, ViewChild } from '@angular/core';
+import { NotificationComponent } from './../../commons/notification/notification.component';
+import { element } from 'protractor';
+import { Component, OnInit, Input, Directive, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HomeComponent } from '../home/home.component';
+import { Notification } from '../../interfaces/Notification';
 
 @Component({
   selector: 'app-menu',
@@ -33,20 +36,26 @@ export class MenuComponent implements OnInit {
   checked  = false;
   classMenu  ='menu';
   blockDinamicActually = 'home';
-  sidenavClass = 'sidenav';
-  @ViewChild('drawer',{ static: true }) sidenav: MatSidenav;
+  sidenavClass = 'sidenav-open';
+  showHomeButton=false;
+
+  currentNotification: Notification;
+  isNotification: boolean;
+  numberNotifications: number;
+
+  @ViewChild('drawer', { static: true }) sidenav: MatSidenav;
   @ViewChild(HomeComponent) home: HomeComponent;
+  @ViewChild('menuNav', {static: true}) menuNav: ElementRef;
   @Input() delay = 300;
 
   constructor() { }
 
-  ngOnInit() {
+ 
 
-  }
-
-  changedDisplayNotification(){
+  changedDisplayNotification()
+  {
     this.notificationShow = this.notificationShow ? false : true;
-    if(this.notificationShow){
+    if( this.notificationShow){
       this.dinamicDisplay = 'col-9';
       this.home.changeSizeDashboard(true);
     }else{
@@ -55,35 +64,62 @@ export class MenuComponent implements OnInit {
     }
    // this.dinamicDisplay = this.notificationShow ? 'col-9' : 'col-10 size-display-dinamic';
   }
+
+
   hideNotificaction(){
     if(!this.notificationChild){
-     // debounceTime(3000);
+
       this.notificationShow = false;
       this.dinamicDisplay = 'col-10 size-display-dinamic';
       this.home.changeSizeDashboard(false);
 
     }
-
   }
   receiveChange($event) {
     this.notificationChild = $event;
   }
-  changeVisibilityMenu() {
-    this.checked = this.checked ? false : true;
+
+  receiveNotificationsNumber($event){
+    this.numberNotifications=$event;
   }
-  showMenu(){
-    this.sidenavClass = 'sidenav-open';
-    this.sidenav.open();
+
+  receiveNotification($event)
+  {
+    this.currentNotification = $event;
+    this.isNotification=true;
+
+    if ($event.type == "Tarea")
+    {
+    this.changeBlock("homework")
+    }else{
+      this.changeBlock("grade")
+    }
+
   }
-  changeClassMenu(){
-    if(!this.checked){
-      this.sidenavClass = 'sidenav';
-      this.sidenav.close();
+ 
+  changeBlock(newBlock: string)
+  {
+    console.log(this.showHomeButton)
+    if (newBlock!='home')
+    {
+      this.showHomeButton=true;
 
     }
-  }
-  changeBlock(newBlock: string){
+    else{
+      this.showHomeButton=false;
+    }
     this.blockDinamicActually = newBlock;
+    console.log(newBlock)
+  }
+
+  notNotification()
+  {
+    this.isNotification=false;
+  }
+
+   ngOnInit() {
+    this.sidenav.open()
+
   }
 
 }

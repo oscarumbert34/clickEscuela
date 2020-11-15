@@ -1,8 +1,6 @@
+import { MatBadgeModule } from '@angular/material/badge';
+import { Notification } from '../../interfaces/Notification';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-export interface Notification {
-  type: string;
-  tittle: string;
-}
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -10,14 +8,33 @@ export interface Notification {
 })
 export class NotificationComponent implements OnInit {
   checked: boolean = false;
+  notificationsHomework: Notification[];
+  notificationsChat: Notification[];
+
   @Output() messageEvent = new EventEmitter<boolean>();
+  @Output() openNotification=new EventEmitter<Notification>();
+  @Output() notificationNumber=new EventEmitter<number>();
+
 
   changeNotification() {
     this.checked = this.checked ? false : true;
     this.messageEvent.emit(this.checked);
   }
 
-  notificationsHomework: Notification[] = [
+  showNotification(notification:Notification){
+    this.openNotification.emit(notification)
+  }
+
+  shownotificationsNumber()
+  {
+    this.notificationNumber.emit(this.notificationsHomework.length+this.notificationsChat.length);
+  }
+
+
+ 
+  constructor() 
+  {  
+     this.notificationsHomework= [
     {
       type: 'Tarea',
       tittle: 'La tarea de Ingles termino',
@@ -30,8 +47,9 @@ export class NotificationComponent implements OnInit {
       type: 'Tarea',
       tittle: 'La tarea de Geografia termino',
     }
-  ];
-  notificationsChat: Notification[] = [
+  ]; 
+  
+  this.notificationsChat= [
     {
       type: 'Consulta Padre',
       tittle: 'Fechas de examen',
@@ -41,9 +59,12 @@ export class NotificationComponent implements OnInit {
       tittle: 'Fechas de examen',
     }
   ];
-  constructor() { }
 
-  ngOnInit() {
+}
+
+  ngOnInit() 
+  {
+    this.shownotificationsNumber()
   }
 
 }

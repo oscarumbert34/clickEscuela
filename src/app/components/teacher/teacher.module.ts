@@ -1,3 +1,7 @@
+import { AsistanceComponent } from './asistance/asistance.component';
+import { GradesComponent } from './grades/grades.component';
+import { BulletinsComponent } from './bulletins/bulletins.component';
+import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
@@ -27,6 +31,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
+
 import { DashboardChartComponent } from '../commons/dashboard-chart/dashboard-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advance/dashboard-chart-advance.component';
@@ -37,8 +43,8 @@ import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
-                 DashboardChartComponent,DashboardChartAdvanceComponent, DashboardVerticalComponent,
-                 PieChartComponent],
+                 DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
+                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -59,7 +65,8 @@ import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
     MatSlideToggleModule,
     MatMenuModule,
     MatIconModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatBadgeModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
