@@ -87,34 +87,37 @@ export class MenuComponent implements OnInit {
   {
     this.currentNotification = $event;
     this.isNotification=true;
+    this.changeBlock($event.type == 'Tarea' ? 'homework' : 'grade');
 
-    if ($event.type == "Tarea")
-    {
-    this.changeBlock("homework")
-    }else{
-      this.changeBlock("grade")
-    }
+    // if ($event.type == "Tarea")
+    // {
+    // this.changeBlock("homework")
+    // }else{
+    //   this.changeBlock("grade")
+    // }
 
   }
  
   changeBlock(newBlock: string)
   {
-    console.log(this.showHomeButton)
-    if (newBlock!='home')
-    {
-      this.showHomeButton=true;
+    console.log(this.showHomeButton);
+    this.showHomeButton = newBlock != 'home' ? true : false;
 
-    }
-    else{
-      this.showHomeButton=false;
-    }
+    // if (newBlock!='home')
+    // {
+    //   this.showHomeButton=true;
+
+    // }
+    // else{
+    //   this.showHomeButton=false;
+    // }
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
   }
 
   notNotification()
   {
-    this.isNotification=false;
+    this.isNotification = false;
   }
 
    ngOnInit() {
