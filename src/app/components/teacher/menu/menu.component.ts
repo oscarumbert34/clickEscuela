@@ -71,7 +71,7 @@ export class MenuComponent implements OnInit {
 
       this.notificationShow = false;
       this.dinamicDisplay = 'col-10 size-display-dinamic';
-      this.home.changeSizeDashboard(false);
+      //this.home.changeSizeDashboard(false);
 
     }
   }

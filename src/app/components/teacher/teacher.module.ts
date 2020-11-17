@@ -38,13 +38,14 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advance/dashboard-chart-advance.component';
 import { DashboardVerticalComponent } from '../commons/dashboard-vertical/dashboard-vertical.component';
 import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
+import { GradesListComponent } from './grades-list/grades-list.component';
 
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
-                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent],
+                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,GradesListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
