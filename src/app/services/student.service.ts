@@ -57,6 +57,8 @@ export class studentService {
     sortDirection: ''
   };
 
+  studentsArray: Student[] = new Array(10);
+
   constructor(private pipe: DecimalPipe) {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
@@ -96,14 +98,14 @@ export class studentService {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
 
     // 1. sort
-    let studentsArray: Student[] = new Array(10);
-    studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '');
-    studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '');
-    studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '');
-    studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '');
-    studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '');
-    studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '');
-    let students = sort(studentsArray, sortColumn, sortDirection);
+    
+    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '');
+    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '');
+    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '');
+    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '');
+    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '');
+    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '');
+    let students = sort(this.studentsArray, sortColumn, sortDirection);
 
     // 2. filter
     students = students.filter(student => matches(student, searchTerm, this.pipe));
@@ -112,6 +114,10 @@ export class studentService {
     // 3. paginate
     students = students.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
     return of({students, total});
+  }
+
+  get studentsList(){
+    return this.studentsArray;
   }
 
 

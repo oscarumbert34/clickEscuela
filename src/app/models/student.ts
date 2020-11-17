@@ -10,7 +10,8 @@ export class Student{
                  surname: string,
                  bornDate: string,
                  absences: number,
-                 observation: string){
+                 observation: string)
+                 {
             this.id = id;
             this.name = name;
             this.surname = surname;

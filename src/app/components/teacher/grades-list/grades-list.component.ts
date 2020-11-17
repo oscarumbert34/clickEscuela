@@ -1,6 +1,6 @@
 import { GradesService } from './../../../services/grades.service';
-import { Grade } from './../../interfaces/Grade';
 import { Component, OnInit } from '@angular/core';
+import { Grade } from 'src/app/models/Grade';
 
 @Component({
   selector: 'app-grades-list',
