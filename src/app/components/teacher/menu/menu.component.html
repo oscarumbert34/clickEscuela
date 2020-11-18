@@ -1,5 +1,7 @@
+
 <mat-drawer-container [ngClass]="clasMenu" autosize class="h-100">
 
+  <img id="background-img" src="../../../../assets/images/background.png" alt="">
   
     <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side" >
 
@@ -110,7 +112,7 @@
     <div class="sidenav-content" >
       <div class="container">
         <div class="row">
-          <div class="col-1"></div> 
+          <div class="col-1" style="background-color: transparent;"></div> 
   
 
           <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">  
