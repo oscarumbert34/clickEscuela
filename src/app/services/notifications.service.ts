@@ -1,5 +1,5 @@
+import { Notification } from '../models/Notification';
 import { Injectable } from '@angular/core';
-import { Notification } from '../components/interfaces/Notification';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,10 @@ export class NotificationsService
 
   private notificationsHomework: Notification[];
   private notificationsChat: Notification[];
+  
 constructor() 
 {
+
   this.notificationsHomework= [
     {
       type: 'Tarea',
