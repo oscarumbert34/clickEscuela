@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../services/notifications.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { Notification } from '../../interfaces/Notification';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -32,38 +33,17 @@ export class NotificationComponent implements OnInit {
 
 
  
-  constructor() 
+  constructor(notifications: NotificationsService) 
   {  
-     this.notificationsHomework= [
-    {
-      type: 'Tarea',
-      tittle: 'La tarea de Ingles termino',
-    },
-    {
-      type: 'Tarea',
-      tittle: 'La tarea de Matematica termino',
-    },
-    {
-      type: 'Tarea',
-      tittle: 'La tarea de Geografia termino',
-    }
-  ]; 
+  this.notificationsHomework= notifications.homeworks
   
-  this.notificationsChat= [
-    {
-      type: 'Consulta Padre',
-      tittle: 'Fechas de examen',
-    },
-    {
-      type: 'Consulta Directivo',
-      tittle: 'Fechas de examen',
-    }
-  ];
+  this.notificationsChat=notifications.chats
 
 }
 
   ngOnInit() 
   {
+    
     this.shownotificationsNumber()
   }
 

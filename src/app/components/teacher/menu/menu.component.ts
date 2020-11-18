@@ -50,7 +50,7 @@ export class MenuComponent implements OnInit {
 
   constructor() { }
 
- 
+  theEvent$;
 
   changedDisplayNotification()
   {

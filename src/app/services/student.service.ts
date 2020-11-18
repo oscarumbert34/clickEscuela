@@ -36,6 +36,7 @@ function sort(students: Student[], column: SortColumn, direction: string): Stude
   }
 }
 
+
 function matches(student: Student, term: string, pipe: PipeTransform) {
   return student.name.toLowerCase().includes(term.toLowerCase())
     || pipe.transform(student.absences).includes(term)
