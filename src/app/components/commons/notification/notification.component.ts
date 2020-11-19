@@ -57,14 +57,16 @@ export class NotificationComponent implements OnInit {
     {
       type: 'Consulta Directivo',
       tittle: 'Fechas de examen',
+  
     }
   ];
+  this.shownotificationsNumber()
 
 }
 
-  ngOnInit() 
-  {
-    this.shownotificationsNumber()
+ngOnInit() 
+{
+  this.shownotificationsNumber()
   }
 
 }
