@@ -1,5 +1,3 @@
-import { NotificationComponent } from './../../commons/notification/notification.component';
-import { element } from 'protractor';
 import { Component, OnInit, Input, Directive, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
@@ -34,10 +32,10 @@ export class MenuComponent implements OnInit {
   notificationChild = false;
   dashboard = 'Cant. Aprobados';
   checked  = false;
-  classMenu  ='menu';
+  classMenu  = 'menu';
   blockDinamicActually = 'home';
   sidenavClass = 'sidenav-open';
-  showHomeButton=false;
+  showHomeButton = false;
 
   currentNotification: Notification;
   isNotification: boolean;
@@ -121,7 +119,7 @@ export class MenuComponent implements OnInit {
   }
 
    ngOnInit() {
-    this.sidenav.open()
+    this.sidenav.open();
 
   }
 

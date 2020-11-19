@@ -70,6 +70,6 @@ import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports:[MenuComponent]
+  exports: [MenuComponent]
 })
 export class TeacherModule { }
