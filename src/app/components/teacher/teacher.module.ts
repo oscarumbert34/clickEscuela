@@ -40,13 +40,15 @@ import { DashboardChartAdvanceComponent } from '../commons/dashboard-chart-advan
 import { DashboardVerticalComponent } from '../commons/dashboard-vertical/dashboard-vertical.component';
 import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
 import { GradesListComponent } from './grades-list/grades-list.component';
+import { StudentsComponent } from './students/students.component';
 
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
-                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,GradesListComponent,OptionsMenuComponent],
+                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
+                 StudentsComponent,GradesListComponent,OptionsMenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -72,6 +74,6 @@ import { GradesListComponent } from './grades-list/grades-list.component';
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports:[MenuComponent]
+  exports: [MenuComponent]
 })
 export class TeacherModule { }

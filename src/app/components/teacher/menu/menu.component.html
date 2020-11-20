@@ -5,100 +5,78 @@
   
     <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side" >
 
-      <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
-        <div class="col-12" (click)="changeBlock('home')">
-          <div>
-            <img class="image-fluid" src="./assets/images/logo.svg" alt="">
-          </div>
+  <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side">
+
+    <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
+      <div class="col-12" (click)="changeBlock('home')">
+        <div>
+          <img class="image-fluid" src="./assets/images/logo.svg" alt="">
         </div>
       </div>
+    </div>
 
-      <div class="row" id="user-information">
-        <div class="col-12 container-icon" >
+    <div class="row" id="user-information">
+      <div class="col-12 container-icon">
 
-          <!-- <i class="fa fa-user-circle-o user" aria-hidden="true"></i> -->
-          <div class=" user-image-container text-center mb-2">
-            
-            <img class="image-fluid circle-user" src="./assets/images/teacher.jpg" alt="">
+        <div class=" user-image-container text-center mb-2">
 
-          </div>
-          <p>Marta Lopez</p>
-         
+          <img class="image-fluid circle-user" src="./assets/images/teacher.jpg" alt="">
+
         </div>
-      </div>
-      <mat-list>
-        <mat-list-item  class="button-menu-container" id="responsivehomeButton">
+        <p>Marta Lopez</p>
 
-          <button class="button-menu" 
-         
-          mat-button color 
-          (click)="changeBlock('home');notNotification()">
+      </div>
+    </div>
+    <mat-list>
+      <mat-list-item class="button-menu-container" id="responsivehomeButton">
+
+        <button class="button-menu" mat-button color (click)="changeBlock('home');notNotification()">
 
           <img width="50px" src="./assets/images/logo-reduced.svg" alt="">
-          <!-- <i class="fa fa-users menu-icon" aria-hidden="true"></i> -->
-          </button>
+        </button>
 
 
-        </mat-list-item>
+      </mat-list-item>
 
-        <mat-list-item class="button-menu-container">
-          <button class="button-menu" 
-          [ngClass]="{'option-selected': blockDinamicActually=='course'}" 
-          mat-button color 
+      <mat-list-item class="button-menu-container">
+        <button class="button-menu" [ngClass]="{'option-selected': blockDinamicActually=='course'}" mat-button color
           (click)="changeBlock('course');notNotification()">
 
-            <img class="icon-svg" src="./assets/images/user.svg" alt="">
-            <!-- <i class="fa fa-users menu-icon" aria-hidden="true"></i> -->
-            <span>Cursos</span>
-          </button>
-          </mat-list-item>
+          <img class="icon-svg" src="./assets/images/user.svg" alt="">
+          <span>Cursos</span>
+        </button>
+      </mat-list-item>
 
-        <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
 
-        <mat-list-item  class="button-menu-container">
-          <button [ngClass]="{'option-selected': blockDinamicActually=='homework'}"  
-          class="button-menu" 
-          mat-button color
-          (click)="changeBlock('homework');notNotification()"
-          [currentNotification]="currentNotification">
-          
-            <!-- <i class="fa fa-file-text menu-icon" aria-hidden="true"></i> -->
-            <img class="icon-svg" src="./assets/images/tareas.svg" alt="">
+      <mat-list-item class="button-menu-container">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='homework'}" class="button-menu" mat-button color
+          (click)="changeBlock('homework');notNotification()" [currentNotification]="currentNotification">
 
-            <span class="name-button">Tareas</span>          
-          </button></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item  class="button-menu-container">
-          <button  
-          [ngClass]="{'option-selected': blockDinamicActually=='grade'}"  
-          class="button-menu" 
-          mat-button color 
-          (click)="changeBlock('grade');notNotification()"
-          >
-            <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
-            <img class="icon-svg" src="./assets/images/boletin.svg" alt="">
+          <img class="icon-svg" src="./assets/images/tareas.svg" alt="">
 
-            <span>Notas</span>
-          </button></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item  class="button-menu-container">
-          <button 
-          [ngClass]="{'option-selected': blockDinamicActually=='bulletin'}"  
-          class="button-menu" 
-          mat-button color 
+          <span class="name-button">Tareas</span>
+        </button></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="button-menu-container">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='grade'}" class="button-menu" mat-button color
+          (click)="changeBlock('grade');notNotification()">
+          <img class="icon-svg" src="./assets/images/boletin.svg" alt="">
+
+          <span>Notas</span>
+        </button></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="button-menu-container">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='bulletin'}" class="button-menu" mat-button color
           (click)="changeBlock('bulletin');notNotification()">
 
-            <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
+          <img class="icon-svg" src="./assets/images/notes.svg" alt="">
 
-            <img class="icon-svg" src="./assets/images/notes.svg" alt="">
-
-            <span>Boletin</span>
-          </button></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item  class="button-menu-container">
-          <button [ngClass]="{'option-selected': blockDinamicActually=='asistance'}"
-          class="button-menu" 
-          mat-button color 
+          <span>Boletin</span>
+        </button></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item class="button-menu-container">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='asistance'}" class="button-menu" mat-button color
           (click)="changeBlock('asistance');notNotification()">
 
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
@@ -144,10 +122,23 @@
 
          
         </div>
-         
+
+        <ng-template #notShow>
+          <div class="col-1 button-notification">
+            <button id="notification-button" mat-mini-fab color="primary" [matBadge]="numberNotifications"
+              matBadgeColor="warn" (click)="changedDisplayNotification()">
+
+              <mat-icon mat-list-icon>notifications_active</mat-icon>
+            </button>
+          </div>
+        </ng-template>
+
+
       </div>
-     
-    
+
     </div>
-  
-  </mat-drawer-container>
+
+
+  </div>
+
+</mat-drawer-container>
