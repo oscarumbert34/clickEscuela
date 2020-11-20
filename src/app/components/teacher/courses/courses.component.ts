@@ -13,6 +13,7 @@ export class CoursesComponent implements OnInit {
   dashBoardsProperties: Dashboardproperties[] = new Array(0);
   dashBoardsProperties1: Dashboardproperties[] = new Array(0);
   dashBoardsProperties2: Dashboardproperties[] = new Array(0);
+  nameComponent="Cursos"
 
   constructor() { }
 

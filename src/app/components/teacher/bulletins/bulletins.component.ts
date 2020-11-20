@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BulletinsComponent implements OnInit {
 
+  nameComponent="Boletines"
   constructor() { }
 
   ngOnInit() {

@@ -9,8 +9,7 @@ import { stringify } from 'querystring';
 export class GradesComponent implements OnInit 
 {
 
-
-
+  nameComponent="Notas"
   constructor() 
   { 
     //Mockeo de grados

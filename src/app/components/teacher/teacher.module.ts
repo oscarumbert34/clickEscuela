@@ -1,3 +1,4 @@
+import { OptionsMenuComponent } from './../commons/options-menu/options-menu.component';
 import { AsistanceComponent } from './asistance/asistance.component';
 import { GradesComponent } from './grades/grades.component';
 import { BulletinsComponent } from './bulletins/bulletins.component';
@@ -45,7 +46,7 @@ import { GradesListComponent } from './grades-list/grades-list.component';
   declarations: [MenuComponent, NotificationComponent, StudentListComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
-                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,GradesListComponent],
+                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,GradesListComponent,OptionsMenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
