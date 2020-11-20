@@ -4,7 +4,7 @@
 {
    
     background-color:$custom-blue-glass;
-    padding: 1em;
+    padding: 0.4em;
     justify-content: center;
     align-items: center;
     border-radius: 1em;
@@ -44,18 +44,18 @@ margin: 0;
   transition: 0.5s ease-in-out;
   
 }
-#edit-icon:before{
+#edit-icon:before
+{
     content: "Editar";
 }
-#trash-icon:before{
+#trash-icon:before
+{
     content: "Eliminar";
     left: 0px;
 
 }
-
-
-
-#add-icon:before{
+#add-icon:before
+{
     content: "Añadir";
 }
 #search-icon:hover::before,#edit-icon:hover::before,#trash-icon:hover::before,#add-icon:hover::before
@@ -64,19 +64,24 @@ margin: 0;
 
 }
 
-.button-menu img
+#search-icon img,#edit-icon img,#trash-icon img,#add-icon img
 {
     transition: 0.5s ease-in-out;
     
     
 }
 
-.button-menu:hover img{
+#search-icon:hover img,#edit-icon:hover img,#add-icon:hover img{
     transform: scale(1.1);
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.473))
 }
 
-.button-menu:hover .trash-icon{
+
+
+#trash-icon:hover img{
     transform: scale(1.1);
-    filter: drop-shadow(2px 2px 2px rgba(255, 0, 0, 0.568))
+    filter: drop-shadow(2px 2px 2px rgba(255, 0, 0, 1)) hue-rotate(247 deg);
+    -webkit-filter:  drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.473) ) hue-rotate(247deg) saturate(6);
+
+    
 }
