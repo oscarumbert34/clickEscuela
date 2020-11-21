@@ -1,7 +1,7 @@
 export class Student{
      public id: string;
-     name: string;
-     surname: string;
+     public name: string;
+     public surname: string;
      bornDate: string;
      absences: number;
      observation: string;

@@ -2,14 +2,14 @@ import { Student } from './student';
 
 export class Grade 
 {
-    student:Student;
+    student:string;
     code:string;
     description: string;
     matter: string;
     grade: number;
 
     constructor(
-        student:Student,
+        student:string,
         code:string,
         description: string,
         matter: string, 

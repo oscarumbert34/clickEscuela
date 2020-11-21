@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { GradesService } from './../../../services/grades.service';
+import { Grade } from 'src/app/models/Grade';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { stringify } from 'querystring';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-grades',
@@ -10,15 +15,15 @@ export class GradesComponent implements OnInit
 {
 
   nameComponent="Notas"
+  
+
   constructor() 
   { 
-    //Mockeo de grados
     
   }
 
   ngOnInit() 
   {
-
   }
 
 }

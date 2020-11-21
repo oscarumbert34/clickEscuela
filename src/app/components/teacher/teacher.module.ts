@@ -16,7 +16,6 @@ import { DecimalPipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationComponent } from '../commons/notification/notification.component';
 import {MatIconModule} from '@angular/material/icon';
-import { StudentListComponent } from './student-list/student-list.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { LoadDashboardComponent } from '../commons/load-dashboard/load-dashboard.component';
@@ -44,7 +43,7 @@ import { StudentsComponent } from './students/students.component';
 
 
 @NgModule({
-  declarations: [MenuComponent, NotificationComponent, StudentListComponent,
+  declarations: [MenuComponent, NotificationComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,

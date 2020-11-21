@@ -1,6 +1,9 @@
 import { GradesService } from './../../../services/grades.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Grade } from 'src/app/models/Grade';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-grades-list',
@@ -9,17 +12,34 @@ import { Grade } from 'src/app/models/Grade';
 })
 export class GradesListComponent implements OnInit {
 
-  public grades: Grade[];
+  displayedColumns: string[];
+  dataSource: any;
+  gradesArray: Grade[] = new Array(5);
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  gradesList: Grade[];
+  
   constructor(gradeService: GradesService) 
   { 
-    this.grades=gradeService.gradesList;
-   
+    this.gradesList=new Array();
+    this.gradesList=gradeService.gradesList
+    
   }
 
-  ngOnInit()
+  ngOnInit() 
   {
-    console.log(this.grades)
-  }
 
+    this.displayedColumns = ['student', 'code', 'description', 'matter', 'grade'];
+
+    console.log(this.gradesList)
+ 
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource();
+    this.dataSource.data = this.gradesList;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+  }
 }
