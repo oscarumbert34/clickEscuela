@@ -18,36 +18,6 @@ tr.mat-row, tr.mat-footer-row
   height: 25px !important;
 }
 
-.mat-tab-group
-{
-  transition: 0.5s ease-in-out;
-}
-
-.extended-tab-group
-{
-  height: 500px;
-  transition: 0.5s ease-in-out;
-}
-
-.extendButton{
-  position: absolute;
-  z-index: 99999999;
-  bottom: 2em;
-  left: 2em;
-  background: none;
-  outline: none;
-  border: 0;
-  transition: 0.5s ease-in-out;
-}
-
-.extendButton:hover
-{
-  transform: scale(1.2);
-}
-
-
-
-
 
 #background-img{
   position: absolute;
