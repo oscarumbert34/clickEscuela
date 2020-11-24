@@ -33,7 +33,6 @@ export class GradesListComponent implements OnInit {
 
     this.displayedColumns = ['student', 'code', 'description', 'matter', 'grade'];
 
-    console.log(this.gradesList)
  
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();

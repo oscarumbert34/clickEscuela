@@ -10,6 +10,7 @@
     border-radius: 1em;
     box-shadow: 6px 6px 12px 3px rgba(0, 0, 0, 0.247);
     color: white;
+    height: 60px;
 }
 
 #gradesMenu h5{
@@ -26,7 +27,8 @@ margin: 0;
 #search-icon,#edit-icon,#trash-icon,#add-icon
 {
     position: relative;
-    margin: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
 
 }
 
@@ -35,13 +37,14 @@ margin: 0;
   position: absolute;
  
   content: "Buscar";
-  bottom: -15px;
+  bottom: -5px;
   left: 10px;
   margin: auto;
   opacity: 0;
   color: white;
   margin:auto;
   transition: 0.5s ease-in-out;
+  font-size: 0.8em;
   
 }
 #edit-icon:before

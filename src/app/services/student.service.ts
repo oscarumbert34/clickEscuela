@@ -58,7 +58,7 @@ export class studentService {
     sortDirection: ''
   };
 
-  studentsArray: Student[] = new Array(10);
+  studentsArray: Student[] = []
 
   constructor(private pipe: DecimalPipe) {
     this._search$.pipe(
