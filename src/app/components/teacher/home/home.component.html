@@ -1,22 +1,27 @@
 <div class="container">
   
-  <div class="row mt-4 mb-4">
+  <div class="row mt-2 mb-2">
             <div class="col-4 text-left">
-              <img width="200px" class="image-fluid mb-2" src="./assets/images/logo-dark.svg" alt="">
+              <img width="150px" class="image-fluid mb-2" src="./assets/images/logo-dark.svg" alt="">
             </div>
             <div class="col-8 text-left">         
-              <h3 style="margin-top: 20px; margin-left: 60px;">Bienvenidos</h3>
+              <h4 style="margin-top: 20px; margin-left: 60px;">Bienvenidos</h4>
             </div>
 
           </div>
 
-        <div class="row mb-4" >
+        <div class="row mb-2" >
           <div class="col-12">
-            <mat-tab-group  mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+            <mat-tab-group style="position: relative;"  mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" [ngClass]="{'extended-tab-group': extendedTab}">
               <mat-tab class="mat-tab" label="Curso 3B"><app-students></app-students></mat-tab>
               <mat-tab class="mat-tab" label="Curso 2A"><app-students></app-students></mat-tab>
               <mat-tab class="mat-tab" label="Curso 5C"><app-students></app-students></mat-tab>
             </mat-tab-group>
+            <button class="extendButton" (click)="extendTab()">
+              <img width="30px" class="image-fluid mb-2" src="./assets/images/edit.svg" alt="">
+
+            </button>
+
           </div>
      
   

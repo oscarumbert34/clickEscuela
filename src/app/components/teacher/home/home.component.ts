@@ -12,7 +12,7 @@ import { LoadDashboardComponent } from '../../commons/load-dashboard/load-dashbo
 })
 export class HomeComponent implements OnInit {
   @ViewChild(LoadDashboardComponent) loadDashboardComponent: LoadDashboardComponent;
-
+  extendedTab=false;
   dashBoardsProperties: Dashboardproperties[] = new Array(0);
   constructor() { }
 
@@ -26,6 +26,11 @@ export class HomeComponent implements OnInit {
 
   changeSizeDashboard(expandNotification: boolean){
     this.loadDashboardComponent.changeSizeDashboard(expandNotification);
+  }
+
+  extendTab(){
+    console.log(this.extendedTab)
+    this.extendedTab=!this.extendedTab
   }
 
 

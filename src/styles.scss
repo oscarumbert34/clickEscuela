@@ -13,20 +13,41 @@ body { margin: 0;
     font-size: 0.96rem;
 }
 
-::ng-deep .mat-cell, .mat-footer-cell
+tr.mat-row, tr.mat-footer-row
 {
-  font-size: 0.5em;
+  height: 25px !important;
 }
 
-
-
-.mat-cell
+.mat-tab-group
 {
-  padding: 0;
+  transition: 0.5s ease-in-out;
 }
-.mat-tab-label-active{
-  background-color: rgba(0, 0, 0, 0.15);
+
+.extended-tab-group
+{
+  height: 500px;
+  transition: 0.5s ease-in-out;
 }
+
+.extendButton{
+  position: absolute;
+  z-index: 99999999;
+  bottom: 2em;
+  left: 2em;
+  background: none;
+  outline: none;
+  border: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.extendButton:hover
+{
+  transform: scale(1.2);
+}
+
+
+
+
 
 #background-img{
   position: absolute;
@@ -70,10 +91,10 @@ body { margin: 0;
   padding-left: 0;
 }
 
-.mat-list-base{
+.mat-list-base
+{
   margin-left: 2px !important;
 }
-
 
 }
 
