@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -34,7 +35,8 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './../commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
 import { OptionsMenuComponent } from './../commons/options-menu/options-menu.component';
 import { AsistanceComponent } from './asistance/asistance.component';
@@ -48,7 +49,7 @@ import { StudentsComponent } from './students/students.component';
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,OptionsMenuComponent,PopupMenuComponent],
+                 StudentsComponent,GradesListComponent,OptionsMenuComponent,PopupMenuComponent,ConfirmDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
