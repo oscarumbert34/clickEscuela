@@ -20,7 +20,23 @@ tr.mat-row, tr.mat-footer-row
  
 }
 
+.form-control{
+  width: 95%;
+  font-size: 1em;
+  background-color: rgba(255, 255, 255, 0.61);
+  border:0;
+}
 
+.form-control:focus{
+  border: 3px solid $green;
+  transition: 0.5s ease-in-out;
+ 
+}
+
+textarea{
+  outline: 0;
+  box-shadow: none;
+}
 
 #background-img{
   position: absolute;
