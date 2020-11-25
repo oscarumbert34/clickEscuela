@@ -1,3 +1,4 @@
+import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
 import { OptionsMenuComponent } from './../commons/options-menu/options-menu.component';
 import { AsistanceComponent } from './asistance/asistance.component';
 import { GradesComponent } from './grades/grades.component';
@@ -47,7 +48,7 @@ import { StudentsComponent } from './students/students.component';
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,OptionsMenuComponent],
+                 StudentsComponent,GradesListComponent,OptionsMenuComponent,PopupMenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

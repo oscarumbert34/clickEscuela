@@ -8,31 +8,45 @@
 
     <!-- ID Column -->
     <ng-container matColumnDef="student">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Alumno</th>
+      <th id="column1" mat-header-cell *matHeaderCellDef mat-sort-header>Alumno</th>
       <td mat-cell *matCellDef="let row"> {{row.student}} </td>
     </ng-container>
 
     <!-- Progress Column -->
     <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Tarea</th>
+      <th id="column2" mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Tarea</th>
       <td mat-cell *matCellDef="let row"> {{row.code}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción Nota</th>
+      <th id="column3" mat-header-cell *matHeaderCellDef mat-sort-header>Descripción Nota</th>
       <td mat-cell *matCellDef="let row"> {{row.description}} </td>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="matter">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Materia</th>
+      <th id="column4" mat-header-cell *matHeaderCellDef mat-sort-header>Materia</th>
       <td mat-cell *matCellDef="let row"> {{row.matter}} </td>
     </ng-container>
 
     <ng-container matColumnDef="grade">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nota</th>
+      <th id="column5" mat-header-cell *matHeaderCellDef mat-sort-header>Nota</th>
       <td mat-cell *matCellDef="let row"> {{row.grade}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th id="column6" mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+      <td mat-cell *matCellDef="let row" style="display: inline-flex">
+        <button id="edit-icon" class="button-menu" disabled>
+          
+          <img  width="20px" src="./assets/images/edit.svg" alt="">
+        </button>
+              <button id="trash-icon" class="button-menu" disabled>
+                  
+                <img  width="15px" src="./assets/images/trash.svg" alt="">
+           </button>
+      </td>
     </ng-container>
 
 
