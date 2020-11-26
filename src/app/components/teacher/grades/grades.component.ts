@@ -32,6 +32,7 @@ export class GradesComponent implements OnInit
     )
 
    dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+   
   }
 
   closeDialog()

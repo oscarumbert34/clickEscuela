@@ -10,15 +10,24 @@ import { Grade } from 'src/app/models/Grade';
 })
 export class PopupMenuComponent implements OnInit 
 {
+  currentGrade: Grade;
   constructor(public dialogRef: MatDialogRef<PopupMenuComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private gradesService: GradesService) 
   { 
+    this.currentGrade=
+    {
+      student:'default',
+      code:'',
+      description: '',
+      matter: '', 
+      grade: 0
+    }
     
   }
 
   addGrade()
   {
-    let grade= new Grade("Juana Almiron","T00001","Historia Europea","Historia",10);
-    this.gradesService.addGrade(grade)
+    
+    this.gradesService.addGrade(this.currentGrade)
     console.log(this.gradesService.gradesList)
   }
 
