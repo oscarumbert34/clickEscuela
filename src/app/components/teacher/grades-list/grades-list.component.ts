@@ -23,10 +23,13 @@ export class GradesListComponent implements OnInit {
   
   constructor(gradeService: GradesService) 
   { 
+    
     this.gradesList=new Array();
     this.gradesList=gradeService.gradesList
     
   }
+
+
 
   ngOnInit() 
   {
@@ -40,5 +43,17 @@ export class GradesListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
+  }
+
+  refreshTable()
+  {
+    this.displayedColumns = ['student', 'code', 'description', 'matter', 'grade','actions'];
+
+ 
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource();
+    this.dataSource.data = this.gradesList;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

@@ -1,15 +1,16 @@
-import { PopupMenuComponent } from './../popupMenu/popupMenu.component';
+import { BulletinsComponent } from '../../teacher/bulletins/bulletins.component';
+import { PopupMenuComponent } from '../popupMenu/popupMenu.component';
 
 import { Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss']
+  selector: 'app-dialog',
+  templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.scss']
 })
 
-export class ConfirmDialogComponent implements OnInit {
+export class DialogComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
@@ -17,12 +18,14 @@ export class ConfirmDialogComponent implements OnInit {
   {
    const dialogRef=this.dialog.open(PopupMenuComponent,
     {data: input,
-    width: '90%',
-    height:'80%'}
+    width: '80%',
+    height:'70%'}
     )
 
    dialogRef.afterClosed().subscribe(res =>{console.log("holis")})
   }
+
+
 
  
 

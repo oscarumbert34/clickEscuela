@@ -1,4 +1,3 @@
-import { ConfirmDialogComponent } from './../commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
 import { OptionsMenuComponent } from './../commons/options-menu/options-menu.component';
 import { AsistanceComponent } from './asistance/asistance.component';
@@ -42,6 +41,7 @@ import { DashboardVerticalComponent } from '../commons/dashboard-vertical/dashbo
 import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
 import { GradesListComponent } from './grades-list/grades-list.component';
 import { StudentsComponent } from './students/students.component';
+import { DialogComponent } from '../commons/dialog/dialog.component';
 
 
 @NgModule({
@@ -49,7 +49,7 @@ import { StudentsComponent } from './students/students.component';
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,OptionsMenuComponent,PopupMenuComponent,ConfirmDialogComponent],
+                 StudentsComponent,GradesListComponent,OptionsMenuComponent,PopupMenuComponent,DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -2,12 +2,11 @@
   <div class="row">
     <div class="col-12">
       
-      <form (ngSubmit)="submitForm()">
+      <form (ngSubmit)="addGrade()">
         <div class="row form-group">
           <div class="col-12 form-group">
           <label for="description">Descripcion de la nota</label>
           <textarea type="text" name="description" id="" class="form-control" placeholder="Ingrese Descripcion..." ></textarea>
-          <small id="helpId" class="text-muted">Help text</small>
         </div>
       </div>
 
@@ -23,7 +22,6 @@
             <!-- <option *ngFor="let course of courses">Implementar</option> -->
 
           </select>
-          <small id="helpId" class="text-muted">Help text</small>
         </div>
 
         <div class="col-md-6 col-12 form-group">
@@ -36,7 +34,6 @@
             <!-- <option *ngFor="let matter of matters">Implementar</option> -->
 
           </select>
-          <small id="helpId" class="text-muted">Help text</small>
         </div>
       </div>
 
@@ -51,18 +48,20 @@
             <!-- <option *ngFor="let matter of matters">Implementar</option> -->
 
           </select>
-          <small id="helpId" class="text-muted">Help text</small>
         </div>
 
         <div class="col-md-6 col-12 form-group">
           <label for="description">Descripcion de la tarea</label>
           <textarea type="text" name="description" id="" class="form-control" placeholder="Ingrese Descripcion..." ></textarea>
-          <small id="helpId" class="text-muted">Help text</small>
         </div>
 
       </div>
         
-
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block">Añadir nota</button>
+        </div>
+      </div>
       
       
     </form>
