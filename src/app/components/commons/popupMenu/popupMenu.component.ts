@@ -1,7 +1,9 @@
+import { studentService } from './../../../services/student.service';
 import { GradesService } from './../../../services/grades.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Grade } from 'src/app/models/Grade';
+import { Student } from 'src/app/models/student';
 
 @Component({
   selector: 'app-popupMenu',
@@ -11,7 +13,8 @@ import { Grade } from 'src/app/models/Grade';
 export class PopupMenuComponent implements OnInit 
 {
   currentGrade: Grade;
-  constructor(public dialogRef: MatDialogRef<PopupMenuComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private gradesService: GradesService) 
+  studentsList: Student[];
+  constructor(public dialogRef: MatDialogRef<PopupMenuComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private gradesService: GradesService,private studentsService: studentService) 
   { 
     this.currentGrade=
     {
@@ -21,8 +24,19 @@ export class PopupMenuComponent implements OnInit
       matter: '', 
       grade: 0
     }
+    this.studentsList=[]
+
     
   }
+
+  loadStudents(currentCourse)
+  {
+    console.log(currentCourse)
+    this.studentsList=this.studentsService.studentsList.filter(a =>a.course==currentCourse);
+    console.log(this.studentsList)
+  }
+
+
 
   addGrade()
   {

@@ -100,12 +100,12 @@ export class studentService {
 
     // 1. sort
     
-    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '');
-    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '');
-    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '');
-    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '');
-    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '');
-    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '');
+    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '',"3B");
+    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '',"3B");
+    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '',"3B");
+    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '',"2A");
+    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '',"2A");
+    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '',"2A");
     let students = sort(this.studentsArray, sortColumn, sortDirection);
 
     // 2. filter

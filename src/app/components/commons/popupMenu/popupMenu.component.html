@@ -15,7 +15,7 @@
 
         <div class="col-md-6 col-12 form-group">
           <label for="course">Curso</label>
-          <select type="text" name="course" id="course" class="form-control" required>
+          <select type="text" name="course" id="course" class="form-control" required (change)="loadStudents($event.target.value)">
             <option value="default">Seleccione el Curso...</option>
             <option value="2A">2A</option>
             <option value="3B">3B</option>
@@ -59,6 +59,19 @@
           [(ngModel)]="currentGrade.grade" required>
         </div>
 
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-6 col-12 form-group">
+          <label for="student">Alumno</label>
+          <select type="text" name="student" id="student" class="form-control"
+          [(ngModel)]="currentGrade.student" required>
+            <option value="default">Seleccione un alumno...</option>
+        
+            <option *ngFor="let student of studentsList">{{student.surname+" "+student.name}}</option>
+
+          </select>
+        </div>
       </div>
         
       <div class="row">
