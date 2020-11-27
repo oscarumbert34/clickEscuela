@@ -10,6 +10,7 @@ import { Grade } from '../models/Grade';
 })
 export class GradesService 
 {
+  
 
   private grades: Grade[];
   private studentsArray: Student[];
@@ -33,6 +34,11 @@ constructor(studentService:studentService)
 addGrade(grade: Grade)
 {
   this.grades.push(grade)
+}
+
+deleteGrade(index)
+{
+  this.grades.splice(index,1)
 }
 
 

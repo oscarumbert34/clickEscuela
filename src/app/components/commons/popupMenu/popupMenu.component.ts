@@ -29,6 +29,8 @@ export class PopupMenuComponent implements OnInit
     
     this.gradesService.addGrade(this.currentGrade)
     console.log(this.gradesService.gradesList)
+    this.dialogRef.close()
+   // this.dialogRef.afterClosed().subscribe(res =>{alert("Se agrego una nueva nota")})
   }
 
   ngOnInit()

@@ -21,7 +21,7 @@ export class GradesListComponent implements OnInit {
 
   gradesList: Grade[];
   
-  constructor(gradeService: GradesService) 
+  constructor(private gradeService: GradesService) 
   { 
     
     this.gradesList=new Array();
@@ -43,6 +43,12 @@ export class GradesListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
+  }
+
+  deleteGrade(index)
+  {
+    this.gradeService.deleteGrade(index);
+    this.refreshTable()
   }
 
   refreshTable()

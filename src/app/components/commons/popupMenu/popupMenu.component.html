@@ -6,8 +6,8 @@
         <div class="row form-group">
           <div class="col-12 form-group">
           <label for="description">Descripcion de la nota</label>
-          <textarea type="text" name="description" id="" class="form-control" placeholder="Ingrese Descripcion..." 
-          [(ngModel)]="currentGrade.description"></textarea>
+          <textarea type="text" name="description" id="description" class="form-control" placeholder="Ingrese Descripcion..." 
+          [(ngModel)]="currentGrade.description" required></textarea>
         </div>
       </div>
 
@@ -15,7 +15,7 @@
 
         <div class="col-md-6 col-12 form-group">
           <label for="course">Curso</label>
-          <select type="text" name="course" id="" class="form-control">
+          <select type="text" name="course" id="course" class="form-control" required>
             <option value="default">Seleccione el Curso...</option>
             <option value="2A">2A</option>
             <option value="3B">3B</option>
@@ -27,8 +27,8 @@
 
         <div class="col-md-6 col-12 form-group">
           <label for="matter">Materia</label>
-          <select type="text" name="matter" id="" class="form-control"
-          [(ngModel)]="currentGrade.matter">
+          <select type="text" name="matter" id="matter" class="form-control"
+          [(ngModel)]="currentGrade.matter" required>
             <option value="default">Seleccione la Materia...</option>
             <option value="Matematicas">Matematicas</option>
             <option value="Geografia">Geografia</option>
@@ -42,8 +42,8 @@
       <div class="row form-group">
           <div class="col-md-6 col-12 form-group">
           <label for="homework">Tarea</label>
-          <select type="text" name="homework" id="" class="form-control"
-          [(ngModel)]="currentGrade.code">
+          <select type="text" name="homework" id="homework" class="form-control"
+          [(ngModel)]="currentGrade.code" required>
             <option value="default">Seleccione la Tarea...</option>
             <option value="2A">T00001</option>
             <option value="3B">T00002</option>
@@ -54,9 +54,9 @@
         </div>
 
         <div class="col-md-6 col-12 form-group">
-          <label for="description">Nota</label>
-          <input type="number" name="description" id="" class="form-control" placeholder="Ingrese Nota..." maxlength="2" max="10"
-          [(ngModel)]="currentGrade.grade">
+          <label for="grade">Nota</label>
+          <input type="number" name="grade" id="grade" class="form-control" placeholder="Ingrese Nota..." maxlength="2" max="10" min="1"
+          [(ngModel)]="currentGrade.grade" required>
         </div>
 
       </div>

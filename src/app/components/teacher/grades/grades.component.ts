@@ -35,16 +35,13 @@ export class GradesComponent implements OnInit
    
   }
 
-  closeDialog()
+  refreshAllChildrens()
   {
-    this.dialog.closeAll
-  }
-
-  refreshAllChildrens(){
     for (let comp of this.listGrades)
     {
       comp.refreshTable()
     }
+    
   }
 
   ngOnInit() 
