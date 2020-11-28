@@ -1,0 +1,96 @@
+<div class="container" >
+  <div class="row mb-2 mt-2">
+    <div class="col-12">
+      <h5>{{data}}</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      
+      <form (ngSubmit)="addGrade()">
+        
+        <div class="row form-group">
+          <div class="col-12 form-group">
+          <label for="description">Descripcion de la nota</label>
+          <textarea type="text" name="description" id="description" class="form-control" placeholder="Ingrese Descripcion..." 
+          [(ngModel)]="currentGrade.description" required></textarea>
+        </div>
+      </div>
+
+      <div class="row form-group">
+
+        <div class="col-md-6 col-12 form-group">
+          <label for="course">Curso</label>
+          <select type="text" name="course" id="course" class="form-control" required (change)="loadStudents($event.target.value)">
+            <option value="default">Seleccione el Curso...</option>
+            <option value="2A">2A</option>
+            <option value="3B">3B</option>
+            <option value="2C">2C</option>
+            <!-- <option *ngFor="let course of courses">Implementar</option> -->
+
+          </select>
+        </div>
+
+        <div class="col-md-6 col-12 form-group">
+          <label for="matter">Materia</label>
+          <select type="text" name="matter" id="matter" class="form-control"
+          [(ngModel)]="currentGrade.matter" required>
+            <option value="default">Seleccione la Materia...</option>
+            <option value="Matematicas">Matematicas</option>
+            <option value="Geografia">Geografia</option>
+            <option value="Historia">Historia</option>
+            <!-- <option *ngFor="let matter of matters">Implementar</option> -->
+
+          </select>
+        </div>
+      </div>
+
+      <div class="row form-group">
+          <div class="col-md-6 col-12 form-group">
+          <label for="homework">Tarea</label>
+          <select type="text" name="homework" id="homework" class="form-control"
+          [(ngModel)]="currentGrade.code" required>
+            <option value="default">Seleccione la Tarea...</option>
+            <option value="2A">T00001</option>
+            <option value="3B">T00002</option>
+            <option value="2C">T00003</option>
+            <!-- <option *ngFor="let matter of matters">Implementar</option> -->
+
+          </select>
+        </div>
+
+        <div class="col-md-6 col-12 form-group">
+          <label for="grade">Nota</label>
+          <input type="number" name="grade" id="grade" class="form-control" placeholder="Ingrese Nota..." maxlength="2" max="10" min="1"
+          [(ngModel)]="currentGrade.grade" required>
+        </div>
+
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 form-group">
+          <label for="student">Alumno</label>
+          <select type="text" name="student" id="student" class="form-control"
+          [(ngModel)]="currentGrade.student" required>
+            <option *ngIf="studentsList.length>0" value="default">Seleccione un alumno...</option>
+            <option *ngIf="studentsList.length==0" value="default">No hay alumnos para el curso seleccionado...</option>
+
+        
+            <option *ngFor="let student of studentsList">{{student.surname+" "+student.name}}</option>
+
+          </select>
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block">Añadir nota</button>
+        </div>
+      </div>
+      
+      
+    </form>
+    
+          </div>
+    </div>
+  </div>

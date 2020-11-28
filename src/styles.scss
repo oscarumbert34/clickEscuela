@@ -8,8 +8,41 @@ html, body { height: 100%; }
 body { margin: 0;
 }
 
-*{
+ *{
     font-family: 'TenorSans', sans-serif;
+    font-size: 0.96rem;
+}
+
+//alto del 
+tr.mat-row, tr.mat-footer-row
+{
+  height: 28px !important;
+ 
+}
+
+.form-control{
+  width: 95%;
+  font-size: 1em;
+  background-color: rgba(255, 255, 255, 0.61);
+  border:0;
+  border-bottom: 2px solid black;
+  text-decoration: none;
+  outline: none;
+  
+}
+
+.form-control:focus{
+  outline: 0 none;
+  transition: 0.5s ease-in-out;
+  border-bottom: 2px solid $green;
+  box-shadow: none;
+
+ 
+}
+
+textarea{
+  outline: 0;
+  box-shadow: none;
 }
 
 #background-img{
@@ -34,6 +67,12 @@ body { margin: 0;
 .mat-tab-label{
   color: white;
   font-weight: bolder;
+  height: 35px !important;
+}
+
+.mat-tab-label-content{
+
+  font-size: 0.85em !important;
 }
 
 .mat-tab-header{
@@ -48,10 +87,10 @@ body { margin: 0;
   padding-left: 0;
 }
 
-.mat-list-base{
+.mat-list-base
+{
   margin-left: 2px !important;
 }
-
 
 }
 
@@ -63,6 +102,11 @@ body { margin: 0;
   background-color: rgba(255, 255, 255, 0.747);
   
 }
+
+::ng-deep .mat-tab-body.mat-tab-group::-webkit-scrollbar-thumb{
+  background-color: blue;
+}
+
 .mat-card.mat-focus-indicator
 {
   border-radius: 0.7em;

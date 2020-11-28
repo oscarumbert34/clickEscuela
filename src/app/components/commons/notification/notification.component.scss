@@ -118,3 +118,8 @@
   }
 
 }
+::ng-deep .mat-icon img
+{
+  display: block;
+  margin-left: 0.15em;
+}

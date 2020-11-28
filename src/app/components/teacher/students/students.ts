@@ -38,5 +38,6 @@ export var dataStudents = [
         "birthDate":"22/05/2010",
         "absences": 11,
         "observations": ''
-    }
+    },
+    
   ];

@@ -1,10 +1,9 @@
-import { GradesService } from './../../../services/grades.service';
-import { Grade } from 'src/app/models/Grade';
+import { GradesListComponent } from './../grades-list/grades-list.component';
+
+import { ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { stringify } from 'querystring';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupMenuComponent } from '../../commons/popupMenu/popupMenu.component';
 
 @Component({
   selector: 'app-grades',
@@ -14,11 +13,34 @@ import { MatTableDataSource } from '@angular/material/table';
 export class GradesComponent implements OnInit 
 {
 
-  nameComponent="Notas"
+  currentOption="Notas"
+  @ViewChildren(GradesListComponent) listGrades: QueryList<GradesListComponent>;
+ 
   
 
-  constructor() 
+  constructor(public dialog: MatDialog) 
   { 
+    
+  }
+
+  openDialog(input)
+  {
+   const dialogRef=this.dialog.open(PopupMenuComponent,
+    {data: input,
+    width: '80%',
+    height:'75%'}
+    )
+
+   dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+   
+  }
+
+  refreshAllChildrens()
+  {
+    for (let comp of this.listGrades)
+    {
+      comp.refreshTable()
+    }
     
   }
 
