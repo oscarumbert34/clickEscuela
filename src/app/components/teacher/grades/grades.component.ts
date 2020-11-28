@@ -28,7 +28,7 @@ export class GradesComponent implements OnInit
    const dialogRef=this.dialog.open(PopupMenuComponent,
     {data: input,
     width: '80%',
-    height:'70%'}
+    height:'75%'}
     )
 
    dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})

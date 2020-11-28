@@ -1,3 +1,5 @@
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './../commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
 import { AsistanceComponent } from './asistance/asistance.component';
 import { GradesComponent } from './grades/grades.component';
@@ -47,7 +49,7 @@ import { StudentsComponent } from './students/students.component';
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,PopupMenuComponent],
+                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -69,7 +71,7 @@ import { StudentsComponent } from './students/students.component';
     MatMenuModule,
     MatIconModule,
     NgxChartsModule,
-    MatBadgeModule
+    MatBadgeModule,MatDialogModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

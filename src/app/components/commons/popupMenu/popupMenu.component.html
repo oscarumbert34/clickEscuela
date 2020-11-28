@@ -1,8 +1,14 @@
-<div class="container" style="margin-top:3em">
+<div class="container" >
+  <div class="row mb-2 mt-2">
+    <div class="col-12">
+      <h5>{{data}}</h5>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12">
       
       <form (ngSubmit)="addGrade()">
+        
         <div class="row form-group">
           <div class="col-12 form-group">
           <label for="description">Descripcion de la nota</label>
@@ -62,11 +68,13 @@
       </div>
 
       <div class="row form-group">
-        <div class="col-md-6 col-12 form-group">
+        <div class="col-12 form-group">
           <label for="student">Alumno</label>
           <select type="text" name="student" id="student" class="form-control"
           [(ngModel)]="currentGrade.student" required>
-            <option value="default">Seleccione un alumno...</option>
+            <option *ngIf="studentsList.length>0" value="default">Seleccione un alumno...</option>
+            <option *ngIf="studentsList.length==0" value="default">No hay alumnos para el curso seleccionado...</option>
+
         
             <option *ngFor="let student of studentsList">{{student.surname+" "+student.name}}</option>
 
