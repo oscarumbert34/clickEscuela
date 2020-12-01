@@ -1,15 +1,16 @@
 <div class="row text-center">
   <div class="col-12">
-    <div class="row">
-      <div class="col-12">
+    <div class="row no-gutters">
+      <div class="col-12 no-gutters">
         <p>{{message}}</p>
       </div>
     </div>
-    <div class="row">
-      <mat-dialog-actions align="end">
-        <button mat-button [mat-dialog-close]="false">NO</button>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>SI</button>
-      </mat-dialog-actions>
+    <div class="row text-center no-gutters">
+      <div class="col-12 text-center no-gutters">
+        <button class="cancelButton" mat-button [mat-dialog-close]="false">NO</button>
+        <button class="confirmButton" mat-button [mat-dialog-close]="true" cdkFocusInitial>SI</button>
+      </div>
+     
     </div>
     
   </div>

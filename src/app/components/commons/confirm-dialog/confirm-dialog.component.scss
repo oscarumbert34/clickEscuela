@@ -1,0 +1,17 @@
+@import "../../../stylings/color-pallete.scss";
+
+::ng-deep .mat-dialog-container
+{
+    border: 2px solid $green;
+}
+
+.cancelButton{
+    background-color: rgba(175, 26, 26, 0.651);
+    margin-right: 1em;
+}
+
+
+.confirmButton
+{
+    background-color: $green;
+}

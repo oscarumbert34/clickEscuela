@@ -41,6 +41,11 @@ deleteGrade(index)
   this.grades.splice(index,1)
 }
 
+modifyGrade(index,grade:Grade)
+{
+  this.grades.splice(index,1,grade)
+}
+
 
 
 get gradesList(){
