@@ -1,6 +1,7 @@
+import { PopupMenuComponent } from './../../commons/popupMenu/popupMenu.component';
 import { ConfirmDialogComponent } from './../../commons/confirm-dialog/confirm-dialog.component';
 import { GradesService } from './../../../services/grades.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { Grade } from 'src/app/models/Grade';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -22,6 +23,9 @@ export class GradesListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('student') student: ElementRef;
+
+  @ViewChildren(GradesListComponent) listGrades: QueryList<GradesListComponent>;
 
   gradesList: Grade[];
   
@@ -61,8 +65,11 @@ export class GradesListComponent implements OnInit {
 
       this.gradeService.deleteGrade(index);
       this.refreshTable()
+  }
 
-    
+  modifyGrade(index,grade)
+  {
+    this.gradeService.modifyGrade(index,grade)
   }
 
   confirmDelete(index)
@@ -74,9 +81,10 @@ export class GradesListComponent implements OnInit {
   {
    
      const dialogRef=this.dialog.open(ConfirmDialogComponent,
-      {data: input,
-      width: '20%',
-      height:'20%'}
+      {
+      data: input,
+      width: '260px',
+      height:'150px'}
       )
 
     dialogRef.afterClosed().subscribe(result =>
@@ -87,10 +95,33 @@ export class GradesListComponent implements OnInit {
 
       }
     });
-     
+  }
 
-   
-     
+  openModify(index,grade)
+  {
+    const dialogRef=this.dialog.open(PopupMenuComponent,
+      {
+
+    data:{grade:grade, index:index},
+    width: '80%',
+    height:'75%'
+
+      }
+
+      
+      )
+      
+      dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+
+    }
+
+
+    refreshAllChildrens()
+  {
+    for (let comp of this.listGrades)
+    {
+      comp.refreshTable()
+    }
     
   }
 
