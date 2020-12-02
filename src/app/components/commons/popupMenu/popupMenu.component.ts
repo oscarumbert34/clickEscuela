@@ -15,6 +15,7 @@ export class PopupMenuComponent implements OnInit
   currentGrade: Grade;
   studentsList: Student[];
   existData:boolean;
+  localData: any;
   constructor(public dialogRef: MatDialogRef<PopupMenuComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private gradesService: GradesService,private studentsService: studentService) 
   { 
     if(data.grade === undefined)
@@ -27,9 +28,26 @@ export class PopupMenuComponent implements OnInit
       matter: '', 
       grade: 0
     }
+    this.localData=
+    {
+      grade:
+      {
+        student:"",
+        code:"",
+        description: "",
+        matter: "", 
+        grade: 0
+      }
+      ,index:0
+
     }
-    else{
+    this.existData=!!data.grade
+    
+    }
+    else
+    {
       this.currentGrade=data.grade;
+      this.localData=data
     }
     
     this.existData=!!data.grade;
