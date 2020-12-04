@@ -45,6 +45,7 @@ import { DashboardVerticalComponent } from '../commons/dashboard-vertical/dashbo
 import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
 import { GradesListComponent } from './grades-list/grades-list.component';
 import { StudentsComponent } from './students/students.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -76,7 +77,11 @@ import { StudentsComponent } from './students/students.component';
     NgxChartsModule,
     MatBadgeModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatNativeDateModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

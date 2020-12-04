@@ -1,6 +1,8 @@
+import { MatDatepicker } from '@angular/material/datepicker';
 import { Homework } from './../../../models/Homework';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -8,7 +10,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './add-Homework.component.html',
   styleUrls: ['./add-Homework.component.css']
 })
-export class AddHomeworkComponent implements OnInit {
+export class AddHomeworkComponent implements OnInit
+ {
+
+  @ViewChild(MatDatepicker) datepicker: MatDatepicker<any>;
 
   currentHomework: Homework;
   constructor(public dialogRef: MatDialogRef<AddHomeworkComponent>, @Inject(MAT_DIALOG_DATA) public data: any) 
@@ -24,8 +29,13 @@ export class AddHomeworkComponent implements OnInit {
     }
   }
 
+
+
+  
+
   ngOnInit() 
   {
+    console.log(this.datepicker)
   }
 
 }

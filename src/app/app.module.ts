@@ -1,4 +1,3 @@
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -37,9 +36,8 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,
-    MatDatepickerModule
-  ],
+    MatDialogModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
