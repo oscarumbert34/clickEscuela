@@ -2,22 +2,7 @@
 
 @import '../../../stylings/color-pallete.scss';
 
-#gradesMenu
-{
-   
-    background-color:$custom-blue-glass;
-    padding: 0.4em;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1em;
-    box-shadow: 6px 6px 12px 3px rgba(0, 0, 0, 0.247);
-    color: white;
-    height: 60px;
-}
 
-#gradesMenu h5{
-margin: 0;
-}
 
 .button-menu{
     background-color: transparent;

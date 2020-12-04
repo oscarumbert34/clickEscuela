@@ -121,3 +121,59 @@ textarea{
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
   background-color:#9acd8d91;
 }
+
+
+//Estilos de los botones de accion
+
+.button-menu{
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 1em;
+}
+
+#edit-icon,#trash-icon
+{
+  position: relative;
+  
+
+}
+
+#search-icon img,#edit-icon img,#trash-icon img,#add-icon img
+{
+  transition: 0.5s ease-in-out;
+  
+  
+}
+
+#search-icon:hover img,#edit-icon:hover img,#add-icon:hover img{
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.473))
+}
+
+#trash-icon:hover img{
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 2px rgba(255, 0, 0, 1)) hue-rotate(247 deg);
+  -webkit-filter:  drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.473) ) hue-rotate(247deg) saturate(6);
+
+  
+}
+
+#buttonsTab
+{
+   
+    background-color:$custom-blue-glass;
+    padding: 0.4em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    box-shadow: 6px 6px 12px 3px rgba(0, 0, 0, 0.247);
+    color: white;
+    height: 60px;
+}
+
+#buttonsTab h5{
+margin: 0;
+}
+
+//Fin de los estilos de

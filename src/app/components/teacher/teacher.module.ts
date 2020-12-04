@@ -1,3 +1,4 @@
+import { HomeworkListComponent } from './homework-list/homework-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './../commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
@@ -8,6 +9,8 @@ import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 import { MatCardModule } from '@angular/material/card';
 
@@ -49,7 +52,7 @@ import { StudentsComponent } from './students/students.component';
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent],
+                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,HomeworkListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -71,7 +74,9 @@ import { StudentsComponent } from './students/students.component';
     MatMenuModule,
     MatIconModule,
     NgxChartsModule,
-    MatBadgeModule,MatDialogModule
+    MatBadgeModule,
+    MatDialogModule,
+    MatDatepickerModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
