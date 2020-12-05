@@ -46,6 +46,7 @@ import { PieChartComponent } from '../commons/pie-chart/pie-chart.component';
 import { GradesListComponent } from './grades-list/grades-list.component';
 import { StudentsComponent } from './students/students.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AddHomeworkComponent } from './add-homework/add-Homework.component';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { MatNativeDateModule } from '@angular/material/core';
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,HomeworkListComponent],
+                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,HomeworkListComponent,AddHomeworkComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

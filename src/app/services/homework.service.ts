@@ -20,6 +20,11 @@ constructor()
 
 }
 
+addHomework(homework:Homework)
+{
+  this.homeworkList.push(homework)
+}
+
 get homeworkList(){
   return this.homeworksList
 }
