@@ -43,6 +43,8 @@ export class HomeworkListComponent implements OnInit {
     this.dataSource.data = this.homeworkList;
   }
 
+  confirmDelete(){}
+
   applyFilter(event: Event) 
   {
     console.log((event.target as HTMLInputElement).value)

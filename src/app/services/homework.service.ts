@@ -25,6 +25,13 @@ addHomework(homework:Homework)
   this.homeworkList.push(homework)
 }
 
+deleteHomework(index)
+{
+  
+}
+
+
+
 get homeworkList(){
   return this.homeworksList
 }
