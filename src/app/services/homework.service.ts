@@ -16,8 +16,6 @@ constructor()
   this.homeworksList.push(new Homework("","Evaluacion Geografia","Evaluacion del mes de noviembre",new Date,"2A","Geografia"))
   this.homeworksList.push(new Homework("","Evaluacion Sociales","Evaluacion del mes de noviembre",new Date,"2A","Sociales"))
   this.homeworksList.push(new Homework("","Evaluacion Historia","Evaluacion del mes de noviembre",new Date,"2A","Historia"))
- 
-
 }
 
 addHomework(homework:Homework)
@@ -27,7 +25,7 @@ addHomework(homework:Homework)
 
 deleteHomework(index)
 {
-  
+  this.homeworkList.splice(index,1)
 }
 
 

@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Grade } from 'src/app/models/Grade';
+import { ConfirmDialogComponent } from '../../commons/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-homework-list',
@@ -19,7 +21,8 @@ export class HomeworkListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   homeworkList=[];
-  constructor(homeworkService: HomeworkService) 
+  
+  constructor(private homeworkService: HomeworkService,public dialog: MatDialog) 
   {
     this.homeworkList=homeworkService.homeworkList
    }
@@ -43,8 +46,38 @@ export class HomeworkListComponent implements OnInit {
     this.dataSource.data = this.homeworkList;
   }
 
-  confirmDelete(){}
+  confirmDelete(index)
+  {
+    this.confirmDialog("¿Desea eliminar la nota?",index);
+  }
 
+  confirmDialog(input,index)
+  {
+   
+     const dialogRef=this.dialog.open(ConfirmDialogComponent,
+      {
+      data: input,
+      width: '260px',
+      height:'150px'}
+      )
+
+    dialogRef.afterClosed().subscribe(result =>
+    {
+      if (result)
+      {
+        this.deleteHomework(index)
+
+      }
+    });
+  }
+
+  deleteHomework(index)
+  {
+
+      this.homeworkService.deleteHomework(index);
+      this.refreshTable()
+  }
+  
   applyFilter(event: Event) 
   {
     console.log((event.target as HTMLInputElement).value)
