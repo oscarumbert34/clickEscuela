@@ -24,6 +24,11 @@ export class HomeComponent implements OnInit {
 
   }
 
+  printit(element){
+    console.log(element)
+    element.disabled=false;
+  }
+
   changeSizeDashboard(expandNotification: boolean){
     this.loadDashboardComponent.changeSizeDashboard(expandNotification);
   }

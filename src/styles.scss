@@ -181,3 +181,28 @@ margin: 0;
 }
 
 //Fin de los estilos de
+
+//Lineas de prueba
+
+  .hola
+  {
+    border: none !important;
+    background: transparent;
+    box-shadow: none;
+    padding: 1em;
+    transition: 0.5s ease;
+  }
+
+  .hola:disabled
+  {
+   opacity: 1; 
+   color: black;
+   outline: none !important;
+   appearance: none;
+  }
+
+  
+
+  .hola:focus{
+    outline: none;
+  }
