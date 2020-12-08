@@ -32,7 +32,6 @@
           class="form-control" 
           placeholder="Ingrese el codigo de la tarea..." 
           [(ngModel)]="currentHomework.code" 
-          [ngModel]="localData.homework.description"
           #code
           required 
           >
@@ -140,8 +139,12 @@
       </div> -->
 
       <div class="row" >
-        <div class="col-12">
+        <div class="col-12" *ngIf="!existData">
           <button class="btn btn-primary btn-block" (click)="addHomework()">Añadir Tarea</button>
+        </div>
+
+        <div class="col-12" *ngIf="existData">
+          <button class="btn btn-primary btn-block" (click)="modifyHomework()">Modificar Tarea</button>
         </div>
       </div>
       

@@ -47,7 +47,6 @@ export class AddHomeworkComponent implements OnInit
       index:0
   
     }
-    this.existData=!!data.code
     }
 
     else
@@ -56,11 +55,11 @@ export class AddHomeworkComponent implements OnInit
       this.localData=this.data;
 
     }
-    this.existData=!!data.code
+    this.existData=!!data.homework
 
 
 
-   console.log(data)
+   console.log(this.existData)
   }
 
   
