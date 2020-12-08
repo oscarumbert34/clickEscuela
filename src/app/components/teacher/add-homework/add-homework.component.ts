@@ -37,7 +37,7 @@ export class AddHomeworkComponent implements OnInit
     {
       homework:
       {
-      code:"",
+    code:"",
     name:"",
     description:"",
     deliveryDate: null,
@@ -69,6 +69,13 @@ export class AddHomeworkComponent implements OnInit
     console.log(this.currentHomework)
     this.homeworkService.addHomework(this.currentHomework)
     console.log(this.homeworkService.homeworkList)
+    this.dialogRef.close()
+  }
+
+  modifyHomework()
+  {
+    
+    this.homeworkService.modifyHomework(this.data.index,this.data.grade)
     this.dialogRef.close()
   }
 
