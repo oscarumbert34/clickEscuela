@@ -75,7 +75,7 @@ export class AddHomeworkComponent implements OnInit
   modifyHomework()
   {
     
-    this.homeworkService.modifyHomework(this.data.index,this.data.grade)
+    this.homeworkService.modifyHomework(this.data.index,this.data.homework)
     this.dialogRef.close()
   }
 
