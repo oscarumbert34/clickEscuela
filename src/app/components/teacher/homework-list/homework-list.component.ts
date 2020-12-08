@@ -1,3 +1,4 @@
+import { AddHomeworkComponent } from '../add-homework/add-Homework.component';
 import { HomeworkService } from './../../../services/homework.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -70,6 +71,25 @@ export class HomeworkListComponent implements OnInit {
       }
     });
   }
+
+  openModify(index,homework)
+  {
+    console.log(homework)
+    const dialogRef=this.dialog.open(AddHomeworkComponent,
+      {
+
+    data:{homework:homework, index:index},
+    width: '80%',
+    height:'75%'
+
+      }
+
+      
+      )
+      
+     // dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+
+    }
 
   deleteHomework(index)
   {

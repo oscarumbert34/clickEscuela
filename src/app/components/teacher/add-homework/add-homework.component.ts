@@ -1,5 +1,5 @@
 import { MatDatepicker } from '@angular/material/datepicker';
-import { Homework } from './../../../models/Homework';
+import { Homework } from '../../../models/Homework';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HomeworkService } from 'src/app/services/homework.service';
@@ -17,9 +17,13 @@ export class AddHomeworkComponent implements OnInit
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<any>;
 
   currentHomework: Homework;
+  existData:boolean;
+  localData:any;
   constructor(public dialogRef: MatDialogRef<AddHomeworkComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private homeworkService: HomeworkService) 
   { 
-
+    this.existData=false;
+    if (data.homework===undefined)
+    {
     this.currentHomework=
     {
     code:"",
@@ -29,7 +33,37 @@ export class AddHomeworkComponent implements OnInit
     course:"",
     matter: ""
     }
+    this.localData=
+    {
+      homework:
+      {
+      code:"",
+    name:"",
+    description:"",
+    deliveryDate: null,
+    course:"",
+    matter: ""
+      },
+      index:0
+  
+    }
+    this.existData=!!data.code
+    }
+
+    else
+    {
+      this.currentHomework=this.data.homework
+      this.localData=this.data;
+
+    }
+    this.existData=!!data.code
+
+
+
+   console.log(data)
   }
+
+  
 
   addHomework()
   {
@@ -43,7 +77,8 @@ export class AddHomeworkComponent implements OnInit
 
   ngOnInit() 
   {
-    console.log(this.datepicker)
+    console.log(this.data)
+
   }
 
 }
