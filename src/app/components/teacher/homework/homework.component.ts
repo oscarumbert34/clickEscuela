@@ -3,7 +3,7 @@ import { Input, QueryList, ViewChildren } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Notification } from '../../interfaces/Notification';
-import { AddHomeworkComponent } from '../add-homework/add-Homework.component';
+import { AddHomeworkComponent } from '../add-homework/add-homework.component';
 
 
 @Component({
