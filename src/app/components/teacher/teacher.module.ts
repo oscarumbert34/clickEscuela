@@ -46,7 +46,7 @@ import { GradesListComponent } from './grades-list/grades-list.component';
 import { StudentsComponent } from './students/students.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HomeworkListComponent } from './homework-list/homework-list.component';
-import { AddHomeworkComponent } from './add-homework/add-Homework.component';
+import { AddHomeworkComponent } from './add-homework/add-homework.component';
 
 
 @NgModule({

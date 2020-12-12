@@ -7,9 +7,9 @@ import { HomeworkService } from 'src/app/services/homework.service';
 
 
 @Component({
-  selector: 'app-add-Homework',
-  templateUrl: './add-Homework.component.html',
-  styleUrls: ['./add-Homework.component.css']
+  selector: 'app-add-homework',
+  templateUrl: './add-homework.component.html',
+  styleUrls: ['./add-homework.component.css']
 })
 export class AddHomeworkComponent implements OnInit
  {
