@@ -3,8 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
-import { HomeComponent } from '../home/home.component';
 import { Notification } from '../../interfaces/Notification';
+import { HomeComponent } from '../../teacher/home/home.component';
 
 @Component({
   selector: 'app-menu',
@@ -60,7 +60,6 @@ export class MenuComponent implements OnInit {
       this.dinamicDisplay = 'col-10 size-display-dinamic';
       this.home.changeSizeDashboard(false);
     }
-   // this.dinamicDisplay = this.notificationShow ? 'col-9' : 'col-10 size-display-dinamic';
   }
 
 
@@ -69,7 +68,6 @@ export class MenuComponent implements OnInit {
 
       this.notificationShow = false;
       this.dinamicDisplay = 'col-10 size-display-dinamic';
-      //this.home.changeSizeDashboard(false);
 
     }
   }
@@ -87,28 +85,12 @@ export class MenuComponent implements OnInit {
     this.isNotification=true;
     this.changeBlock($event.type == 'Tarea' ? 'homework' : 'grade');
 
-    // if ($event.type == "Tarea")
-    // {
-    // this.changeBlock("homework")
-    // }else{
-    //   this.changeBlock("grade")
-    // }
-
   }
  
   changeBlock(newBlock: string)
   {
     console.log(this.showHomeButton);
     this.showHomeButton = newBlock != 'home' ? true : false;
-
-    // if (newBlock!='home')
-    // {
-    //   this.showHomeButton=true;
-
-    // }
-    // else{
-    //   this.showHomeButton=false;
-    // }
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
   }

@@ -7,7 +7,6 @@ import { BulletinsComponent } from './bulletins/bulletins.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './menu/menu.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
@@ -47,6 +46,7 @@ import { StudentsComponent } from './students/students.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HomeworkListComponent } from './homework-list/homework-list.component';
 import { AddHomeworkComponent } from './add-homework/add-homework.component';
+import { MenuComponent } from '../commons/menu/menu.component';
 
 
 @NgModule({
