@@ -3,11 +3,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Grade } from 'src/app/models/Grade';
 import { ConfirmDialogComponent } from '../../commons/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HomeworkService } from 'src/app/services/homework.service';
-import { AddHomeworkComponent } from '../add-homework/add-Homework.component';
+import { AddHomeworkComponent } from '../add-homework/add-homework.component';
 
 @Component({
   selector: 'app-homework-list',
