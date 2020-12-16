@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
+
 import { AddReportCardComponent } from './../addReportCard/addReportCard.component';
 import { ReportCardListComponent } from './report-card-list/report-card-list.component';
 import { ReportCardComponent } from './report-card/report-card.component';
 import { AsistanceListComponent } from './asistance-list/asistance-list.component';
-import { HomeworkListComponent } from './homework-list/homework-list.component';
->>>>>>> homeworkViews
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './../commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
@@ -61,14 +58,9 @@ import { MenuComponent } from '../commons/menu/menu.component';
   declarations: [MenuComponent, NotificationComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
-<<<<<<< HEAD
-                 PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,
-                 HomeworkListComponent,AddHomeworkComponent],
-=======
+
                  PieChartComponent, HomeworkComponent, GradesComponent, AsistanceComponent,
                  StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,HomeworkListComponent,AddHomeworkComponent,AsistanceListComponent,ReportCardComponent,ReportCardListComponent,AddReportCardComponent],
->>>>>>> homeworkViews
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
