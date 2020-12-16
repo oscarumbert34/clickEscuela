@@ -1,13 +1,21 @@
+<<<<<<< HEAD
+=======
+import { AddReportCardComponent } from './../addReportCard/addReportCard.component';
+import { ReportCardListComponent } from './report-card-list/report-card-list.component';
+import { ReportCardComponent } from './report-card/report-card.component';
+import { AsistanceListComponent } from './asistance-list/asistance-list.component';
+import { HomeworkListComponent } from './homework-list/homework-list.component';
+>>>>>>> homeworkViews
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './../commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from './../commons/popupMenu/popupMenu.component';
 import { AsistanceComponent } from './asistance/asistance.component';
 import { GradesComponent } from './grades/grades.component';
-import { BulletinsComponent } from './bulletins/bulletins.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 import { MatCardModule } from '@angular/material/card';
@@ -22,7 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { LoadDashboardComponent } from '../commons/load-dashboard/load-dashboard.component';
-import {MatMenuModule} from '@angular/material/menu';
+import {MatMenu, MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
@@ -53,9 +61,14 @@ import { MenuComponent } from '../commons/menu/menu.component';
   declarations: [MenuComponent, NotificationComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
+<<<<<<< HEAD
                  PieChartComponent, HomeworkComponent, GradesComponent, BulletinsComponent, AsistanceComponent,
                  StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,
                  HomeworkListComponent,AddHomeworkComponent],
+=======
+                 PieChartComponent, HomeworkComponent, GradesComponent, AsistanceComponent,
+                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,HomeworkListComponent,AddHomeworkComponent,AsistanceListComponent,ReportCardComponent,ReportCardListComponent,AddReportCardComponent],
+>>>>>>> homeworkViews
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -83,7 +96,7 @@ import { MenuComponent } from '../commons/menu/menu.component';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule, MatMenuModule,MatCheckboxModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

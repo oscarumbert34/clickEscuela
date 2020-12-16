@@ -65,8 +65,8 @@
         </button></mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item class="button-menu-container">
-        <button [ngClass]="{'option-selected': blockDinamicActually=='bulletin'}" class="button-menu" mat-button color
-          (click)="changeBlock('bulletin');notNotification()">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='reportCard'}" class="button-menu" mat-button color
+          (click)="changeBlock('reportCard');notNotification()">
 
           <img class="icon-svg" src="./assets/images/notes.svg" alt="">
 
@@ -79,7 +79,7 @@
 
             <!-- <i class="fa fa-line-chart menu-icon" aria-hidden="true"></i> -->
             <img class="icon-svg" src="./assets/images/hand.svg" alt="">
-            <span>Presentes</span>
+            <span>Asistencia</span>
           </button></mat-list-item>
       
       </mat-list>
@@ -99,7 +99,7 @@
             <div *ngSwitchCase="'homework'"><app-homework [isNotification]="isNotification" [currentNotification]="currentNotification"></app-homework></div>  
             <div *ngSwitchCase="'grade'"><app-grades></app-grades></div>  
             <div *ngSwitchCase="'asistance'"><app-asistance></app-asistance></div>  
-            <div *ngSwitchCase="'bulletin'"><app-bulletins></app-bulletins></div>  
+            <div *ngSwitchCase="'reportCard'"><app-report-card></app-report-card></div>  
 
 
 

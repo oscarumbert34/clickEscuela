@@ -83,7 +83,6 @@ export class AddHomeworkComponent implements OnInit
 
   ngOnInit() 
   {
-    console.log(this.data)
 
   }
 

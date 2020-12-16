@@ -129,11 +129,22 @@ textarea{
 
 //Estilos de los botones de accion
 
-.button-menu{
+.button-action{
   background-color: transparent;
   outline: none;
   border: none;
   padding: 1em;
+  transition: 0.5s ease-in-out;
+}
+
+.button-action:disabled{
+  filter: grayscale(3);
+  cursor: not-allowed;
+}
+
+.button-action:enabled:hover{
+  transform: scale(1.1);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.473))
 }
 
 #edit-icon,#trash-icon
@@ -141,13 +152,6 @@ textarea{
   position: relative;
   
 
-}
-
-#search-icon img,#edit-icon img,#trash-icon img,#add-icon img
-{
-  transition: 0.5s ease-in-out;
-  
-  
 }
 
 #search-icon:hover img,#edit-icon:hover img,#add-icon:hover img{

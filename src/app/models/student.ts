@@ -7,7 +7,8 @@ export class Student{
      observation: string;
      course: string
 
-    constructor( id: string, name: string,
+    constructor( id: string, 
+                 name: string,
                  surname: string,
                  bornDate: string,
                  absences: number,

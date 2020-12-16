@@ -1,23 +1,12 @@
 
-<div *ngIf="isNotification" class="row">
-        
-        
-  <div class="col-12">
-  <p>
-  Mostrando la informacion para</p>
-  <p>
-  {{currentNotification.tittle}}
-</p>
-  </div>
-</div>
 
-<div *ngIf="!isNotification" >
+<div>
   <div class="container-fluid">
 
     <div id="buttonsTab" class="row mt-4 mb-4">
             <div class="col-lg-6 col-md-2 col-8">
                 
-              <h5>Tareas</h5>
+              <h5>Boletines</h5>
            
           
             </div>
@@ -34,29 +23,29 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
 <mat-tab label="Curso 3B">
 
-        <app-homework-list #appList></app-homework-list>
+        <app-report-card-list #appList></app-report-card-list>
   
 </mat-tab>
 <mat-tab label="Curso 2A">
-        <app-homework-list ></app-homework-list>
+        <app-report-card-list ></app-report-card-list>
 </mat-tab>
 <mat-tab label="Curso 5C">
-        <app-homework-list></app-homework-list>
+        <app-report-card-list></app-report-card-list>
 </mat-tab>
 <mat-tab label="Curso 2C">
-        <app-homework-list></app-homework-list>
+        <app-report-card-list></app-report-card-list>
 </mat-tab>
 <mat-tab label="Curso 5D">
-        <app-homework-list></app-homework-list>
+        <app-report-card-list></app-report-card-list>
 </mat-tab>
 <mat-tab label="Curso 5A">
-        <app-homework-list></app-homework-list>
+        <app-report-card-list></app-report-card-list>
 </mat-tab>
 <mat-tab label="Curso 5B">
-        <app-homework-list></app-homework-list>
+        <app-report-card-list></app-report-card-list>
 </mat-tab>
 <mat-tab label="Curso 4A">
-        <app-homework-list></app-homework-list>
+        <app-report-card-list></app-report-card-list>
 </mat-tab>
 </mat-tab-group>
 

@@ -1,0 +1,96 @@
+@import "./../../stylings/color-pallete.scss";
+
+table
+{
+    width: 100%;
+    padding: 0.6em;
+   
+}
+
+.table-content{
+    max-height: 500px;;
+    height:  500px;
+    overflow-y: scroll;
+}
+
+.table-content::-webkit-scrollbar-thumb
+{
+    border-radius: 12px;
+}
+
+
+
+table tr
+{
+    padding: 0.6em;
+    height: 50px;
+    border-bottom: 1px solid gray;
+    
+}
+
+
+
+tr{
+    width: 33%;
+}
+
+p
+{
+margin-left: 0.5em;   
+}
+.nameHeader{
+    padding: 1em;
+    background-color: $custom-blue;
+    color: white;
+    border-radius: 5px 5px 0 0 ;
+    
+}
+
+input{
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $green;
+    background-color: transparent;
+
+    width: 70%;
+    transition: 0.5s ease-in-out;
+}
+
+input:disabled{
+    border: none;
+}
+
+input:focus{
+    border-bottom: 2px solid $custom-blue;
+}
+
+input:nth-child(2n){
+    width: 100%;
+}
+
+button{
+    appearance: none;
+    border-radius: 15px;
+    border: none;
+    padding: 0.6em;
+    width: 100px;
+    transition: 0.5s ease-in-out;
+
+}
+
+button:hover{
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.123);
+    filter: saturate(2);
+    transform: translate(-2px,-2px);
+}
+
+.confirmButton
+{
+    background-color: $green;
+}
+
+.cancelButton{
+    background-color: rgba(228, 59, 59, 0.788);
+}
+

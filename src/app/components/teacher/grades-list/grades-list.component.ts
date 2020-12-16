@@ -83,7 +83,7 @@ export class GradesListComponent implements OnInit {
      const dialogRef=this.dialog.open(ConfirmDialogComponent,
       {
       data: input,
-      width: '260px',
+      width: '60%',
       height:'150px'}
       )
 
