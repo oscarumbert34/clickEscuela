@@ -33,6 +33,7 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
     AppRoutingModule,
     AdminModule,
     TeacherModule,
+    ParentModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
