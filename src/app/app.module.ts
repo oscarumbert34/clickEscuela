@@ -1,3 +1,4 @@
+import { ParentModule } from './components/parent/parent.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
