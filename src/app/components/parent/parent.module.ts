@@ -1,3 +1,4 @@
+import { AsistanceListComponent } from './asistance/asistance-list/asistance-list.component';
 import { ParentMenuComponent } from './parent-menu/parent-menu.component';
 import { MenuComponent } from './../commons/menu/menu.component';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -37,7 +38,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
