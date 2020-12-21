@@ -53,27 +53,34 @@
       <th id="column4" mat-header-cell *matHeaderCellDef mat-sort-header>Certificado</th>
       <td  mat-cell *matCellDef="let row; let index=index" >
 
-        <div *ngIf="row.certificate==''">
+        <div *ngIf="row.certificate=='' && !row.status">
           <button class="button-action">
           
-            <img style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" (click)="loadCertificate(row)">
+            <img style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" (click)="fileLoader.click()">
+            <input style="display: none;" #fileLoader type="file">
           </button>
               
         </div>
 
-        <div *ngIf="row.certificate!=''; else: NoAction">
+        <div *ngIf="row.certificate!='' && !row.status;">
+          
+          
           <button class="button-action">
           
-            <img style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" (click)="loadCertificate(row)">
+            <img  width="20px" src="./assets/images/save.svg" alt="" (click)="Tuvie(row)" >
+            
           </button>
         </div>
 
-        <ng-template #NoAction>
-          <button class="button-action">
+        <div *ngIf="row.status;">
           
-            <img style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" (click)="loadCertificate(row)" disabled>
-          </button>
-        </ng-template>
+          
+          <button class="button-action" disabled>
+        <i class="fas fa-check">OK</i>          
+</button>
+        </div>
+
+    
        
 
          </td>

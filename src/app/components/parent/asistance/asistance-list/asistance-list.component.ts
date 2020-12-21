@@ -11,7 +11,8 @@ import { AsistanceParentService } from 'src/app/services/asistance-parent.servic
   templateUrl: './asistance-list.component.html',
   styleUrls: ['./asistance-list.component.scss']
 })
-export class AsistanceListComponent implements OnInit {
+export class AsistanceListComponent implements OnInit 
+{
 
   displayedColumns: string[];
   dataSource: any;
@@ -23,6 +24,9 @@ export class AsistanceListComponent implements OnInit {
   presentsList: boolean[];
 
   takeAsistance:boolean;
+
+  
+
 
   constructor(private asistanceService: AsistanceParentService) 
   {
@@ -60,6 +64,9 @@ export class AsistanceListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
+  
 
 
 }

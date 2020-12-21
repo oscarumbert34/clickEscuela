@@ -276,9 +276,26 @@
       }
 
       .mat-list-item span{
-        display: none;
+        display: block;
+        position: absolute;
+        margin-left:auto;
+margin-right:auto;
+left:0;
+right:0;
         
       }
+
+      ::ng-deep .mat-list{
+        padding-top: 0;
+        top: 2px;
+        width: 100%;
+        
+      }
+
+      ::ng-deep .mat-focus-indicator{
+        width: 20%;
+      }
+    
       
       #responsivehomeButton{
         display: block;

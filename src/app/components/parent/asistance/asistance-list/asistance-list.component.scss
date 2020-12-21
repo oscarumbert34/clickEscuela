@@ -48,6 +48,11 @@ animation: pointingRelative 0.8s ease-in-out  2}
     filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.336));
 }
 
+p{
+    margin-top: 0;
+    margin-bottom:0;
+}
+
 
 
 .cls-1{
@@ -109,4 +114,24 @@ animation: pointingRelative 0.8s ease-in-out  2}
 
 .cancelAsistance .cls-1{
     fill: red;
+}
+
+@media (max-width: 1260px)
+{
+    ::ng-deep .mat-tab-group {
+        margin: 0px;
+        padding: 10px;
+        width: 105%;
+        left: -5px;
+        position: absolute;
+    }
+}
+
+.fileLoader{
+    width: 60px;
+    height: 20px;
+    background-color: transparent;
+    outline: none;
+    appearance: none;
+    
 }
