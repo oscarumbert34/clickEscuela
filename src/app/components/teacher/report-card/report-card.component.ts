@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddReportCardComponent } from '../addReportCard/addReportCard.component';
 
 @Component({
   selector: 'app-report-card',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+  openDialog(input)
+  {
+   const dialogRef=this.dialog.open(AddReportCardComponent,
+    {data: input,
+    width: '80%',
+    height:'75%'}
+    )
+
+   //dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+   
   }
 
 }

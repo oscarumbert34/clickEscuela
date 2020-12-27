@@ -1,5 +1,4 @@
 import { ReportCardService } from './../../../services/reportCard.service';
-import { AddReportCardComponent } from './../../addReportCard/addReportCard.component';
 import { MatDialog } from '@angular/material/dialog';
 import { studentService } from './../../../services/student.service';
 import { Student } from 'src/app/models/student';
@@ -8,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from '../../commons/confirm-dialog/confirm-dialog.component';
+import { AddReportCardComponent } from '../addReportCard/addReportCard.component';
 
 @Component({
   selector: 'app-report-card-list',
@@ -136,6 +136,16 @@ export class ReportCardListComponent implements OnInit {
      // dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
 
     }
+    applyFilter(event: Event) 
+  {
+    console.log((event.target as HTMLInputElement).value)
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   
 

@@ -19,7 +19,9 @@ export class AddHomeworkComponent implements OnInit
   currentHomework: Homework;
   existData:boolean;
   localData:any;
-  constructor(public dialogRef: MatDialogRef<AddHomeworkComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private homeworkService: HomeworkService) 
+  constructor(public dialogRef: MatDialogRef<AddHomeworkComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private homeworkService: HomeworkService)
   { 
     this.existData=false;
     if (data.homework===undefined)

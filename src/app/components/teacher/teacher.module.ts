@@ -1,5 +1,4 @@
 
-import { AddReportCardComponent } from './../addReportCard/addReportCard.component';
 import { ReportCardListComponent } from './report-card-list/report-card-list.component';
 import { ReportCardComponent } from './report-card/report-card.component';
 import { AsistanceListComponent } from './asistance-list/asistance-list.component';
@@ -52,15 +51,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HomeworkListComponent } from './homework-list/homework-list.component';
 import { AddHomeworkComponent } from './add-homework/add-homework.component';
 import { MenuComponent } from '../commons/menu/menu.component';
+import { AddReportCardComponent } from './addReportCard/addReportCard.component';
 
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent,
                  HomeComponent, CoursesComponent, LoadDashboardComponent,
                  DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
-
                  PieChartComponent, HomeworkComponent, GradesComponent, AsistanceComponent,
-                 StudentsComponent,GradesListComponent,PopupMenuComponent,ConfirmDialogComponent,HomeworkListComponent,AddHomeworkComponent,AsistanceListComponent,ReportCardComponent,ReportCardListComponent,AddReportCardComponent],
+                 StudentsComponent, GradesListComponent, PopupMenuComponent, ConfirmDialogComponent,
+                 HomeworkListComponent, AddHomeworkComponent, AsistanceListComponent,
+                 ReportCardComponent, ReportCardListComponent, AddReportCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
