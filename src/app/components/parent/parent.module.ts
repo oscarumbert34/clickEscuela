@@ -1,3 +1,4 @@
+import { PaymentListComponent } from './payment/payment-list/payment-list.component';
 import { AsistanceListComponent } from './asistance/asistance-list/asistance-list.component';
 import { ParentMenuComponent } from './parent-menu/parent-menu.component';
 import { MenuComponent } from './../commons/menu/menu.component';
@@ -38,7 +39,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent,PaymentListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

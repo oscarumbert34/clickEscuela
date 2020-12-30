@@ -179,10 +179,10 @@
     
     .option-selected
     {
-      border-top: 6px solid $custom-blue; 
-      border-bottom: 6px solid $custom-blue; 
+      
 
       box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.253);
+      background-color: rgba(0, 0, 0, 0.432) !important;
 
     }
     .option-selected:hover{
@@ -275,14 +275,26 @@
         
       }
 
+      .mat-lis-item{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 20%;
+      }
+
       .mat-list-item span{
-        display: block;
+        display: flex;
         position: absolute;
-        margin-left:auto;
-margin-right:auto;
-left:0;
-right:0;
+        font-size: 0.8rem;
+        bottom: -2.5em;
         
+        
+      }
+
+      .mat-list-base .mat-list-item, .mat-list-base .mat-list-option{
+        height: 25px;
       }
 
       ::ng-deep .mat-list{
@@ -292,9 +304,7 @@ right:0;
         
       }
 
-      ::ng-deep .mat-focus-indicator{
-        width: 20%;
-      }
+     
     
       
       #responsivehomeButton{

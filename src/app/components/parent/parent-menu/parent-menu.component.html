@@ -50,15 +50,15 @@
             c3-1.6,4.6-4.8,4.5-8C394,397,405.1,379.5,405.1,360z"/>
         </g>
       </svg>
-      <span>Asistencia</span>
+      <span style="margin-left:-10px;">Asistencia</span>
       </button>
     </mat-list-item>
 
     <mat-divider></mat-divider>
 
     <mat-list-item class="button-menu-container">
-      <button [ngClass]="{'option-selected': blockDinamicActually=='homework'}" class="button-menu" mat-button color
-      (click)="changeBlock('homework');notNotification()">
+      <button [ngClass]="{'option-selected': blockDinamicActually=='payment'}" class="button-menu" mat-button color
+      (click)="changeBlock('payment');notNotification()">
       <svg class="icon-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve">
         <path class="st0" d="M224,234"/>
@@ -94,7 +94,7 @@
         <path class="st0" d="M148,367.8c3.3,0,6.1-1.8,7.5-4.5h142.6c1.5,2.7,4.3,4.5,7.5,4.5c4.7,0,8.6-3.9,8.6-8.6c0-4.7-3.9-8.6-8.6-8.6
           c-3.3,0-6.1,1.8-7.5,4.5H155.5c-1.5-2.7-4.3-4.5-7.5-4.5c-4.7,0-8.6,3.9-8.6,8.6C139.4,363.9,143.2,367.8,148,367.8z"/>
       </svg>
-      <span class="name-button">Pagos</span>
+      <span class="name-button" style="margin-left: 2px;">Pagos</span>
       </button>
     </mat-list-item>
 
@@ -170,7 +170,7 @@
             M438.3,297.6h-22V267c0-8.8,5-16.2,11-16.2s11,7.4,11,16.2V297.6z"/>
         </g>
       </svg>
-      <span>Mensajes</span>
+      <span style="margin-left: -7px;">Mensajes</span>
       </button>
     </mat-list-item>
     <mat-divider></mat-divider>
@@ -230,6 +230,8 @@
         <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">  
 
         <div *ngSwitchCase="'parent-asistance'"><app-asistance-parents></app-asistance-parents></div>
+        <div *ngSwitchCase="'payment'"><app-payment></app-payment></div>
+
 
 
         <div *ngSwitchDefault>Default Option</div>
