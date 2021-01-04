@@ -140,3 +140,21 @@ p{
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+
+  .fault-pay
+  { 
+    background-image: url('./../../../../assets/images/payFault.png');
+    background-size: cover;
+  }
+
+  .ok-pay
+  { 
+    background-image: url('./../../../../assets/images/payOK.png');
+    background-size: cover;
+  }
+
+ ::ng-deep .mat-card-avatar {
+     border-radius: 1px !important;
+     height: 60px;
+     width: 60px;
+ }

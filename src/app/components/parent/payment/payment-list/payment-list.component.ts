@@ -23,6 +23,7 @@ export class PaymentListComponent implements OnInit {
 
   takeAsistance:boolean;
 
+
   constructor(private paymentService: PaymentService) 
   { 
     this.paymentList=paymentService.paymentList
