@@ -56,8 +56,8 @@
         <div *ngIf="row.certificate=='' && !row.status">
           <button class="button-action">
           
-            <img style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" (click)="fileLoader.click()">
-            <input style="display: none;" #fileLoader type="file">
+            <!-- <img style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" (click)="fileLoader.click(); viewFileList(index)"> -->
+            <input class="fileLoader" id="fileLoader" #fileLoader type="file" aria-label="" > 
           </button>
               
         </div>
@@ -75,9 +75,7 @@
         <div *ngIf="row.status;">
           
           
-          <button class="button-action" disabled>
-        <i class="fas fa-check">OK</i>          
-</button>
+        
         </div>
 
     

@@ -1,5 +1,6 @@
+import { element } from 'protractor';
 import { AsistanceParent } from './../../../../models/AsistanceParent';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Asistance } from 'src/app/models/Asistance';
@@ -25,6 +26,11 @@ export class AsistanceListComponent implements OnInit
 
   takeAsistance:boolean;
 
+  currentFile:string;
+
+  @ViewChildren('input') fileLoaders: QueryList<ElementRef>;
+  @ViewChild('fileLoader') fileLoad: ElementRef;
+
   
 
 
@@ -32,7 +38,8 @@ export class AsistanceListComponent implements OnInit
   {
     this.asistanceList=[]
     this.asistanceList=asistanceService.asistanceList
-   }
+    this.currentFile="";
+  }
 
   ngOnInit()
    {
@@ -45,7 +52,14 @@ export class AsistanceListComponent implements OnInit
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    console.log(this.asistanceList)
+
+    console.log(this.fileLoaders)
+    console.log(this.fileLoad)
+  }
+
+  viewFileList(ind)
+  {
+    this.fileLoaders.forEach((element,index)=> console.log(element.nativeElement));
   }
 
   refreshTable()

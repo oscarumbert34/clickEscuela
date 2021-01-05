@@ -20,14 +20,16 @@
       <td mat-cell *matCellDef="let row">
         
 
-        <p style="width: 85px; font-size: 12px; position: relative;"> {{row.status ? 'Paga' : 'Impaga'}} 
+        <!-- <p style="width: 85px; font-size: 12px; position: relative;"> {{row.status ? 'Paga' : 'Impaga'}} 
           
           
         
         
-        </p>
+        </p> -->
 
-        <p *ngIf="row.status">Paga</p>
+        <p *ngIf="row.status; else noPay">Paga</p>
+        <ng-template #noPay><p>Impaga</p></ng-template>
+        
         <p *ngIf="!row.status && row.period<currentDate">Vencida</p>
       
       </td>

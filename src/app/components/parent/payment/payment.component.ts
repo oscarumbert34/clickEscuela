@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit
   constructor(private paymentService: PaymentService) 
   { 
     this.currentDate=new Date()
-    this.nextExpiration=new Date('01/08/2021')
+    this.nextExpiration=new Date(8,1,2021)
     this.paymentList=paymentService.paymentList
 
   }
