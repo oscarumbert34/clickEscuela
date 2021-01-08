@@ -33,6 +33,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { matTooltipAnimations, MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -69,7 +70,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule,MatCheckboxModule
+    MatNativeDateModule, MatMenuModule,MatCheckboxModule,MatTooltipModule
   ]
 
 })

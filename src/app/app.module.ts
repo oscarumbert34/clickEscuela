@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardChartAdvanceComponent } from './components/commons/dashboard-chart-advance/dashboard-chart-advance.component';
 import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
 import { DashboardVerticalComponent } from './components/commons/dashboard-vertical/dashboard-vertical.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,7 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,MatTooltipModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -28,8 +28,10 @@ export class AsistanceListComponent implements OnInit
 
   currentFile:string;
 
-  @ViewChildren('input') fileLoaders: QueryList<ElementRef>;
-  @ViewChild('fileLoader') fileLoad: ElementRef;
+  loadIndex:number[];
+
+  indexedMap=new Map();
+
 
   
 
@@ -39,6 +41,13 @@ export class AsistanceListComponent implements OnInit
     this.asistanceList=[]
     this.asistanceList=asistanceService.asistanceList
     this.currentFile="";
+    this.loadIndex=[];
+
+  }
+
+  viewFileName(index)
+  {
+    return this.indexedMap.get(index).files[0].name
   }
 
   ngOnInit()
@@ -53,13 +62,18 @@ export class AsistanceListComponent implements OnInit
     this.dataSource.sort = this.sort;
 
 
-    console.log(this.fileLoaders)
-    console.log(this.fileLoad)
   }
 
-  viewFileList(ind)
+  
+
+  viewFileList(index,ele)
   {
-    this.fileLoaders.forEach((element,index)=> console.log(element.nativeElement));
+    console.log(ele.files[0])
+    this.loadIndex.push(index)
+
+    this.indexedMap.set(index,ele)
+   
+
   }
 
   refreshTable()
@@ -71,6 +85,7 @@ export class AsistanceListComponent implements OnInit
 
   applyFilter(event: Event)
    {
+
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
