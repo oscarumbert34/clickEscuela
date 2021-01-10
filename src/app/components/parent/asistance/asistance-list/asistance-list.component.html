@@ -60,7 +60,7 @@
 
           </button>
           
-          <button class="button-action" matTooltip={{viewFileName(index)}} *ngIf="loadIndex.includes(index)" (click)="loadFile(index)">
+          <button class="button-action" matTooltip={{viewFileName(index)}} *ngIf="loadIndex.includes(index) && !loadAnimation.includes(index)" (click)="loadFile(index)">
             
             <img width="20px" src="./assets/images/accept.svg" alt="">
             
