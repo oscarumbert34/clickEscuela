@@ -60,10 +60,15 @@
 
           </button>
           
-          <button class="button-action" matTooltip={{viewFileName(index)}} *ngIf="loadIndex.includes(index)" (click)="viewFileName(index)">
+          <button class="button-action" matTooltip={{viewFileName(index)}} *ngIf="loadIndex.includes(index)" (click)="loadFile(index)">
             
-            <img *ngIf="loadIndex.includes(index)"    width="20px" src="./assets/images/accept.svg" alt="">
+            <img width="20px" src="./assets/images/accept.svg" alt="">
             
+          </button>
+
+          <button class="button-action" matTooltip="Cargando..." *ngIf="loadAnimation.includes(index)">
+            
+            <mat-progress-spinner mode="indeterminate" [diameter]="30">       </mat-progress-spinner>     
           </button>
           
           <input style="display: none;" (change)="viewFileList(index,fileLoader)"  class="fileLoader" #fileLoader type="file" > 

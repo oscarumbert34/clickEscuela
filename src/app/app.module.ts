@@ -23,6 +23,8 @@ import { DashboardChartAdvanceComponent } from './components/commons/dashboard-c
 import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
 import { DashboardVerticalComponent } from './components/commons/dashboard-vertical/dashboard-vertical.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule
     ],
   providers: [],
   bootstrap: [AppComponent]

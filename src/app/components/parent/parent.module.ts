@@ -1,3 +1,4 @@
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PaymentListComponent } from './payment/payment-list/payment-list.component';
 import { AsistanceListComponent } from './asistance/asistance-list/asistance-list.component';
 import { ParentMenuComponent } from './parent-menu/parent-menu.component';
@@ -70,7 +71,7 @@ import { matTooltipAnimations, MatTooltipModule } from '@angular/material/toolti
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule,MatCheckboxModule,MatTooltipModule
+    MatNativeDateModule, MatMenuModule,MatCheckboxModule,MatTooltipModule,MatProgressSpinnerModule
   ]
 
 })

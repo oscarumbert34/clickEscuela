@@ -29,6 +29,7 @@ export class AsistanceListComponent implements OnInit
   currentFile:string;
 
   loadIndex:number[];
+  loadAnimation:number[];
 
   indexedMap=new Map();
 
@@ -42,13 +43,25 @@ export class AsistanceListComponent implements OnInit
     this.asistanceList=asistanceService.asistanceList
     this.currentFile="";
     this.loadIndex=[];
+    this.loadAnimation=[]
 
   }
 
   viewFileName(index)
   {
+  
     return this.indexedMap.get(index).files[0].name
   }
+
+  loadFile(index)
+  {
+    this.loadIndex.splice(index,1)
+    this.loadAnimation.push(index)
+    console.log(this.loadIndex)
+  
+  }
+
+  
 
   ngOnInit()
    {
@@ -68,10 +81,10 @@ export class AsistanceListComponent implements OnInit
 
   viewFileList(index,ele)
   {
-    console.log(ele.files[0])
     this.loadIndex.push(index)
-
+    
     this.indexedMap.set(index,ele)
+    console.log(this.loadIndex)
    
 
   }
