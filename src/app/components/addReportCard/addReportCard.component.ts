@@ -14,6 +14,8 @@ export class AddReportCardComponent implements OnInit {
   existData: boolean;
   @ViewChildren('grade') inputs: ElementRef[];
 
+  selectedTrimester=0;
+
   constructor(public dialogRef: MatDialogRef<AddReportCardComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private reporcardService: ReportCardService) 
   { 
     
@@ -21,6 +23,14 @@ export class AddReportCardComponent implements OnInit {
     this.existData=this.data.component!==undefined
     
     
+  }
+
+  changeSelectedTrimester(trimes)
+  {
+    if (trimes==this.selectedTrimester)
+      this.selectedTrimester=0;
+      else
+    this.selectedTrimester=trimes;
   }
 
 
