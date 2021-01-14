@@ -20,6 +20,13 @@ export class ReportCard
         this.matters.set(matter,grade);
     }
 
+    get nameStudent(){
+        return this.name;
+    }
+    get surnameStudent(){
+        return this.surname;
+    }
+
     get load()
     {
         for (let value of this.matters.values())
