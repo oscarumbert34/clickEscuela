@@ -27,6 +27,7 @@ constructor()
   }
  
   this.reportCardList[0]=reportCard
+  this.reportCardList[1]=reportCard
   
 
   

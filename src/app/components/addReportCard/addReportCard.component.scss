@@ -76,14 +76,18 @@ button{
     padding: 0.6em;
     width: 100px;
     transition: 0.5s ease-in-out;
-
+    text-decoration: none;
+    outline: none;
 }
 
-button:hover{
-    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.123);
-    filter: saturate(2);
-    transform: translate(-2px,-2px);
+button:focus
+{
+    appearance: none;
+    border: 0;
+    text-decoration: none;
 }
+
+
 
 .confirmButton
 {
@@ -106,50 +110,58 @@ button:hover{
     text-align: center;
 }
 
-ul{
+.tabContainer{
     position: fixed;
     top: -1em;
     margin-left: 16em;
     z-index: -999999;
-    margin-top: 2em;
+    margin-top: 1.2em;
     display: block;
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    width: 12em;
 }
 
-ul li{
+.liTab{
     display: inline;
     width: 33%;
+    height: 3em;
     padding: 0.7em;
     padding-left: 1em;
     padding-right: 1em;
     padding-top:0.4em;
-    top: 2em;
+    top: 3em;
     background-color: $custom-blue;
     color: white;
     border-radius: 0.5em 0.5em 0 0 ;
     cursor: pointer;
     transition: 0.5s ease-in-out;
-    border: 3px solid white;
+    border: 3px solid white;  
+}
+.liTab:disabled{
     filter: grayscale(3);
-    
+    transform: translateY(15px);
+    color: $custom-blue;
 }
 
-ul li:hover{
+.liTab:disabled:hover{
+    filter: grayscale(3);
+}
+
+.liTab:hover{
     filter: saturate(3);
 }
 
-ul li.selectedLi{
+.selectedLi{
     background-color: #fff;
     color: black;
     transition: 0.5s ease-in-out;
-    transform: translateY(100px);
+    transform: translateY(-3px);
 
 }
 
-ul li.activeLi
+.activeLi
 {
     filter: grayscale(0);
 }
