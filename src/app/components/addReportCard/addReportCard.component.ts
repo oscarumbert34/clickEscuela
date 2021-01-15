@@ -41,8 +41,8 @@ export class AddReportCardComponent implements OnInit {
 
   changeTrimester()
   {
-    this.trimesterList=this.trimesterService.trimesterList.filter(a => a.nameStudent==this.data.nameStudent && a.surnameStudent==this.data.surnameStudent)
-    console.log(this.trimesterList)
+    this.trimesterList=this.trimesterService.trimesterList.filter(a => a.nameStudent==this.data.component.nameStudent && a.surnameStudent==this.data.component.surname)
+    console.log(this.trimesterList.length)
   }
   
 

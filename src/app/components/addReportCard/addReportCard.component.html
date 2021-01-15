@@ -18,9 +18,9 @@
 
 
           <ul>
-            <li (click)='changeSelectedTrimester(1)' [ngClass]="{'selectedLi': selectedTrimester==1}">1ºT</li>
-            <li (click)='changeSelectedTrimester(2)' [ngClass]="{'selectedLi': selectedTrimester==2}">2ºT</li>
-            <li (click)='changeSelectedTrimester(3)' [ngClass]="{'selectedLi': selectedTrimester==3}">3ºT</li>
+            <li (click)='changeSelectedTrimester(1)' [ngClass]="{'selectedLi': selectedTrimester==1,'activeLi': trimesterList.length>=1}">1ºT</li>
+            <li (click)='changeSelectedTrimester(2)' [ngClass]="{'selectedLi': selectedTrimester==2, 'activeLi': trimesterList.length>=2}">2ºT</li>
+            <li (click)='changeSelectedTrimester(3)' [ngClass]="{'selectedLi': selectedTrimester==3, 'activeLi': trimesterList.length>=3}">3ºT</li>
           </ul>
         
 </th>
