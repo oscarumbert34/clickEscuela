@@ -12,15 +12,15 @@
         
 
           <div class="row nameHeader" (click)="changeTrimester()">
-          <p>    Calificaciones de: <br> {{data.component.name+' '+data.component.surname}}
+          <p>    Calificaciones de: <br> {{currentData.name+' '+currentData.surname}}
           </p>
         </div>
 
 
           <div class="tabContainer">
-            <button #trimesterTab class="liTab" (click)="changeSelectedTrimester(1)" [ngClass]="{'selectedLi': selectedTrimester==1}" disabled>1ºT</button>
-            <button #trimesterTab class="liTab" (click)="changeSelectedTrimester(2)" [ngClass]="{'selectedLi': selectedTrimester==2}" disabled>2ºT</button>
-            <button #trimesterTab class="liTab" (click)="changeSelectedTrimester(3)" [ngClass]="{'selectedLi': selectedTrimester==3}" disabled>3ºT</button>
+            <button #trimesterTab class="liTab" (click)="changeSelectedTrimester(0)" [ngClass]="{'selectedLi': selectedTrimester==0}" disabled>1ºT</button>
+            <button #trimesterTab class="liTab" (click)="changeSelectedTrimester(1)" [ngClass]="{'selectedLi': selectedTrimester==1}" disabled>2ºT</button>
+            <button #trimesterTab class="liTab" (click)="changeSelectedTrimester(2)" [ngClass]="{'selectedLi': selectedTrimester==2 }" disabled>3ºT</button>
             
 
           </div>
@@ -35,10 +35,10 @@
       </tr>
       
 
-      <tr *ngFor="let matter of data.component.matters | keyvalue">
+      <tr *ngFor="let matter of currentData.matters | keyvalue">
         <td><p>{{matter.key}}</p></td>
-        <td><input [disabled]="data.component.load" class="finalGrade" [id]="'grade'+matter.key" #grade type="number" max="10" min="1" [ngModel]="matter.value"></td>
-        <td><input [disabled]="data.component.load" class="observations" type="text" placeholder="Sin observaciones"></td>
+        <td><input [disabled]="currentData.load" class="finalGrade" [id]="'grade'+matter.key" #grade type="number" max="10" min="1" [ngModel]="matter.value"></td>
+        <td><input [disabled]="currentData.load" class="observations" type="text" placeholder="Sin observaciones"></td>
       </tr>
     
 
@@ -47,14 +47,14 @@
   </div>
 </div>
   <div class="row text-center mt-4">
-    <div class="col-md-6 col-12 mb-2" [ngClass]="{'col-12': !(data.component.load)}">
-      <button class="confirmButton" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addReportCard(data.index)">{{!data.component.load ? 'Confirmar' : 'Descargar'}}</button>
+    <div class="col-md-6 col-12 mb-2" [ngClass]="{'col-12': !(currentData.load)}">
+      <button class="confirmButton" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addReportCard(data.index)">{{!currentData.load ? 'Confirmar' : 'Descargar'}}</button>
       <!-- <button class="confirmButton" (click)="showValues(data.index)">
         Confirmar 
       </button> -->
     </div>
     
-    <div *ngIf="!data.component.load" class="col-md-6 col-12">
+    <div *ngIf="!currentData.load" class="col-md-6 col-12">
       <button  class="cancelButton" mat-button [mat-dialog-close]="false">Cancelar</button>
       <!-- <button class="cancelButton" (click)="closeOnClick()">
         Cancelar

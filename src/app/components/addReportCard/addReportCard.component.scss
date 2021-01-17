@@ -143,6 +143,7 @@ button:focus
     filter: grayscale(3);
     transform: translateY(15px);
     color: $custom-blue;
+    cursor: default;
 }
 
 .liTab:disabled:hover{

@@ -19,15 +19,22 @@ constructor()
   this.reportCardList=new Array(3);
 
   let reportCard=new ReportCard('Jazmin',"Fernandez");
+  let reportCard2=new ReportCard('Jazmin',"Fernandez");
 
   for (let mat of this.mattersList)
   {
     let grade=Math.random() * (10 - 1) + 1
      reportCard.loadMatter(mat,grade);
   }
+
+  for (let mat of this.mattersList)
+  {
+    let grade=Math.random() * (10 - 1) + 1
+     reportCard2.loadMatter(mat,grade);
+  }
  
   this.reportCardList[0]=reportCard
-  this.reportCardList[1]=reportCard
+  this.reportCardList[1]=reportCard2
   
 
   
