@@ -22,6 +22,7 @@ export class AsistanceListComponent implements OnInit {
 
 
   asistanceList: Asistance[];
+  asistanceListAux: Asistance[];
   presentsList: boolean[];
 
   takeAsistance:boolean;
@@ -29,17 +30,24 @@ export class AsistanceListComponent implements OnInit {
   constructor(private asistanceService: AsistanceService) 
   {
     this.takeAsistance=false;
+
     this.asistanceList=[]
+    this.asistanceListAux=[];
+
     this.asistanceList=asistanceService.asistancesList
-    this.presentsList=new Array(this.asistanceList.length);
-    for (let i=0;i<this.asistanceList.length;i++)
+    for (let asistance of this.asistanceList)
+    this.asistanceListAux.push(asistance)
+
+    this.presentsList=new Array(this.asistanceListAux.length);
+
+    for (let i=0;i<this.asistanceListAux.length;i++)
     {
       this.presentsList[i]=false;
     }
 
     this.currentDate.setHours(0)
     this.currentDate.setMinutes(0)
-    this.currentDate.setSeconds(0)
+    this.currentDate.setSeconds(0)  
     this.currentDate.setMilliseconds(0)
 
 
@@ -62,18 +70,42 @@ export class AsistanceListComponent implements OnInit {
 
   filterByDate()
   {
+    if (this.picker.startAt!=null)
+    {
     let asis=this.asistanceService.asistancesList.filter(a =>a.date.getTime()===this.picker.startAt.getTime() )
-    this.asistanceList=asis;
-    this.refreshTable()
-    console.log(asis)
-    console.log(this.asistanceList)
+
+    if (asis.length==0)
+    {
+      this.refreshTable()
+    }
+    else
+    this.dataSource.data=asis;
+    }
+  
+  
 
   }
+
   changeTakeAsistance()
   {
+    if (!this.takeAsistance)
+    {
+    console.log(this.asistanceList)
+    console.log(this.asistanceListAux)
     this.takeAsistance=!this.takeAsistance;
+    this.dataSource.data=this.asistanceListAux;
 
-    this.refreshTable()
+    console.log("Esto tiene el datasource "+this.dataSource.data)
+    }
+    else
+    {
+      this.refreshTable()
+      this.takeAsistance=!this.takeAsistance;
+
+
+    }
+    
+
 
   }
 
@@ -88,7 +120,7 @@ export class AsistanceListComponent implements OnInit {
   refreshTable()
   {
     console.log("Refresh exitoso")
-    this.dataSource.data = this.asistanceService.asistancesList
+    this.dataSource.data = this.asistanceList
   }
 
 
@@ -110,6 +142,7 @@ export class AsistanceListComponent implements OnInit {
 
   savePresents()
   {
+  
     for (let i=0;i<this.presentsList.length;i++)
     {
       let newasistance= new Asistance(this.asistanceList[i].name,this.asistanceList[i].surname,this.currentDate,this.presentsList[i])
@@ -118,6 +151,7 @@ export class AsistanceListComponent implements OnInit {
       
     }
 
+    console.log(this.asistanceList.length)
     this.takeAsistance=false;
   }
 
