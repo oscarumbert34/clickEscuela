@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { Asistance } from 'src/app/models/Asistance';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-asistance-list',
@@ -27,7 +28,7 @@ export class AsistanceListComponent implements OnInit {
 
   takeAsistance:boolean;
 
-  constructor(private asistanceService: AsistanceService) 
+  constructor(private asistanceService: AsistanceService,private snackbar:MatSnackBar) 
   {
     this.takeAsistance=false;
 
@@ -76,13 +77,31 @@ export class AsistanceListComponent implements OnInit {
 
     if (asis.length==0)
     {
+      this.openSnackbar("No se encontraron entradas para la fecha seleccionada")
+
       this.refreshTable()
     }
     else
-    this.dataSource.data=asis;
+    {
+      this.dataSource.data=asis;
+
+
+    }
+    }
+    else
+    {
+      this.openSnackbar("No selecciono una fecha")
     }
   
   
+
+  }
+
+  openSnackbar(message:string)
+  {
+    this.snackbar.open(message, '', {
+      duration: 3000
+    });
 
   }
 
@@ -90,12 +109,9 @@ export class AsistanceListComponent implements OnInit {
   {
     if (!this.takeAsistance)
     {
-    console.log(this.asistanceList)
-    console.log(this.asistanceListAux)
     this.takeAsistance=!this.takeAsistance;
     this.dataSource.data=this.asistanceListAux;
 
-    console.log("Esto tiene el datasource "+this.dataSource.data)
     }
     else
     {

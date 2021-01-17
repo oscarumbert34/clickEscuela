@@ -20,6 +20,10 @@ tr.mat-row, tr.mat-footer-row
  
 }
 
+::ng-deep .mat-simple-snackbar{
+ justify-content: center !important;
+}
+
 .button-menu{
   background-color: transparent;
   outline: none;

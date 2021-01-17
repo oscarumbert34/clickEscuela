@@ -36,27 +36,24 @@
           required 
           >
         </div>    
-        
+
         <div class="col-md-6 col-12 form-group">
-        <label for="name">Nombre</label>
-        <input
-        type="text" 
-        name="name" 
-        id="name" 
-        class="form-control" 
-        placeholder="Ingrese el nombre de la tarea..." 
-        [(ngModel)]="currentHomework.name" 
-        #name
-        required 
-        >
-      </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha de entrega</mat-label>
+            <input [(ngModel)]="currentHomework.deliveryDate" name="deliveryDate"  matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        
+      
       </div>
 
     
 
       <div class="row form-group">
 
-        <div class="col-md-6 col-12 form-group">
+        <div class="col-12 form-group">
           <label for="description">Descripcion</label>
           <textarea
           type="text" 
@@ -70,14 +67,7 @@
           ></textarea>
         </div>
 
-        <div class="col-md-6 col-12 form-group">
-          <mat-form-field appearance="fill">
-            <mat-label>Fecha de entrega</mat-label>
-            <input [(ngModel)]="currentHomework.deliveryDate" name="deliveryDate"  matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
+       
 
 
 
