@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Asistance } from 'src/app/models/Asistance';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-asistance-list',
@@ -17,6 +18,9 @@ export class AsistanceListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  @ViewChild('picker') picker: MatDatepicker<Date>;
+
+
   asistanceList: Asistance[];
   presentsList: boolean[];
 
@@ -25,13 +29,20 @@ export class AsistanceListComponent implements OnInit {
   constructor(private asistanceService: AsistanceService) 
   {
     this.takeAsistance=false;
-    this.asistanceList=new Array();
+    this.asistanceList=[]
     this.asistanceList=asistanceService.asistancesList
     this.presentsList=new Array(this.asistanceList.length);
     for (let i=0;i<this.asistanceList.length;i++)
     {
       this.presentsList[i]=false;
     }
+
+    this.currentDate.setHours(0)
+    this.currentDate.setMinutes(0)
+    this.currentDate.setSeconds(0)
+    this.currentDate.setMilliseconds(0)
+
+
 
   }
 
@@ -46,6 +57,16 @@ export class AsistanceListComponent implements OnInit {
     this.dataSource.data = this.asistanceList;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+  }
+
+  filterByDate()
+  {
+    let asis=this.asistanceService.asistancesList.filter(a =>a.date.getTime()===this.picker.startAt.getTime() )
+    this.asistanceList=asis;
+    this.refreshTable()
+    console.log(asis)
+    console.log(this.asistanceList)
 
   }
   changeTakeAsistance()

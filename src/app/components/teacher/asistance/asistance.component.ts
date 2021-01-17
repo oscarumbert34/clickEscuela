@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-asistance',
@@ -9,7 +10,17 @@ export class AsistanceComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  @ViewChild('picker') picker: MatDatepicker<Date>;
+
+  ngOnInit() 
+  {
+    
+  }
+
+  showPicker()
+  {
+    console.log(this.picker.startAt)
+
   }
 
 }
