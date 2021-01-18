@@ -59,3 +59,7 @@ td:last-child
 
     
 }
+
+::ng-deep .mat-paginator-page-size.ng-star-inserted{
+  display: none !important;
+}

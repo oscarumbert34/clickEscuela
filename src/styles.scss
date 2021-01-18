@@ -24,6 +24,10 @@ tr.mat-row, tr.mat-footer-row
  justify-content: center !important;
 }
 
+::ng-deep .mat-paginator-page-size.ng-star-inserted{
+  display: none !important;
+}
+
 .button-menu{
   background-color: transparent;
   outline: none;
