@@ -35,13 +35,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { matTooltipAnimations, MatTooltipModule } from '@angular/material/tooltip';
+import { GradesListComponent } from './grades/grades-list/grades-list.component';
 
 
 
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent,PaymentListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent,PaymentListComponent,GradesComponent,GradesListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

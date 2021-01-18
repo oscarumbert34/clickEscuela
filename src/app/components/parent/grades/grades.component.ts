@@ -5,11 +5,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './grades.component.html',
   styleUrls: ['./grades.component.css']
 })
-export class GradesComponent implements OnInit {
+export class GradesComponent implements OnInit 
+{
 
-  constructor() { }
+  sonParent:string[];
+  
+  constructor() { this.sonParent=[]
+  this.sonParent.push("Alberto Sanchez")
+  this.sonParent.push("Daniel Sanchez")
 
-  ngOnInit(): void {
+}
+
+  ngOnInit(): void 
+  {
+
   }
+
+  
 
 }
