@@ -168,6 +168,7 @@ export class AsistanceListComponent implements OnInit {
     }
 
     console.log(this.asistanceList.length)
+    
     this.takeAsistance=false;
   }
 

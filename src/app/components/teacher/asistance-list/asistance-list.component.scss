@@ -1,3 +1,6 @@
+@import '../../../stylings/color-pallete';
+
+
 .buttonSelect img
 {
     position: absolute; 
@@ -116,3 +119,24 @@ animation: pointingRelative 0.8s ease-in-out  2}
     text-align: center;
     align-items: center;
    }
+
+   input[type='checkbox']
+   {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    outline: none;
+    border: 0;
+    appearance: none;
+    background: url(../../../../assets/images/cancel.svg);
+    background-repeat: no-repeat;
+   }
+
+   input[type='checkbox']:checked
+   {
+    background: url(../../../../assets/images/accept.svg);
+    background-repeat: no-repeat;
+   }
+  
