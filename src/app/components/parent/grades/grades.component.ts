@@ -16,6 +16,10 @@ export class GradesComponent implements OnInit
 
 }
 
+showSon(son:string){
+  console.log(son)
+}
+
   ngOnInit(): void 
   {
 

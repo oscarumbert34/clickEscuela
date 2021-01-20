@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { GradesService } from 'src/app/services/grades.service';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
 import { PopupMenuComponent } from 'src/app/components/commons/popupMenu/popupMenu.component';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import {MatTabGroupHarness} from '@angular/material/tabs/testing';
 
 
 
@@ -30,6 +32,11 @@ export class GradesListComponent implements OnInit {
 
   @Input() son;
 
+ 
+
+  public selectedIndexBinding = 0;
+
+
   gradesList: Grade[];
   
   constructor(private gradeService: GradesService,public dialog: MatDialog) 
@@ -38,6 +45,13 @@ export class GradesListComponent implements OnInit {
     this.gradesList=new Array();
     this.gradesList=gradeService.gradesList.filter(a => a.student=="Alberto Sanchez")
     
+  }
+
+  applySonFilter()
+  {
+    this.gradesList=this.gradeService.gradesList.filter(a => a.student==this.son)
+    this.dataSource=this.gradesList
+
   }
 
 
@@ -54,15 +68,13 @@ export class GradesListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-
+    this.applySonFilter()
 
     
-
-  
-
-
   }
-  applyFilter(event: Event) {
+
+  applyFilter(event: Event)
+   {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -76,6 +88,8 @@ export class GradesListComponent implements OnInit {
       this.gradeService.deleteGrade(index);
       this.refreshTable()
   }
+
+  
 
   modifyGrade(index,grade)
   {
