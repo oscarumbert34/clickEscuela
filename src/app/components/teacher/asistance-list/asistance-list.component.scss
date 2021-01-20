@@ -110,3 +110,9 @@ animation: pointingRelative 0.8s ease-in-out  2}
 .cancelAsistance .cls-1{
     fill: red;
 }
+
+::ng-deep .mat-simple-snackbar{
+    justify-content: center !important;
+    text-align: center;
+    align-items: center;
+   }

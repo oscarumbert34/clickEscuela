@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Asistance } from 'src/app/models/Asistance';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDatepicker } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-asistance-list',
@@ -17,21 +19,39 @@ export class AsistanceListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  @ViewChild('picker') picker: MatDatepicker<Date>;
+
+
   asistanceList: Asistance[];
+  asistanceListAux: Asistance[];
   presentsList: boolean[];
 
   takeAsistance:boolean;
 
-  constructor(private asistanceService: AsistanceService) 
+  constructor(private asistanceService: AsistanceService,private snackbar:MatSnackBar) 
   {
     this.takeAsistance=false;
-    this.asistanceList=new Array();
+
+    this.asistanceList=[]
+    this.asistanceListAux=[];
+
     this.asistanceList=asistanceService.asistancesList
-    this.presentsList=new Array(this.asistanceList.length);
-    for (let i=0;i<this.asistanceList.length;i++)
+    for (let asistance of this.asistanceList)
+    this.asistanceListAux.push(asistance)
+
+    this.presentsList=new Array(this.asistanceListAux.length);
+
+    for (let i=0;i<this.asistanceListAux.length;i++)
     {
       this.presentsList[i]=false;
     }
+
+    this.currentDate.setHours(0)
+    this.currentDate.setMinutes(0)
+    this.currentDate.setSeconds(0)  
+    this.currentDate.setMilliseconds(0)
+
+
 
   }
 
@@ -48,11 +68,60 @@ export class AsistanceListComponent implements OnInit {
     this.dataSource.sort = this.sort;
 
   }
+
+  filterByDate()
+  {
+    if (this.picker.startAt!=null)
+    {
+    let asis=this.asistanceService.asistancesList.filter(a =>a.date.getTime()===this.picker.startAt.getTime() )
+
+    if (asis.length==0)
+    {
+      this.openSnackbar("No se encontraron entradas para la fecha seleccionada")
+
+      this.refreshTable()
+    }
+    else
+    {
+      this.dataSource.data=asis;
+
+
+    }
+    }
+    else
+    {
+      this.openSnackbar("No selecciono una fecha")
+    }
+  
+  
+
+  }
+
+  openSnackbar(message:string)
+  {
+    this.snackbar.open(message, '', {
+      duration: 3000
+    });
+
+  }
+
   changeTakeAsistance()
   {
+    if (!this.takeAsistance)
+    {
     this.takeAsistance=!this.takeAsistance;
+    this.dataSource.data=this.asistanceListAux;
 
-    this.refreshTable()
+    }
+    else
+    {
+      this.refreshTable()
+      this.takeAsistance=!this.takeAsistance;
+
+
+    }
+    
+
 
   }
 
@@ -67,7 +136,7 @@ export class AsistanceListComponent implements OnInit {
   refreshTable()
   {
     console.log("Refresh exitoso")
-    this.dataSource.data = this.asistanceService.asistancesList
+    this.dataSource.data = this.asistanceList
   }
 
 
@@ -89,6 +158,7 @@ export class AsistanceListComponent implements OnInit {
 
   savePresents()
   {
+  
     for (let i=0;i<this.presentsList.length;i++)
     {
       let newasistance= new Asistance(this.asistanceList[i].name,this.asistanceList[i].surname,this.currentDate,this.presentsList[i])
@@ -97,6 +167,7 @@ export class AsistanceListComponent implements OnInit {
       
     }
 
+    console.log(this.asistanceList.length)
     this.takeAsistance=false;
   }
 

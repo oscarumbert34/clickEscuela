@@ -75,14 +75,18 @@ button{
     padding: 0.6em;
     width: 100px;
     transition: 0.5s ease-in-out;
-
+    text-decoration: none;
+    outline: none;
 }
 
-button:hover{
-    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.123);
-    filter: saturate(2);
-    transform: translate(-2px,-2px);
+button:focus
+{
+    appearance: none;
+    border: 0;
+    text-decoration: none;
 }
+
+
 
 .confirmButton
 {
@@ -91,5 +95,74 @@ button:hover{
 
 .cancelButton{
     background-color: rgba(228, 59, 59, 0.788);
+}
+
+.contentBox{
+    position: absolute;
+    right: 2em;
+    top:0;      
+    width: 50%;
+    height:90px;
+    background-color: blue;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.tabContainer{
+    position: fixed;
+    top: -1em;
+    margin-left: 16em;
+    z-index: -999999;
+    margin-top: 1.2em;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 12em;
+}
+
+.liTab{
+    display: inline;
+    width: 33%;
+    height: 3em;
+    padding: 0.7em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top:0.4em;
+    top: 3em;
+    background-color: $custom-blue;
+    color: white;
+    border-radius: 0.5em 0.5em 0 0 ;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    border: 3px solid white;  
+}
+.liTab:disabled{
+    filter: grayscale(3);
+    transform: translateY(15px);
+    color: $custom-blue;
+    cursor: default;
+}
+
+.liTab:disabled:hover{
+    filter: grayscale(3);
+}
+
+.liTab:hover{
+    filter: saturate(3);
+}
+
+.selectedLi{
+    background-color: #fff;
+    color: black;
+    transition: 0.5s ease-in-out;
+    transform: translateY(-3px);
+
+}
+
+.activeLi
+{
+    filter: grayscale(0);
 }
 

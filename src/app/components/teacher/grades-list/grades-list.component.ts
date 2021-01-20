@@ -42,7 +42,7 @@ export class GradesListComponent implements OnInit {
   ngOnInit() 
   {
 
-    this.displayedColumns = ['student', 'code', 'description', 'matter', 'grade','actions'];
+    this.displayedColumns = ['student', 'description', 'matter', 'grade','actions'];
 
  
     // Assign the data to the data source for the table to render

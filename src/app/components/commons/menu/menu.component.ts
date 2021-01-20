@@ -4,6 +4,7 @@ import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Notification } from '../../interfaces/Notification';
 import { HomeComponent } from '../../teacher/home/home.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -44,7 +45,11 @@ export class MenuComponent implements OnInit {
   @ViewChild('menuNav', {static: true}) menuNav: ElementRef;
   @Input() delay = 300;
 
-  constructor() { }
+  routeLink:string;
+
+  constructor(private router: Router) {
+    this.routeLink=router.url
+   }
 
   theEvent$;
 
@@ -100,6 +105,8 @@ export class MenuComponent implements OnInit {
 
    ngOnInit() {
     this.sidenav.open();
+
+    console.log(this.router.url)
 
   }
 

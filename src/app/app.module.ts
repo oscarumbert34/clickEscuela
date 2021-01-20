@@ -1,3 +1,4 @@
+import { ParentModule } from './components/parent/parent.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,10 @@ import { FormsModule } from '@angular/forms';
 import { DashboardChartAdvanceComponent } from './components/commons/dashboard-chart-advance/dashboard-chart-advance.component';
 import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
 import { DashboardVerticalComponent } from './components/commons/dashboard-vertical/dashboard-vertical.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,11 +37,13 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
     AppRoutingModule,
     AdminModule,
     TeacherModule,
+    ParentModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule
+
     ],
   providers: [],
   bootstrap: [AppComponent]

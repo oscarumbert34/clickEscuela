@@ -304,6 +304,7 @@
       }
       
     }
+    
 
     @keyframes ring
     { 
@@ -321,6 +322,10 @@
         transform: rotate(0);
       }
 
+    }
+
+    .st0{
+      fill:$green;
     }
 
     
