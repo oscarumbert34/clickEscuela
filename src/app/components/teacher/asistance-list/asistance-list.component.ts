@@ -150,10 +150,11 @@ export class AsistanceListComponent implements OnInit {
     }
   }
 
-  setPresent(event:Event, index:number)
+  setPresent($event:Event, index:number)
   {
-   
-    //this.presentsList[index]=event.currentTarget.checked;
+   console.log($event)
+   let check=($event.target as HTMLInputElement).checked
+    this.presentsList[index]=check;
   }
 
   savePresents()
