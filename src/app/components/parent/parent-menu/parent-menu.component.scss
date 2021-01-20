@@ -360,6 +360,29 @@
       display: flex;
     }
 
+    .mat-focus-indicator
+    {
+      width: 300px !important;
+    }
+
+    @media (max-width: 1260px)
+{
+  .asistanceLegend
+  {
+  margin-left:-10px;
+  }
+  .paymentLegend{
+    margin-left: 2px;
+  }
+  .calificationsLenged{margin-left: -20px;}
+  .MessageLegend{margin-left: -7px;}
+  
+  .mat-focus-indicator
+  {
+    width: 100% !important;
+  }
+}
+
     
     
       
