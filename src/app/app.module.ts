@@ -1,3 +1,4 @@
+import { MatExpansionModule } from '@angular/material/expansion';
 import { ParentModule } from './components/parent/parent.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,7 +43,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule
 
     ],
   providers: [],

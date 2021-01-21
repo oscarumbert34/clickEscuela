@@ -1,1 +1,35 @@
-<p>messages works!</p>
+<div class="container-fluid">
+
+        
+     
+    <div id="buttonsTab" class="row mt-4 mb-4"> 
+            <div class="col-lg-6 col-md-2 col-8">
+              <h5>Calificaciones</h5>
+           
+          
+            </div>
+          
+            <div class="col-lg-6 col-md-10 col-4 text-center">
+            
+            </div>
+          </div>
+   
+    
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" #tabGroup>
+
+<mat-tab  label="Mensajes" >
+        <app-message-content #appList ></app-message-content>
+</mat-tab>
+
+<mat-tab  label="Notificaciones">
+    <app-message-content #appList  ></app-message-content>
+</mat-tab>
+</mat-tab-group>
+
+
+
+</div>
+
+
+
+

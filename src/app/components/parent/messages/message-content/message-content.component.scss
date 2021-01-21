@@ -1,0 +1,50 @@
+@import '../../../../stylings/color-pallete';
+
+
+::ng-deep .mat-panel-description{
+    text-align: end;
+}
+
+.mat-expansion-panel-header-description {
+    flex-grow: 0;
+}
+
+.mat-expansion-panel-header-title{
+    align-items: center;
+}
+
+td{
+    border: 0;
+}
+table{
+    margin: 0%;
+}
+
+.mat-expansion-panel-header{
+    height: 60px;
+}
+
+::ng-deep .mat-content{
+    align-items: center !important;
+}
+
+.user-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    $random-color: random(5);
+    width: 45px;
+    height: 45px;
+    background-color: nth($list,$random-color);
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.568);
+    
+}
+
+.user-avatar p{
+    margin: 0 !important;
+    color: white;
+    font-size: 1.5em;
+}
