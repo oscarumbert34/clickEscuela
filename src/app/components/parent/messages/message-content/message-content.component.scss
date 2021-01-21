@@ -21,13 +21,23 @@ table{
 }
 
 .mat-expansion-panel-header{
-    height: 60px;
+    height: 80px;
 }
 
 ::ng-deep .mat-content{
     align-items: center !important;
+    width: 80px;
+}
+::ng-deep .mat-expansion-panel-header.mat-expanded
+{
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0px 2px 12px 4px rgba(0, 0, 0, 0.4);
+    color: white;
 }
 
+::ng-deep .mat-expansion-panel-body {
+    padding: 24px 24px 16px !important
+}
 .user-avatar{
     display: flex;
     justify-content: center;
@@ -47,4 +57,5 @@ table{
     margin: 0 !important;
     color: white;
     font-size: 1.5em;
+    text-shadow: 0px 0px 3px black;
 }
