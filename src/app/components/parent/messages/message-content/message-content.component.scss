@@ -28,17 +28,41 @@ table{
     align-items: center !important;
     width: 80px;
 }
+
+:root {
+    --background-header: blue;
+  }
+
+.user-avatar:nth-child(1n)
+{
+    $random-color: random(5);
+
+    background-color: nth($list,1)
+
+}
 ::ng-deep .mat-expansion-panel-header.mat-expanded
 {
-    background-color: rgba(0, 0, 0, 0.3) !important;
+    background-color: var(--background-header) !important;
     box-shadow: 0px 2px 12px 4px rgba(0, 0, 0, 0.4);
     color: white;
 }
 
-::ng-deep .mat-expansion-panel-body {
-    padding: 24px 24px 16px !important
+::ng-deep .mat-expansion-panel-content
+{ 
+    visibility: visible !important;
+    min-height: 45px;
+    -webkit-box-shadow: inset 0px -8px 4px -3px rgb(255, 255, 255);
+    -moz-box-shadow: inset 0px -8px 4px -3px rgba(255,255,255,0.75);
+    box-shadow: inset 0px -8px 4px -3px rgba(255,255,255,0.75);
+
 }
-.user-avatar{
+
+::ng-deep .mat-expansion-panel-body {
+    padding: 24px 24px 16px !important;
+  
+}
+.user-avatar
+{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,3 +83,4 @@ table{
     font-size: 1.5em;
     text-shadow: 0px 0px 3px black;
 }
+

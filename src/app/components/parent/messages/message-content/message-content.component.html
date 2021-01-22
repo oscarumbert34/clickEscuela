@@ -10,15 +10,15 @@
     <mat-accordion>
        <ng-container matColumnDef="message">
       <th id="column1" mat-header-cell *matHeaderCellDef mat-sort-header>Mensaje</th>
-      <td mat-cell *matCellDef="let row">
+      <td mat-cell *matCellDef="let row; let index=index">
 
           <mat-expansion-panel (opened)="panelOpenState = true"
                                (closed)="panelOpenState = false">
                                
 
-            <mat-expansion-panel-header>
+            <mat-expansion-panel-header (click)="setColor(index)" >
               <mat-panel-title>
-                <div class="user-avatar">
+                <div class="user-avatar" [style.backgroundColor]="getColor(index)"  #userAvatar>
                   <!-- <img  width="20px" src="./assets/images/save.svg" alt=""> -->
                   <p>{{row.sender | firstLetter: 'first'}}</p>
                 </div>
