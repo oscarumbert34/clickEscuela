@@ -1,7 +1,7 @@
 import { element } from 'protractor';
 import { style } from '@angular/animations';
 import { MessagesService } from './../../../../services/messages.service';
-import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, Input } from '@angular/core';
 import { Message } from 'src/app/models/Message';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -19,6 +19,10 @@ export class MessageContentComponent implements OnInit
   messageList:Message[];
   displayedColumns: string[];
   dataSource: any;
+
+  
+  @Input() currentTab;
+
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -36,6 +40,10 @@ export class MessageContentComponent implements OnInit
 
     this.root=document.documentElement;
    
+  }
+
+  showType(){
+    console.log(this.currentTab)
   }
 
   ngOnInit() 
@@ -86,7 +94,7 @@ export class MessageContentComponent implements OnInit
 
   getColor(i)
   {
-    
+
     return(this.colors[i])
 
   }
