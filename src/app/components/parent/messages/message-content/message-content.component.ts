@@ -20,6 +20,7 @@ export class MessageContentComponent implements OnInit
   displayedColumns: string[];
   dataSource: any;
 
+
   
   @Input() currentTab;
 
@@ -30,6 +31,8 @@ export class MessageContentComponent implements OnInit
   @ViewChild('chatContainer') chat: ElementRef;
   @ViewChild('chatContent') chatContent: ElementRef;
   @ViewChild('buttonBottom') bottomButton: ElementRef;
+  @ViewChild('buttonSearch') search: ElementRef;
+
 
 
 
@@ -49,6 +52,23 @@ export class MessageContentComponent implements OnInit
 
   showType(){
     console.log(this.currentTab)
+  }
+
+  viewInputSearch()
+  {
+  
+      this.search.nativeElement.style.width='18em';
+
+ 
+  }
+
+hideInputSearch()
+  {
+  
+    console.log(this.search.nativeElement.style.width)
+      this.search.nativeElement.style.width='35px';
+
+ 
   }
 
   ngOnInit() 
