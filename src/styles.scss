@@ -13,6 +13,11 @@ body { margin: 0;
     font-size: 0.96rem;
 }
 
+.mat-drawer-content.mat-drawer-content.ng-star-inserted::-webkit-scrollbar
+{
+  display: none;
+}
+
 //alto del 
 tr.mat-row, tr.mat-footer-row
 {

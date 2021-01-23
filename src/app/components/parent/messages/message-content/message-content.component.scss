@@ -4,6 +4,9 @@
 ::ng-deep .mat-panel-description{
     text-align: end;
 }
+::ng-deep .mat-expansion-panel-header-title{
+    font-weight: bold;
+}
 
 .mat-expansion-panel-header-description {
     flex-grow: 0;
@@ -106,5 +109,185 @@ th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:la
     color: white;
     font-size: 1.5em;
     text-shadow: 0px 0px 3px black;
+}
+
+//Aca comienza el chat
+
+
+
+
+
+
+
+.chat-container
+{
+    position: fixed;
+    top:7.5em;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow: scroll;
+    transition: 0.5s ease-in-out;
+    transform: translateX(100%);
+    box-shadow: 12px 0px 12px 12px rgba(0, 0, 0, 0.404);
+    border-radius: 5px 5px 5px 5px ;
+    z-index: 9999999 !important;
+    
+}
+
+.chat-content
+{
+   height: 60%;
+   background-color: cadetblue;
+   overflow: scroll;
+}
+.goBottom{
+    position: fixed;
+    top: 7em;
+    right:1em;
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+    appearance: none;
+    border: 0;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.459);
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+
+}
+.chat-content::-webkit-scrollbar
+{
+   display: none;
+}
+.chat-input
+{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    border-radius: 15px;
+    background-color: $custom-blue-glass;
+}
+
+.chat-container::-webkit-scrollbar
+{
+  // display: none;
+    
+}
+
+.chat-options
+{   display: flex;
+    flex: 1;
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.623);
+    flex-direction: row-reverse;
+    padding: 0.5em;
+
+}
+.sender-info
+{   display: flex;
+    flex: 1;
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.623);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+
+}
+
+.sender-info p
+{   
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.chat-item
+{
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.322);
+    border-radius: 25px 25px 25px 25px;
+    padding: 10px;
+
+    max-width:70%;
+
+    margin-bottom: 6px;
+    box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.247);
+
+}
+
+
+.chat-item p
+{
+    margin: 0;
+}
+
+.chat-module{
+    padding: 1em;
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-module.sender{
+    align-items: flex-start;
+}
+
+.chat-module.sender .chat-item
+{
+background-color: $custom-blue-glass;
+color: white;
+}
+
+.chat-module.autor{
+    align-items: flex-end;
+}
+
+.chat-module.autor .chat-item{
+    background-color: $gray-1;
+}
+
+.chat-module.left-align
+{
+    align-items: right;
+}
+
+.chat-item.multiple.left-align
+{
+    text-align: start;
+    border-radius: 10px 25px 25px 10px;
+}
+.chat-item.multiple:first-child.left-align
+{
+    border-radius: 25px 25px 25px 10px;
+}
+
+.chat-item.multiple:last-child.left-align
+{
+    border-radius: 10px 25px 25px 25px;
+}
+
+.chat-item.multiple.right-align
+{
+    text-align: end;
+    border-radius: 25px 10px 10px 25px;
+}
+.chat-item.multiple:first-child.right-align
+{
+    border-radius: 25px 25px 10px 25px;
+}
+
+.chat-item.multiple:last-child.right-align
+{
+    border-radius: 25px 10px 25px 25px;
 }
 

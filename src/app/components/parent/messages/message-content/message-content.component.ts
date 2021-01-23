@@ -27,6 +27,11 @@ export class MessageContentComponent implements OnInit
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChildren('userAvatar') avatars: QueryList<HTMLDivElement>;
+  @ViewChild('chatContainer') chat: ElementRef;
+  @ViewChild('chatContent') chatContent: ElementRef;
+  @ViewChild('buttonBottom') bottomButton: ElementRef;
+
+
 
 
   root;
@@ -72,6 +77,46 @@ export class MessageContentComponent implements OnInit
 
   }
 
+
+  closeChat()
+  {
+    this.chat.nativeElement.style.transform="translateX(100%)"
+  }
+  
+  openChat()
+  {
+    this.chat.nativeElement.style.transform="translateX(0)"
+    this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
+    
+  }
+
+  goBottom()
+  {
+    this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
+
+  }
+  showScroll()
+  {
+    console.log(this.chatContent.nativeElement.scrollTop+ '    ' +(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight))
+    if (Math.round(this.chatContent.nativeElement.scrollTop+1) <(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight)){
+      this.bottomButton.nativeElement.style.opacity="1"
+
+    }
+    else{
+      this.bottomButton.nativeElement.style.opacity="0"
+
+    }
+   
+  }
+
+  onScroll(){
+    console.log(this.chatContent)
+    console.log(this.chatContent.nativeElement.scrollWidth+'   ' +this.chatContent.nativeElement.scrollTop)
+  }
+
+
+  
+
   showChildrens()
   {
     this.avatars.forEach((element,index) =>
@@ -87,15 +132,23 @@ export class MessageContentComponent implements OnInit
 
   setColor(i)
   {
-    this.root.style.setProperty('--background-header',this.colors[i])
+    let num=i-this.indexation(i)
+    this.root.style.setProperty('--background-header',this.colors[num])
     
     
   }
 
+  indexation(index)
+  {
+    let large=this.colors.length
+    return Math.floor(index/large)*large
+  }
+
   getColor(i)
   {
+    let num=i-this.indexation(i)
 
-    return(this.colors[i])
+    return(this.colors[num])
 
   }
 
