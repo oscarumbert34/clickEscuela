@@ -250,10 +250,23 @@
     <div class="container" style="align-items: center;">
      <div class="row">
       <div class="col-10 text-center" >
-        <textarea type="text" class="input-message"></textarea>
+        <textarea type="text" class="input-message" ></textarea>
 
       </div>
-      <div class="col-2"></div>
+      <div class="col-2 send-button-container">
+
+        <div class="send-button example-ripple-container mat-elevation-z4"
+        matRipple
+        [matRippleCentered]="centered"
+        [matRippleDisabled]="disabled"
+        [matRippleUnbounded]="unbounded"
+        [matRippleRadius]="radius"
+        [matRippleColor]="color" >
+        
+            <img style="transform: rotate(-90deg);"  width="30px" src="./assets/images/option.svg"  alt="">
+        </div>
+   
+      </div>
     </div> 
     </div>
     

@@ -26,6 +26,7 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule
 
     ],
   providers: [],

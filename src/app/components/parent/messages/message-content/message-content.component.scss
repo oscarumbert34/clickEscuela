@@ -137,7 +137,7 @@ th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:la
 
 .chat-content
 {
-   height: 50%;
+   height: 50vh;
    overflow: scroll;
    background: url(../../../../../app/../assets/images/background.png)
 }
@@ -221,15 +221,47 @@ th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:la
 
 .input-message
 {
+    display: block;
     appearance: none;
     background-color: transparent;
     border: 0;
     border-bottom: 2px solid rgba(0, 0, 0, 0.397);
-    padding: 0.5em;
     width: 100%;
     border-radius: 0;
     transition: 0.5s ease-in-out;
+    resize: none;
+  
 }
+
+.send-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.send-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    background-color: $gray-1;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.send-button img{
+    margin-left: 0.2em;
+    user-select: none;
+}
+
+
+// .send-button:active
+// {
+//     transform: scale(1.2) translateX(6px);
+// }
 
 .wrong-send{
     position: relative;
