@@ -15,7 +15,10 @@
     <button class="button-menu search-chat" #buttonSearch (click)="viewInputSearch()">
       <img   width="15px" style="margin-left: 0.6em;" src="./assets/images/search.svg"  alt="">
       <input type="text" style="margin-left:1em; margin-right: 1em;">
-      <img  width="15px" src="./assets/images/cancel.svg" style="z-index: 99999;"  alt=""  (click)="hideInputSearch()">
+      <button (click)="hideInputSearch()">
+        <img  width="15px" src="./assets/images/cancel.svg"  alt=""  >
+
+      </button>
 
 
     </button>
@@ -336,7 +339,8 @@
 
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5]" [pageSize]="5" [length]="200"
+  ></mat-paginator>
 
   
   

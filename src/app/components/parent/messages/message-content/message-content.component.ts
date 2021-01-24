@@ -19,6 +19,7 @@ export class MessageContentComponent implements OnInit
   messageList:Message[];
   displayedColumns: string[];
   dataSource: any;
+  color:string;
 
 
   
@@ -47,7 +48,7 @@ export class MessageContentComponent implements OnInit
     this.selectedColor=this.randomColor()
 
     this.root=document.documentElement;
-   
+    this.color='9acd8dc5'
   }
 
   showType(){

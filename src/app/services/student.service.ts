@@ -106,6 +106,7 @@ export class studentService {
     this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '',"2A");
     this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '',"2A");
     this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '',"2A");
+    
     let students = sort(this.studentsArray, sortColumn, sortDirection);
 
     // 2. filter
