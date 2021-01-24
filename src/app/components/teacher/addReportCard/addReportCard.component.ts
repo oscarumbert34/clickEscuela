@@ -22,6 +22,8 @@ export class AddReportCardComponent implements OnInit {
   selectedTrimester=-1;
   showTrimester=false;
 
+  trimesterNumber:string;
+
   currentData:ReportCard;
 
   constructor(public dialogRef: MatDialogRef<AddReportCardComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private reporcardService: ReportCardService,private trimesterService:TrimesterService) 
@@ -29,6 +31,7 @@ export class AddReportCardComponent implements OnInit {
     this.existData=this.data.component!==undefined
     this.trimesterList=this.trimesterService.reportCardList 
     this.currentData=data.component;
+    this.trimesterNumber="Cargando notificaciones..."
   }
 
   changeSelectedTrimester(trimes)
@@ -39,18 +42,41 @@ export class AddReportCardComponent implements OnInit {
     this.selectedTrimester=trimes;
 
     this.currentData=this.trimesterService.trimesterList[trimes]
-    console.log(this.currentData)
+    console.log(this.trimesterNumber+"   "+this.selectedTrimester)
+
+    switch (this.selectedTrimester)
+    {
+      case 0: this.trimesterNumber="Calificaciones: Primer Trimestre"
+      break;
+      case 1: this.trimesterNumber="Calificaciones: Segundo Trimestre"
+      break;
+
+      case 2: this.trimesterNumber="Calificaciones: Tercer Trimestres"
+      break;
+
+      default:
+        {
+        this.trimesterNumber="Cargando Calfificaciones"
+        this.currentData=this.data.component
+      } 
+      break;
+
+    }
   }
 
 
 
   changeTrimester()
   {
+
+   
+
     if (!this.showTrimester)
     {
     this.trimesterList=this.trimesterService.trimesterList.filter(a => a.nameStudent==this.data.component.nameStudent && a.surnameStudent==this.data.component.surname)
     console.log(this.trimesterList.length)
 
+  
     
 
     for (let i=0;i<this.trimesterList.length;i++)

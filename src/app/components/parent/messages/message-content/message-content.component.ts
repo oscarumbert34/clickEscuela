@@ -22,6 +22,7 @@ export class MessageContentComponent implements OnInit
   color:string;
 
 
+
   
   @Input() currentTab;
 

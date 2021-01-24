@@ -6,13 +6,14 @@
     
 
     <table >
-      <tr>
-        <th>
+      <tr >
+        <th style="width: 50%;">
 
 
           <div class="row nameHeader" (click)="changeTrimester()">
           <p>    Calificaciones de: <br> {{currentData.name+' '+currentData.surname}}
           </p>
+         
         </div>
 
 
@@ -25,6 +26,13 @@
           </div>
           
         
+</th>
+
+<th style="width: 50%;">  
+  <div class="row nameHeader">
+    <p style="margin-left: 1em;"> {{trimesterNumber}}</p>
+
+  </div>     
 </th>
       </tr>
       <tr>

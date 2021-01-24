@@ -44,7 +44,10 @@ margin-left: 0.5em;
     border-radius: 5px 5px 0 0 ;
     
 }
-
+.nameHeader:last-child{
+    background-color: $gray-1;
+    color: black;
+}
 input{
     appearance: none;
     border: none;
