@@ -57,6 +57,7 @@ export class AddReportCardComponent implements OnInit {
       default:
         {
         this.trimesterNumber="Cargando Calfificaciones"
+        
         this.currentData=this.data.component
       } 
       break;

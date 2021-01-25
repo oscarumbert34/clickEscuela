@@ -29,9 +29,14 @@ export class AsistanceListComponent implements OnInit
   currentFile:string;
 
   loadIndex:number[];
+  completeIndex:number[];
   loadAnimation:number[];
 
   indexedMap=new Map();
+  progressPercentajeList:number[];
+  progressPercentaje:number;
+  isFinalyload:boolean[];
+
 
 
   
@@ -44,8 +49,50 @@ export class AsistanceListComponent implements OnInit
     this.currentFile="";
     this.loadIndex=[];
     this.loadAnimation=[]
+    this.progressPercentaje=0;
+    this.progressPercentajeList=[];
+    this.isFinalyload=[]
+    for (let asis of this.asistanceList){
+      this.progressPercentajeList.push(0)
+      this.isFinalyload.push(false)
+    }
+
+
 
   }
+  
+
+  progressLoad(index)
+  {
+    this.progressPercentaje=0;
+ 
+    
+     const inter= setInterval(()=>
+      {
+        this.progressPercentajeList[index]+=Math.floor(Math.random() * (30 - 0)) + 0;;
+        this.isFinalyload[index]=this.progressPercentajeList[index]<100;
+        console.log(this.progressPercentajeList[index]+'  '+this.isFinalyload)
+
+        if (this.progressPercentajeList[index]>100)
+        {
+          clearInterval(inter)
+          
+        }
+      },2000)
+    
+    
+  }
+
+  getPercentaje(index){
+    console.log(this.progressPercentajeList[index])
+    return this.progressPercentajeList[index]
+  }
+
+  getFinaly(index){
+   
+    return this.isFinalyload[index]
+  }
+
 
   viewFileName(index)
   {
@@ -73,7 +120,6 @@ export class AsistanceListComponent implements OnInit
     this.dataSource.data = this.asistanceList;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
 
   }
 
