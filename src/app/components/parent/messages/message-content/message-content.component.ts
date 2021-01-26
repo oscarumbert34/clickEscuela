@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChatmessagesService } from './../../../../services/chatmessages.service';
 import { ChatModule } from './../../../../models/ChatModule';
 import { element } from 'protractor';
@@ -42,6 +43,10 @@ export class MessageContentComponent implements OnInit
   @ViewChild('buttonSearch') search: ElementRef;
   @ViewChild('chatInputContent') inputContent: ElementRef;
 
+  finalizetest:boolean;
+
+  chatOpen:boolean;
+
   
 
 
@@ -51,7 +56,7 @@ export class MessageContentComponent implements OnInit
   root;
 
   
-  constructor(private messageService: MessagesService,private chatmoduleService: ChatmessagesService)
+  constructor(private messageService: MessagesService,private chatmoduleService: ChatmessagesService, private snackbar: MatSnackBar)
   {
     this.messageList=this.messageService.messageList
     this.colors=['#049dd975','#14a6479c','#f2c84b7c','#f24e2975','#f2b9b37e'];
@@ -61,7 +66,20 @@ export class MessageContentComponent implements OnInit
     this.color='9acd8dc5'
     this.openSearch=false;
     this.chatModules=chatmoduleService.chatmodules
+
+    this.finalizetest=true;
+
+    this.chatOpen=false;
   }
+
+  openSnackbar(message:string)
+  {
+    this.snackbar.open(message, '', {
+      duration: 3000
+    });
+
+  }
+
 
   
 
@@ -84,17 +102,89 @@ export class MessageContentComponent implements OnInit
  
   }
 
-  addChatMessage(input)
-  {
-    console.log(input.value)
+  addChatMessage(input,autor)
+  {    
     if (input.value!="")
     {
+
+      if (this.chatmoduleService.lastChatModule.autor!=autor)
+      {
+        this.chatmoduleService.addChatModule(autor)
+
+      }
+
+
     this.chatmoduleService.addChatMessage(input.value)
     input.value=""
     setTimeout(()=>{
       this.goBottom()
     },500)
+
     }
+    
+  }
+
+  addChatMessageSting(input,autor)
+  {    
+    
+
+      if (this.chatmoduleService.lastChatModule.autor!=autor)
+      {
+        this.chatmoduleService.addChatModule(autor)
+
+      }
+
+
+    this.chatmoduleService.addChatMessage(input)
+    setTimeout(()=>{
+      this.goBottom()
+    },500)
+
+    
+    
+  }
+
+  
+
+  testChat(input)
+  {
+    if (input.value=="--start-test")
+    {
+      this.viewInputSearch()
+
+      this.finalizetest=false;
+
+
+
+      if (!this.finalizetest)
+      {
+  this.openSnackbar("Se inicio el modo testing del chat")
+  
+      
+      const inter= setInterval(()=>
+      {
+        this.addChatMessageSting("Este es un mensaje de prueba autogenerado. Solo para test interno",'receiver')
+        
+        if (this.finalizetest)
+        {
+  
+          clearInterval(inter)
+          this.openSnackbar("Finalizando el modo de testing...")
+  
+          
+        }
+      },5000)
+      }
+    }
+    else if(input.value=="--stop-test")
+    {
+      this.viewInputSearch()
+
+      this.finalizetest=true;
+
+    }
+  
+
     
   }
 
@@ -140,12 +230,14 @@ hideInputSearch()
   closeChat()
   {
     this.chat.nativeElement.style.transform="translateX(100%)"
+    this.chatOpen=false
   }
   
   openChat()
   {
     this.chat.nativeElement.style.transform="translateX(0)"
     this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
+    this.chatOpen=true;
     
   }
 

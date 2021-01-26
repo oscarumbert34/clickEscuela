@@ -97,6 +97,8 @@ export class AsistanceListComponent implements OnInit {
 
   }
 
+  
+
   openSnackbar(message:string)
   {
     this.snackbar.open(message, '', {

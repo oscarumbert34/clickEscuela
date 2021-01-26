@@ -7,16 +7,16 @@
 
   <div class="chat-options">
 
-    <button class="button-menu close-chat" (click)="closeChat();" style="margin-left: 2em;">
+    <button class="button-menu close-chat" (click)="closeChat();" style="margin-left: 2em;" [ngClass]="{'button-animate': chatOpen}">
       <img  width="15px" src="./assets/images/cancel.svg"  alt="">
 
     </button>
 
     
 
-    <button class="button-menu search-chat" #buttonSearch (click)="viewInputSearch()">
+    <button class="button-menu search-chat" #buttonSearch (click)="viewInputSearch()" [ngClass]="{'button-animate': chatOpen}">
       <img   width="15px" style="margin-left: 0.6em;" src="./assets/images/search.svg"  alt="">
-      <input type="text" style="margin-left:1em; margin-right: 1em;">
+      <input type="text" style="margin-left:1em; margin-right: 1em;" #searchInput (keyup.enter)="testChat(searchInput)">
       
       <!-- <button (click)="hideInputSearch()">
         <img  width="15px" src="./assets/images/cancel.svg"  alt=""  >
@@ -25,12 +25,12 @@
 
 
     </button>
-    <button class="button-menu close-chat" (click)="closeChat();">
+    <button class="button-menu close-chat" [ngClass]="{'button-animate': chatOpen}">
       <img  width="15px" src="./assets/images/edit.svg"  alt="">
 
     </button>
     
-    <button class="button-menu close-chat" (click)="closeChat();">
+    <button class="button-menu close-chat" (click)="closeChat();" [ngClass]="{'button-animate': chatOpen}">
       <img  width="15px" src="./assets/images/option.svg"  alt="">
 
     </button>
@@ -59,218 +59,15 @@
 
       </div>
 
+      <div class="send-date">
+        {{chat.messages[chat.messages.length-1].date  | date: 'h:mm:ss a'}}
+      </div>
+
     </div>
 
 
   </div>
 
-  <!-- <div class="chat-content" #chatContent (click)="onScroll()" (scroll)="showScroll()">
-    <button class="goBottom" (click)="goBottom()" #buttonBottom>
-      <img  width="30px" src="./assets/images/option.svg"  alt="">
-    </button>
-    <div class="chat-module sender" >
-      <div class="chat-item multiple left-align">
-          <p>Hola como estas todo bien aca viendo que comer</p>
-        </div>
-        <div class="chat-item multiple left-align">
-          <p>aburrido</p>
-        </div>
-        <div class="chat-item multiple left-align">
-          <p>Con ganas de salir</p>
-        </div>
-        </div>
-        
-        
-      
-        <div class="chat-module autor">
-          <div class="chat-item multiple right-align">
-              <p>Hola como estas todo bien aca viendo que comer</p>
-            </div>
-            <div class="chat-item multiple right-align">
-              <p>aburrido</p>
-            </div>
-            <div class="chat-item multiple right-align">
-              <p>Con ganas de salir</p>
-            </div>
-           
-          
-            </div>
-
-
-            <div class="chat-module autor">
-              <div class="chat-item multiple right-align">
-                  <p>Hola como estas todo bien aca viendo que comer</p>
-                </div>
-                <div class="chat-item multiple right-align">
-                  <p>aburrido</p>
-                </div>
-                <div class="chat-item multiple right-align">
-                  <p>Con ganas de salir</p>
-                </div>
-               
-              
-                </div>
-                <div class="chat-module autor">
-                  <div class="chat-item multiple right-align">
-                      <p>Hola como estas todo bien aca viendo que comer</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>aburrido</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>Con ganas de salir</p>
-                    </div>
-                   
-                  
-                    </div>
-                    <div class="chat-module autor">
-                      <div class="chat-item multiple right-align">
-                          <p>Hola como estas todo bien aca viendo que comer</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>aburrido</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>Con ganas de salir</p>
-                        </div>
-                       
-                      
-                        </div>     <div class="chat-module autor">
-                          <div class="chat-item multiple right-align">
-                              <p>Hola como estas todo bien aca viendo que comer</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>aburrido</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>Con ganas de salir</p>
-                            </div>
-                           
-                          
-                            </div>     <div class="chat-module autor">
-                  <div class="chat-item multiple right-align">
-                      <p>Hola como estas todo bien aca viendo que comer</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>aburrido</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>Con ganas de salir</p>
-                    </div>
-                   
-                  
-                    </div>     <div class="chat-module autor">
-                      <div class="chat-item multiple right-align">
-                          <p>Hola como estas todo bien aca viendo que comer</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>aburrido</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>Con ganas de salir</p>
-                        </div>
-                       
-                      
-                        </div>     <div class="chat-module autor">
-                          <div class="chat-item multiple right-align">
-                              <p>Hola como estas todo bien aca viendo que comer</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>aburrido</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>Con ganas de salir</p>
-                            </div>
-                           
-                          
-                            </div>     <div class="chat-module autor">
-                  <div class="chat-item multiple right-align">
-                      <p>Hola como estas todo bien aca viendo que comer</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>aburrido</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>Con ganas de salir</p>
-                    </div>
-                   
-                  
-                    </div>     <div class="chat-module autor">
-                      <div class="chat-item multiple right-align">
-                          <p>Hola como estas todo bien aca viendo que comer</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>aburrido</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>Con ganas de salir</p>
-                        </div>
-                       
-                      
-                        </div>     <div class="chat-module autor">
-                          <div class="chat-item multiple right-align">
-                              <p>Hola como estas todo bien aca viendo que comer</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>aburrido</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>Con ganas de salir</p>
-                            </div>
-                           
-                          
-                            </div>     <div class="chat-module autor">
-                  <div class="chat-item multiple right-align">
-                      <p>Hola como estas todo bien aca viendo que comer</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>aburrido</p>
-                    </div>
-                    <div class="chat-item multiple right-align">
-                      <p>Con ganas de salir</p>
-                    </div>
-                   
-                  
-                    </div>     <div class="chat-module autor">
-                      <div class="chat-item multiple right-align">
-                          <p>Hola como estas todo bien aca viendo que comer</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>aburrido</p>
-                        </div>
-                        <div class="chat-item multiple right-align">
-                          <p>Con ganas de salir</p>
-                        </div>
-                       
-                      
-                        </div>     <div class="chat-module autor">
-                          <div class="chat-item multiple right-align">
-                              <p>Hola como estas todo bien aca viendo que comer</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>aburrido</p>
-                            </div>
-                            <div class="chat-item multiple right-align">
-                              <p>Con ganas de salir</p>
-                            </div>
-                           
-                          
-                            </div>     <div class="chat-module autor">
-                              <div class="chat-item multiple right-align wrong-send">
-                                  <p>Hola como estas todo bien aca viendo que comer</p>
-                                </div>
-                                <div class="chat-item multiple right-align">
-                                  <p>aburrido</p>
-                                </div>
-                                <div class="chat-item multiple right-align">
-                                  <p>LLegaste bien</p>
-                                </div>
-                               
-                              
-                                </div>
-
-            
-  </div> -->
 
   <div class="chat-input">
     <div class="container" style="align-items: center;">
@@ -287,7 +84,7 @@
         [matRippleDisabled]="disabled"
         [matRippleUnbounded]="unbounded"
         [matRippleRadius]="radius"
-        [matRippleColor]="color"  (click)="addChatMessage(chatInputContent)">
+        [matRippleColor]="color"  (click)="addChatMessage(chatInputContent,'autor')">
         
             <img style="transform: rotate(-90deg);"  width="30px" src="./assets/images/option.svg"  alt="">
         </div>

@@ -45,6 +45,11 @@ constructor()
 
 }
 
+addChatModule(autor)
+{
+  this.chatmodules.push(new ChatModule(autor))
+}
+
 addChatMessage(message)
 {
   this.chatmodules[this.chatmodules.length-1].addChatMessage(new ChatMessage(message,new Date(),true))
@@ -54,6 +59,10 @@ addChatMessage(message)
 
 get modulesList(){
   return this.chatmodules
+}
+
+get lastChatModule(){
+ return this.chatmodules[this.chatmodules.length-1]
 }
 
 }
