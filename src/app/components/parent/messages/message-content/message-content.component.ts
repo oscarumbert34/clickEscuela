@@ -102,12 +102,12 @@ export class MessageContentComponent implements OnInit
     {
       this.search.nativeElement.style.width='230px';
       this.openSearch=true;
-      this.search.nativeElement.childNodes[1].focus()
+      this.search.nativeElement.childNodes[3].focus()
 
     }else{
       this.search.nativeElement.style.width='35px';
       this.openSearch=false;
-      this.search.nativeElement.childNodes[1].value=""
+      this.search.nativeElement.childNodes[3].value=""
 
     }
 
@@ -161,19 +161,44 @@ export class MessageContentComponent implements OnInit
 
   testChat(input)
   {
-    if (input.value=="--start-test")
+    let regExp=/^([0-9])*$/
+
+    let inputContent=input.value.split(" -")
+    console.log(inputContent)
+
+    console.log(regExp.test(inputContent[1]))
+
+    if (inputContent[0]=="--start-test")
     {
       this.viewInputSearch()
 
       this.finalizetest=false;
 
+      let miliseconds=5000;
+
+      if (regExp.test(inputContent[1]))
+        {
+          let num=parseInt(inputContent[1])
+          console.log(num)
+
+          if (num>5000)
+          {
+            miliseconds=num;
+          }
+      
+      
+        }
+      
+   
+
 
 
       if (!this.finalizetest)
       {
-  this.openSnackbar("Se inicio el modo testing del chat")
+      this.openSnackbar("Se inicio el modo testing del chat. ms:"+miliseconds)
   
-      
+    
+
       const inter= setInterval(()=>
       {
         this.addChatMessageSting("Este es un mensaje de prueba autogenerado. Solo para test interno",'receiver')
@@ -182,14 +207,14 @@ export class MessageContentComponent implements OnInit
         {
   
           clearInterval(inter)
-          this.openSnackbar("Finalizando el modo de testing...")
+          this.openSnackbar("Se finalizo el modo de testing con exito...")
   
           
         }
-      },5000)
+      },miliseconds)
       }
     }
-    else if(input.value=="--stop-test")
+    else if(inputContent[0]=="--stop-test")
     {
       this.viewInputSearch()
 
