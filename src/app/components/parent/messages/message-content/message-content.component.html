@@ -7,18 +7,21 @@
 
   <div class="chat-options">
 
-    <button class="button-menu close-chat" (click)="closeChat();">
+    <button class="button-menu close-chat" (click)="closeChat();" style="margin-left: 2em;">
       <img  width="15px" src="./assets/images/cancel.svg"  alt="">
 
     </button>
 
+    
+
     <button class="button-menu search-chat" #buttonSearch (click)="viewInputSearch()">
       <img   width="15px" style="margin-left: 0.6em;" src="./assets/images/search.svg"  alt="">
       <input type="text" style="margin-left:1em; margin-right: 1em;">
-      <button (click)="hideInputSearch()">
+      
+      <!-- <button (click)="hideInputSearch()">
         <img  width="15px" src="./assets/images/cancel.svg"  alt=""  >
 
-      </button>
+      </button> -->
 
 
     </button>
@@ -42,6 +45,26 @@
   </div>
 
   <div class="chat-content" #chatContent (click)="onScroll()" (scroll)="showScroll()">
+
+    <button class="goBottom" (click)="goBottom()" #buttonBottom>
+      <img  width="30px" src="./assets/images/option.svg"  alt="">
+    </button>
+
+    <div *ngFor="let chat of chatModules" class="chat-module" [ngClass]="{'autor': chat.autor=='autor', 'sender': chat.autor=='receiver' }">
+      
+      <div *ngFor="let message of chat.messages" class="chat-item multiple left-align" [ngClass]="{'multiple': chat.messages.length>=2,'left-align': chat.autor=='receiver', 'right-align': chat.autor=='autor'  }">
+
+        <p>{{message.content}}</p>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- <div class="chat-content" #chatContent (click)="onScroll()" (scroll)="showScroll()">
     <button class="goBottom" (click)="goBottom()" #buttonBottom>
       <img  width="30px" src="./assets/images/option.svg"  alt="">
     </button>
@@ -247,24 +270,24 @@
                                 </div>
 
             
-  </div>
+  </div> -->
 
   <div class="chat-input">
     <div class="container" style="align-items: center;">
      <div class="row">
       <div class="col-10 text-center" >
-        <textarea type="text" class="input-message" ></textarea>
+        <textarea type="text" class="input-message" #chatInputContent (keyup.enter)="sendButton.click()"></textarea>
 
       </div>
       <div class="col-2 send-button-container">
 
-        <div class="send-button example-ripple-container mat-elevation-z4"
+        <div class="send-button example-ripple-container mat-elevation-z4" #sendButton
         matRipple
         [matRippleCentered]="centered"
         [matRippleDisabled]="disabled"
         [matRippleUnbounded]="unbounded"
         [matRippleRadius]="radius"
-        [matRippleColor]="color" >
+        [matRippleColor]="color"  (click)="addChatMessage(chatInputContent)">
         
             <img style="transform: rotate(-90deg);"  width="30px" src="./assets/images/option.svg"  alt="">
         </div>
@@ -315,7 +338,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{row.content}}</p>
-            <button mat-button class="chat-button" (click)="openChat()">Abrir chat</button>
+            <button mat-button class="chat-button" (click)="openChat(); chatInputContent.focus()">Abrir chat</button>
 
           </mat-expansion-panel>
         

@@ -54,7 +54,7 @@ export class AsistanceListComponent implements OnInit
     this.isFinalyload=[]
     for (let asis of this.asistanceList){
       this.progressPercentajeList.push(0)
-      this.isFinalyload.push(false)
+      this.isFinalyload.push(true)
     }
 
 

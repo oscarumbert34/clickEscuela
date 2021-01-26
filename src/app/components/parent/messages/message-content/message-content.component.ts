@@ -1,3 +1,5 @@
+import { ChatmessagesService } from './../../../../services/chatmessages.service';
+import { ChatModule } from './../../../../models/ChatModule';
 import { element } from 'protractor';
 import { style } from '@angular/animations';
 import { MessagesService } from './../../../../services/messages.service';
@@ -21,6 +23,10 @@ export class MessageContentComponent implements OnInit
   dataSource: any;
   color:string;
 
+  openSearch:boolean;
+
+  chatModules:ChatModule[]
+
 
 
   
@@ -34,6 +40,9 @@ export class MessageContentComponent implements OnInit
   @ViewChild('chatContent') chatContent: ElementRef;
   @ViewChild('buttonBottom') bottomButton: ElementRef;
   @ViewChild('buttonSearch') search: ElementRef;
+  @ViewChild('chatInputContent') inputContent: ElementRef;
+
+  
 
 
 
@@ -42,7 +51,7 @@ export class MessageContentComponent implements OnInit
   root;
 
   
-  constructor(private messageService: MessagesService)
+  constructor(private messageService: MessagesService,private chatmoduleService: ChatmessagesService)
   {
     this.messageList=this.messageService.messageList
     this.colors=['#049dd975','#14a6479c','#f2c84b7c','#f24e2975','#f2b9b37e'];
@@ -50,25 +59,53 @@ export class MessageContentComponent implements OnInit
 
     this.root=document.documentElement;
     this.color='9acd8dc5'
+    this.openSearch=false;
+    this.chatModules=chatmoduleService.chatmodules
   }
 
-  showType(){
-    console.log(this.currentTab)
-  }
+  
 
   viewInputSearch()
   {
-  
-      this.search.nativeElement.style.width='18em';
+    if (!this.openSearch)
+    {
+      this.search.nativeElement.style.width='230px';
+      this.openSearch=true;
+      this.search.nativeElement.childNodes[1].focus()
+
+    }else{
+      this.search.nativeElement.style.width='35px';
+      this.openSearch=false;
+      this.search.nativeElement.childNodes[1].value=""
+
+    }
+
 
  
+  }
+
+  addChatMessage(input)
+  {
+    console.log(input.value)
+    if (input.value!="")
+    {
+    this.chatmoduleService.addChatMessage(input.value)
+    input.value=""
+    setTimeout(()=>{
+      this.goBottom()
+    },500)
+    }
+    
   }
 
 hideInputSearch()
   {
   
-    console.log(this.search.nativeElement.style.width)
-      this.search.nativeElement.style.width='35px';
+    if (!this.openSearch)
+    {
+        this.search.nativeElement.style.width='35px';
+
+    }
 
  
   }
@@ -117,9 +154,13 @@ hideInputSearch()
     this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
 
   }
+  goNewMessage(){
+    this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight
+
+
+  }
   showScroll()
   {
-    console.log(this.chatContent.nativeElement.scrollTop+ '    ' +(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight))
     if (Math.round(this.chatContent.nativeElement.scrollTop+1) <(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight)){
       this.bottomButton.nativeElement.style.opacity="1"
 
@@ -131,10 +172,7 @@ hideInputSearch()
    
   }
 
-  onScroll(){
-    console.log(this.chatContent)
-    console.log(this.chatContent.nativeElement.scrollWidth+'   ' +this.chatContent.nativeElement.scrollTop)
-  }
+
 
 
   
