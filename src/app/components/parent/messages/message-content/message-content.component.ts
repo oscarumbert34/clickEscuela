@@ -9,6 +9,7 @@ import { Message } from 'src/app/models/Message';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-message-content',
@@ -47,6 +48,10 @@ export class MessageContentComponent implements OnInit
 
   chatOpen:boolean;
 
+  position: TooltipPosition = 'left';
+
+  shake:boolean = false;
+
   
 
 
@@ -70,6 +75,14 @@ export class MessageContentComponent implements OnInit
     this.finalizetest=true;
 
     this.chatOpen=false;
+
+  }
+
+  trueShake(){
+    this.shake=true
+  }
+  noShake(){
+    this.shake=false;
   }
 
   openSnackbar(message:string)
