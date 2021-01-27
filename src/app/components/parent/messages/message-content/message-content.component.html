@@ -56,25 +56,13 @@
       <img  width="30px" src="./assets/images/option.svg"  alt="">
     </button>
 
-    <div class="chat-module sender" >
-      <div class="chat-item multiple left-align">
-          <p>Hola como estas todo bien aca viendo que comer</p>
-        </div>
-        <div class="chat-item multiple left-align">
-          <p>aburrido</p>
-        </div>
-        <div class="chat-item multiple left-align">
-          <p>Con <mark>ganas</mark> de salir</p>
-        </div>
-        </div>
-
     
 
     <div *ngFor="let chat of chatModules" class="chat-module" [ngClass]="{'autor': chat.autor=='autor', 'sender': chat.autor=='receiver' }">
       
       <div *ngFor="let message of chat.messages;" class="chat-item" [ngClass]="{'multiple': chat.messages.length>=2,'left-align': chat.autor=='receiver', 'right-align': chat.autor=='autor', 'wrong-send' : !message.success}">
 
-        <p style="margin-right: 0.5em;">{{message.content}}</p>
+        <p style="margin-right: 0.5em;" [innerHTML]="message.content"></p>
         <!-- <p style="color:black"> {{chat.messages[chat.messages.length-1].date  | date: 'hh:mm a'}}</p> -->
         <div class="error-pin" *ngIf="!message.success">
 

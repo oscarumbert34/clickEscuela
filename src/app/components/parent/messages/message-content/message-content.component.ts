@@ -183,7 +183,7 @@ export class MessageContentComponent implements OnInit
     this.chatContent.nativeElement.scrollTop=this.scrollVariation(numbermessage,i)
 
     if (currentMessage!=null){
-      currentMessage.content=currentMessage.content.replace(word,'**/'+word+'/**')
+      currentMessage.content=currentMessage.content.replace(word,'<mark>'+word+'</mark>')
 
     }
     else{
