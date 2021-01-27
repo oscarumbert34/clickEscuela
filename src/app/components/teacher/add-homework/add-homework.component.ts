@@ -28,7 +28,7 @@ export class AddHomeworkComponent implements OnInit
     {
     this.currentHomework=
     {
-    code:"",
+    code:"T0001",
     name:"",
     description:"",
     deliveryDate: null,

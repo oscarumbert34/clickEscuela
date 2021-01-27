@@ -182,14 +182,17 @@ export class MessageContentComponent implements OnInit
 
     this.chatContent.nativeElement.scrollTop=this.scrollVariation(numbermessage,i)
 
-    currentMessage.content=currentMessage.content.replace(word,'**/'+word+'/**')
+    if (currentMessage!=null){
+      currentMessage.content=currentMessage.content.replace(word,'**/'+word+'/**')
+
+    }
+    else{
+      this.openSnackbar("No se enontraron resultados para: "+word)
+    }
+
 
   }
 
-  obtainWord(word,index)
-  {
-
-  }
 
 
 
