@@ -29,6 +29,11 @@ export class PaymentListComponent implements OnInit {
     this.paymentList=paymentService.paymentList
   }
 
+  getBillName(){
+    let date=new Date()
+    return 'bill'+date.getDate()+date.getHours()+date.getSeconds()
+  }
+
   ngOnInit() 
   {
     this.displayedColumns = ['amount','status', 'expiration', 'paybill'];
