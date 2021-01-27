@@ -31,7 +31,7 @@
 
 
     </button>
-    <button class="button-menu close-chat" [ngClass]="{'button-animate': chatOpen}">
+    <button class="button-menu close-chat" [ngClass]="{'button-animate': chatOpen}" (click)="searchWord(searchInput.value)">
       <img  width="15px" src="./assets/images/edit.svg"  alt="">
 
     </button>
@@ -50,7 +50,7 @@
     <p>Profesor Gerardo</p>
   </div>
 
-  <div class="chat-content" #chatContent (scroll)="showScroll()">
+  <div class="chat-content" #chatContent (click)="viewScroll()">
 
     <button class="goBottom" (click)="goBottom()" #buttonBottom>
       <img  width="30px" src="./assets/images/option.svg"  alt="">

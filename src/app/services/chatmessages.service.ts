@@ -50,6 +50,11 @@ addChatModule(autor)
   this.chatmodules.push(new ChatModule(autor))
 }
 
+alterateString()
+{
+
+}
+
 addChatMessage(message)
 {
   this.chatmodules[this.chatmodules.length-1].addChatMessage(new ChatMessage(message,new Date(),true))

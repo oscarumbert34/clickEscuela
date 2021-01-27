@@ -157,7 +157,58 @@ export class MessageContentComponent implements OnInit
     
   }
 
+  searchWord(word:string)
+  { 
+    let i=0;
+    
+    let numbermessage=0;
+    let indexmessage=0;
+    let currentMessage=null;
+
+    for(let module of this.chatModules)
+    {
+      for(let messages of module.messages)
+      {
+        if (messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase())!=-1){
+          numbermessage=i
+          indexmessage=messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase());
+          currentMessage=messages;
+          
+        }
+        i++;
+      console.log("Encontre en el mensaje Nº "+i+" en el indice: "+messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase()))
+      }
+    }
+
+    this.chatContent.nativeElement.scrollTop=this.scrollVariation(numbermessage,i)
+
+    currentMessage.content=currentMessage.content.replace(word,'**/'+word+'/**')
+
+  }
+
+  obtainWord(word,index)
+  {
+
+  }
+
+
+
   
+
+  scrollVariation(numberMessage,cantMessages)
+  {
+    console.log(numberMessage+'   '+cantMessages)
+    
+    let variation=(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight)/cantMessages*numberMessage
+    console.log(variation)
+    return variation
+  }
+  
+  viewScroll(){
+    console.log(this.chatContent.nativeElement.scrollTop)
+    console.log(this.chatContent.nativeElement.scrollHeight)
+    console.log(this.chatContent.nativeElement.clientHeight)
+  }
 
   testChat(input)
   {
@@ -220,6 +271,10 @@ export class MessageContentComponent implements OnInit
 
       this.finalizetest=true;
 
+    }
+
+    else {
+      this.openSnackbar("No ingreso un comando valido revise la sintaxis")
     }
   
 
