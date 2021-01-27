@@ -32,7 +32,7 @@ constructor()
 
   let chatSender2=new ChatModule('autor');
 
-  chatSender2.addChatMessage(new ChatMessage("Dale muchisimas gracias entonces espero su pronta respuesta",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("<p>Dale muchisimas gracias <mark>entonces</mark> espero su pronta respuesta</p>",new Date(),true))
   chatSender2.addChatMessage(new ChatMessage("En caso que se necesite ayuda yo me sumo ",new Date(),false))
 
 

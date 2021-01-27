@@ -50,11 +50,23 @@
     <p>Profesor Gerardo</p>
   </div>
 
-  <div class="chat-content" #chatContent (click)="viewScroll()">
+  <div class="chat-content" #chatContent (click)="viewScroll()" (scroll)="showScroll()">
 
-    <button class="goBottom" (click)="goBottom()" #buttonBottom>
+    <button class="goBottom" (click)="goBottom()"  #buttonBottom>
       <img  width="30px" src="./assets/images/option.svg"  alt="">
     </button>
+
+    <div class="chat-module sender" >
+      <div class="chat-item multiple left-align">
+          <p>Hola como estas todo bien aca viendo que comer</p>
+        </div>
+        <div class="chat-item multiple left-align">
+          <p>aburrido</p>
+        </div>
+        <div class="chat-item multiple left-align">
+          <p>Con <mark>ganas</mark> de salir</p>
+        </div>
+        </div>
 
     
 

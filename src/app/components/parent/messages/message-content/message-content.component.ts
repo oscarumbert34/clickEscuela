@@ -349,6 +349,7 @@ hideInputSearch()
   }
   showScroll()
   {
+    console.log("holis")
     if (Math.round(this.chatContent.nativeElement.scrollTop+1) <(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight)){
       this.bottomButton.nativeElement.style.opacity="1"
 
