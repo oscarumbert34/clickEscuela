@@ -228,6 +228,7 @@ export class MessageContentComponent implements OnInit
   { 
     this.foundWords=[]
     this.scollDistances=[]
+    this.messagesLenght=this.chatmoduleService.messagesLenght
     
 
     let word=input.value;
@@ -358,7 +359,7 @@ export class MessageContentComponent implements OnInit
     let scrollHeight=this.chatContent.nativeElement.scrollHeight
     let clientHeight=this.chatContent.nativeElement.clientHeight
 
-    let variation=(scrollHeight-clientHeight)/cantMessages*numberMessage
+    let variation=(scrollHeight-clientHeight)/(cantMessages)*(numberMessage+2)
     console.log(variation)
     return variation
   }

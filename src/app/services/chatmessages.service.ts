@@ -33,7 +33,15 @@ constructor()
   let chatSender2=new ChatModule('autor');
 
   chatSender2.addChatMessage(new ChatMessage("<p>Dale muchisimas gracias entonces espero su pronta respuesta</p>",new Date(),true))
-  chatSender2.addChatMessage(new ChatMessage("En caso que se necesite ayuda yo me sumo ",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  
 
 
   this.chatmodules.push(chatSender2)
