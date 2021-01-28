@@ -54,11 +54,17 @@
         <div *ngIf="row.status; else noData">
           
           
-          <a target="_blank" href="./../../../../../app/../assets/images/documento de prueba.pdf" [download]="getBillName()"><button class="button-action">
+          <!-- <a target="_blank" href="./../../../../../app/../assets/images/documento de prueba.pdf" [download]="getBillName()"><button class="button-action">
           
             <img  width="20px" src="./assets/images/save.svg" alt="" >
             
-          </button></a>
+          </button></a> -->
+
+           <button class="button-action" (click)="downloadPDF(index)">
+          
+            <img  width="20px" src="./assets/images/save.svg" alt="" >
+            
+          </button>
         </div>
 
         <ng-template #noData>

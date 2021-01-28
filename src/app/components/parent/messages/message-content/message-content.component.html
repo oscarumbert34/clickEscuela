@@ -7,36 +7,39 @@
 
   <div class="chat-options">
 
-    <button class="button-menu close-chat" (click)="closeChat();" style="margin-left: 2em;" [ngClass]="{'button-animate': chatOpen}">
+    <button class="button-menu close-chat" (click)="closeChat();" style="margin-left: 3em;" [ngClass]="{'button-animate': chatOpen}">
       <img  width="15px" src="./assets/images/cancel.svg"  alt="">
 
     </button>
 
     
-
-    <button class="button-menu search-chat" #buttonSearch  [ngClass]="{'button-animate': chatOpen}">
-      
-
+    <div style="position: relative;">
+       <button class="button-menu search-chat" #buttonSearch  [ngClass]="{'button-animate': chatOpen}">
       <img *ngIf="!openSearch"  width="15px" style="margin-left: 0.6em;" src="./assets/images/search.svg"  alt="" (click)="viewInputSearch()">
       <img *ngIf="openSearch"  width="15px" style="margin-left: 0.6em;" src="./assets/images/cancel.svg"  alt="" (click)="viewInputSearch()">
+      <input type="text" style="margin-left:1em; margin-right: 1em;" #searchInput (keyup.enter)="searchWord(searchInput)">
+    </button>
 
-      
-
-      <input type="text" style="margin-left:1em; margin-right: 1em;" #searchInput (keyup.enter)="testChat(searchInput)">
-      
-      <!-- <button (click)="hideInputSearch()">
-        <img  width="15px" src="./assets/images/cancel.svg"  alt=""  >
-
-      </button> -->
-
+    <div style="display: flex;flex-direction: column; position: absolute;top: -7px;right: -29px;">
+      <button *ngIf="openSearch" class="no-button" [disabled]="!currentSearch" (click)="previousWord()">
+      <img   width="15px" style="margin-left: 0.6em; transform: rotate(180deg);" src="./assets/images/option.svg"  alt="">
 
     </button>
+    <button *ngIf="openSearch" class="no-button" [disabled]="!currentSearch" (click)="nextWord()">
+      <img   width=" 15px" style="margin-left: 0.6em;" src="./assets/images/option.svg"  alt="">
+
+    </button>
+    </div>
+    
+    </div>
+
+   
     <button class="button-menu close-chat" [ngClass]="{'button-animate': chatOpen}" (click)="searchWord(searchInput.value)">
       <img  width="15px" src="./assets/images/edit.svg"  alt="">
 
     </button>
     
-    <button class="button-menu close-chat" (click)="closeChat();" [ngClass]="{'button-animate': chatOpen}">
+    <button class="button-menu close-chat" (click)="clearMarks()" [ngClass]="{'button-animate': chatOpen}">
       <img  width="15px" src="./assets/images/option.svg"  alt="">
 
     </button>
@@ -104,7 +107,7 @@
         [matRippleDisabled]="disabled"
         [matRippleUnbounded]="unbounded"
         [matRippleRadius]="radius"
-        [matRippleColor]="color"  (click)="addChatMessage(chatInputContent,'autor')">
+        [matRippleColor]="color"  (click)="addChatMessage(chatInputContent,'autor');searchWord(searchInput)">
         
             <img style="transform: rotate(-90deg);"  width="30px" src="./assets/images/option.svg"  alt="">
         </div>

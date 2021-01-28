@@ -1,3 +1,4 @@
+import { ChatMessage } from './../../../../models/ChatMessage';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChatmessagesService } from './../../../../services/chatmessages.service';
 import { ChatModule } from './../../../../models/ChatModule';
@@ -52,6 +53,16 @@ export class MessageContentComponent implements OnInit
 
   shake:boolean = false;
 
+  lastSearchWord:string
+
+  currentSearch:boolean;
+
+  foundWords:ChatMessage[];
+  scollDistances:number[];
+
+  currentWord:number
+
+  messagesLenght:number;
   
 
 
@@ -76,9 +87,22 @@ export class MessageContentComponent implements OnInit
 
     this.chatOpen=false;
 
+    this.lastSearchWord=""
+
+    this.currentSearch=false;
+
+    this.foundWords=[]
+    this.scollDistances=[]
+   this.currentWord=0
+
+   this.messagesLenght=chatmoduleService.messagesLenght
+  
+    
+
   }
 
-  trueShake(){
+  trueShake()
+  {
     this.shake=true
   }
   noShake(){
@@ -91,6 +115,49 @@ export class MessageContentComponent implements OnInit
       duration: 3000
     });
 
+  }
+
+  nextWord()
+  {
+    if(this.foundWords.length-1==this.currentWord)
+    {
+      this.currentWord=0;
+    }
+    else
+    {
+      this.currentWord++;
+    }
+
+    console.log(this.currentWord)
+
+
+    this.clearMarks()
+    this.chatContent.nativeElement.scrollTop=this.scollDistances[this.currentWord]
+    this.foundWords[this.currentWord].content=this.foundWords[this.currentWord].content.replace(this.lastSearchWord,'<mark>'+this.lastSearchWord+'</mark>')
+
+    console.log(this.scollDistances)
+    console.log(this.foundWords)
+
+
+  }
+
+  previousWord()
+  {
+    if(this.currentWord==0)
+    {
+      this.currentWord=this.foundWords.length-1;
+    }
+    else
+    {
+      this.currentWord--;
+    }
+    console.log(this.currentWord)
+    this.clearMarks()
+    this.chatContent.nativeElement.scrollTop=this.scollDistances[this.currentWord]
+    this.foundWords[this.currentWord].content=this.foundWords[this.currentWord].content.replace(this.lastSearchWord,'<mark>'+this.lastSearchWord+'</mark>')
+
+    console.log(this.scollDistances)
+    console.log(this.foundWords)
   }
 
 
@@ -157,8 +224,33 @@ export class MessageContentComponent implements OnInit
     
   }
 
-  searchWord(word:string)
+  searchWord(input)
   { 
+    this.foundWords=[]
+    this.scollDistances=[]
+    
+
+    let word=input.value;
+
+    if(word=='')
+    {
+      this.currentSearch=false;
+      this.clearMarks()
+    }
+
+    else
+    {
+    if(word.charAt(0)=="-" && word.charAt(1)=="-")
+    {
+      this.testChat(input)
+    }
+    else
+    {
+
+   
+
+    this.currentSearch=true;
+
     let i=0;
     
     let numbermessage=0;
@@ -173,24 +265,84 @@ export class MessageContentComponent implements OnInit
           numbermessage=i
           indexmessage=messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase());
           currentMessage=messages;
+
+          this.foundWords.push(currentMessage)
+          this.scollDistances.push(this.scrollVariation(numbermessage,this.messagesLenght))
           
         }
         i++;
-      console.log("Encontre en el mensaje Nº "+i+" en el indice: "+messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase()))
       }
     }
 
-    this.chatContent.nativeElement.scrollTop=this.scrollVariation(numbermessage,i)
+    console.log(this.scollDistances)
+    console.log(this.foundWords)
 
-    if (currentMessage!=null){
-      currentMessage.content=currentMessage.content.replace(word,'<mark>'+word+'</mark>')
 
-    }
+   // this.chatContent.nativeElement.scrollTop=this.scrollVariation(numbermessage,i)
+
+    this.chatContent.nativeElement.scrollTop=this.scollDistances[0]
+
+    
+
+    // if (currentMessage!=null){
+    //   currentMessage.content=currentMessage.content.replace(word,'<mark>'+word+'</mark>')
+    //   this.currentSearch=true;
+
+    // }
+       if (this.foundWords[0]!=undefined)
+       {
+        console.log(word)
+        console.log(this.lastSearchWord)
+
+      
+        if(word!==this.lastSearchWord)
+        {
+          this.clearMarks()
+          this.foundWords[0].content=this.foundWords[0].content.replace(word,'<mark>'+word+'</mark>')
+          this.lastSearchWord=word;
+          
+         }
+       this.currentSearch=true;
+
+     }
     else{
       this.openSnackbar("No se enontraron resultados para: "+word)
     }
+    }
+    }
+
+    
+    
 
 
+  }
+
+  resetMark(word)
+  {
+    
+    let currentMessage=null;
+
+    for(let module of this.chatModules)
+    {
+      for(let messages of module.messages)
+      {
+        if (messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase())!=-1)
+        {
+          currentMessage=messages;
+
+          currentMessage.content=currentMessage.content.replace(word,'')
+
+          
+        }
+        
+      }
+    }
+  }
+
+  clearMarks(){
+    this.resetMark('<mark>')
+    this.resetMark('</mark>')
+    
   }
 
 
@@ -202,7 +354,11 @@ export class MessageContentComponent implements OnInit
   {
     console.log(numberMessage+'   '+cantMessages)
     
-    let variation=(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight)/cantMessages*numberMessage
+    let scrollTop=this.chatContent.nativeElement.scrollTop
+    let scrollHeight=this.chatContent.nativeElement.scrollHeight
+    let clientHeight=this.chatContent.nativeElement.clientHeight
+
+    let variation=(scrollHeight-clientHeight)/cantMessages*numberMessage
     console.log(variation)
     return variation
   }
@@ -218,9 +374,7 @@ export class MessageContentComponent implements OnInit
     let regExp=/^([0-9])*$/
 
     let inputContent=input.value.split(" -")
-    console.log(inputContent)
-
-    console.log(regExp.test(inputContent[1]))
+   
 
     if (inputContent[0]=="--start-test")
     {

@@ -210,7 +210,7 @@ button:focus{
 }
 .chat-content::-webkit-scrollbar
 {
-   display: none;
+   //display: none;
 }
 .chat-input
 {
@@ -255,6 +255,21 @@ button:focus{
     background-color: transparent;
     box-shadow: none;
     user-select: none;
+    border: none;
+    
+}
+
+.no-button:disabled{
+    filter: grayscale(2);
+}
+
+.navigate-button
+{
+    width: 10px;
+    height: 10px;
+    background-color: $gray-1;
+    border-radius: 50%;
+    padding: 0.3em;
 }
 
 
@@ -336,7 +351,9 @@ $duration: 1s,1.5s,2s,2.5s;
    // transform: translateX(-20px);
 }
 
-
+.button-menu:hover{
+    box-shadow: none;
+}
 
 .wrong-send .error-pin
 {
@@ -364,13 +381,10 @@ $duration: 1s,1.5s,2s,2.5s;
 }
 .button-menu:hover
 {
-    transform: scale(1.15);
-    box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.199) ;
+    box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.199) ;
 }
 
-.button-menu7:hover{
-    transform: scale(1);
-}
+
 
 .error-pin:hover{
     transform: scale(1.1);
