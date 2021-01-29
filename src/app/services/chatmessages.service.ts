@@ -33,14 +33,14 @@ constructor()
   let chatSender2=new ChatModule('autor');
 
   chatSender2.addChatMessage(new ChatMessage("<p>Dale muchisimas gracias entonces espero su pronta respuesta</p>",new Date(),true))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
-  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),false))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
+  chatSender2.addChatMessage(new ChatMessage("haya",new Date(),true))
   
 
 

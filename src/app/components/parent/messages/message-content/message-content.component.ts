@@ -44,6 +44,8 @@ export class MessageContentComponent implements OnInit
   @ViewChild('buttonBottom') bottomButton: ElementRef;
   @ViewChild('buttonSearch') search: ElementRef;
   @ViewChild('chatInputContent') inputContent: ElementRef;
+  @ViewChildren('chatItem') chatItems: QueryList<ElementRef>;
+
 
   finalizetest:boolean;
 
@@ -268,7 +270,8 @@ export class MessageContentComponent implements OnInit
           currentMessage=messages;
 
           this.foundWords.push(currentMessage)
-          this.scollDistances.push(this.scrollVariation(numbermessage,this.messagesLenght))
+         //this.scollDistances.push(this.scrollVariation(numbermessage,this.messagesLenght))
+         this.scollDistances.push(this.calculateVariation(numbermessage))
           
         }
         i++;
@@ -489,7 +492,29 @@ hideInputSearch()
     this.chat.nativeElement.style.transform="translateX(0)"
     this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
     this.chatOpen=true;
+
+    this.chatItems.forEach(function(element)
+    {
+      
+      console.log(element.nativeElement.clientHeight)
+    })
     
+  }
+
+  calculateVariation(index) :number
+  {
+    let retorno=0;
+    let i=0;
+
+    this.chatItems.forEach(function(element)
+    {
+      if (i<index)
+      {
+        retorno+=(element.nativeElement.clientHeight)
+        i++
+      }
+    })
+    return retorno;
   }
 
   goBottom()

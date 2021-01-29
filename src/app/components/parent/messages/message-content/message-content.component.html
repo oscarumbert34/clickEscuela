@@ -63,7 +63,7 @@
 
     <div *ngFor="let chat of chatModules" class="chat-module" [ngClass]="{'autor': chat.autor=='autor', 'sender': chat.autor=='receiver' }">
       
-      <div *ngFor="let message of chat.messages;" class="chat-item" [ngClass]="{'multiple': chat.messages.length>=2,'left-align': chat.autor=='receiver', 'right-align': chat.autor=='autor', 'wrong-send' : !message.success}">
+      <div *ngFor="let message of chat.messages;" class="chat-item" [ngClass]="{'multiple': chat.messages.length>=2,'left-align': chat.autor=='receiver', 'right-align': chat.autor=='autor', 'wrong-send' : !message.success}" #chatItem>
 
         <p style="margin-right: 0.5em;" [innerHTML]="message.content"></p>
         <!-- <p style="color:black"> {{chat.messages[chat.messages.length-1].date  | date: 'hh:mm a'}}</p> -->
