@@ -181,7 +181,11 @@ export class MessageContentComponent implements OnInit
       this.search.nativeElement.childNodes[3].focus()
 
     }else{
+      this.foundResults=[]
+      this.scrollRanges=[]
+      this.currentSearch=false;
       this.clearMarks()
+      this.goBottom()
       this.search.nativeElement.style.width='35px';
       this.openSearch=false;
       this.search.nativeElement.childNodes[3].value=""
