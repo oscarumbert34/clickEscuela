@@ -47,6 +47,7 @@ export class MessageContentComponent implements OnInit
   @ViewChildren('chatItem') chatItems: QueryList<ElementRef>;
 
 
+
   finalizetest:boolean;
 
   chatOpen:boolean;
@@ -59,8 +60,11 @@ export class MessageContentComponent implements OnInit
 
   currentSearch:boolean;
 
-  foundWords:ChatMessage[];
-  scollDistances:number[];
+
+  foundResults:ChatMessage[];
+  scrollRanges:number[];
+  indexResults:number[];
+  windowHeight:number;
 
   currentWord:number
 
@@ -93,11 +97,14 @@ export class MessageContentComponent implements OnInit
 
     this.currentSearch=false;
 
-    this.foundWords=[]
-    this.scollDistances=[]
+    this.foundResults=[]
+    this.scrollRanges=[]
+    this.indexResults=[]
    this.currentWord=0
 
    this.messagesLenght=chatmoduleService.messagesLenght
+
+   this.windowHeight=window.innerWidth
   
     
 
@@ -121,7 +128,7 @@ export class MessageContentComponent implements OnInit
 
   nextWord()
   {
-    if(this.foundWords.length-1==this.currentWord)
+    if(this.foundResults.length-1==this.currentWord)
     {
       this.currentWord=0;
     }
@@ -134,11 +141,11 @@ export class MessageContentComponent implements OnInit
 
 
     this.clearMarks()
-    this.chatContent.nativeElement.scrollTop=this.scollDistances[this.currentWord]
-    this.foundWords[this.currentWord].content=this.foundWords[this.currentWord].content.replace(this.lastSearchWord,'<mark>'+this.lastSearchWord+'</mark>')
+    this.chatContent.nativeElement.scrollTop=this.scrollRanges[this.currentWord]
+    this.foundResults[this.currentWord].content=this.foundResults[this.currentWord].content.replace(this.lastSearchWord,'<mark>'+this.lastSearchWord+'</mark>')
 
-    console.log(this.scollDistances)
-    console.log(this.foundWords)
+    console.log(this.scrollRanges)
+    console.log(this.foundResults)
 
 
   }
@@ -147,7 +154,7 @@ export class MessageContentComponent implements OnInit
   {
     if(this.currentWord==0)
     {
-      this.currentWord=this.foundWords.length-1;
+      this.currentWord=this.foundResults.length-1;
     }
     else
     {
@@ -155,11 +162,11 @@ export class MessageContentComponent implements OnInit
     }
     console.log(this.currentWord)
     this.clearMarks()
-    this.chatContent.nativeElement.scrollTop=this.scollDistances[this.currentWord]
-    this.foundWords[this.currentWord].content=this.foundWords[this.currentWord].content.replace(this.lastSearchWord,'<mark>'+this.lastSearchWord+'</mark>')
+    this.chatContent.nativeElement.scrollTop=this.scrollRanges[this.currentWord]
+    this.foundResults[this.currentWord].content=this.foundResults[this.currentWord].content.replace(this.lastSearchWord,'<mark>'+this.lastSearchWord+'</mark>')
 
-    console.log(this.scollDistances)
-    console.log(this.foundWords)
+    console.log(this.scrollRanges)
+    console.log(this.foundResults)
   }
 
 
@@ -228,8 +235,9 @@ export class MessageContentComponent implements OnInit
 
   searchWord(input)
   { 
-    this.foundWords=[]
-    this.scollDistances=[]
+    console.log(this.chatContent.nativeElement.clientWidth)
+    this.foundResults=[]
+    this.scrollRanges=[]
     this.messagesLenght=this.chatmoduleService.messagesLenght
     
 
@@ -264,37 +272,38 @@ export class MessageContentComponent implements OnInit
     {
       for(let messages of module.messages)
       {
-        if (messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase())!=-1){
+        if (messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase())!=-1)
+        {
           numbermessage=i
           indexmessage=messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase());
           currentMessage=messages;
 
-          this.foundWords.push(currentMessage)
-         //this.scollDistances.push(this.scrollVariation(numbermessage,this.messagesLenght))
-         this.scollDistances.push(this.calculateVariation(numbermessage))
+          this.foundResults.push(currentMessage)
+          this.scrollRanges.push(this.calculateVariation(numbermessage))
+          this.indexResults.push(numbermessage)
           
         }
         i++;
       }
     }
 
-    console.log(this.scollDistances)
-    console.log(this.foundWords)
+    console.log(this.scrollRanges)
+    console.log(this.foundResults)
 
 
    // this.chatContent.nativeElement.scrollTop=this.scrollVariation(numbermessage,i)
 
-    this.chatContent.nativeElement.scrollTop=this.scollDistances[0]
-
-    
-
-    // if (currentMessage!=null){
-    //   currentMessage.content=currentMessage.content.replace(word,'<mark>'+word+'</mark>')
-    //   this.currentSearch=true;
-
-    // }
-       if (this.foundWords[0]!=undefined)
-       {
+   
+   
+   
+   // if (currentMessage!=null){
+     //   currentMessage.content=currentMessage.content.replace(word,'<mark>'+word+'</mark>')
+     //   this.currentSearch=true;
+     
+     // }
+     if (this.foundResults[0]!=undefined)
+     {
+        this.chatContent.nativeElement.scrollTop=this.scrollRanges[0]
         console.log(word)
         console.log(this.lastSearchWord)
 
@@ -302,15 +311,21 @@ export class MessageContentComponent implements OnInit
         if(word!==this.lastSearchWord)
         {
           this.clearMarks()
-          this.foundWords[0].content=this.foundWords[0].content.replace(word,'<mark>'+word+'</mark>')
+          this.foundResults[0].content=this.foundResults[0].content.replace(word,'<mark>'+word+'</mark>')
           this.lastSearchWord=word;
           
          }
        this.currentSearch=true;
 
      }
-    else{
-      this.openSnackbar("No se enontraron resultados para: "+word)
+    else
+    {
+      this.openSnackbar("No se enontraron resultados para: '"+word+"'")
+      this.foundResults=[]
+      this.scrollRanges=[]
+      this.currentSearch=false;
+      this.clearMarks()
+      this.goBottom()
     }
     }
     }
@@ -342,6 +357,20 @@ export class MessageContentComponent implements OnInit
       }
     }
   }
+
+  recalculateScrollRanges()
+  {
+    
+    this.scrollRanges=[]
+    
+    for(let index of this.indexResults)
+    {
+      this.scrollRanges.push(this.calculateVariation(index))
+    }
+
+    this.chatContent.nativeElement.scrollTop=this.scrollRanges[0]
+  }
+
 
   clearMarks(){
     this.resetMark('<mark>')
@@ -467,9 +496,9 @@ hideInputSearch()
     this.dataSource.sort = this.sort;
 
 
-
-    
   }
+
+ 
 
   
 
@@ -517,6 +546,10 @@ hideInputSearch()
     return retorno;
   }
 
+  
+
+
+
   goBottom()
   {
     this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
@@ -529,8 +562,17 @@ hideInputSearch()
   }
   showScroll()
   {
-    console.log("holis")
-    if (Math.round(this.chatContent.nativeElement.scrollTop+1) <(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight)){
+    console.log(window.innerWidth)
+
+    if (this.windowHeight!=window.innerWidth)
+    {
+      console.log(window.innerWidth)
+      this.windowHeight=window.innerWidth
+      this.recalculateScrollRanges()
+
+    }
+    if (Math.round(this.chatContent.nativeElement.scrollTop+1) <(this.chatContent.nativeElement.scrollHeight-this.chatContent.nativeElement.clientHeight))
+    {
       this.bottomButton.nativeElement.style.opacity="1"
 
     }
