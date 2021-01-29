@@ -181,6 +181,7 @@ export class MessageContentComponent implements OnInit
       this.search.nativeElement.childNodes[3].focus()
 
     }else{
+      this.clearMarks()
       this.search.nativeElement.style.width='35px';
       this.openSearch=false;
       this.search.nativeElement.childNodes[3].value=""
@@ -368,7 +369,10 @@ export class MessageContentComponent implements OnInit
       this.scrollRanges.push(this.calculateVariation(index))
     }
 
-    this.chatContent.nativeElement.scrollTop=this.scrollRanges[0]
+    if (this.scrollRanges.length>0){
+
+      this.chatContent.nativeElement.scrollTop=this.scrollRanges[0]
+    }
   }
 
 
@@ -566,7 +570,7 @@ hideInputSearch()
 
     if (this.windowHeight!=window.innerWidth)
     {
-      console.log(window.innerWidth)
+      console.log(this.scrollRanges)
       this.windowHeight=window.innerWidth
       this.recalculateScrollRanges()
 
