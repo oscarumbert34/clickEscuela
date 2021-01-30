@@ -59,6 +59,7 @@ export class MessageContentComponent implements OnInit
   lastSearchWord:string
 
   currentSearch:boolean;
+  minimizedChat:boolean;
 
 
   foundResults:ChatMessage[];
@@ -105,6 +106,7 @@ export class MessageContentComponent implements OnInit
    this.messagesLenght=chatmoduleService.messagesLenght
 
    this.windowHeight=window.innerWidth
+   this.minimizedChat=false;
   
     
 
@@ -524,6 +526,23 @@ hideInputSearch()
     this.chatOpen=false
   }
   
+  minimizeChat()
+  {
+    if (!this.minimizedChat)
+    {
+  console.log( this.chat.nativeElement.style.height)
+      this.chat.nativeElement.style.height="10vh"
+      this.minimizedChat=true;
+    }
+    else{
+   
+  console.log( this.chat.nativeElement.style.height)
+      this.chat.nativeElement.style.height="100vh"
+    this.minimizedChat=false;
+    }
+        
+    
+  }
   openChat()
   {
     this.chat.nativeElement.style.transform="translateX(0)"

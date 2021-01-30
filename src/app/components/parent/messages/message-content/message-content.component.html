@@ -39,7 +39,7 @@
 
     </button>
     
-    <button class="button-menu close-chat" (click)="clearMarks()" [ngClass]="{'button-animate': chatOpen}">
+    <button class="button-menu close-chat" (click)="minimizeChat()" [ngClass]="{'button-animate': chatOpen}">
       <img  width="15px" src="./assets/images/option.svg"  alt="">
 
     </button>
@@ -161,7 +161,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{row.content}}</p>
-            <button mat-button class="chat-button" (click)="openChat(); chatInputContent.focus()">Abrir chat</button>
+            <button mat-button class="chat-button" (click)="openChat(); !minimizedChat ? chatInputContent.focus() : any">Abrir chat</button>
 
           </mat-expansion-panel>
         
