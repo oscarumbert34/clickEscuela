@@ -123,22 +123,16 @@ textarea{
     position: absolute;
     right: 0;
   }
-}
-
-#column1,#column2,#column3,#column4,#column5,#column6{
-  width: 300px;
-}
-
-.mat-list-base
+  .chat-container
 {
-  margin-left: 2px !important;
+  background-color: black;
+  width: 83.5vw;
+}
 }
 
-::ng-deep .mat-focus-indicator{
-  width: 100%;
-}
 
 }
+
 
 
 .mat-tab-group

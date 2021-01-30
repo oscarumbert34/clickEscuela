@@ -545,7 +545,7 @@ hideInputSearch()
   }
   openChat()
   {
-    this.chat.nativeElement.style.transform="translateX(0)"
+    this.chat.nativeElement.style.transform="translateX(-1%)"
     this.chatContent.nativeElement.scrollTop=this.chatContent.nativeElement.scrollHeight;
     this.chatOpen=true;
 
