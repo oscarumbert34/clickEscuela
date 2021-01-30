@@ -531,7 +531,7 @@ hideInputSearch()
     if (!this.minimizedChat)
     {
   console.log( this.chat.nativeElement.style.height)
-      this.chat.nativeElement.style.height="10vh"
+      this.chat.nativeElement.style.height="9vh"
       this.minimizedChat=true;
     }
     else{
