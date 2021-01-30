@@ -138,7 +138,7 @@
       </th>
 
       
-      <td mat-cell *matCellDef="let row; let index=index">
+      <td mat-cell *matCellDef="let row; let index=index;">
 
           <mat-expansion-panel (opened)="panelOpenState = true"
                                (closed)="panelOpenState = false">
@@ -146,8 +146,11 @@
 
             <mat-expansion-panel-header (click)="setColor(index)" (keyup.enter)="setColor(index)" >
               <mat-panel-title>
-                <div class="user-avatar" [style.backgroundColor]="getColor(index)"  #userAvatar>
-                  <!-- <img  width="20px" src="./assets/images/save.svg" alt=""> -->
+                <div class="user-avatar" [style.backgroundColor]="getColor(index)"  #userAvatar >
+                  
+                 <img *ngIf="row.avatarImg!='', else initial"   [src]="'./assets/images/teachers/'+row.avatarImg+'.jpg'" alt="">
+                  
+                 <ng-template #initial></ng-template>
                   <p>{{row.sender | firstLetter: 'first'}}</p>
                 </div>
                 {{row.sender}}

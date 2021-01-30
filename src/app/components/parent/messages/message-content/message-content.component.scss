@@ -101,7 +101,14 @@ th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:la
     margin-right: 10px;
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.568);
+    overflow: hidden;
     
+}
+
+.user-avatar img
+{
+    width: 110%;
+    margin-left: 1em;
 }
 
 .user-avatar p{
