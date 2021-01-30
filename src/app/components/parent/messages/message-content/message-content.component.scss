@@ -40,6 +40,12 @@ table{
 ::ng-deep .mat-content{
     align-items: center !important;
     width: 80px;
+    
+}
+
+.rotated{
+    transform: rotateX(180deg);
+    transform-style: preserve-3d;
 }
 
 :root {

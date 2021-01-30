@@ -39,7 +39,7 @@
 
     </button>
     
-    <button class="button-menu close-chat" (click)="minimizeChat()" [ngClass]="{'button-animate': chatOpen}">
+    <button class="button-menu close-chat" (click)="minimizeChat()" [ngClass]="{'button-animate': chatOpen}" [ngClass]="{'rotated': minimizedChat}">
       <img  width="15px" src="./assets/images/option.svg"  alt="">
 
     </button>
