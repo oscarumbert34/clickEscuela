@@ -233,7 +233,8 @@ export class MessageContentComponent implements OnInit {
 
 
 
-  searchWord(input) {
+  searchWord(input) 
+  {
     console.log(this.chatContent.nativeElement.clientWidth)
     this.foundResults = []
     this.scrollRanges = []
@@ -265,9 +266,9 @@ export class MessageContentComponent implements OnInit {
 
         for (let module of this.chatModules) {
           for (let messages of module.messages) {
-            if (messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase()) != -1) {
+            if (messages.content.search(word) != -1) {
               numbermessage = i
-              indexmessage = messages.content.toLocaleLowerCase().search(word.toLocaleLowerCase());
+              indexmessage = messages.content.search(word);
               currentMessage = messages;
 
               this.foundResults.push(currentMessage)
@@ -471,6 +472,14 @@ export class MessageContentComponent implements OnInit {
        this.minimizeChat()
      }
     })
+
+    
+    this.renderer.listen("chatContent","click", ($event)=>
+    {
+      console.log("hola")
+    })
+
+    
 
 
   }
