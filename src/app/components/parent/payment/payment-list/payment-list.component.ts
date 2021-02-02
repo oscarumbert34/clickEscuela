@@ -20,7 +20,8 @@ export class PaymentListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: any;
   currentDate= new Date()
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
 
   paymentList: Payment[];

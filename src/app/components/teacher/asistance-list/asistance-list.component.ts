@@ -16,7 +16,8 @@ export class AsistanceListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: any;
   currentDate= new Date()
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild('picker') picker: MatDatepicker<Date>;
@@ -113,12 +114,16 @@ export class AsistanceListComponent implements OnInit {
     {
     this.takeAsistance=!this.takeAsistance;
     this.dataSource.data=this.asistanceListAux;
+    this.paginator.pageSize=this.asistanceListAux.length;
+    this.refreshTable()
 
     }
     else
     {
-      this.refreshTable()
       this.takeAsistance=!this.takeAsistance;
+      this.paginator.pageSize=5;
+      this.refreshTable()
+      
 
 
     }

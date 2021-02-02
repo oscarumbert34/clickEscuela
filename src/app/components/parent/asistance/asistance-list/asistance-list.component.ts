@@ -18,7 +18,8 @@ export class AsistanceListComponent implements OnInit
   displayedColumns: string[];
   dataSource: any;
   currentDate= new Date()
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
 
   asistanceList: AsistanceParent[];

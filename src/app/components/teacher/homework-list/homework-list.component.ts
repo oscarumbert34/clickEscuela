@@ -19,7 +19,8 @@ export class HomeworkListComponent implements OnInit {
   dataSource: any;
  
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
   homeworkList=[];
   

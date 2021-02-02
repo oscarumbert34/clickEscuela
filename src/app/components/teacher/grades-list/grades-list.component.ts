@@ -21,7 +21,8 @@ export class GradesListComponent implements OnInit {
   dataSource: any;
   gradesArray: Grade[] = new Array(5);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('student') student: ElementRef;
 

@@ -35,7 +35,8 @@ export class MessageContentComponent implements OnInit {
   @Input() currentTab;
 
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChildren('userAvatar') avatars: QueryList<HTMLDivElement>;
   @ViewChild('chatContainer') chat: ElementRef;

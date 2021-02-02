@@ -22,7 +22,8 @@ export class ReportCardListComponent implements OnInit {
   dataSource: any;
  
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(studentService: studentService,public dialog: MatDialog,private reportCardService: ReportCardService) 
