@@ -80,7 +80,7 @@ export class MessageContentComponent implements OnInit {
 
 
   constructor(private messageService: MessagesService, private chatmoduleService: ChatmessagesService, private snackbar: MatSnackBar, private renderer: Renderer2) {
-    this.messageList = this.messageService.messageList
+    this.messageList = []
     this.colors = ['#049dd975', '#14a6479c', '#f2c84b7c', '#f24e2975', '#f2b9b37e'];
     this.selectedColor = this.randomColor()
 
@@ -164,6 +164,19 @@ export class MessageContentComponent implements OnInit {
     console.log(this.scrollRanges)
     console.log(this.foundResults)
   }
+
+  applyFilter(event: Event)
+  {
+
+    
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+    console.log(this.dataSource.filter)
+   if (this.dataSource.paginator) {
+     this.dataSource.paginator.firstPage();
+   }
+ }
 
 
 
@@ -455,7 +468,7 @@ export class MessageContentComponent implements OnInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = this.messageList
+   // this.dataSource.data = this.messageList
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
@@ -473,16 +486,32 @@ export class MessageContentComponent implements OnInit {
      }
     })
 
-    
-    this.renderer.listen("chatContent","click", ($event)=>
-    {
-      console.log("hola")
-    })
+  
+
+    this.trimMessages()
 
     
 
 
   }
+
+  trimMessages()
+  {
+
+console.log(this.messageList)
+if (this.currentTab=="Mensajes")
+{
+  this.messageList=this.messageService.messageList.filter(a => a.type==this.currentTab.slice(0,-1))
+    this.dataSource.data=this.messageList
+}
+else if (this.currentTab=="Notificaciones")
+{
+  this.messageList=this.messageService.messageList.filter(a => a.type==this.currentTab.slice(0,-2))
+    this.dataSource.data=this.messageList
+}
+  }
+
+ 
 
 
 
