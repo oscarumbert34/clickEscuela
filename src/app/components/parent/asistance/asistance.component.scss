@@ -20,7 +20,14 @@
 .eye:hover  .line6
 {
     stroke-dashoffset:0  ;
+    
+    
+    
   
+}
+
+.eye:hover svg{
+    fill: #448f31c5;
 }
 
 .eye:hover .pupila{
