@@ -35,7 +35,7 @@ export class MessageContentComponent implements OnInit {
   @Input() currentTab;
 
 
-  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChildren('userAvatar') avatars: QueryList<HTMLDivElement>;
@@ -118,7 +118,7 @@ export class MessageContentComponent implements OnInit {
     this.shake = false;
   }
 
-  
+
 
   openSnackbar(message: string) {
     this.snackbar.open(message, '', {
@@ -128,8 +128,7 @@ export class MessageContentComponent implements OnInit {
   }
 
   nextWord() {
-    if (this.foundResults.length - 1 == this.currentWord) 
-    {
+    if (this.foundResults.length - 1 == this.currentWord) {
       this.currentWord = 0;
     }
     else {
@@ -165,18 +164,17 @@ export class MessageContentComponent implements OnInit {
     console.log(this.foundResults)
   }
 
-  applyFilter(event: Event)
-  {
+  applyFilter(event: Event) {
 
-    
+
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    
+
     console.log(this.dataSource.filter)
-   if (this.dataSource.paginator) {
-     this.dataSource.paginator.firstPage();
-   }
- }
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
 
 
@@ -240,14 +238,13 @@ export class MessageContentComponent implements OnInit {
 
   }
 
-  keySearch($event){
+  keySearch($event) {
     console.log($event)
   }
 
 
 
-  searchWord(input) 
-  {
+  searchWord(input) {
     console.log(this.chatContent.nativeElement.clientWidth)
     this.foundResults = []
     this.scrollRanges = []
@@ -468,50 +465,44 @@ export class MessageContentComponent implements OnInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
-   // this.dataSource.data = this.messageList
+    // this.dataSource.data = this.messageList
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    this.renderer.listen("document","keydown", ($event)=>
-    {
-     if ($event.key=="b" && $event.ctrlKey)
-     {
-       
-       this.viewInputSearch()
-     }
-     if ($event.key=="m" && $event.ctrlKey)
-     {
-       
-       this.minimizeChat()
-     }
+    this.renderer.listen("document", "keydown", ($event) => {
+      if ($event.key == "b" && $event.ctrlKey) {
+
+        this.viewInputSearch()
+      }
+      if ($event.key == "m" && $event.ctrlKey) {
+
+        this.minimizeChat()
+      }
     })
 
-  
+
 
     this.trimMessages()
 
-    
+
 
 
   }
 
-  trimMessages()
-  {
+  trimMessages() {
 
-console.log(this.messageList)
-if (this.currentTab=="Mensajes")
-{
-  this.messageList=this.messageService.messageList.filter(a => a.type==this.currentTab.slice(0,-1))
-    this.dataSource.data=this.messageList
-}
-else if (this.currentTab=="Notificaciones")
-{
-  this.messageList=this.messageService.messageList.filter(a => a.type==this.currentTab.slice(0,-2))
-    this.dataSource.data=this.messageList
-}
+    console.log(this.messageList)
+    if (this.currentTab == "Mensajes") {
+      this.messageList = this.messageService.messageList.filter(a => a.type == this.currentTab.slice(0, -1))
+      this.dataSource.data = this.messageList
+    }
+    else if (this.currentTab == "Notificaciones") {
+      this.messageList = this.messageService.messageList.filter(a => a.type == this.currentTab.slice(0, -2))
+      this.dataSource.data = this.messageList
+    }
   }
 
- 
+
 
 
 
