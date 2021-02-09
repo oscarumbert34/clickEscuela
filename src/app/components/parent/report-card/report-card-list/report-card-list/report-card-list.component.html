@@ -23,7 +23,7 @@
       <th id="column3" mat-header-cell *matHeaderCellDef mat-sort-header>Ver archivo</th>
       <td mat-cell *matCellDef="let row; let index=index">
 
-        <div class="container-fluid" class="eye" (click)="downloadPDF(index)">
+        <div class="container-fluid" class="eye" (click)="confirmDownload(row.name+' '+row.surname,index)">
 
           <svg id="eye" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 428.23 403.41">
             <defs>
