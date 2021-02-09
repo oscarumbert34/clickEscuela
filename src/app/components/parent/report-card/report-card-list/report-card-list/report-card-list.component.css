@@ -24,11 +24,16 @@
   
 }
 
+.pupila
+{
+    opacity: 0;
+}
+
 .eye:hover .pupila{
     animation-duration: 0.3s;
     animation-name: titile;
-    animation-iteration-count: 2;
-    ;
+    animation-iteration-count: 3;
+    opacity: 1;
 }
 
 @keyframes titile{

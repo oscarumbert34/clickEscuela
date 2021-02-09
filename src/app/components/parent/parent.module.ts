@@ -38,7 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { matTooltipAnimations, MatTooltipModule } from '@angular/material/tooltip';
 import { GradesListComponent } from './grades/grades-list/grades-list.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -46,7 +46,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent,PaymentListComponent,GradesComponent,GradesListComponent,MessageContentComponent,FirstLetterPipe, ReportCardListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, FirstLetterPipe, ReportCardListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -58,7 +58,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatInputModule,
     MatButtonModule,
     FormsModule,
- 
+
     MatTabsModule,
     MatAutocompleteModule,
     MatDividerModule,
@@ -76,7 +76,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule,MatCheckboxModule,MatTooltipModule,MatProgressSpinnerModule,MatExpansionModule,MatRippleModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
   ]
 
 })

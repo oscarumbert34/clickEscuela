@@ -17,26 +17,24 @@ export class ReportCardListComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: any;
-  currentDate= new Date()
-  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+  currentDate = new Date()
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
 
   reportCardList: ReportCard[];
 
-  
 
-  constructor(private reportCardService: ReportCardService) 
-  {
-    this.reportCardList= reportCardService.reportCardList
+
+  constructor(private reportCardService: ReportCardService) {
+    this.reportCardList = reportCardService.reportCardList
   }
 
-  ngOnInit() 
-  {
-    this.displayedColumns = ['name','surname','download'];
+  ngOnInit() {
+    this.displayedColumns = ['name', 'surname', 'download'];
 
 
- 
+
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = this.reportCardList;
@@ -45,42 +43,40 @@ export class ReportCardListComponent implements OnInit {
 
   }
 
-  public downloadPDF(index): void 
-  {
-    let date=new Date()
-    let billname='bill'+date.getDate()+date.getHours()+date.getSeconds()
+  public downloadPDF(index): void {
+    let date = new Date()
+    let billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds()
 
-    let reportCard=this.reportCardList[index]
+    let reportCard = this.reportCardList[index]
     console.log(reportCard)
 
     const doc = new jsPDF();
 
-    
+
     let src = 'D:/clickEscuela/src/assets/images/payOK.jpg'
 
     var imgData = btoa(src)
     //doc.addImage(imgData, 'jpg', 10, 78, 12, 15)
 
 
-    let lineOffset=10;
-    var columns=["Materia","Nota"]
-    var data=[];
+    let lineOffset = 10;
+    var columns = ["Materia", "Nota"]
+    var data = [];
 
-    for (let [clave,valor] of reportCard.matters)
-    {
-      data.push([clave,valor])
+    for (let [clave, valor] of reportCard.matters) {
+      data.push([clave, valor])
     }
     console.log(data)
 
-    doc.autoTable(columns,data,
-      { margin:{ top: 25 }}
-      );
+    doc.autoTable(columns, data,
+      { margin: { top: 25 } }
+    );
 
 
 
 
 
-    doc.save(billname+'.pdf');
+    doc.save(billname + '.pdf');
   }
 
 }

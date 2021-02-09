@@ -154,3 +154,50 @@ p{
      height: 60px;
      width: 60px;
  }
+ 
+
+ 
+.svg-content svg{
+    width: 40px;
+    margin-left: 1em;
+}
+
+.svg-content{cursor: pointer;}
+
+#star1,#star2,#star3,#star4
+{
+    opacity: 0;
+}
+
+.svg-content:hover #star1,
+.svg-content:hover #star2,
+.svg-content:hover #star3,
+.svg-content:hover #star4
+{
+animation-name: shine;
+animation-duration: 2.5s;
+animation-iteration-count: infinite;
+transform-origin: center center;
+}
+
+#star1{
+    animation-delay: 0.3s;
+}
+#star2{
+    animation-delay: 0.6s;
+}
+#star3{
+    animation-delay: 0.9s;
+}
+#star4{
+    animation-delay: 1.2s;
+}
+
+@keyframes shine{
+    0%,20%{opacity: 0; transform: scale(1); filter: saturate(0);}
+    20%,40%{opacity: 1; transform: scale(1.6); filter: saturate(20%);}
+    40%,60%{opacity: 1; transform: scale(1); filter: saturate(100%);}
+    60%,80%{opacity: 1; transform: scale(1.4); filter: saturate(40%);}
+    80%,100%{opacity: 0; transform: scale(1); filter: saturate(0);}
+
+}
