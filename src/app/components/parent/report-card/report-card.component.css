@@ -7,13 +7,13 @@
 
 .svg-content:hover .hi
 {
-animation-name: twist;
+animation-name: launch;
 animation-duration: 2s;
 animation-iteration-count: infinite;
 transform-origin: center 
 }
 
-@keyframes twist{
+@keyframes launch{
     0%,20%{transform: translateY(0px) rotate(0deg); }
     20%,40%{transform: translateY(-100px) rotate(50deg); }
     40%,60%{transform: translateY(-600px) rotate(360deg); }

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ParentModule } from './components/parent/parent.module';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -44,7 +45,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule
 
     ],
   providers: [],
