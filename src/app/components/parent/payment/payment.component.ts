@@ -26,6 +26,7 @@ export class PaymentComponent implements OnInit {
     this.nextExpiration.setDate(12)
     this.nextExpiration.setMonth(3)
     this.paymentList = paymentService.paymentList
+    this.faultpayments=[]
 
   }
 

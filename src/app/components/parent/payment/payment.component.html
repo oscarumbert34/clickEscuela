@@ -55,7 +55,7 @@
     </ng-template>
   </mat-card-content>
 
-  <mat-card-actions>
+  <mat-card-actions *ngIf="faultpayments.length>0">
     <button mat-button (click)="getDetail()">Ver detalle</button>
   </mat-card-actions>
 </mat-card>
