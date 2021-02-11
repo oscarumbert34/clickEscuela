@@ -10,8 +10,8 @@ import { GradesComponent } from './grades/grades.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 import { MatCardModule } from '@angular/material/card';
@@ -22,23 +22,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DecimalPipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationComponent } from '../commons/notification/notification.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { LoadDashboardComponent } from '../commons/load-dashboard/load-dashboard.component';
-import {MatMenu, MatMenuModule} from '@angular/material/menu';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatTableModule} from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { DashboardChartComponent } from '../commons/dashboard-chart/dashboard-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -51,17 +51,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HomeworkListComponent } from './homework-list/homework-list.component';
 import { AddHomeworkComponent } from './add-homework/add-homework.component';
 import { MenuComponent } from '../commons/menu/menu.component';
-import { AddReportCardComponent } from './addReportCard/addReportCard.component';
+import { AddReportCardComponent } from './add-report-card/add-report-card.component';
 
 
 @NgModule({
   declarations: [MenuComponent, NotificationComponent,
-                 HomeComponent, CoursesComponent, LoadDashboardComponent,
-                 DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
-                 PieChartComponent, HomeworkComponent, GradesComponent, AsistanceComponent,
-                 StudentsComponent, GradesListComponent, PopupMenuComponent, ConfirmDialogComponent,
-                 HomeworkListComponent, AddHomeworkComponent, AsistanceListComponent,
-                 ReportCardComponent, ReportCardListComponent, AddReportCardComponent],
+    HomeComponent, CoursesComponent, LoadDashboardComponent,
+    DashboardChartComponent, DashboardChartAdvanceComponent, DashboardVerticalComponent,
+    PieChartComponent, HomeworkComponent, GradesComponent, AsistanceComponent,
+    StudentsComponent, GradesListComponent, PopupMenuComponent, ConfirmDialogComponent,
+    HomeworkListComponent, AddHomeworkComponent, AsistanceListComponent,
+    ReportCardComponent, ReportCardListComponent, AddReportCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -89,7 +89,7 @@ import { AddReportCardComponent } from './addReportCard/addReportCard.component'
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule,MatCheckboxModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

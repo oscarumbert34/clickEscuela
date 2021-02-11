@@ -1,9 +1,11 @@
+import { ReportCardListComponent } from './report-card/report-card-list/report-card-list/report-card-list.component';
+import { FirstLetterPipe } from './../../pipes/firstLetter.pipe';
+import { MessageContentComponent } from './messages/message-content/message-content.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PaymentListComponent } from './payment/payment-list/payment-list.component';
 import { AsistanceListComponent } from './asistance/asistance-list/asistance-list.component';
 import { ParentMenuComponent } from './parent-menu/parent-menu.component';
-import { MenuComponent } from './../commons/menu/menu.component';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AsistanceComponent } from './asistance/asistance.component';
@@ -18,7 +20,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -36,13 +38,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { matTooltipAnimations, MatTooltipModule } from '@angular/material/tooltip';
 import { GradesListComponent } from './grades/grades-list/grades-list.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent,ParentMenuComponent,AsistanceListComponent,PaymentListComponent,GradesComponent,GradesListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, FirstLetterPipe, ReportCardListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -54,7 +58,7 @@ import { GradesListComponent } from './grades/grades-list/grades-list.component'
     MatInputModule,
     MatButtonModule,
     FormsModule,
- 
+
     MatTabsModule,
     MatAutocompleteModule,
     MatDividerModule,
@@ -72,7 +76,7 @@ import { GradesListComponent } from './grades/grades-list/grades-list.component'
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule,MatCheckboxModule,MatTooltipModule,MatProgressSpinnerModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
   ]
 
 })

@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor() { }
+  tabs: string[];
+
+  constructor() {
+    this.tabs = ["Mensajes", "Notificaciones"]
+  }
 
   ngOnInit(): void {
   }

@@ -10,80 +10,72 @@ import { Student } from 'src/app/models/student';
   templateUrl: './popupMenu.component.html',
   styleUrls: ['./popupMenu.component.scss']
 })
-export class PopupMenuComponent implements OnInit 
-{
+export class PopupMenuComponent implements OnInit {
   currentGrade: Grade;
   studentsList: Student[];
-  existData:boolean;
+  existData: boolean;
   localData: any;
-  constructor(public dialogRef: MatDialogRef<PopupMenuComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private gradesService: GradesService,private studentsService: studentService) 
-  { 
-    if(data.grade === undefined)
-    {
-    this.currentGrade=
-    {
-      student:'default',
-      code:'',
-      description: '',
-      matter: '', 
-      grade: 0
-    }
-    this.localData=
-    {
-      grade:
+  constructor(public dialogRef: MatDialogRef<PopupMenuComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private gradesService: GradesService, private studentsService: studentService) {
+    if (data.grade === undefined) {
+      this.currentGrade =
       {
-        student:"",
-        code:"",
-        description: "",
-        matter: "", 
+        student: 'default',
+        code: '',
+        description: '',
+        matter: '',
         grade: 0
       }
-      ,index:0
+      this.localData =
+      {
+        grade:
+        {
+          student: "",
+          code: "",
+          description: "",
+          matter: "",
+          grade: 0
+        }
+        , index: 0
+
+      }
+      this.existData = !!data.grade
 
     }
-    this.existData=!!data.grade
-    
+    else {
+      this.currentGrade = data.grade;
+      this.localData = data
     }
-    else
-    {
-      this.currentGrade=data.grade;
-      this.localData=data
-    }
-    
-    this.existData=!!data.grade;
-  
-    this.studentsList=[]
 
-    
+    this.existData = !!data.grade;
+
+    this.studentsList = []
+
+
   }
 
-  loadStudents(currentCourse)
-  {
+  loadStudents(currentCourse) {
     console.log(currentCourse)
-    this.studentsList=this.studentsService.studentsList.filter(a =>a.course==currentCourse);
+    this.studentsList = this.studentsService.studentsList.filter(a => a.course == currentCourse);
     console.log(this.studentsList)
   }
 
 
 
-  addGrade()
-  {
-    
+  addGrade() {
+
     this.gradesService.addGrade(this.currentGrade)
     console.log(this.gradesService.gradesList)
     this.dialogRef.close()
   }
 
-  modifyGrade()
-  {
-    
-    this.gradesService.modifyGrade(this.data.index,this.data.grade)
+  modifyGrade() {
+
+    this.gradesService.modifyGrade(this.data.index, this.data.grade)
     this.dialogRef.close()
   }
-  
 
-  ngOnInit()
-  {
+
+  ngOnInit() {
     console.log(this.data.grade)
   }
 

@@ -21,30 +21,29 @@ export class GradesListComponent implements OnInit {
   dataSource: any;
   gradesArray: Grade[] = new Array(5);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('student') student: ElementRef;
 
   @ViewChildren(GradesListComponent) listGrades: QueryList<GradesListComponent>;
 
   gradesList: Grade[];
-  
-  constructor(private gradeService: GradesService,public dialog: MatDialog) 
-  { 
-    
-    this.gradesList=new Array();
-    this.gradesList=gradeService.gradesList
-    
+
+  constructor(private gradeService: GradesService, public dialog: MatDialog) {
+
+    this.gradesList = new Array();
+    this.gradesList = gradeService.gradesList
+
   }
 
 
 
-  ngOnInit() 
-  {
+  ngOnInit() {
 
-    this.displayedColumns = ['student', 'description', 'matter', 'grade','actions'];
+    this.displayedColumns = ['student', 'description', 'matter', 'grade', 'actions'];
 
- 
+
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = this.gradesList;
@@ -60,73 +59,64 @@ export class GradesListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  deleteGrade(index)
-  {
+  deleteGrade(index) {
 
-      this.gradeService.deleteGrade(index);
-      this.refreshTable()
+    this.gradeService.deleteGrade(index);
+    this.refreshTable()
   }
 
-  modifyGrade(index,grade)
-  {
-    this.gradeService.modifyGrade(index,grade)
+  modifyGrade(index, grade) {
+    this.gradeService.modifyGrade(index, grade)
   }
 
-  confirmDelete(index)
-  {
-    this.confirmDialog("¿Desea eliminar la nota?",index);
+  confirmDelete(index) {
+    this.confirmDialog("¿Desea eliminar la nota?", index);
   }
 
-  confirmDialog(input,index)
-  {
-   
-     const dialogRef=this.dialog.open(ConfirmDialogComponent,
+  confirmDialog(input, index) {
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,
       {
-      data: input,
-      width: '60%',
-      height:'150px'}
-      )
+        data: input,
+        width: '60%',
+        height: '150px'
+      }
+    )
 
-    dialogRef.afterClosed().subscribe(result =>
-    {
-      if (result)
-      {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
         this.deleteGrade(index)
 
       }
     });
   }
 
-  openModify(index,grade)
-  {
-    const dialogRef=this.dialog.open(PopupMenuComponent,
+  openModify(index, grade) {
+    const dialogRef = this.dialog.open(PopupMenuComponent,
       {
 
-    data:{grade:grade, index:index},
-    width: '80%',
-    height:'75%'
+        data: { grade: grade, index: index },
+        width: '80%',
+        height: '75%'
 
       }
 
-      
-      )
-      
-      dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
 
-    }
+    )
 
+    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens() })
 
-    refreshAllChildrens()
-  {
-    for (let comp of this.listGrades)
-    {
-      comp.refreshTable()
-    }
-    
   }
 
-  refreshTable()
-  {
+
+  refreshAllChildrens() {
+    for (let comp of this.listGrades) {
+      comp.refreshTable()
+    }
+
+  }
+
+  refreshTable() {
     console.log("Refresh exitoso")
     this.dataSource.data = this.gradesList;
   }

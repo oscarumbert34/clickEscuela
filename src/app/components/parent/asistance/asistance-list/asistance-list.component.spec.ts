@@ -11,9 +11,9 @@ describe('AsistanceListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AsistanceListComponent ]
+      declarations: [AsistanceListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

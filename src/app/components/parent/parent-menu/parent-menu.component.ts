@@ -23,16 +23,15 @@ import { Router } from '@angular/router';
     ]),
   ]
 })
-export class ParentMenuComponent implements OnInit 
-{
+export class ParentMenuComponent implements OnInit {
   showFiller = true;
   notificationShow = false;
   notificationsDisplay = 'col-2 notifications-show';
-  dinamicDisplay  = 'col-10 size-display-dinamic';
+  dinamicDisplay = 'col-10 size-display-dinamic';
   notificationChild = false;
   dashboard = 'Cant. Aprobados';
-  checked  = false;
-  classMenu  = 'menu';
+  checked = false;
+  classMenu = 'menu';
   blockDinamicActually = 'parent-asistance';
   sidenavClass = 'sidenav-open';
   showHomeButton = false;
@@ -43,30 +42,29 @@ export class ParentMenuComponent implements OnInit
 
   @ViewChild('drawer', { static: true }) sidenav: MatSidenav;
   @ViewChild(HomeComponent) home: HomeComponent;
-  @ViewChild('menuNav', {static: true}) menuNav: ElementRef;
+  @ViewChild('menuNav', { static: true }) menuNav: ElementRef;
   @Input() delay = 300;
 
-  routeLink:string;
+  routeLink: string;
 
   constructor() { }
 
   theEvent$;
 
-  changedDisplayNotification()
-  {
+  changedDisplayNotification() {
     this.notificationShow = this.notificationShow ? false : true;
-    if( this.notificationShow){
+    if (this.notificationShow) {
       this.dinamicDisplay = 'col-9';
       this.home.changeSizeDashboard(true);
-    }else{
+    } else {
       this.dinamicDisplay = 'col-10 size-display-dinamic';
       this.home.changeSizeDashboard(false);
     }
   }
 
 
-  hideNotificaction(){
-    if(!this.notificationChild){
+  hideNotificaction() {
+    if (!this.notificationChild) {
 
       this.notificationShow = false;
       this.dinamicDisplay = 'col-10 size-display-dinamic';
@@ -77,32 +75,29 @@ export class ParentMenuComponent implements OnInit
     this.notificationChild = $event;
   }
 
-  receiveNotificationsNumber($event){
-    this.numberNotifications=$event;
+  receiveNotificationsNumber($event) {
+    this.numberNotifications = $event;
   }
 
-  receiveNotification($event)
-  {
+  receiveNotification($event) {
     this.currentNotification = $event;
-    this.isNotification=true;
+    this.isNotification = true;
     this.changeBlock($event.type == 'Tarea' ? 'homework' : 'grade');
 
   }
- 
-  changeBlock(newBlock: string)
-  {
+
+  changeBlock(newBlock: string) {
     console.log(this.showHomeButton);
     this.showHomeButton = newBlock != 'home' ? true : false;
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
   }
 
-  notNotification()
-  {
+  notNotification() {
     this.isNotification = false;
   }
 
-   ngOnInit() {
+  ngOnInit() {
     this.sidenav.open();
 
     //console.log(this.router.url)

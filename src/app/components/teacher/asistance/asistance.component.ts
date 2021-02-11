@@ -12,13 +12,11 @@ export class AsistanceComponent implements OnInit {
 
   @ViewChild('picker') picker: MatDatepicker<Date>;
 
-  ngOnInit() 
-  {
-    
+  ngOnInit() {
+
   }
 
-  showPicker()
-  {
+  showPicker() {
     console.log(this.picker.startAt)
 
   }

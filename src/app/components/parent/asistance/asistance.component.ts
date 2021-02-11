@@ -10,8 +10,7 @@ export class AsistanceComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void 
-  {
+  ngOnInit(): void {
     console.log("holis se abrior asistencia")
   }
 
