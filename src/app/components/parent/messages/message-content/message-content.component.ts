@@ -1,6 +1,6 @@
 import { ChatMessage } from './../../../../models/ChatMessage';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ChatmessagesService } from './../../../../services/chatmessages.service';
+import { ChatmessagesService } from '../../../../services/chat-messages.service';
 import { ChatModule } from './../../../../models/ChatModule';
 import { element } from 'protractor';
 import { style } from '@angular/animations';

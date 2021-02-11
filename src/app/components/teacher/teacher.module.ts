@@ -51,7 +51,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HomeworkListComponent } from './homework-list/homework-list.component';
 import { AddHomeworkComponent } from './add-homework/add-homework.component';
 import { MenuComponent } from '../commons/menu/menu.component';
-import { AddReportCardComponent } from './addReportCard/addReportCard.component';
+import { AddReportCardComponent } from './add-report-card/add-report-card.component';
 
 
 @NgModule({

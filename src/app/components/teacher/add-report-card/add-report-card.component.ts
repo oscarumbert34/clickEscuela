@@ -8,8 +8,8 @@ import { ReportCard } from 'src/app/models/ReportCard';
 
 @Component({
   selector: 'app-addReportCard',
-  templateUrl: './addReportCard.component.html',
-  styleUrls: ['./addReportCard.component.scss']
+  templateUrl: './add-report-card.component.html',
+  styleUrls: ['./add-report-card.component.scss']
 })
 export class AddReportCardComponent implements OnInit {
 

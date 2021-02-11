@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { ChatmessagesService } from './chatmessages.service';
+import { ChatmessagesService } from './chat-messages.service';
 
 describe('Service: Chatmessages', () => {
   beforeEach(() => {

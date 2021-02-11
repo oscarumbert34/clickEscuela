@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from '../../commons/confirm-dialog/confirm-dialog.component';
-import { AddReportCardComponent } from '../addReportCard/addReportCard.component';
+import { AddReportCardComponent } from '../add-report-card/add-report-card.component';
 
 @Component({
   selector: 'app-report-card-list',
