@@ -1,4 +1,3 @@
-import { ReportCardService } from './../../../../../services/reportCard.service';
 import { ReportCard } from 'src/app/models/ReportCard';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -9,6 +8,7 @@ import 'jspdf-autotable';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReportCardService } from 'src/app/services/reportCard.service';
 
 
 
