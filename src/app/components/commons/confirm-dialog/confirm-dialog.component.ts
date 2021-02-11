@@ -7,26 +7,23 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })
-export class ConfirmDialogComponent implements OnInit 
-{
+export class ConfirmDialogComponent implements OnInit {
 
-  confirmState=false;
+  confirmState = false;
   typeEntrie: any;
-  entrieIsList:boolean
+  entrieIsList: boolean
 
-  
 
-  constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>, @Inject(MAT_DIALOG_DATA) public message: any)
-  { 
-      this.typeEntrie=typeof message
-      this.entrieIsList=this.typeEntrie=='object'
+
+  constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>, @Inject(MAT_DIALOG_DATA) public message: any) {
+    this.typeEntrie = typeof message
+    this.entrieIsList = this.typeEntrie == 'object'
   }
 
-  ngOnInit()
-  {
+  ngOnInit() {
     console.log(this.message)
   }
 
- 
+
 
 }

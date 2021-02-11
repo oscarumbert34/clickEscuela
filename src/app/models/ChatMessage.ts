@@ -1,18 +1,16 @@
-export class ChatMessage 
-{
-    date:Date;
+export class ChatMessage {
+    date: Date;
     content: string;
-    success:boolean;
+    success: boolean;
 
     constructor(
-        content:string,
-        date:Date,
-        success:boolean
-    )
-    {
-        this.content=content;
-        this.date=date;
-        this.success=success;
+        content: string,
+        date: Date,
+        success: boolean
+    ) {
+        this.content = content;
+        this.date = date;
+        this.success = success;
     }
 
 }

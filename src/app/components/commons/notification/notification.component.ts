@@ -13,8 +13,8 @@ export class NotificationComponent implements OnInit {
   notificationsChat: Notification[];
 
   @Output() messageEvent = new EventEmitter<boolean>();
-  @Output() openNotification=new EventEmitter<Notification>();
-  @Output() notificationNumber=new EventEmitter<number>();
+  @Output() openNotification = new EventEmitter<Notification>();
+  @Output() notificationNumber = new EventEmitter<number>();
 
 
   changeNotification() {
@@ -22,28 +22,25 @@ export class NotificationComponent implements OnInit {
     this.messageEvent.emit(this.checked);
   }
 
-  showNotification(notification:Notification){
+  showNotification(notification: Notification) {
     this.openNotification.emit(notification)
   }
 
-  shownotificationsNumber()
-  {
-    this.notificationNumber.emit(this.notificationsHomework.length+this.notificationsChat.length);
+  shownotificationsNumber() {
+    this.notificationNumber.emit(this.notificationsHomework.length + this.notificationsChat.length);
   }
 
 
- 
-  constructor(notifications: NotificationsService) 
-  {  
-  this.notificationsHomework= notifications.homeworks
-  
-  this.notificationsChat=notifications.chats
 
-}
+  constructor(notifications: NotificationsService) {
+    this.notificationsHomework = notifications.homeworks
 
-  ngOnInit() 
-  {
-    
+    this.notificationsChat = notifications.chats
+
+  }
+
+  ngOnInit() {
+
     this.shownotificationsNumber()
   }
 

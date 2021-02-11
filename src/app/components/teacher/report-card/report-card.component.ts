@@ -13,16 +13,17 @@ export class ReportCardComponent implements OnInit {
 
   ngOnInit() {
   }
-  openDialog(input)
-  {
-   const dialogRef=this.dialog.open(AddReportCardComponent,
-    {data: input,
-    width: '80%',
-    height:'75%'}
+  openDialog(input) {
+    const dialogRef = this.dialog.open(AddReportCardComponent,
+      {
+        data: input,
+        width: '80%',
+        height: '75%'
+      }
     )
 
-   //dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
-   
+    //dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+
   }
 
 }

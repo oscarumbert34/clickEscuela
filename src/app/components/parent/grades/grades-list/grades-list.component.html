@@ -1,9 +1,9 @@
 <mat-form-field>
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input >
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 </mat-form-field>
 
-<div class="mat-elevation-z8" (mousemove)="applySonFilter()" >
+<div class="mat-elevation-z8" (mousemove)="applySonFilter()">
   <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
@@ -12,7 +12,7 @@
       <td mat-cell *matCellDef="let row"> {{row.student}} </td>
     </ng-container>
 
-  
+
 
     <!-- Name Column -->
     <ng-container matColumnDef="description">
@@ -31,7 +31,7 @@
       <td mat-cell *matCellDef="let row; let in=index"> {{row.grade}} </td>
     </ng-container>
 
- 
+
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

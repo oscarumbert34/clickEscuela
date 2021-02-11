@@ -1,11 +1,11 @@
 export var dataStudents = [
     {
-      "id": "1",
-      "name": "CLAUDIO",
-      "surname": "GOMEZ",
-      "birthDate": "12/12/2010",
-      "absences": 5,
-      "observations": ''
+        "id": "1",
+        "name": "CLAUDIO",
+        "surname": "GOMEZ",
+        "birthDate": "12/12/2010",
+        "absences": 5,
+        "observations": ''
     },
     {
         "id": "2",
@@ -19,7 +19,7 @@ export var dataStudents = [
         "id": "3",
         "name": "OMAR",
         "surname": "GOMEZ",
-        "birthDate":"12/01/2010",
+        "birthDate": "12/01/2010",
         "absences": 18,
         "observations": ''
     },
@@ -35,9 +35,9 @@ export var dataStudents = [
         "id": "5",
         "name": "MARIANA",
         "surname": "FERREIRA",
-        "birthDate":"22/05/2010",
+        "birthDate": "22/05/2010",
         "absences": 11,
         "observations": ''
     },
-    
-  ];
+
+];

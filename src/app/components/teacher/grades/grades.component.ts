@@ -10,42 +10,38 @@ import { PopupMenuComponent } from '../../commons/popupMenu/popupMenu.component'
   templateUrl: './grades.component.html',
   styleUrls: ['./grades.component.scss']
 })
-export class GradesComponent implements OnInit 
-{
+export class GradesComponent implements OnInit {
 
-  currentOption="Notas"
+  currentOption = "Notas"
   @ViewChildren(GradesListComponent) listGrades: QueryList<GradesListComponent>;
- 
-  
 
-  constructor(public dialog: MatDialog) 
-  { 
-    
+
+
+  constructor(public dialog: MatDialog) {
+
   }
 
-  openDialog(input)
-  {
-   const dialogRef=this.dialog.open(PopupMenuComponent,
-    {data: input,
-    width: '80%',
-    height:'75%'}
+  openDialog(input) {
+    const dialogRef = this.dialog.open(PopupMenuComponent,
+      {
+        data: input,
+        width: '80%',
+        height: '75%'
+      }
     )
 
-   dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
-   
+    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens() })
+
   }
 
-  refreshAllChildrens()
-  {
-    for (let comp of this.listGrades)
-    {
+  refreshAllChildrens() {
+    for (let comp of this.listGrades) {
       comp.refreshTable()
     }
-    
+
   }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
   }
 
 }

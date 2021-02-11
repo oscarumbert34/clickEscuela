@@ -2,10 +2,10 @@
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 
-  
+
 </mat-form-field>
-      
-   
+
+
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
@@ -19,77 +19,82 @@
     <ng-container matColumnDef="status">
       <th id="column3" mat-header-cell *matHeaderCellDef mat-sort-header>Asistencia</th>
       <td mat-cell *matCellDef="let row">
-        
 
-        <p style="width: 85px; font-size: 12px; position: relative;"> {{row.status ? 'Presente' : 'Ausente'}} 
-          
-          
-        
-        
+
+        <p style="width: 85px; font-size: 12px; position: relative;"> {{row.status ? 'Presente' : 'Ausente'}}
+
+
+
+
         </p>
-      
+
       </td>
     </ng-container>
-  
+
 
     <!-- Name Column -->
     <ng-container matColumnDef="date">
       <th id="column3" mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
       <td mat-cell *matCellDef="let row">
-        <p >{{row.date | date: 'shortDate'}} </p>
-      
+        <p>{{row.date | date: 'shortDate'}} </p>
+
       </td>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="certificate">
       <th id="column4" mat-header-cell *matHeaderCellDef mat-sort-header>Certificado</th>
-      <td  mat-cell *matCellDef="let row; let index=index" >
+      <td mat-cell *matCellDef="let row; let index=index">
 
         <div *ngIf="row.certificate=='' && !row.status">
           <button class="button-action" *ngIf="!loadIndex.includes(index)" (click)="fileLoader.click();">
-          
-            <img  style="transform: rotate(180deg);"  width="20px" src="./assets/images/save.svg" alt="" >
+
+            <img style="transform: rotate(180deg);" width="20px" src="./assets/images/save.svg" alt="">
 
           </button>
-          
-          <button class="button-action" matTooltip={{viewFileName(index)}} *ngIf="loadIndex.includes(index) && !loadAnimation.includes(index) && getFinaly(index)" (click)="loadFile(index);progressLoad(index)">
-            
+
+          <button class="button-action" matTooltip={{viewFileName(index)}}
+            *ngIf="loadIndex.includes(index) && !loadAnimation.includes(index) && getFinaly(index)"
+            (click)="loadFile(index);progressLoad(index)">
+
             <img width="20px" src="./assets/images/accept.svg" alt="">
-            
+
           </button>
 
-          <button class="button-action" matTooltip="Cargando..." *ngIf="loadAnimation.includes(index) && getFinaly(index)" >
-            
-            <mat-progress-spinner mode="determinate" [value]="getPercentaje(index)" [diameter]="30">       </mat-progress-spinner>     
-          </button>
-          
-          <input style="display: none;" (change)="viewFileList(index,fileLoader)"  class="fileLoader" #fileLoader type="file" > 
+          <button class="button-action" matTooltip="Cargando..."
+            *ngIf="loadAnimation.includes(index) && getFinaly(index)">
 
-              
+            <mat-progress-spinner mode="determinate" [value]="getPercentaje(index)" [diameter]="30">
+            </mat-progress-spinner>
+          </button>
+
+          <input style="display: none;" (change)="viewFileList(index,fileLoader)" class="fileLoader" #fileLoader
+            type="file">
+
+
         </div>
 
         <div *ngIf="row.certificate!='' && !row.status;">
-          
-          
+
+
           <button class="button-action">
-          
-            <img  width="20px" src="./assets/images/save.svg" alt="" (click)="Tuvie(row)" >
-            
+
+            <img width="20px" src="./assets/images/save.svg" alt="" (click)="Tuvie(row)">
+
           </button>
         </div>
 
         <div *ngIf="row.status;">
-          
-          
-        
+
+
+
         </div>
 
-    
-       
 
-         </td>
-     
+
+
+      </td>
+
     </ng-container>
 
     <!-- <ng-container matColumnDef="actions">

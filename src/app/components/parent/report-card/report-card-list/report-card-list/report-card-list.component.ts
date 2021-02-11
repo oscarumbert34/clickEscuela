@@ -30,7 +30,7 @@ export class ReportCardListComponent implements OnInit {
 
 
 
-  constructor(private reportCardService: ReportCardService,public dialog: MatDialog,private snackBar: MatSnackBar) {
+  constructor(private reportCardService: ReportCardService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.reportCardList = reportCardService.reportCardList
   }
 
@@ -83,26 +83,24 @@ export class ReportCardListComponent implements OnInit {
     doc.save(billname + '.pdf');
   }
 
-  confirmDownload(row,index)
-  {
+  confirmDownload(row, index) {
     console.log(row)
-    
-    const dialogRef=this.dialog.open(ConfirmDialogComponent,
-     {
-     data: "¿Desea descargar el boletin de "+row,
-     width: '60%',
-     height:'150px'}
-     )
 
-   dialogRef.afterClosed().subscribe(result =>
-   {
-     if (result)
-     {
-      this.downloadPDF(index)
-      this.snackBar.open("Se descargo el boletin de "+row,"OK",{duration:3000})
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,
+      {
+        data: "¿Desea descargar el boletin de " + row,
+        width: '60%',
+        height: '150px'
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.downloadPDF(index)
+        this.snackBar.open("Se descargo el boletin de " + row, "OK", { duration: 3000 })
 
 
-     }
-   });
- }
+      }
+    });
+  }
 }

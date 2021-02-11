@@ -1,4 +1,4 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -7,11 +7,10 @@
 })
 export class MessagesComponent implements OnInit {
 
-   tabs:string[];
+  tabs: string[];
 
-  constructor() 
-  { 
-    this.tabs=["Mensajes","Notificaciones"]
+  constructor() {
+    this.tabs = ["Mensajes", "Notificaciones"]
   }
 
   ngOnInit(): void {

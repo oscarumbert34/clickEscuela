@@ -11,18 +11,18 @@ import { Observable } from 'rxjs/internal/Observable';
 import { PipeTransform, Injectable } from '@angular/core';
 import { of } from 'rxjs/internal/observable/of';
 interface SearchResult {
-    students: Student[];
-    total: number;
-  }
-  
-  interface State {
-    page: number;
-    pageSize: number;
-    searchTerm: string;
-    sortColumn: SortColumn;
-    sortDirection: SortDirection;
-  }
-  
+  students: Student[];
+  total: number;
+}
+
+interface State {
+  page: number;
+  pageSize: number;
+  searchTerm: string;
+  sortColumn: SortColumn;
+  sortDirection: SortDirection;
+}
+
 const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
 function sort(students: Student[], column: SortColumn, direction: string): Student[] {
@@ -43,7 +43,7 @@ function matches(student: Student, term: string, pipe: PipeTransform) {
     || student.surname.includes(term);
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class studentService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
@@ -70,8 +70,8 @@ export class studentService {
     ).subscribe(result => {
       console.log(result);
 
-     //this._students$.next(result.students);
-     //this._total$.next(result.total);
+      //this._students$.next(result.students);
+      //this._total$.next(result.total);
     });
 
     this._search$.next();
@@ -84,11 +84,11 @@ export class studentService {
   get pageSize() { return this._state.pageSize; }
   get searchTerm() { return this._state.searchTerm; }
 
-  set page(page: number) { this._set({page}); }
-  set pageSize(pageSize: number) { this._set({pageSize}); }
-  set searchTerm(searchTerm: string) { this._set({searchTerm}); }
-  set sortColumn(sortColumn: SortColumn) { this._set({sortColumn}); }
-  set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
+  set page(page: number) { this._set({ page }); }
+  set pageSize(pageSize: number) { this._set({ pageSize }); }
+  set searchTerm(searchTerm: string) { this._set({ searchTerm }); }
+  set sortColumn(sortColumn: SortColumn) { this._set({ sortColumn }); }
+  set sortDirection(sortDirection: SortDirection) { this._set({ sortDirection }); }
 
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
@@ -96,17 +96,17 @@ export class studentService {
   }
 
   private _search(): Observable<SearchResult> {
-    const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
+    const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
     // 1. sort
-    
-    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '',"3B");
-    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '',"3B");
-    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '',"3B");
-    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '',"2A");
-    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '',"2A");
-    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '',"2A");
-    
+
+    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '', "3B");
+    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '', "3B");
+    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '', "3B");
+    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '', "2A");
+    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '', "2A");
+    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '', "2A");
+
     let students = sort(this.studentsArray, sortColumn, sortDirection);
 
     // 2. filter
@@ -115,10 +115,10 @@ export class studentService {
 
     // 3. paginate
     students = students.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({students, total});
+    return of({ students, total });
   }
 
-  get studentsList(){
+  get studentsList() {
     return this.studentsArray;
   }
 
