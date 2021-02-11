@@ -1,3 +1,4 @@
+import { ReportCardListComponent } from './report-card/report-card-list/report-card-list/report-card-list.component';
 import { FirstLetterPipe } from './../../pipes/firstLetter.pipe';
 import { MessageContentComponent } from './messages/message-content/message-content.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -38,7 +39,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { matTooltipAnimations, MatTooltipModule } from '@angular/material/tooltip';
 import { GradesListComponent } from './grades/grades-list/grades-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ReportCardListComponent } from './report-card-list/report-card-list.component';
 
 
 
@@ -46,10 +46,7 @@ import { ReportCardListComponent } from './report-card-list/report-card-list.com
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent,
-     GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent,
-      PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, 
-      FirstLetterPipe, ReportCardListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, FirstLetterPipe, ReportCardListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
