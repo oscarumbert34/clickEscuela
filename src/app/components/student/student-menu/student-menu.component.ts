@@ -1,3 +1,4 @@
+import { Router, RouterLink } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -43,8 +44,11 @@ export class StudentMenuComponent implements OnInit {
   @Input() delay = 300;
 
   routeLink: string;
+  
 
-  constructor() { }
+  constructor(private router: Router) {
+    this.routeLink=router.url
+   }
 
   theEvent$;
 
@@ -97,7 +101,7 @@ export class StudentMenuComponent implements OnInit {
   ngOnInit() {
     this.sidenav.open();
 
-    //console.log(this.router.url)
+    console.log(this.router.url)
 
   }
 

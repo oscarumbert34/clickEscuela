@@ -17,9 +17,9 @@ export class ReportCardService {
 
       ]
     this.reportCardList = [];
-    this.reportCardList.push(new ReportCard('Jazmin', "Fernandez"))
-    this.reportCardList.push(new ReportCard('Eduardo', 'Gomez'))
-    this.reportCardList.push(new ReportCard('Mijail', 'Andrada'))
+    this.reportCardList.push(new ReportCard('Jazmin', "Fernandez",new Date()))
+    this.reportCardList.push(new ReportCard('Eduardo', 'Gomez',new Date()))
+    this.reportCardList.push(new ReportCard('Mijail', 'Andrada',new Date()))
 
     this.loadMatters(this.mattersList, 0)
     this.loadMatters(this.mattersList, 1)

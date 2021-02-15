@@ -1,3 +1,5 @@
+import { ParentModule } from './../parent/parent.module';
+import { ReportCardComponent } from './../parent/report-card/report-card.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -60,7 +62,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, ParentModule
   ]
 })
 export class StudentModule { }
