@@ -1,3 +1,4 @@
+import { StudentModule } from './components/student/student.module';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ParentModule } from './components/parent/parent.module';
@@ -45,7 +46,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule,StudentModule
 
     ],
   providers: [],
