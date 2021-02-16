@@ -8,7 +8,7 @@
 
     <!-- ID Column -->
 
-    <ng-template *ngIf="routerLink==='parent/menu', else showStudent" >
+    <div *ngIf="routeLink==='/parent/menu', else showStudent" >
       <ng-container matColumnDef="name">
       <th id="column1" mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
       <td mat-cell *matCellDef="let row"> {{row.name}} </td>
@@ -19,7 +19,7 @@
       <th id="column2" mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
       <td mat-cell *matCellDef="let row"> {{row.surname}} </td>
     </ng-container>
-  </ng-template>
+  </div>
 
   <ng-template #showStudent>
     <ng-container matColumnDef="period">

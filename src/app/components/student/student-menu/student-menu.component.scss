@@ -329,7 +329,25 @@
         margin-top:8em;
       }
       
+      ::ng-deep td
+      {
+        width: 50% !important;
+      text-align: center !important;}
+
+      
+      ::ng-deep th
+      {
+        width: 50% !important;
+      text-align: center !important;}
+
+      ::ng-deep .eye
+      {
+        display: inline-block;}
+      
+      
     }
+
+    
     
 
     @keyframes ring
@@ -381,6 +399,7 @@
     width: 100% !important;
   }
 }
+
 
     
     

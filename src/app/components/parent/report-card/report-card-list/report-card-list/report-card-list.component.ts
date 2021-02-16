@@ -40,16 +40,18 @@ export class ReportCardListComponent implements OnInit {
   ngOnInit() 
   {
     
-    if (this.routeLink==='parent/menu')
+    console.log(this.routeLink)
+    if (this.routeLink==='/parent/menu')
     {
 
       this.displayedColumns = ['name', 'surname', 'download'];
     }
     else 
     {
-    console.log("Soy estudiante")
     this.displayedColumns = ['period', 'download'];
     }
+
+    console.log(this.displayedColumns)
 
 
 
