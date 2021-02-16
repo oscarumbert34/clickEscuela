@@ -30,9 +30,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HomeworkComponent } from './homework/homework.component';
+import { HomeworkListComponent } from '../teacher/homework-list/homework-list.component';
 
 @NgModule({
-  declarations:[StudentMenuComponent],
+  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent],
   imports: [
     CommonModule,  CommonModule,
     MatSidenavModule,
