@@ -30,7 +30,7 @@ export class StudentMenuComponent implements OnInit {
   dashboard = 'Cant. Aprobados';
   checked = false;
   classMenu = 'menu';
-  blockDinamicActually = 'parent-asistance';
+  blockDinamicActually = 'reportCard';
   sidenavClass = 'sidenav-open';
   showHomeButton = false;
 
@@ -44,10 +44,13 @@ export class StudentMenuComponent implements OnInit {
   @Input() delay = 300;
 
   routeLink: string;
+
+  view:string;
   
 
   constructor(private router: Router) {
     this.routeLink=router.url
+    this.view="student"
    }
 
   theEvent$;

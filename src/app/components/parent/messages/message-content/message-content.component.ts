@@ -33,6 +33,7 @@ export class MessageContentComponent implements OnInit {
 
 
   @Input() currentTab;
+  @Input() view;
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -484,7 +485,7 @@ export class MessageContentComponent implements OnInit {
 
     this.trimMessages()
 
-
+    console.log(this.view)
 
 
   }

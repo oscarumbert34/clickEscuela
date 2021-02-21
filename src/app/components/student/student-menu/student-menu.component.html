@@ -249,10 +249,10 @@
             <app-grades></app-grades>
           </div>
           <div *ngSwitchCase="'homework'">
-            <app-homework></app-homework>
+            <app-homework ></app-homework>
           </div>
           <div *ngSwitchCase="'message'">
-            <!-- <app-messages></app-messages> -->
+          <app-messages [view]="view" ></app-messages>
           </div>
           <div *ngSwitchCase="'reportCard'">
             <!-- <app-report-card></app-report-card> -->
