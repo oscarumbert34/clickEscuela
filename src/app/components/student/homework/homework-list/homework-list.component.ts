@@ -22,8 +22,35 @@ export class HomeworkListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   homeworkList = [];
 
+  presentsList: boolean[];
+
+  takeAsistance: boolean;
+
+  currentFile: string;
+
+  loadIndex: number[];
+  completeIndex: number[];
+  loadAnimation: number[];
+
+  indexedMap = new Map();
+  progressPercentajeList: number[];
+  progressPercentaje: number;
+  isFinalyload: boolean[];
+
   constructor(private homeworkService: HomeworkService, public dialog: MatDialog) {
     this.homeworkList = this.homeworkService.homeworkList
+
+    
+    this.currentFile = "";
+    this.loadIndex = [];
+    this.loadAnimation = []
+    this.progressPercentaje = 0;
+    this.progressPercentajeList = [];
+    this.isFinalyload = []
+    for (let asis of this.homeworkList) {
+      this.progressPercentajeList.push(0)
+      this.isFinalyload.push(true)
+    }
   }
 
   ngOnInit() {
@@ -54,5 +81,59 @@ export class HomeworkListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  progressLoad(index) {
+    this.progressPercentaje = 0;
+
+
+    const inter = setInterval(() => {
+      this.progressPercentajeList[index] += Math.floor(Math.random() * (30 - 0)) + 0;;
+      this.isFinalyload[index] = this.progressPercentajeList[index] < 100;
+      console.log(this.progressPercentajeList[index] + '  ' + this.isFinalyload)
+
+      if (this.progressPercentajeList[index] > 100) {
+        clearInterval(inter)
+
+      }
+    }, 2000)
+
+
+  }
+
+  getPercentaje(index) {
+    console.log(this.progressPercentajeList[index])
+    return this.progressPercentajeList[index]
+  }
+
+  getFinaly(index) {
+
+    return this.isFinalyload[index]
+  }
+
+
+  viewFileName(index) {
+
+    return this.indexedMap.get(index).files[0].name
+  }
+
+  loadFile(index) {
+    this.loadIndex.splice(index, 1)
+    this.loadAnimation.push(index)
+    console.log(this.loadIndex)
+
+  }
+
+  viewFileList(index, ele) {
+    this.loadIndex.push(index)
+
+    this.indexedMap.set(index, ele)
+    console.log(this.loadIndex)
+
+
+  }
+
+
+
+
 
 }
