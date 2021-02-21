@@ -132,6 +132,16 @@ export class HomeworkListComponent implements OnInit {
 
   }
 
+   clearInputFile(index) 
+   {
+    this.loadIndex.splice(index,1)
+
+    this.indexedMap.delete(index)
+    
+
+
+  }
+
 
 
 

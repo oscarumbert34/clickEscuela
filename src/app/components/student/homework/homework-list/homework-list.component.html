@@ -35,13 +35,32 @@
 
           </button>
 
-          <button class="button-action" matTooltip={{viewFileName(index)}}
+          <button class="button-action" matTooltip='Cargar archivo: {{viewFileName(index)}}'
             *ngIf="loadIndex.includes(index) && !loadAnimation.includes(index) && getFinaly(index)"
             (click)="loadFile(index);progressLoad(index)">
 
             <img width="20px" src="./assets/images/accept.svg" alt="">
 
+
           </button>
+
+          <button class="reload-button button-action" matTooltip='Seleccionar otro archivo'
+            *ngIf="loadIndex.includes(index) && !loadAnimation.includes(index) && getFinaly(index)"
+            (click)="fileLoader.click()">
+
+            <img width="20px" src="./assets/images/reload.svg" alt="">
+
+
+          </button>
+
+          <button class="button-action" matTooltip='Seleccionar otro archivo'
+          *ngIf="loadIndex.includes(index) && !loadAnimation.includes(index) && getFinaly(index)"
+          (click)="clearInputFile(index)">
+
+          <img width="15px" src="./assets/images/cancel.svg" alt="">
+
+
+        </button>
 
           <button class="button-action" matTooltip="Cargando..."
             *ngIf="loadAnimation.includes(index) && getFinaly(index)">

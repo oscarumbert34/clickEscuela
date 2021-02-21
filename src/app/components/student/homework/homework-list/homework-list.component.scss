@@ -2,3 +2,20 @@
 ::ng-deep .mat-paginator-page-size.ng-star-inserted{
     display: none !important;
   }
+
+  .reload-button:hover{
+    transform: rotate(360deg);
+    transform-origin: center center;
+    animation: twist 2s linear 0s infinite reverse
+  }
+
+  @keyframes twist{
+    from
+    {
+      transform: rotate(0);
+    }
+
+    to{
+      transform: rotate(360deg);
+    }
+  }
