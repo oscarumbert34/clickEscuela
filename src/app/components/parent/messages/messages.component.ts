@@ -19,7 +19,7 @@ export class MessagesComponent implements OnInit {
     console.log(this.view+' '+this.tabs)
     if (this.view=="student")
     {
-      this.tabs = ["Mensajes"]
+      this.tabs = ["Notificaciones"]
     }
     else{
 
