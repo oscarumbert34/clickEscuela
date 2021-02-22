@@ -32,12 +32,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HomeworkComponent } from './homework/homework.component';
 import { HomeworkListComponent } from './homework/homework-list/homework-list.component';
+import { LibraryComponent } from './library/library.component';
+
 
 
 
 
 @NgModule({
-  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent],
+  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent],
   imports: [
     CommonModule,  CommonModule,
     MatSidenavModule,

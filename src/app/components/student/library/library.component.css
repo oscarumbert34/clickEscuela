@@ -1,0 +1,33 @@
+
+
+.float-image{
+    width:100%;
+    position: absolute;
+    right: 15px;
+    top: -20px;
+}
+
+.animate,.animate2
+{
+    animation-name: appears;
+    animation-timing-function: ease-in-out;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+  
+    
+}
+
+
+@keyframes appears{
+   0%,33%{
+      opacity: 0;
+    }
+
+    33%,66%{
+      opacity: 1;
+    }
+    66%,100%{
+        opacity: 0;
+    }
+  }

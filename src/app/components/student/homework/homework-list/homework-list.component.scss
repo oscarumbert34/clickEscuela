@@ -6,7 +6,7 @@
   .reload-button:hover{
     transform: rotate(360deg);
     transform-origin: center center;
-    animation: twist 2s linear 0s infinite reverse
+   // animation: twist 2s linear 0s infinite reverse
   }
 
   @keyframes twist{
@@ -17,5 +17,95 @@
 
     to{
       transform: rotate(360deg);
+    }
+  }
+
+  .clipAnimation
+  {
+    transform-origin: center center;
+    animation: clipPath 6s cubic-bezier(.54,.72,.82,.28) 1s infinite
+  }
+
+  @keyframes clipPath
+  {
+    from{
+      clip-path: circle(0%);
+    }
+
+    to{clip-path: circle(100%);}
+  }
+
+  .button-action:hover{
+    transform: none;
+  }
+
+  .accept-button,.cancel-button,.reload-button{
+    position: absolute;
+    display: inline-block;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-decoration: none;
+  }
+
+
+  .accept-button
+  {
+    transform: translate(0px) scale(0);
+    animation-name: showEntranceleft;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+    transform: translate(-50px) scale(1);
+    
+  }
+
+  .cancel-button{
+    transform: translate(0px) scale(0);
+    animation-name: showEntranceright;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+    transform: translate(50px) scale(1);
+    
+  }
+
+  .option-box{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: relative;
+  }
+
+  @keyframes showEntranceleft
+  {
+    from{
+      transform: translate(0) scale(0); 
+    }
+
+    to{
+      transform: translate(-50px) scale(1);
+    }
+
+  }
+
+  @keyframes showEntranceright
+  {
+    from{
+      transform: translate(0) scale(0); 
+    }
+
+    to{
+      transform: translate(50px) scale(1);
+    }
+
+  }
+
+  @keyframes scaleReload{
+    from{
+      transform: scale(0); 
+    }
+
+    to{
+      transform: scale(1);
     }
   }
