@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 
 @Component({
   selector: 'app-library',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibraryComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  @ViewChildren('test') imageslist: QueryList<ElementRef>
+  images:ElementRef[];
+  
+  constructor() {
+    this.images=[]
   }
+  
+  ngOnInit()
+  { 
+    //this.startImageTransition(); 
+  }
+
+  
+
+
 
 }

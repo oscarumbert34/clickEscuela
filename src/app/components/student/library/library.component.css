@@ -19,6 +19,7 @@
 }
 
 
+
 @keyframes appears{
    0%,33%{
       opacity: 0;
@@ -30,4 +31,16 @@
     66%,100%{
         opacity: 0;
     }
+  }
+
+  .pdf-thumb{
+    width: 90%;
+    height: 400px;
+  }
+
+  .pdf-container{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
   }
