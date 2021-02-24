@@ -80,7 +80,7 @@ export class MessageContentComponent implements OnInit {
   root;
 
 
-  constructor(private messageService: MessagesService, private chatmoduleService: ChatmessagesService, private snackbar: MatSnackBar, private renderer: Renderer2) {
+  constructor(private messageService: MessagesService, private chatmoduleService: ChatmessagesService, private snackbar: MatSnackBar, private   renderer: Renderer2) {
     this.messageList = []
     this.colors = ['#049dd975', '#14a6479c', '#f2c84b7c', '#f24e2975', '#f2b9b37e'];
     this.selectedColor = this.randomColor()

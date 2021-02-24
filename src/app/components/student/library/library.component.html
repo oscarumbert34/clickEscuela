@@ -1,14 +1,13 @@
-<div class="container-fluid">
+<div class="container-fluid" (load)="canvas.click()">
   <div class="row mb-2">
-    <div class="pdf-container col-4">
+
+    <div class="col-4">
       <div class="pdf-thumb">
-        <iframe src="../../../../assets/images/documento de prueba.pdf" width="100%" height="400px"></iframe>
       </div>
     </div>
 
-    <div class="pdf-container col-4" >
+    <div class="col-4">
       <div class="pdf-thumb">
-        <iframe src="../../../../assets/images/documento de prueba.pdf" width="100%" height="400px"></iframe>
 
       </div>
 
@@ -16,7 +15,7 @@
 
     <div class="col-4">
 
-      <svg  class="float-image" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132.93 871.07">
+      <svg  class="float-image" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132.93 871.07"(click)="getPdf()">
         <defs>
             <clipPath id="clipPath">
               <path d="M1736.5-157.5v670A95.5,95.5,0,0,1,1641,608H981.63a201.06,201.06,0,0,1-177,105.57c-111,0-201.08-90-201.08-201.07s90-201.07,201.08-201.07A201.11,201.11,0,0,1,981.63,417H1545.5V-157.5Z" transform="translate(-603.57 157.5)"/>
@@ -37,30 +36,17 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="pdf-container col-4">
-      <div class="pdf-thumb">
-        <iframe src="../../../../assets/images/documento de prueba.pdf" width="100%" height="400px"></iframe>
-
+  <div class="row mb-4" >
+    <div *ngFor="let canvas of canvasList" class="pdf-container col-3">
+      <div class="pdf-info">
+        <p>Documento de prueba s5sa4d8sa4d5d1as3d4sa56</p>
+        <p>Materia: Biologia </p>
       </div>
+      <canvas  id="canvas" class="pdf-thumb" #canvas>
+        
+      </canvas>
     </div>
 
-    <div class="pdf-container col-4" >
-      <div class="pdf-thumb">
-        <iframe src="../../../../assets/images/documento de prueba.pdf" width="100%" height="400px"></iframe>
-
-      </div>
-
-    </div>
-    
-    <div class="pdf-container col-4">
-      <div class="pdf-thumb">
-        <iframe src="../../../../assets/images/documento de prueba.pdf" width="100%" height="400px"></iframe>
-
-      </div>
-
-    </div>
-  
   </div>
 
  
