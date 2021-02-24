@@ -25,7 +25,8 @@ export class LibraryComponent implements OnInit {
     this.canvasList.push(
      'http://localhost:4200/assets/pdf/prueba1.pdf?',
      'http://localhost:4200/assets/pdf/prueba2.pdf?',
-     'http://localhost:4200/assets/pdf/prueba3.pdf?'
+     'http://localhost:4200/assets/pdf/prueba3.pdf?',
+     'http://localhost:4200/assets/pdf/manual.pdf?',
      )
   }
 
