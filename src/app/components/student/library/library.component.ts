@@ -1,9 +1,15 @@
+import { MatDialog } from '@angular/material/dialog';
+import { LibraryServiceService } from './../../../services/libraryService.service';
+import { LibraryFile } from './../../../models/LibraryFile';
 import { ProxyService } from './../../../services/proxyService.service';
 import { element } from 'protractor';
 import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild, Renderer2 } from '@angular/core';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as pdfjsLib from 'pdfjs-dist';
+import {BrowserModule, DomSanitizer} from '@angular/platform-browser'
+import { ModalFrameComponent } from '../modal-frame/modal-frame.component';
+
 
 @Component({
   selector: 'app-library',
@@ -15,19 +21,16 @@ export class LibraryComponent implements OnInit {
 
   @ViewChildren('canvas') canvasDiv: QueryList<ElementRef>
   
-  canvasList: string[];
+  canvasList: LibraryFile[];
+  currentURL:any;
 
 
 
-  constructor(private renderer: Renderer2, private proxy: ProxyService) {
+  constructor(private renderer: Renderer2, private proxy: ProxyService,private libraryService: LibraryServiceService, private sanitazer: DomSanitizer, private dialog: MatDialog) {
 
     this.canvasList = [];
-    this.canvasList.push(
-     'http://localhost:4200/assets/pdf/prueba1.pdf?',
-     'http://localhost:4200/assets/pdf/prueba2.pdf?',
-     'http://localhost:4200/assets/pdf/prueba3.pdf?',
-     'http://localhost:4200/assets/pdf/manual.pdf?',
-     )
+    this.canvasList=libraryService.libraryFiles
+    this.currentURL=""
   }
 
   ngOnInit() {
@@ -37,9 +40,35 @@ export class LibraryComponent implements OnInit {
   ngAfterViewInit() {
 
     for (let i=0;i<this.canvasList.length;i++){
-      this.getPdf(this.canvasList[i],i);
+      this.getPdf(this.canvasList[i].url,i);
     }
     
+  }
+
+  openFrame(index)
+  {
+    console.log(index)
+    this.currentURL=this.sanitazer.bypassSecurityTrustResourceUrl(this.canvasList[index].url)
+    console.log(this.currentURL)
+    
+    
+
+    
+    const dialogRef = this.dialog.open(ModalFrameComponent,
+      {
+        data: this.currentURL,
+        width: '530px',
+        height: '90%'
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+     
+
+      }
+    });
+
   }
 
   getPdf(url:string,ind) {
