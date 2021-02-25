@@ -44,6 +44,7 @@
      border-radius: 1em;
     border-radius: 1em;
     overflow: hidden;
+    margin-bottom: 2em;
 
   }
 
@@ -93,6 +94,7 @@
   
     box-shadow: 0px  0px 10px 0px rgba(0, 0, 0, 0.4) ;
     cursor: pointer;
+    overflow-y: scroll;
 
   }
 
@@ -121,6 +123,15 @@
   line-height: 110px;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.24);
   }
+
+  @media (max-width: 1260px)
+{
+ 
+::ng-deep .libratyText
+{
+font-size: 9.5vw !important;
+}
+}
 
 
   
@@ -182,3 +193,36 @@ svg{
       opacity: 1;
   }
 }
+
+.flex-container {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: flex-start;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  }
+
+.flex-item {
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  }

@@ -36,12 +36,14 @@
   </div>
 
   <div class="row mb-4">
-    <div *ngFor="let canvas of canvasList; let i=index" class="pdf-container col-3">
+    <div *ngFor="let canvas of canvasList; let i=index" class="pdf-container col-xl-3 col-sm-4 col-6">
       <div class="pdf-info">
         <p>{{canvas.name}}</p>
         <p>{{canvas.matter}}</p>
         <p>{{canvas.author}}</p>
-        <div class="container-fluid" class="eye" (click)="openFrame(i)">
+        
+        <div class="row">
+          <div class="eye" (click)="openFrame(i)">
 
           <svg id="eye" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 428.23 403.41">
             <defs>
@@ -75,15 +77,26 @@
           </svg>
 
         </div>
+        <div class="eye">
+
+          <a  [href]="canvas.url" download="{{canvas.name}}.pdf"><img width="20px" src="../../../../assets/images/save.svg" alt=""></a>
+
+        </div>
+        </div>
+        
 
       </div>
       <canvas id="canvas" class="pdf-thumb" #canvas>
 
       </canvas>
     </div>
+    
 
   </div>
 
-  <iframe [src]="currentURL" src="http://localhost:4200/assets/pdf/prueba1.pdf?" frameborder="0" #pdfFrame></iframe>
+  
+
+  
+
 
 </div>
