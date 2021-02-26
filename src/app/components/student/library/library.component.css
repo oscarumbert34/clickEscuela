@@ -94,7 +94,7 @@
   
     box-shadow: 0px  0px 10px 0px rgba(0, 0, 0, 0.4) ;
     cursor: pointer;
-    overflow-y: scroll;
+    
 
   }
 
@@ -134,7 +134,7 @@ font-size: 9.5vw !important;
 }
 
 .save:hover{
-filter: saturate(3);
+filter: saturate(2);
 animation-name: expand;
 animation-timing-function: ease-in-out;
 animation-duration: 1s;
