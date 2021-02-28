@@ -344,8 +344,26 @@
       {
         display: inline-block;}
       
+        ::ng-deep .mat-list{
+          overflow: auto !important;
+        }
       
     }
+
+
+    ::ng-deep .mat-list.mat-list-base::-webkit-scrollbar{
+      display: block;
+      height: 10px;
+
+     
+    }
+    ::ng-deep .mat-list.mat-list-base::-webkit-scrollbar-thumb{
+      background-color: $custom-blue-glass;
+      border-radius: 0.5em;
+      cursor: pointer;
+     
+    }
+    
 
 
    
@@ -402,6 +420,8 @@
     width: 100% !important;
   }
 }
+
+
 
 
     
