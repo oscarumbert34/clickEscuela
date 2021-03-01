@@ -143,6 +143,7 @@
     ::ng-deep .mat-list-base{
       background-color: white;
       text-align-last: center;
+      padding-top: 19px !important;
     }
     ::ng-deep .mat-drawer{
       width: 12%;
@@ -318,7 +319,7 @@
       {
         height: 100px;
         position: fixed;
-        top: 20px;
+        top: 9px;
         display: flex;
         
       }
@@ -345,7 +346,8 @@
         display: inline-block;}
       
         ::ng-deep .mat-list{
-          overflow: auto !important;
+          overflow-x: auto !important;
+          overflow-y: visible;
         }
       
     }
@@ -354,13 +356,13 @@
     ::ng-deep .mat-list.mat-list-base::-webkit-scrollbar{
       display: block;
       height: 10px;
+      cursor: pointer;
 
      
     }
     ::ng-deep .mat-list.mat-list-base::-webkit-scrollbar-thumb{
       background-color: $custom-blue-glass;
       border-radius: 0.5em;
-      cursor: pointer;
      
     }
     
