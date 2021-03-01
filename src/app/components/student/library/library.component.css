@@ -293,6 +293,14 @@ svg{
 }
 
 
+
+.hls-3
+{
+  width: 0;
+  animation: lineWidth 0.5s  ease-in-out 6.5s forwards; }
+
+  
+
 circle, ellipse{
   fill-opacity: 0;
   animation: showLogo 1.5s ease-in-out 7.5s forwards;
@@ -320,6 +328,16 @@ circle, ellipse{
   animation: showLogo2 4s ease-in-out forwards;
   animation-delay: 6.5s;
 }
+
+@keyframes blurring {
+  0% {
+   filter: blur(0);
+  }
+  100% {
+   filter: blur(100px);
+  }
+}
+
 
 @keyframes move {
   0% {
@@ -424,6 +442,10 @@ circle, ellipse{
   position: relative;
 }
 
+
+
+
+
 @keyframes showEntranceleft
 {
   from{
@@ -432,6 +454,18 @@ circle, ellipse{
 
   to{
     transform: translate(-50px) scale(1);
+  }
+
+}
+
+@keyframes lineWidth
+{
+  from{
+    width: 0; 
+  }
+
+  to{
+    width: 5.1px;
   }
 
 }
