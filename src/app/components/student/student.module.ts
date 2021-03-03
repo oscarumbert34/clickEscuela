@@ -1,3 +1,5 @@
+import { GroupsListComponent } from './groups/groups-list/groups-list.component';
+import { GroupsComponent } from './groups/groups.component';
 import { ParentModule } from './../parent/parent.module';
 import { ReportCardComponent } from './../parent/report-card/report-card.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
@@ -39,7 +41,7 @@ import { LibraryComponent } from './library/library.component';
 
 
 @NgModule({
-  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent],
+  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent, GroupsComponent,GroupsListComponent],
   imports: [
     CommonModule,  CommonModule,
     MatSidenavModule,
