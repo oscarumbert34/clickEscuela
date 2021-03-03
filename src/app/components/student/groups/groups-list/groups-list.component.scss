@@ -1,0 +1,40 @@
+@import '../../../../stylings/color-pallete';
+
+.mat-icon{
+    width: 19px;
+}
+
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.mat-select{
+    background-color: $custom-blue-glass ;
+    padding: 0.7em;
+    border-radius: 0.6em;
+    color: white;
+
+}
+
+.mat-select-value-text{
+    color: white;
+}
+
+.mat-option{
+    background-color: $custom-blue-glass ;
+    color: white;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background-color: $blue-gray-2;
+}
+
+.mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
+    background-color: $custom-blue;
+
+}
+
+.mat-option:hover:not(.mat-option-disabled){
+    background-color: $blue-gray-2;
+}

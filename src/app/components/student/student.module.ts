@@ -35,6 +35,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HomeworkComponent } from './homework/homework.component';
 import { HomeworkListComponent } from './homework/homework-list/homework-list.component';
 import { LibraryComponent } from './library/library.component';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 
 
@@ -71,7 +74,7 @@ import { LibraryComponent } from './library/library.component';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, ParentModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, ParentModule, MatSelectModule, MatGridListModule
   ]
 })
 export class StudentModule { }
