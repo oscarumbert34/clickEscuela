@@ -1,5 +1,7 @@
+import { Comment } from '../models/Comment';
 import { Injectable } from '@angular/core';
 import { WorkGroup } from '../models/WorkGroup';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,17 @@ constructor()
 
 get groupsList(){
   return this.workgroupList
+}
+
+addComment(index:number,sender: string, comment:string)
+{
+  let com= new Comment(sender,comment,new Date())
+  this.workgroupList[index].addComment(com)
+}
+addHistory(index:number,sender: string, move:string )
+{
+  let com= new Comment(sender,move,new Date())
+  this.workgroupList[index].addHistory(com)
 }
 
 }

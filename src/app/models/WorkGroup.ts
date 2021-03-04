@@ -1,3 +1,4 @@
+import { Comment } from './Comment';
 export class WorkGroup 
 {
     name: string;
@@ -5,7 +6,7 @@ export class WorkGroup
     endDate: Date;
     state: string;
     comments: Comment[]
-    history: History[]
+    history: Comment[]
 
     constructor(
         name: string,
@@ -25,12 +26,12 @@ export class WorkGroup
     }
 
 
-    addComment(comment: Comment)
+    addComment(comment)
     {
         this.comments.push(comment)
     }
 
-    addHistory(history: History){
+    addHistory(history){
         this.history.push(history)
 
     }

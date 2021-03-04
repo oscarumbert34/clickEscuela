@@ -1,3 +1,6 @@
+import { History } from './../../../../models/History';
+import { WorkGroupService } from 'src/app/services/work-group.service';
+import { Comment } from './../../../../models/Comment';
 import { WorkGroup } from './../../../../models/WorkGroup';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -59,10 +62,12 @@ export class GroupsListComponent implements OnInit {
   ];
 
   @Input() group: WorkGroup;
+  @Input() currentIndex: number;
+  currentSender:string;
 
  
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) 
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private workGroupService: WorkGroupService) 
   {
     iconRegistry.addSvgIconLiteral('thumbs-up', sanitizer.bypassSecurityTrustHtml(THUMBUP_ICON));
     iconRegistry.addSvgIconLiteral('in-time', sanitizer.bypassSecurityTrustHtml(IN_TIME));
@@ -70,10 +75,23 @@ export class GroupsListComponent implements OnInit {
 
     iconRegistry.addSvgIconLiteral('to-do', sanitizer.bypassSecurityTrustHtml(TO_DO));
     iconRegistry.addSvgIconLiteral('realized', sanitizer.bypassSecurityTrustHtml(REALIZED));
+    this.currentSender="Nicolas Lencinas"
 
 
 
 
+  }
+
+  addComment(index,comment)
+  {
+    this.workGroupService.addComment(index,this.currentSender,comment)
+    console.log(this.workGroupService.groupsList)
+  }
+
+  addHistory(index,history)
+  {
+    this.workGroupService.addHistory(index,this.currentSender,history)
+    console.log(this.workGroupService.groupsList)
   }
 
   ngOnInit()

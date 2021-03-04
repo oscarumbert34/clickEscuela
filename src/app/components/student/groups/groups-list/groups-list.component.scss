@@ -38,3 +38,190 @@
 .mat-option:hover:not(.mat-option-disabled){
     background-color: $blue-gray-2;
 }
+
+.attach-button{
+    display: flex;
+    justify-content: center;
+    background-color: $gray-2;
+
+}
+
+.title-row
+{
+    margin-bottom: 0.8em;
+    display: flex;
+    flex-direction: row;
+}
+
+.title-row .col-8{
+    border-bottom: 2px solid $custom-blue;
+
+}
+.consign-col{
+    display: block;
+    width: 100%;
+}
+.consign-col input{
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid $custom-blue;
+    transition: 0.5s ease-in-out;
+
+}
+
+.consign-col input:focus{
+    outline: none;
+    border-bottom: 2px solid $custom-blue;
+    box-shadow: 0px 10px 10px -7px rgba(45,91,132,1)
+
+}
+
+.view-type{
+    background-color: $blue-gray-3;
+    cursor: pointer;
+    color: whitesmoke;
+    padding: 0.4em;
+    border-radius: 0.2em;
+
+}
+
+.comment-item
+{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+    border-radius: 10px;
+    margin-bottom: 1em;
+  
+}
+
+.comment-content{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-avatar{
+    display: flex;
+    text-align: center;
+    align-items: flex-start;
+    margin-top: 1em;
+    justify-content: center;
+    
+}
+
+.comment-head{
+    margin-bottom: 1em;
+}
+.comment-option{
+ padding: 0.2em;
+ color: $custom-blue;
+ font-size: 0.9em;
+ cursor: pointer;
+ transition: 0.5s ease-in-out;
+}
+
+.comment-option:hover{
+    filter: saturate(3);
+}
+
+
+
+.comment-container
+{
+    height: 200px;
+    width: 100%;
+    overflow: scroll;
+
+}
+
+#comment-body{display: flex; flex-direction: column;}
+#comment-body span{
+    word-break: break-all;
+
+}
+
+.history-container{
+    width: 100%;
+    height: 550px;
+    overflow-y: scroll;
+}
+
+.history-content{
+    width: 100%;
+    height: 100%;
+    padding-left: 1em;
+    padding-top: 1em;
+    background: url(../../../../../assets/images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.history-item{
+    padding: 1em;
+    border-radius: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.history-item:first-child{
+    margin-top: 1em;
+}
+
+::ng-deep .comment-container::-webkit-scrollbar
+{
+    display: block;
+    height: 10px;
+    cursor: pointer;
+
+   
+  }
+  ::ng-deep .comment-container::-webkit-scrollbar-thumb{
+    background-color: $custom-blue-glass;
+    border-radius: 0.5em;
+   
+  }
+
+  ::ng-deep .history-container::-webkit-scrollbar
+{
+    display: block;
+    height: 10px;
+    cursor: pointer;
+
+   
+  }
+  ::ng-deep .history-container::-webkit-scrollbar-thumb{
+    background-color: $custom-blue-glass;
+    border-radius: 0.5em;
+   
+  }
+
+
+
+::ng-deep .mat-input-element .mat-form-field-autofill-control {
+    caret-color: #2d5c84 !important;
+}
+
+.user-avatar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    $random-color: random(5);
+    width: 45px;
+    height: 45px;
+    background-color: nth($list, $random-color);
+    
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.568);
+    overflow: hidden;
+  }
+
+@media (max-width: 1980px){
+.container, .container-sm, .container-md, .container-lg {
+    max-width: 100%;
+}
+}
+
