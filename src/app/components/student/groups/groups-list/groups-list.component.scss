@@ -166,6 +166,10 @@
     margin-bottom: 0.5em;
 }
 
+::ng-deep .mat-select-value-text{
+    color: whitesmoke;
+}
+
 .history-item:first-child{
     margin-top: 1em;
 }
