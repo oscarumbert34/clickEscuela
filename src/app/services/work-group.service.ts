@@ -27,10 +27,15 @@ addComment(index:number,sender: string, comment:string)
   let com= new Comment(sender,comment,new Date())
   this.workgroupList[index].addComment(com)
 }
-addHistory(index:number,sender: string, move:string )
+addHistory(index:number,sender: string, move:string)
 {
   let com= new Comment(sender,move,new Date())
   this.workgroupList[index].addHistory(com)
+}
+
+deleteComment(index:number, commentNumber:number)
+{
+  this.workgroupList[index].deleteComment(commentNumber)
 }
 
 }

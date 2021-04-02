@@ -1,6 +1,7 @@
 <div class="container no-gutters">
   <div class="row">
-    <div class="col-8">
+    
+    <div class="col-12 col-sm-8">
       <div class="row mb-4" id="group-info">
         <div class="col-12">
           <div class="row" class="title-row">
@@ -67,39 +68,18 @@
         <div class="row mb-2" style="display: flex; flex-direction: column;">
           <label for="activity"><b>Actividad</b></label>
           <div name="activity">
-            Viendo: <span class="view-type">Comentarios</span>
+            Viendo: <span (click)="changeSelectedTab(1)" class="view-type" [ngClass]="{'selected-type': selectedTab==1}">Comentarios</span> <span id="history-label" class="view-type" (click)="changeSelectedTab(2)" [ngClass]="{'selected-type': selectedTab==2}">Historial</span>
           </div>
         </div>
 
         <div class="row" style="display: flex; flex-direction: row; width: 100%;">
-          <div class="comment-container">
-            <div *ngFor="let comment of group.comments" class="comment-item">
 
-              <div class="col-2 comment-avatar">
-                <div class="user-avatar">N</div>
-              </div>
-
-              <div class="col-10 comment-content">
-                <div class="row" id="comment-body">
-                  <span class="comment-head"><b>{{comment.sender}}</b> {{comment.date | date : 'medium'}}</span>
-                  <span>{{comment.content}}</span>
-                </div>
-
-                <div class="row mt-2">
-                  <span class="comment-option">Editar</span>
-                  <p style="font-size: 1em;">•</p>
-                  <span class="comment-option">Eliminar</span>
-
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-          </div>
-
+          <ng-container *ngIf="selectedTab==1">
+            <app-comment [group]="group" [currentIndex]="currentIndex" [currentSender]="currentSender" style="width: 100%;"></app-comment>
+          </ng-container>    
+          <ng-container *ngIf="selectedTab==2">
+            <app-history [group]="group" [currentIndex]="currentIndex" [currentSender]="currentSender" [showSpan]="false" style="width: 100%;"></app-history>
+          </ng-container>       
 
         </div>
 
@@ -107,27 +87,13 @@
 
       </div>
 
-      <div class="row mb-4">
-        <form class="example-form" style="width: 100%;">
-
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label><b>Comentario</b></mat-label>
-            <textarea style="width: 100%;" matInput placeholder="Agregue comentario..." #commentInput
-              (keyup.enter)="addComment(currentIndex,commentInput.value); commentInput.value='';addHistory(currentIndex,'agrego un comentario')"></textarea>
-          </mat-form-field>
-        </form>
-      </div>
+   
     </div>
 
-    <div class="col-4" >
-      <div class="row" class="history-content">
-        <span class="view-type">Historial</span> 
-        <div class="history-container">
-          <div *ngFor="let history of group.history" class="history-item">
-            <div class="user-avatar" style="margin-right: 1em; width: 30px; height: 30px;">N</div> <span>{{history.sender}} <b>{{history.content}}</b> {{history.date | date : "medium"}}</span>
-          </div>
-        </div>
-      </div>
+    <div id="history-side" class="col-4" >
+
+      <app-history [group]="group" [currentIndex]="currentIndex" [currentSender]="currentSender" [showSpan]="true" style="width: 100%;"></app-history>
+
      
 
     </div>

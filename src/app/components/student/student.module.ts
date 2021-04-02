@@ -1,3 +1,5 @@
+import { HistoryComponent } from './groups/groups-list/history/history.component';
+import { CommentComponent } from './groups/groups-list/comment/comment.component';
 import { GroupsListComponent } from './groups/groups-list/groups-list.component';
 import { GroupsComponent } from './groups/groups.component';
 import { ParentModule } from './../parent/parent.module';
@@ -44,7 +46,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
-  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent, GroupsComponent,GroupsListComponent],
+  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent, GroupsComponent,GroupsListComponent, CommentComponent, HistoryComponent],
   imports: [
     CommonModule,  CommonModule,
     MatSidenavModule,

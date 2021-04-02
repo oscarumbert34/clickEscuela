@@ -1,6 +1,7 @@
 import { Comment } from './Comment';
 export class WorkGroup 
 {
+   
     name: string;
     startDate: Date;
     endDate: Date;
@@ -34,6 +35,11 @@ export class WorkGroup
     addHistory(history){
         this.history.push(history)
 
+    } 
+    
+    deleteComment(commentNumber: number)
+    {
+    this.comments.splice(commentNumber,1)
     }
 
 }

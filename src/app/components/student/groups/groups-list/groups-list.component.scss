@@ -1,4 +1,4 @@
-@import '../../../../stylings/color-pallete';
+@import '../../../../stylings/color-pallete.scss';
 
 .mat-icon{
     width: 19px;
@@ -76,72 +76,23 @@
 
 }
 
-.view-type{
+.view-type
+{
     background-color: $blue-gray-3;
     cursor: pointer;
     color: whitesmoke;
     padding: 0.4em;
     border-radius: 0.2em;
-
+    margin-right: 0.5em;
+transition: 0.5s ease-in-out;
 }
 
-.comment-item
+.selected-type
 {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.226);
-    border-radius: 10px;
-    margin-bottom: 1em;
-  
+    transition: 0.5s ease-in-out;
+    filter: saturate(4);
 }
 
-.comment-content{
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-}
-
-.comment-avatar{
-    display: flex;
-    text-align: center;
-    align-items: flex-start;
-    margin-top: 1em;
-    justify-content: center;
-    
-}
-
-.comment-head{
-    margin-bottom: 1em;
-}
-.comment-option{
- padding: 0.2em;
- color: $custom-blue;
- font-size: 0.9em;
- cursor: pointer;
- transition: 0.5s ease-in-out;
-}
-
-.comment-option:hover{
-    filter: saturate(3);
-}
-
-
-
-.comment-container
-{
-    height: 200px;
-    width: 100%;
-    overflow: scroll;
-
-}
-
-#comment-body{display: flex; flex-direction: column;}
-#comment-body span{
-    word-break: break-all;
-
-}
 
 .history-container{
     width: 100%;
@@ -227,5 +178,21 @@
 .container, .container-sm, .container-md, .container-lg {
     max-width: 100%;
 }
+
+#history-label{
+    display: none;
 }
 
+@media (max-width: 575px){
+    #history-label
+    {
+       display: initial;
+    }
+    #history-side{
+        display: none;
+        
+    }
+   
+}
+
+}

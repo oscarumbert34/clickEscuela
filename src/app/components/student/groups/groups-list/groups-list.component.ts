@@ -1,10 +1,13 @@
+import { WorkGroupService } from './../../../../services/work-group.service';
 import { History } from './../../../../models/History';
-import { WorkGroupService } from 'src/app/services/work-group.service';
+
 import { Comment } from './../../../../models/Comment';
 import { WorkGroup } from './../../../../models/WorkGroup';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
  const THUMBUP_ICON = `
   <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px">
     <path d="M0 0h24v24H0z" fill="none"/>
@@ -64,10 +67,11 @@ export class GroupsListComponent implements OnInit {
   @Input() group: WorkGroup;
   @Input() currentIndex: number;
   currentSender:string;
+  selectedTab:number;
 
  
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private workGroupService: WorkGroupService) 
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private workGroupService: WorkGroupService, public dialog: MatDialog) 
   {
     iconRegistry.addSvgIconLiteral('thumbs-up', sanitizer.bypassSecurityTrustHtml(THUMBUP_ICON));
     iconRegistry.addSvgIconLiteral('in-time', sanitizer.bypassSecurityTrustHtml(IN_TIME));
@@ -76,22 +80,41 @@ export class GroupsListComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('to-do', sanitizer.bypassSecurityTrustHtml(TO_DO));
     iconRegistry.addSvgIconLiteral('realized', sanitizer.bypassSecurityTrustHtml(REALIZED));
     this.currentSender="Nicolas Lencinas"
+    this.selectedTab=1;
+  }
 
-
-
-
+  changeSelectedTab(num:number){
+    this.selectedTab=num;
   }
 
   addComment(index,comment)
   {
     this.workGroupService.addComment(index,this.currentSender,comment)
-    console.log(this.workGroupService.groupsList)
   }
 
   addHistory(index,history)
   {
     this.workGroupService.addHistory(index,this.currentSender,history)
-    console.log(this.workGroupService.groupsList)
+  }
+
+  confirmDelete(row, index) {
+    console.log(row)
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent,
+      {
+        data: "¿Desea descargar el boletin de " + row,
+        width: '60%',
+        height: '150px'
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) 
+      {
+        deleteComment(index)
+      
+      }
+    });
   }
 
   ngOnInit()
@@ -100,3 +123,9 @@ export class GroupsListComponent implements OnInit {
   }
 
 }
+function deleteComment(index: any)
+{
+  this.workGroupService.deleteComment(index)
+  this.addHistory(index, "Elimino un comentario")
+}
+

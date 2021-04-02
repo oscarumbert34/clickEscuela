@@ -1,0 +1,38 @@
+<div class="comment-container" >
+  <div *ngFor="let comment of group.comments; let commentIndex=index" class="comment-item">
+
+    <div class="col-2 comment-avatar">
+      <div class="user-avatar">N</div>
+    </div>
+
+    <div class="col-10 comment-content">
+      <div class="row" id="comment-body">
+        <span class="comment-head"><b>{{comment.sender}}</b> {{comment.date | date : 'medium'}}</span>
+        <span>{{comment.content}}</span>
+      </div>
+
+      <div class="row mt-2">
+        <span class="comment-option" >Editar</span>
+        <p style="font-size: 1em;">•</p>
+        <span class="comment-option" (click)="confirmDelete(commentIndex)">Eliminar</span>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="row mb-4" style="width: 100%; margin: 0;">
+  <form class="example-form" style="width: 100%;">
+
+    <mat-form-field class="example-full-width" style="width: 100%;">
+      <mat-label><b>Comentario</b></mat-label>
+      <textarea style="width: 100%;" matInput placeholder="Agregue comentario..." #commentInput
+        (keyup.enter)="addComment(currentIndex,commentInput.value); commentInput.value='';addHistory(currentIndex,'agrego un comentario')"></textarea>
+    </mat-form-field>
+  </form>
+</div>
