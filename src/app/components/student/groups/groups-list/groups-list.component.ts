@@ -102,7 +102,6 @@ export class GroupsListComponent implements OnInit {
 
   ngOnInit()
   {
-    console.log(this.group)
   }
   
   getConsigns()

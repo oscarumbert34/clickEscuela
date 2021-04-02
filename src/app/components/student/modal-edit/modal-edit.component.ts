@@ -1,5 +1,5 @@
 import { Comment } from './../../../models/Comment';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,12 +9,25 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ModalEditComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Comment) { }
+  returnDataComment:any;
+
+  constructor(public dialogRef: MatDialogRef<ModalEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Comment) 
+  {
+    this.returnDataComment="holita"
+   }
 
   ngOnInit()
   {
+    
   }
+  closeOperation(comment){
 
+    if(comment!=this.data.content)
+    this.returnDataComment=comment
+    else this.returnDataComment=false;
+    this.dialogRef.close(this.returnDataComment)
+
+  }
   getCommentContent(){
     return this.data.content
   }

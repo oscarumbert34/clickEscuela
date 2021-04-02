@@ -1,4 +1,4 @@
-import { Comment } from '../models/Comment';
+import { Comment } from './../models/Comment';
 import { Injectable } from '@angular/core';
 import { WorkGroup } from '../models/WorkGroup';
 
@@ -7,6 +7,7 @@ import { WorkGroup } from '../models/WorkGroup';
   providedIn: 'root'
 })
 export class WorkGroupService {
+
 
 workgroupList: WorkGroup[];
 constructor() 
@@ -43,6 +44,11 @@ addHistory(index:number,sender: string, move:string)
 deleteComment(index:number, commentNumber:number)
 {
   this.workgroupList[index].deleteComment(commentNumber)
+}
+
+editComment(index: number, commentNumber:number, newComment:string)
+{
+  this.workgroupList[index].editComment(commentNumber,newComment)
 }
 
 }

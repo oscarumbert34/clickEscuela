@@ -20,7 +20,6 @@ export class CommentComponent implements OnInit {
   constructor(private workGroupService: WorkGroupService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log(this.group)
   }
 
   addComment(index,comment)
@@ -57,7 +56,7 @@ export class CommentComponent implements OnInit {
   {
     console.log(index)
   this.workGroupService.deleteComment(this.currentIndex,index)
-  this.addHistory(this.currentIndex, "Elimino un comentario")
+  this.addHistory(this.currentIndex, "Elimino su comentario")
   }
 
   confirmEdit(element:Element,commentContent:Comment,index) {
@@ -78,15 +77,19 @@ export class CommentComponent implements OnInit {
     )
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) 
+      console.log(result)
+      if (result!="") 
       {
-        this.editComment(index)
+        console.log(result) 
+        dialogRef.close()
+        this.editComment(index,result)
       
       }
     });
   }
-  editComment(index: any) {
-    throw new Error('Method not implemented.');
+  editComment(index: any,comment:string) {
+    this.workGroupService.editComment(this.currentIndex,index,comment)
+  this.addHistory(this.currentIndex, "Edito su comentario")
   }
 
 

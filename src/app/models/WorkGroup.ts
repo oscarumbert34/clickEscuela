@@ -2,6 +2,7 @@ import { Comment } from './Comment';
 export class WorkGroup 
 {
    
+   
     name: string;
     startDate: Date;
     endDate: Date;
@@ -46,5 +47,9 @@ export class WorkGroup
     {
     this.comments.splice(commentNumber,1)
     }
+
+    editComment(commentNumber: number, newComment: string) {
+        this.comments[commentNumber].content=newComment
+      }
 
 }
