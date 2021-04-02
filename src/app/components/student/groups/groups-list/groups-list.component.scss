@@ -183,6 +183,25 @@ transition: 0.5s ease-in-out;
     display: none;
 }
 
+textarea:disabled{
+    height: 60px;
+    color: black;
+    border: none;
+    text-decoration: none;
+}
+
+textarea::-webkit-scrollbar{
+    display: block;
+    background-color: $custom-blue-glass;
+    border-radius: 1em;
+}
+
+textarea::-webkit-scrollbar-thumb{
+    background-color: $blue-A;
+    border-radius: 2em;
+    
+}
+
 @media (max-width: 575px){
     #history-label
     {

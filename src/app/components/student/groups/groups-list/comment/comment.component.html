@@ -1,5 +1,8 @@
 <div class="comment-container" >
-  <div *ngFor="let comment of group.comments; let commentIndex=index" class="comment-item">
+  <div class="comment-item" *ngIf="group.comments.length==0" >
+    <span style="margin-bottom: 1em; font-weight: bold;">Sin comentarios</span>
+  </div>
+  <div *ngFor="let comment of group.comments; let commentIndex=index" class="comment-item" #commentItem>
 
     <div class="col-2 comment-avatar">
       <div class="user-avatar">N</div>
@@ -12,7 +15,7 @@
       </div>
 
       <div class="row mt-2">
-        <span class="comment-option" >Editar</span>
+        <span class="comment-option" (click)="confirmEdit(commentItem,comment,index)">Editar</span>
         <p style="font-size: 1em;">•</p>
         <span class="comment-option" (click)="confirmDelete(commentIndex)">Eliminar</span>
 
@@ -32,7 +35,8 @@
     <mat-form-field class="example-full-width" style="width: 100%;">
       <mat-label><b>Comentario</b></mat-label>
       <textarea style="width: 100%;" matInput placeholder="Agregue comentario..." #commentInput
-        (keyup.enter)="addComment(currentIndex,commentInput.value); commentInput.value='';addHistory(currentIndex,'agrego un comentario')"></textarea>
+        (keyup.enter)="addComment(currentIndex,commentInput.value); commentInput.value='';addHistory(currentIndex,'agrego un comentario')"
+        ></textarea>
     </mat-form-field>
   </form>
 </div>

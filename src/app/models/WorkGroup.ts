@@ -6,9 +6,9 @@ export class WorkGroup
     startDate: Date;
     endDate: Date;
     state: string;
-    comments: Comment[]
-    history: Comment[]
-
+    comments: Comment[];
+    history: Comment[];
+    consigns:string[];
     constructor(
         name: string,
         startDate: Date,
@@ -24,12 +24,17 @@ export class WorkGroup
     this.state=state;
     this.comments=[];
     this.history=[];
+    this.consigns=[];
     }
 
 
     addComment(comment)
     {
         this.comments.push(comment)
+    }
+
+    addConsign(consign:string){
+        this.consigns.push(consign)
     }
 
     addHistory(history){

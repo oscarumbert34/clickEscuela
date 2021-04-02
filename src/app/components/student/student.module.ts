@@ -1,3 +1,4 @@
+import { ModalEditComponent } from './modal-edit/modal-edit.component';
 import { HistoryComponent } from './groups/groups-list/history/history.component';
 import { CommentComponent } from './groups/groups-list/comment/comment.component';
 import { GroupsListComponent } from './groups/groups-list/groups-list.component';
@@ -46,7 +47,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
-  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent, GroupsComponent,GroupsListComponent, CommentComponent, HistoryComponent],
+  declarations:[StudentMenuComponent,HomeworkComponent,HomeworkListComponent,LibraryComponent, GroupsComponent,GroupsListComponent, CommentComponent, HistoryComponent, ModalEditComponent],
   imports: [
     CommonModule,  CommonModule,
     MatSidenavModule,

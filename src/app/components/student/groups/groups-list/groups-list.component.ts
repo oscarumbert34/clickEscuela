@@ -1,3 +1,4 @@
+import { of } from 'rxjs/internal/observable/of';
 import { WorkGroupService } from './../../../../services/work-group.service';
 import { History } from './../../../../models/History';
 
@@ -97,35 +98,26 @@ export class GroupsListComponent implements OnInit {
     this.workGroupService.addHistory(index,this.currentSender,history)
   }
 
-  confirmDelete(row, index) {
-    console.log(row)
 
-    const dialogRef = this.dialog.open(ConfirmDialogComponent,
-      {
-        data: "¿Desea descargar el boletin de " + row,
-        width: '60%',
-        height: '150px'
-      }
-    )
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) 
-      {
-        deleteComment(index)
-      
-      }
-    });
-  }
 
   ngOnInit()
   {
     console.log(this.group)
   }
+  
+  getConsigns()
+  {
+    let wordReturn=""
+    let numberindex=0;
+    for (let consign of this.group.consigns){
+      numberindex++
+      wordReturn+=numberindex+")"+consign+'\n\n';
+    }
+    return wordReturn
+  }
 
 }
-function deleteComment(index: any)
-{
-  this.workGroupService.deleteComment(index)
-  this.addHistory(index, "Elimino un comentario")
-}
+
+
+
 

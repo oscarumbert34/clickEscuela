@@ -1,3 +1,5 @@
+import { Comment } from './../../../../../models/Comment';
+import { ModalEditComponent } from './../../../modal-edit/modal-edit.component';
 import { WorkGroupService } from './../../../../../services/work-group.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { WorkGroup } from 'src/app/models/WorkGroup';
@@ -55,8 +57,39 @@ export class CommentComponent implements OnInit {
   {
     console.log(index)
   this.workGroupService.deleteComment(this.currentIndex,index)
-  this.addHistory(index, "Elimino un comentario")
+  this.addHistory(this.currentIndex, "Elimino un comentario")
   }
+
+  confirmEdit(element:Element,commentContent:Comment,index) {
+   
+    let elementWidth=element.clientWidth;
+    let elementHeight=element.clientHeight;
+    let elementRect=element.getBoundingClientRect()
+    console.log(elementRect)
+
+
+    const dialogRef = this.dialog.open(ModalEditComponent,
+      {
+        data:commentContent,
+        width: elementRect.width+'px',
+        height:  elementRect.height+'px',
+        position: {top:elementRect.top+'px', left: elementRect.left+'px' }
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) 
+      {
+        this.editComment(index)
+      
+      }
+    });
+  }
+  editComment(index: any) {
+    throw new Error('Method not implemented.');
+  }
+
+
 }
 
 

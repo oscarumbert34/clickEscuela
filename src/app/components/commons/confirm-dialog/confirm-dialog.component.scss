@@ -3,6 +3,8 @@
 ::ng-deep .mat-dialog-container
 {
     border: 2px solid $green;
+    padding: 0 !important;
+    overflow-x: hidden;
 }
 
 .cancelButton{
@@ -14,4 +16,8 @@
 .confirmButton
 {
     background-color: $green;
+}
+
+p{
+    margin-top: 24px;
 }
