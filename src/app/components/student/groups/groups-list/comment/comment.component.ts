@@ -24,7 +24,7 @@ export class CommentComponent implements OnInit {
 
   addComment(index,comment)
   {
-    this.workGroupService.addComment(index,this.currentSender,comment)
+    this.workGroupService.addComment(index,this.currentSender,this.normalize(comment))
   }
 
   addHistory(index,history)
@@ -90,6 +90,13 @@ export class CommentComponent implements OnInit {
   editComment(index: any,comment:string) {
     this.workGroupService.editComment(this.currentIndex,index,comment)
   this.addHistory(this.currentIndex, "Edito su comentario")
+  }
+
+  //Normaliza el comentario eliminando los saltos innecesarios
+  normalize(word:string)
+  {
+    let wordRer= word.replace('\n',"");
+    return wordRer
   }
 
 

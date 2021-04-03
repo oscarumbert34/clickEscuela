@@ -78,7 +78,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatFormFieldModule,
     MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
   ], 
-  exports:[ReportCardComponent, GradesComponent,MessagesComponent]
+  exports:[ReportCardComponent, GradesComponent,MessagesComponent, FirstLetterPipe]
 
 })
 export class ParentModule { }

@@ -1,11 +1,11 @@
 <div class="comment-container" >
-  <div class="comment-item" *ngIf="group.comments.length==0" >
+  <div class="comment-item no-comments" *ngIf="group.comments.length==0" >
     <span style="margin-bottom: 1em; font-weight: bold;">Sin comentarios</span>
   </div>
   <div *ngFor="let comment of group.comments; let commentIndex=index" class="comment-item" #commentItem>
 
     <div class="col-2 comment-avatar">
-      <div class="user-avatar">N</div>
+      <div class="user-avatar">{{comment.sender | firstLetter: 'first'}}</div>
     </div>
 
     <div class="col-10 comment-content">

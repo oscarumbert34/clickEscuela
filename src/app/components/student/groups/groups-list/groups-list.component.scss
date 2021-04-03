@@ -194,12 +194,18 @@ textarea::-webkit-scrollbar{
     display: block;
     background-color: $custom-blue-glass;
     border-radius: 1em;
+ 
 }
 
 textarea::-webkit-scrollbar-thumb{
     background-color: $blue-A;
     border-radius: 2em;
     
+    
+}
+
+textarea::-webkit-scrollbar-thumb:hover{
+    filter: saturate(3);
 }
 
 @media (max-width: 575px){

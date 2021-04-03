@@ -13,6 +13,21 @@
   
 }
 
+.no-comments{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: $custom-blue;
+    padding: 1em;
+    margin-top: 1em;
+    color: whitesmoke;
+}
+
+.no-comments span{
+    margin-bottom: 0 !important;
+}
+
 .comment-content{
     padding: 1em;
     display: flex;
