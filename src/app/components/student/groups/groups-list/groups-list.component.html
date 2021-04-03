@@ -37,8 +37,9 @@
           <div class="row">
             <div class="col-6"
               style="display: flex; justify-content: flex-start; align-items: center; text-align: start;">
-              <button mat-button class="attach-button">
-
+              <button mat-button class="attach-button" (click)="fileLoader.click()">
+                <input style="display: none;" (change)="showThumbs()" class="fileLoader" #fileLoader
+            type="file" multiple>
                 <img width="20px" src="./assets/images/clip.svg" alt=""> Adjuntar
               </button>
             </div>
@@ -46,6 +47,18 @@
               <span>Fecha de inicio: {{group.startDate | date: 'shortDate'}}</span>
               <br>
               <span>Fecha de entrega: {{group.startDate | date: 'shortDate'}}</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="attach-container">
+
+              <div class="attach-item">
+                <img src="" width="120px" height="80px" alt="Image preview..." #previewThumb>
+              </div>
+              <div class="attach-item"></div>
+              <div class="attach-item"></div>
+
             </div>
           </div>
         </div>
