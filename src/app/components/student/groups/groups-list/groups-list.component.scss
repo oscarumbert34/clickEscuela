@@ -237,23 +237,29 @@ textarea:disabled{
     transform-origin: top top ;
     padding: 0em;
     border-radius: 10px;
+    
 
 }
 
 .attach-image
 {
     overflow: hidden;
-    background-color: $custom-blue-glass;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 15px 15px 0 0 ;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     
 
 }
 .attach-image img{
-    width: 120%;
+    width: auto;
+    height: 130%;
 }
 
 
@@ -265,8 +271,10 @@ textarea:disabled{
 .attach-item
 {
     width: 140px;
-    height: 80px;
+    height: 110px;
     margin-right: 1em;
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
 }
 
 .attach-name{
@@ -282,5 +290,5 @@ textarea:disabled{
     font-size: 0.7em;
    text-overflow: ellipsis;
    word-break: break-word;
-   margin-left: 0.3em;
+   margin-left: 0.7em;
 }
