@@ -10,6 +10,8 @@ export class WorkGroup
     comments: Comment[];
     history: Comment[];
     consigns:string[];
+    attachs:string[];
+
     constructor(
         name: string,
         startDate: Date,
@@ -26,9 +28,13 @@ export class WorkGroup
     this.comments=[];
     this.history=[];
     this.consigns=[];
+    this.attachs=[];
+}
+
+
+    addAttach(attach){
+        this.attachs.push(attach)
     }
-
-
     addComment(comment)
     {
         this.comments.push(comment)

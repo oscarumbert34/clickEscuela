@@ -51,10 +51,16 @@
           </div>
 
           <div class="row">
-            <div class="attach-container">
+            <div class="attach-container" [ngClass]="{'expand': selectedFiles.length>0}">
 
               <div class="attach-item">
-                <img src="" width="120px" height="80px" alt="Image preview..." #previewThumb>
+                <div class="attach-image">
+                  <img src="../../../../../assets/images/thumbs/pdf.png" width="120px" height="80px" alt="Image preview..." #previewThumb>
+                </div>
+                <div class="div attach-name" [matTooltip]="(selectedFiles.length>0)? getFileName(): unused()">
+                  <span [innerHTML]="(selectedFiles.length>0)? getFileName(): unused()"></span>
+                </div>
+                
               </div>
               <div class="attach-item"></div>
               <div class="attach-item"></div>

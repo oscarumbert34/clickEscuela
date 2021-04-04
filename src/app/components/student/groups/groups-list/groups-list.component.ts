@@ -4,7 +4,7 @@ import { History } from './../../../../models/History';
 
 import { Comment } from './../../../../models/Comment';
 import { WorkGroup } from './../../../../models/WorkGroup';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
@@ -41,12 +41,7 @@ const REALIZED=
 +'  <path class="cls-1" d="M282.47,14.05,269.79,31.44l-8.16,11.19-140,192a5,5,0,0,1-3.72,2h-.32a5,5,0,0,1-3.63-1.57L45.57,162.56a5,5,0,1,1,7.28-6.86l64.23,68.19L257.44,31.41l5.89-8.08L274.39,8.16a5,5,0,0,1,8.08,5.89Z" transform="translate(-19.07 -6.11)"/>'
 +'</svg>'
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+
 
 
 
@@ -58,15 +53,15 @@ export interface Tile {
 })
 export class GroupsListComponent implements OnInit {
   
-  tiles: Tile[] = [
-    {text: 'One', cols: 2, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 2, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-  ];
+ 
 
   @Input() group: WorkGroup;
   @Input() currentIndex: number;
+  @ViewChild('fileLoader') attachs: ElementRef;
+  @ViewChild('previewThumb') thumb: ElementRef;
+
+  selectedFiles:any[]
+
   currentSender:string;
   selectedTab:number;
 
@@ -82,6 +77,7 @@ export class GroupsListComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('realized', sanitizer.bypassSecurityTrustHtml(REALIZED));
     this.currentSender="Nicolas Lencinas"
     this.selectedTab=1;
+    this.selectedFiles=[]
   }
 
   changeSelectedTab(num:number){
@@ -113,6 +109,45 @@ export class GroupsListComponent implements OnInit {
       wordReturn+=numberindex+")"+consign+'\n\n';
     }
     return wordReturn
+  }
+
+  getFileName(){
+    return this.selectedFiles[0].name;
+  }
+
+  unused(){}
+
+  showThumbs()
+  {
+    this.selectedFiles.push(this.attachs.nativeElement.files[0])
+
+    console.log(this.selectedFiles)
+    
+    let input=this.selectedFiles[0]
+    let reader= new FileReader()
+    
+
+    reader.onload=()=>{
+      this.thumb.nativeElement.src=reader.result
+      switch(this.selectedFiles[0].type){
+        case 'application/pdf' :
+          this.thumb.nativeElement.src="../../../../../assets/images/thumbs/pdf.svg" 
+    }
+  }
+
+    if (input) 
+    {
+     
+         reader.readAsDataURL(input)
+   
+      
+    } else 
+    {
+      this.thumb.nativeElement.src = "";
+     
+    }
+
+
   }
 
 }

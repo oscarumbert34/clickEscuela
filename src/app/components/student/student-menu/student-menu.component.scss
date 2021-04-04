@@ -184,6 +184,11 @@
       background-color: rgba(0, 0, 0, 0.432) !important;
 
     }
+
+    .option-selected svg{
+      transform: scale(1.2);
+      filter: saturate(2);
+    }
     .option-selected:hover{
       background-color: transparent;
     }
