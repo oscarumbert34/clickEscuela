@@ -110,7 +110,8 @@ export class GroupsListComponent implements OnInit {
     return this.selectedFiles[0].name;
   }
 
-  unused() { }
+  //funcion nula
+  unused() { return null }
 
   showThumbs() {
     this.selectedFiles=[]
@@ -201,6 +202,18 @@ export class GroupsListComponent implements OnInit {
     }
 
 
+  }
+
+  deleteAttach(){
+    this.selectedFiles=[]
+  }
+
+
+
+  loadAttachs(){
+    let cantArch= this.selectedFiles.length>1 ? ' archivos' : " archivo"
+    this.addHistory(this.currentIndex,"Ah adjuntado "+this.selectedFiles.length+ cantArch)
+    this.deleteAttach()
   }
 
 }

@@ -257,6 +257,66 @@ textarea:disabled{
     
 
 }
+
+.cancel-attach
+{
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    padding: 1em;
+    background-color: $custom-blue;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.attach-item:hover .cancel-attach
+{
+    opacity: 1;
+}
+
+.cancel-attach:hover{
+    background-color: rgb(134, 13, 13);
+}
+
+.cancel-attach img{
+    position: absolute;
+    width: 14px;
+}
+.attach-container{
+    position: relative;
+}
+.accept-attachs
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    padding: 1em;
+    background-color: $custom-blue;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.accept-attachs:hover{
+    transform: scale(1.2);
+    box-shadow: 4px 4px 12px 4px rgba(0, 0, 0, 0.349);
+}
+.accept-attachs img{
+    position: absolute;
+    width: 15px;
+}
 .attach-image img{
     width: auto;
     height: 130%;
@@ -270,6 +330,7 @@ textarea:disabled{
 
 .attach-item
 {
+    position: relative;
     width: 140px;
     height: 110px;
     margin-right: 1em;
