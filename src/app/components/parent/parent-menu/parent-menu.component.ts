@@ -32,7 +32,7 @@ export class ParentMenuComponent implements OnInit {
   dashboard = 'Cant. Aprobados';
   checked = false;
   classMenu = 'menu';
-  blockDinamicActually = 'homepage';
+  blockDinamicActually = 'parent-asistance';
   sidenavClass = 'sidenav-open';
   showHomeButton = false;
 
