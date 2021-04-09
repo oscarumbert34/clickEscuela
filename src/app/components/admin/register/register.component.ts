@@ -1,15 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  animations: [
+    trigger('changeDisplay', [
+      state('notifications-hide', style({
+        display: 'none'
+      })),
+      state('notifications-show', style({
+        display: 'block'
+      })),
+      transition('notifications-hide=>notifications-show', animate('4500ms')),
+      transition('notifications-show=>notifications-hide', animate('4000ms'))
+    ]),
+  ]
 })
 export class RegisterComponent implements OnInit {
 
   @ViewChild('drawer', { static: true }) sidenav: MatSidenav;
-  blockDinamicActually = 'parent-asistance';
+  @ViewChild('menuNav', { static: true }) menuNav: ElementRef;
+
+  blockDinamicActually = 'student';
   showHomeButton = false;
 
 
@@ -19,6 +34,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() 
   {
     this.sidenav.open()
+  
   }
 
   changeBlock(newBlock: string) {

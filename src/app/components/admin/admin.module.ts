@@ -1,3 +1,4 @@
+import { AddStudentComponent } from './add-student/add-student.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
@@ -35,7 +36,7 @@ import { ParentModule } from '../parent/parent.module';
 
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, AddStudentComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

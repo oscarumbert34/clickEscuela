@@ -79,11 +79,10 @@
       height: 722px;
       align-items: center;
       justify-content: center;
+      margin-left: 10em;
       
     }
-    .container{
-      max-width: 100%;
-    }
+    
     .sidenav {
       padding: 1px;
       
@@ -216,6 +215,10 @@
     }
 
 
+    ::ng-deep .mat-drawer-content
+      {
+        margin-left:0!important;
+      }
     
   
     .mat-icon
@@ -230,6 +233,10 @@
       animation-delay: 0;
 
     } 
+
+    .mat-drawer-content{
+      margin-left: 0 !important;
+    }
 
     @media (max-width: 1260px){
      
@@ -259,6 +266,9 @@
       }
      
      
+     .sidenav-content{
+       margin-left: 0;
+     }
 
 
       .mat-list-item
