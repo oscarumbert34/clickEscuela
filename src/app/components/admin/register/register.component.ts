@@ -1,3 +1,5 @@
+import { studentService } from './../../../services/student.service';
+import { MatDialogRef } from '@angular/material/dialog';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -27,9 +29,15 @@ export class RegisterComponent implements OnInit {
   blockDinamicActually = 'student';
   showHomeButton = false;
 
+  currentEdit:any;
 
 
-  constructor() { }
+
+  constructor(private studentService: studentService) 
+  { 
+    this.currentEdit=studentService.editStudent
+  }
+  
 
   ngOnInit() 
   {

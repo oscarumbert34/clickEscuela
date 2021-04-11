@@ -21,7 +21,7 @@ export class ConfirmDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.message)
+    console.log(this.typeEntrie)
   }
 
 

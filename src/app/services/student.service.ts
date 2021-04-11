@@ -59,6 +59,8 @@ export class studentService {
   };
 
   studentsArray: Student[] = []
+  editCurrentStudent: Student;
+
 
   constructor(private pipe: DecimalPipe) {
     this._search$.pipe(
@@ -98,6 +100,7 @@ export class studentService {
   private _search(): Observable<SearchResult> {
     const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
+
     // 1. sort
 
     this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '', "3B");
@@ -118,8 +121,22 @@ export class studentService {
     return of({ students, total });
   }
 
+  toEditStudent(student:Student)
+  {
+    this.editCurrentStudent=student;
+  }
+
+  get editStudent(){
+    return this.editCurrentStudent
+  }
+
   get studentsList() {
     return this.studentsArray;
+  }
+
+  deleteStudent(index:number)
+  {
+    this.studentsArray.splice(index,1)
   }
 
 

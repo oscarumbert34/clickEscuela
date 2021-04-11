@@ -1,3 +1,5 @@
+import { EditStudentComponent } from './edit-student/edit-student.component';
+import { StudentBaseModelComponent } from './student-base-model/student-base-model.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -36,7 +38,7 @@ import { ParentModule } from '../parent/parent.module';
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
