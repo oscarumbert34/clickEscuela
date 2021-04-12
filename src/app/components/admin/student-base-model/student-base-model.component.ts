@@ -94,14 +94,15 @@ export class StudentBaseModelComponent implements OnInit {
     const dialogRef = this.dialog.open(EditStudentComponent,
       {
         data: input,
-        width: '90vw',
-        height: '100vh'
+        width: '100vw',
+        height: '95vh',
+        maxWidth:"95vw"
       }
     )
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        
+        console.log(result)
       }
     });
   }

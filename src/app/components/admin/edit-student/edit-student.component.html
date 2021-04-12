@@ -85,13 +85,13 @@
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Numero de documento</mat-label>
-        <input matInput [(ngModel)]="data.id">
+        <input matInput [(ngModel)]="data.idNumber">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="studentBorn">
+        <input matInput [matDatepicker]="studentBorn" [(ngModel)]="data.bornDate">
         <mat-datepicker-toggle matSuffix [for]="studentBorn"></mat-datepicker-toggle>
         <mat-datepicker #studentBorn></mat-datepicker>
       </mat-form-field>
@@ -107,7 +107,7 @@
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Grado</mat-label>
-        <input matInput [(ngModel)]="name">
+        <input matInput [(ngModel)]="data.course">
       </mat-form-field>
     </div>
   </div>
@@ -276,7 +276,7 @@
 
 
 <div class="container">
-  <div class="row">
+  <div class="row" style="justify-content: space-evenly;">
     <button type="button" class="btn btn-primary">Aceptar</button>
     <button type="button" class="btn btn-primary">Cancelar</button>
 

@@ -44,7 +44,7 @@
           <img src="../../../../assets/images/edit.svg" alt="">
         </div>
 
-        <div class="student-action" (click)="deleteStudent(index,row)">
+        <div class="student-action" style="width: 15px;" (click)="deleteStudent(index,row)">
 
           <img src="../../../../assets/images/cancel.svg" alt="">
         </div>
@@ -60,5 +60,5 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSize]="1000"></mat-paginator>
 </div>

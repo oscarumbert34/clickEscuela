@@ -5,14 +5,15 @@ export class Student {
      bornDate: string;
      absences: number;
      observation: string;
-     course: string
+     course: string;
+     idNumber:number;
 
      constructor(id: string,
           name: string,
           surname: string,
           bornDate: string,
           absences: number,
-          observation: string, course: string) {
+          observation: string, course: string,idNumber:number) {
           this.id = id;
           this.name = name;
           this.surname = surname;
@@ -20,5 +21,6 @@ export class Student {
           this.absences = absences;
           this.observation = observation;
           this.course = course;
+          this.idNumber=idNumber;
      }
 }
