@@ -1,8 +1,11 @@
+import { studentService } from './../../../services/student.service';
 import { StudentsComponent } from './../../teacher/students/students.component';
 import { StudentBaseModelComponent } from './../student-base-model/student-base-model.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
+import { Student } from 'src/app/models/student';
+import { Parent } from 'src/app/models/Parent';
 
 @Component({
   selector: 'app-add-student',
@@ -11,32 +14,73 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddStudentComponent implements OnInit {
 
-  secondParent:boolean;
+  secondParent: boolean;
+  currentStudent: Student;
+  parent_1:Parent;
+  parent_2:Parent;
 
-  constructor(private snackBar: MatSnackBar,private matDialogRef: MatDialog) 
-  {
-    this.secondParent=false;
-   }
+
+  constructor(private snackBar: MatSnackBar, private matDialogRef: MatDialog, private studentsService:studentService) {
+    this.secondParent = false;
+    this.currentStudent =
+    {
+      id: "",
+      name: "",
+      surname: "",
+      bornDate: "",
+      absences: 0,
+      observation: "",
+      course: "",
+      idNumber: null,
+      adress: ""
+      
+
+    }
+    this.parent_1={
+      id: "",
+      name:"",
+      surname: "",
+      bornDate: "",
+      idNumber:null
+    }
+  }
 
   ngOnInit() {
   }
 
-  addParent()
-  {
-    this.secondParent=!this.secondParent
+  addParent() {
+    this.secondParent = !this.secondParent
     this.secondParent ? this.showSnackBar("Se agrego un familiar") : this.showSnackBar("Se quito el familiar adicional")
   }
 
-  openStudentModelBase(){
-    this.matDialogRef.open(StudentBaseModelComponent,{
-      height:"90vh",
+  addStudent() {
+    this.studentsService.addStudent(this.currentStudent)
+    this.currentStudent =
+    {
+      id: "",
+      name: "",
+      surname: "",
+      bornDate: "",
+      absences: 0,
+      observation: "",
+      course: "",
+      idNumber: null,
+      adress: ""
+      
+
+    }
+    this.showSnackBar("Se creo el nuevo alumno")
+  }
+
+  openStudentModelBase() {
+    this.matDialogRef.open(StudentBaseModelComponent, {
+      height: "90vh",
       width: "100vw"
     })
   }
 
-  showSnackBar(message:string)
-  { 
-    this.snackBar.open(message, "Aceptar" ,{duration:5500})
+  showSnackBar(message: string) {
+    this.snackBar.open(message, "Aceptar", { duration: 5500 })
   }
 
 }

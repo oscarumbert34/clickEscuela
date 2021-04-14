@@ -103,12 +103,12 @@ export class studentService {
 
     // 1. sort
 
-    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '', "3B",44444444);
-    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '', "3B",44444444);
-    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '', "3B",44444444);
-    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '', "2A",44444444);
-    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '', "2A",44444444);
-    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '', "2A",44444444);
+    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '', "3B",44444444,"Calle Falsa 123");
+    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '', "3B",44444444,"Calle Falsa 123");
+    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '', "3B",44444444,"Calle Falsa 123");
+    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '', "2A",44444444,"Calle Falsa 123");
+    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '', "2A",44444444,"Calle Falsa 123");
+    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '', "2A",44444444,"Calle Falsa 123");
 
     let students = sort(this.studentsArray, sortColumn, sortDirection);
 
@@ -121,10 +121,9 @@ export class studentService {
     return of({ students, total });
   }
 
-  toEditStudent(student:Student)
-  {
-    this.editCurrentStudent=student;
-  }
+ addStudent(student:Student){
+  this.studentsArray.push(student)
+ }
 
   get editStudent(){
     return this.editCurrentStudent
@@ -138,6 +137,7 @@ export class studentService {
   {
     this.studentsArray.splice(index,1)
   }
+  
 
 
 }
