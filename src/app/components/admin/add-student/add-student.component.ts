@@ -114,6 +114,49 @@ export class AddStudentComponent implements OnInit {
     this.showSnackBar("Se creo el nuevo alumno")
   }
 
+  cancelAdd(){
+    this.currentStudent =
+    {
+      id: "",
+      name: "",
+      surname: "",
+      bornDate: undefined,
+      absences: 0,
+      observation: "",
+      course: "",
+      idNumber: null,
+      adress: "",
+      telephone:"",
+      email:"",
+      parent_1:
+      {
+      id: "",
+      name:"",
+      surname: "",
+      bornDate: undefined,
+      idNumber:null,
+      adress: "",
+      telephone:"",
+      email:""
+      },
+      parent_2:
+      {
+      id: "",
+      name:"",
+      surname: "",
+      bornDate: undefined,
+      idNumber:null,
+      adress: "",
+      telephone:"",
+      email:"",
+      }
+      
+
+    }
+
+    this.showSnackBar("Se limpiaron los formularios")
+  }
+
   openStudentModelBase() {
     this.matDialogRef.open(StudentBaseModelComponent, {
       height: "90vh",
