@@ -1,14 +1,14 @@
-import { EditStudentComponent } from './../edit-student/edit-student.component';
-import { AddStudentComponent } from './../add-student/add-student.component';
-import { dataStudents } from './../../teacher/students/students';
-import { studentService } from './../../../services/student.service';
+import { AddStudentComponent } from '../add-student/add-student.component';
+import { dataStudents } from '../../../teacher/students/students';
+import { studentService } from '../../../../services/student.service';
 import { Component, OnInit, Output, ViewChild, EventEmitter, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/models/student';
-import { ConfirmDialogComponent } from '../../commons/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EditStudentComponent } from '../edit-student/edit-student.component';
 
 @Component({
   selector: 'app-student-base-model',

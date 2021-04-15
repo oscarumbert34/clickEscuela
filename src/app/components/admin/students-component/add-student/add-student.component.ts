@@ -1,6 +1,6 @@
-import { studentService } from './../../../services/student.service';
-import { StudentsComponent } from './../../teacher/students/students.component';
-import { StudentBaseModelComponent } from './../student-base-model/student-base-model.component';
+import { studentService } from '../../../../services/student.service';
+import { StudentsComponent } from '../../../teacher/students/students.component';
+import { StudentBaseModelComponent } from '../student-base-model/student-base-model.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';

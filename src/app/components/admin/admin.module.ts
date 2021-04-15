@@ -1,6 +1,6 @@
-import { EditStudentComponent } from './edit-student/edit-student.component';
-import { StudentBaseModelComponent } from './student-base-model/student-base-model.component';
-import { AddStudentComponent } from './add-student/add-student.component';
+import { EditStudentComponent } from './students-component/edit-student/edit-student.component';
+import { StudentBaseModelComponent } from './students-component/student-base-model/student-base-model.component';
+import { AddStudentComponent } from './students-component/add-student/add-student.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
