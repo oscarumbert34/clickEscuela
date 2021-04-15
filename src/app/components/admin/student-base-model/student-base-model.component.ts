@@ -89,11 +89,11 @@ export class StudentBaseModelComponent implements OnInit {
     });
   }
 
-  editStudent(input)
+  editStudent(ind,input)
   {
     const dialogRef = this.dialog.open(EditStudentComponent,
       {
-        data: input,
+        data: {student:input, index:ind},
         width: '100vw',
         height: '95vh',
         maxWidth:"95vw"

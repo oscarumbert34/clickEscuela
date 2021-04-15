@@ -27,22 +27,40 @@ export class AddStudentComponent implements OnInit {
       id: "",
       name: "",
       surname: "",
-      bornDate: "",
+      bornDate: undefined,
       absences: 0,
       observation: "",
       course: "",
       idNumber: null,
-      adress: ""
-      
-
-    }
-    this.parent_1={
+      adress: "",
+      telephone:"",
+      email:"",
+      parent_1:
+      {
       id: "",
       name:"",
       surname: "",
-      bornDate: "",
-      idNumber:null
+      bornDate: undefined,
+      idNumber:null,
+      adress: "",
+      telephone:"",
+      email:""
+      },
+      parent_2:
+      {
+      id: "",
+      name:"",
+      surname: "",
+      bornDate: undefined,
+      idNumber:null,
+      adress: "",
+      telephone:"",
+      email:""
+      }
+      
+
     }
+   
   }
 
   ngOnInit() {
@@ -60,12 +78,36 @@ export class AddStudentComponent implements OnInit {
       id: "",
       name: "",
       surname: "",
-      bornDate: "",
+      bornDate: undefined,
       absences: 0,
       observation: "",
       course: "",
       idNumber: null,
-      adress: ""
+      adress: "",
+      telephone:"",
+      email:"",
+      parent_1:
+      {
+      id: "",
+      name:"",
+      surname: "",
+      bornDate: undefined,
+      idNumber:null,
+      adress: "",
+      telephone:"",
+      email:""
+      },
+      parent_2:
+      {
+      id: "",
+      name:"",
+      surname: "",
+      bornDate: undefined,
+      idNumber:null,
+      adress: "",
+      telephone:"",
+      email:"",
+      }
       
 
     }

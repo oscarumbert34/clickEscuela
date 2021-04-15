@@ -121,13 +121,13 @@
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Numero de telefono</mat-label>
-        <input matInput [(ngModel)]="telephone">
+        <input matInput [(ngModel)]="currentStudent.telephone">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="email">
+        <input matInput [(ngModel)]="currentStudent.email">
       </mat-form-field>
     </div>
   </div>
@@ -160,13 +160,13 @@
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Nombre</mat-label>
-        <input matInput [(ngModel)]="parent_1.name">
+        <input matInput [(ngModel)]="currentStudent.parent_1.name">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Apellido</mat-label>
-        <input matInput [(ngModel)]="parent_1.surname">
+        <input matInput [(ngModel)]="currentStudent.parent_1.surname">
       </mat-form-field>
     </div>
   </div>
@@ -174,13 +174,13 @@
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Numero de documento</mat-label>
-        <input matInput [(ngModel)]="parent_1.idNumber">
+        <input matInput [(ngModel)]="currentStudent.parent_1.idNumber">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="parentBorn">
+        <input matInput [matDatepicker]="parentBorn" [(ngModel)]="currentStudent.parent_1.bornDate">
         <mat-datepicker-toggle matSuffix [for]="parentBorn"></mat-datepicker-toggle>
         <mat-datepicker #parentBorn></mat-datepicker>
       </mat-form-field>
@@ -190,13 +190,13 @@
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Direccion</mat-label>
-        <input matInput [(ngModel)]="direction">
+        <input matInput [(ngModel)]="currentStudent.parent_1.adress">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Numero de telefono</mat-label>
-        <input matInput [(ngModel)]="telephone2">
+        <input matInput [(ngModel)]="currentStudent.parent_1.telephone">
       </mat-form-field>
     </div>
   </div>
@@ -204,7 +204,7 @@
     <div class="col-12">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="email2">
+        <input matInput [(ngModel)]="currentStudent.parent_1.email">
       </mat-form-field>
     </div>
    

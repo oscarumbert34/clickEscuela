@@ -39,7 +39,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
       <td mat-cell *matCellDef="let row;let index=index" class="row-options">
 
-        <div class="student-action" (click)="editStudent(row)">
+        <div class="student-action" (click)="editStudent(index,row)">
 
           <img src="../../../../assets/images/edit.svg" alt="">
         </div>

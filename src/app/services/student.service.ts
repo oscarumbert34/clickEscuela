@@ -1,3 +1,4 @@
+import { Parent } from 'src/app/models/Parent';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Student } from '../models/student';
 import { Subject } from 'rxjs/internal/Subject';
@@ -23,7 +24,7 @@ interface State {
   sortDirection: SortDirection;
 }
 
-const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+const compare = (v1: string | number | Parent| Date, v2: string | number | Parent| Date) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
 function sort(students: Student[], column: SortColumn, direction: string): Student[] {
   if (direction === '' || column === '') {
@@ -45,6 +46,7 @@ function matches(student: Student, term: string, pipe: PipeTransform) {
 
 @Injectable({ providedIn: 'root' })
 export class studentService {
+ 
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
   private _students$ = new BehaviorSubject<Student[]>([]);
@@ -103,14 +105,23 @@ export class studentService {
 
     // 1. sort
 
-    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '', "3B",44444444,"Calle Falsa 123");
-    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '', "3B",44444444,"Calle Falsa 123");
-    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '', "3B",44444444,"Calle Falsa 123");
-    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '', "2A",44444444,"Calle Falsa 123");
-    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '', "2A",44444444,"Calle Falsa 123");
-    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '', "2A",44444444,"Calle Falsa 123");
+    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date(), 12, '', "3B", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
+    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date(), 5, '', "3B", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
+    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date(), 0, '', "3B", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
+    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date(), 18, '', "2A", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
+    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date(), 15, '', "2A", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
+    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date(), 11, '', "2A", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
 
-    let students = sort(this.studentsArray, sortColumn, sortDirection);
+    let parent = new Parent('12', "Daniel", "Perez", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
+      this.studentsArray[0].parent_1=parent;
+      this.studentsArray[1].parent_1=parent;
+      this.studentsArray[2].parent_1=parent;
+      this.studentsArray[3].parent_1=parent;
+      this.studentsArray[4].parent_1=parent;
+      this.studentsArray[5].parent_1=parent;
+
+
+      let students = sort(this.studentsArray, sortColumn, sortDirection);
 
     // 2. filter
     students = students.filter(student => matches(student, searchTerm, this.pipe));
@@ -121,11 +132,11 @@ export class studentService {
     return of({ students, total });
   }
 
- addStudent(student:Student){
-  this.studentsArray.push(student)
- }
+  addStudent(student: Student) {
+    this.studentsArray.push(student)
+  }
 
-  get editStudent(){
+  get editStudent() {
     return this.editCurrentStudent
   }
 
@@ -133,11 +144,14 @@ export class studentService {
     return this.studentsArray;
   }
 
-  deleteStudent(index:number)
-  {
-    this.studentsArray.splice(index,1)
+  deleteStudent(index: number) {
+    this.studentsArray.splice(index, 1)
   }
-  
+
+  edit(index,data: Student) {
+    this.studentsArray.splice(index,1,data)
+  }
+
 
 
 }
