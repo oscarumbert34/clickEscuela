@@ -7,6 +7,7 @@ import { Component, OnInit, Output, ViewChild, EventEmitter, Input } from '@angu
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
+import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
 
 @Component({
   selector: 'app-teacher-base-model',
@@ -19,32 +20,31 @@ export class TeacherBaseModelComponent implements OnInit {
   dataSource: any;
   teachersArray: Teacher[] = new Array(5);
 
-  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor( private teachersService: TeacherService, public dialog: MatDialog) {
-    this.teachersArray=this.teachersService.teachersList
-    this.displayedColumns = ['name', 'surname', 'bornDate','idNumber','courses','actions'];
- 
+  constructor(private teachersService: TeacherService, public dialog: MatDialog) {
+    this.teachersArray = this.teachersService.teachersList
+    this.displayedColumns = ['name', 'surname', 'bornDate', 'idNumber', 'courses', 'actions'];
+
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data =this.teachersService.teachersList;
+    this.dataSource.data = this.teachersService.teachersList;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-   
-   }
 
-  ngOnInit()
-  {
-    this.displayedColumns = ['name', 'surname', 'bornDate','idNumber','courses','actions'];
- 
-   // Assign the data to the data source for the table to render
-   this.dataSource = new MatTableDataSource();
-   this.dataSource.data =this.teachersService.teachersList;
-   this.dataSource.paginator = this.paginator;
-   this.dataSource.sort = this.sort;
+  }
+
+  ngOnInit() {
+    this.displayedColumns = ['name', 'surname', 'bornDate', 'idNumber', 'courses', 'actions'];
+
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource();
+    this.dataSource.data = this.teachersService.teachersList;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
@@ -56,10 +56,10 @@ export class TeacherBaseModelComponent implements OnInit {
     }
   }
 
-  deleteTeacher(index,input){
+  deleteTeacher(index, input) {
 
     console.log(input)
-    this.confirmDialog("Desea eliminar el alumno "+input.name+" "+input.surname,index)
+    this.confirmDialog("Desea eliminar el alumno " + input.name + " " + input.surname, index)
   }
 
   refreshTable() {
@@ -86,14 +86,29 @@ export class TeacherBaseModelComponent implements OnInit {
     });
   }
 
-  editTeacher(ind,input)
-  {
+  openContactInfo(input) {
+    input.web="clickEscuela.com"
+    const dialogRef = this.dialog.open(ContactInfoComponent,
+      {
+        data: input,
+        width: '550px',
+        height: '300px',
+        backdropClass:"contact-info-back"
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {console.log("finish")}});
+
+  }
+
+  editTeacher(ind, input) {
     const dialogRef = this.dialog.open(EditTeacherComponent,
       {
-        data: {teacher:input, index:ind},
+        data: { teacher: input, index: ind },
         width: '100vw',
         height: '95vh',
-        maxWidth:"95vw"
+        maxWidth: "95vw"
       }
     )
 

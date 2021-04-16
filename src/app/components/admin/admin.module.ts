@@ -38,11 +38,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ParentModule } from '../parent/parent.module';
 import { MatChipsModule } from '@angular/material/chips';
+import { ContactInfoComponent } from '../commons/contact-info/contact-info.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
