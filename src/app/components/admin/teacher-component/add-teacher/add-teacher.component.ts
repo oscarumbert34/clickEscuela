@@ -1,3 +1,4 @@
+import { TeacherBaseModelComponent } from './../teacher-base-model/teacher-base-model.component';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -89,8 +90,8 @@ export class AddTeacherComponent implements OnInit {
     this.showSnackBar("Se limpiaron los formularios")
   }
 
-  openStudentModelBase() {
-    this.matDialogRef.open(StudentBaseModelComponent, {
+  openTeacherModelBase() {
+    this.matDialogRef.open(TeacherBaseModelComponent, {
       height: "90vh",
       width: "100vw"
     })

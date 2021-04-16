@@ -25,7 +25,6 @@ export class StudentBaseModelComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  @Output() newEventEmitter= new  EventEmitter<any>()
 
   constructor( private studentsService: studentService, public dialog: MatDialog) {
     this.studentsArray=this.studentsService.studentsList
