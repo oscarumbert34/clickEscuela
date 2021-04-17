@@ -54,13 +54,13 @@ export class StudentBaseModelComponent implements OnInit {
 
 
   openContactInfo(input) {
-    input.whatsapp="1566744788"
+   
     const dialogRef = this.dialog.open(ContactInfoComponent,
       {
         data: input,
         width: '550px',
         height: '300px',
-        backdropClass:"contact-info-back"
+        panelClass:"contact-info-back"
       }
     )
 

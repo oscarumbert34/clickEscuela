@@ -93,7 +93,7 @@ export class TeacherBaseModelComponent implements OnInit {
         data: input,
         width: '550px',
         height: '300px',
-        backdropClass:"contact-info-back"
+        panelClass:"contact-info-back"
       }
     )
 
@@ -113,9 +113,12 @@ export class TeacherBaseModelComponent implements OnInit {
     )
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
       if (result) {
-        console.log(result)
+        this.refreshTable()
       }
     });
   }
+
+  
 }
