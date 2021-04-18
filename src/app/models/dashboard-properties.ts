@@ -48,7 +48,7 @@ export class Dashboardproperties {
 
 
 
-    constructor(title: string, result: string, classIcon: string, icon: string, information: any){
+    constructor(title: string, result: string, classIcon: string, icon: string, information: any) {
         this.result = result;
         this.title = title;
         this.classIcon = classIcon;

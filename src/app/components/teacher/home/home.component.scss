@@ -1,8 +1,11 @@
+@import '../../../stylings/color-pallete';
+
 .menu-icon{
     margin-right:17px;
 }
 .container{
   max-width: 100%;
+  width:100%;
 }
 .mat-card-title{
   font-size: 1vw;
@@ -57,4 +60,10 @@
 .notifications-show{
     display:block;
   
+}
+
+.mat-tab-group
+{
+  transition: 0.5s ease-in-out;
+  max-height: 360px;
 }

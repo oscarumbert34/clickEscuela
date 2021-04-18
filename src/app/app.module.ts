@@ -1,3 +1,9 @@
+import { NormalizeWordPipe } from './pipes/normalize-word.pipe';
+import { StudentModule } from './components/student/student.module';
+import { CommonModule } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ParentModule } from './components/parent/parent.module';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,7 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotificationComponent } from './components/commons/notification/notification.component';
-import { DashboardComponent } from './components/commons/dashboard/dashboard.component';
 import { LoadDashboardComponent } from './components/commons/load-dashboard/load-dashboard.component';
 import { DetailStudentComponent } from './components/commons/detail-student/detail-student.component';
 import { DashboardChartComponent } from './components/commons/dashboard-chart/dashboard-chart.component';
@@ -20,23 +25,35 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { DashboardChartAdvanceComponent } from './components/commons/dashboard-chart-advance/dashboard-chart-advance.component';
 import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
+import { DashboardVerticalComponent } from './components/commons/dashboard-vertical/dashboard-vertical.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatRippleModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     DetailStudentComponent,
-    VerticalBarChartComponent
+    VerticalBarChartComponent,
+    NormalizeWordPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AdminModule,
     TeacherModule,
+    ParentModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
-    FormsModule
-  ],
+    FormsModule,
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule,StudentModule,HttpClientModule
+
+    ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[NormalizeWordPipe]
 })
 export class AppModule { }

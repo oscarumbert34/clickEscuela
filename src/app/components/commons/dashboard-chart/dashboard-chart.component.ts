@@ -12,7 +12,7 @@ export class DashboardChartComponent implements OnInit {
   dashBoardProperties: Dashboardproperties;
   
   //single: any[];
-  view: any[] = [250, 150];
+  view: any[] = [220, 150];
 
   // options
   gradient: boolean = true;
