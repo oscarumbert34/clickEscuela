@@ -1,3 +1,5 @@
+import { AccountListComponent } from './account/account-list/account-list.component';
+import { AccountComponent } from './account/account.component';
 import { EditStudentComponent } from './students-component/edit-student/edit-student.component';
 import { StudentBaseModelComponent } from './students-component/student-base-model/student-base-model.component';
 import { AddStudentComponent } from './students-component/add-student/add-student.component';
@@ -38,7 +40,7 @@ import { ParentModule } from '../parent/parent.module';
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

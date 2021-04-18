@@ -113,12 +113,15 @@ export class studentService {
     this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date(), 11, '', "2A", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
 
     let parent = new Parent('12', "Daniel", "Perez", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
+    let parent2 = new Parent('25', "Humberto", "Gomez", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
+    let parent3 = new Parent('68', "Osvaldo", "Ferreira", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
+
       this.studentsArray[0].parent_1=parent;
-      this.studentsArray[1].parent_1=parent;
-      this.studentsArray[2].parent_1=parent;
-      this.studentsArray[3].parent_1=parent;
-      this.studentsArray[4].parent_1=parent;
-      this.studentsArray[5].parent_1=parent;
+      this.studentsArray[1].parent_1=parent2;
+      this.studentsArray[2].parent_1=parent3;
+      this.studentsArray[3].parent_1=parent2;
+      this.studentsArray[4].parent_1=parent2;
+      this.studentsArray[5].parent_1=parent3;
 
 
       let students = sort(this.studentsArray, sortColumn, sortDirection);
