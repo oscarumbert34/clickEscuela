@@ -39,13 +39,9 @@ export class AccountListComponent implements OnInit {
       console.log(account)
       this.accounts.push(account)
     }
-
-    
-  
-    
-   
-    
   }
+
+  
 
   ngOnInit()
   {
