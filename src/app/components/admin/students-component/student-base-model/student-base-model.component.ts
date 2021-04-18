@@ -9,6 +9,7 @@ import { Student } from 'src/app/models/student';
 import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
+import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
 
 @Component({
   selector: 'app-student-base-model',
@@ -25,7 +26,6 @@ export class StudentBaseModelComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  @Output() newEventEmitter= new  EventEmitter<any>()
 
   constructor( private studentsService: studentService, public dialog: MatDialog) {
     this.studentsArray=this.studentsService.studentsList
@@ -39,6 +39,8 @@ export class StudentBaseModelComponent implements OnInit {
    
    }
 
+
+
   ngOnInit()
   {
     this.displayedColumns = ['id', 'name', 'surname', 'birthDate', 'absences', 'observations'];
@@ -48,6 +50,23 @@ export class StudentBaseModelComponent implements OnInit {
    this.dataSource.data =this.studentsService.studentsList;
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+  }
+
+
+  openContactInfo(input) {
+   
+    const dialogRef = this.dialog.open(ContactInfoComponent,
+      {
+        data: input,
+        width: '550px',
+        height: '300px',
+        panelClass:"contact-info-back"
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {console.log("finish")}});
+
   }
 
   applyFilter(event: Event) {

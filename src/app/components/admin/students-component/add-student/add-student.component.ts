@@ -22,45 +22,49 @@ export class AddStudentComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private matDialogRef: MatDialog, private studentsService:studentService) {
     this.secondParent = false;
+   this.resetStudentModel()
+   
+  }
+
+  resetStudentModel() {
     this.currentStudent =
+  {
+    id: "",
+    name: "",
+    surname: "",
+    bornDate: undefined,
+    absences: 0,
+    observation: "",
+    course: "",
+    idNumber: null,
+    adress: "",
+    telephone: "",
+    email: "",
+    parent_1:
     {
       id: "",
       name: "",
       surname: "",
       bornDate: undefined,
-      absences: 0,
-      observation: "",
-      course: "",
       idNumber: null,
       adress: "",
-      telephone:"",
-      email:"",
-      parent_1:
-      {
+      telephone: "",
+      email: ""
+    },
+    parent_2:
+    {
       id: "",
-      name:"",
+      name: "",
       surname: "",
       bornDate: undefined,
-      idNumber:null,
+      idNumber: null,
       adress: "",
-      telephone:"",
-      email:""
-      },
-      parent_2:
-      {
-      id: "",
-      name:"",
-      surname: "",
-      bornDate: undefined,
-      idNumber:null,
-      adress: "",
-      telephone:"",
-      email:""
-      }
-      
-
+      telephone: "",
+      email: "",
     }
-   
+
+
+  }
   }
 
   ngOnInit() {
@@ -73,87 +77,12 @@ export class AddStudentComponent implements OnInit {
 
   addStudent() {
     this.studentsService.addStudent(this.currentStudent)
-    this.currentStudent =
-    {
-      id: "",
-      name: "",
-      surname: "",
-      bornDate: undefined,
-      absences: 0,
-      observation: "",
-      course: "",
-      idNumber: null,
-      adress: "",
-      telephone:"",
-      email:"",
-      parent_1:
-      {
-      id: "",
-      name:"",
-      surname: "",
-      bornDate: undefined,
-      idNumber:null,
-      adress: "",
-      telephone:"",
-      email:""
-      },
-      parent_2:
-      {
-      id: "",
-      name:"",
-      surname: "",
-      bornDate: undefined,
-      idNumber:null,
-      adress: "",
-      telephone:"",
-      email:"",
-      }
-      
-
-    }
+   this.resetStudentModel()
     this.showSnackBar("Se creo el nuevo alumno")
   }
 
   cancelAdd(){
-    this.currentStudent =
-    {
-      id: "",
-      name: "",
-      surname: "",
-      bornDate: undefined,
-      absences: 0,
-      observation: "",
-      course: "",
-      idNumber: null,
-      adress: "",
-      telephone:"",
-      email:"",
-      parent_1:
-      {
-      id: "",
-      name:"",
-      surname: "",
-      bornDate: undefined,
-      idNumber:null,
-      adress: "",
-      telephone:"",
-      email:""
-      },
-      parent_2:
-      {
-      id: "",
-      name:"",
-      surname: "",
-      bornDate: undefined,
-      idNumber:null,
-      adress: "",
-      telephone:"",
-      email:"",
-      }
-      
-
-    }
-
+    this.resetStudentModel()
     this.showSnackBar("Se limpiaron los formularios")
   }
 
