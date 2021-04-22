@@ -34,8 +34,10 @@ export class AccountListComponent implements OnInit {
         surname:student.surname,
         course: student.course,
         titular: student.parent_1.name+' '+student.parent_1.surname,
+        titularID:student.parent_1.id,
         state: this.getAccountState(student.parent_1.id)
       }
+
       console.log(account)
       this.accounts.push(account)
     }
@@ -59,6 +61,13 @@ export class AccountListComponent implements OnInit {
   getAccountState(id:string)
   {
     return this.accountsService.accountsList.filter(a =>a.$titularId==id)[0].$state
+  }
+
+  getPaymentDetail(id:string)
+  {
+    
+    console.log(this.accountsService.accountsList.filter(a =>a.$titularId==id)[0].$payments)
+
   }
 
 }
