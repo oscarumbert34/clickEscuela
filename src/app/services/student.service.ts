@@ -104,7 +104,6 @@ export class studentService {
 
 
     // 1. sort
-
     this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date(), 12, '', "3B", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
     this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date(), 5, '', "3B", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
     this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date(), 0, '', "3B", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");

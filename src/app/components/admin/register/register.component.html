@@ -54,8 +54,8 @@
 
 
       <mat-list-item class="button-menu-container text-center">
-        <button [ngClass]="{'option-selected': blockDinamicActually=='grades'}" class="button-menu" mat-button color
-          (click)="changeBlock('grades')">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='teacher'}" class="button-menu" mat-button color
+          (click)="changeBlock('teacher')">
           <svg class="icon-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 396.05 448">
             <defs>
@@ -77,19 +77,21 @@
                 transform="translate(-39.3)" />
             </g>
           </svg>
-          <span class="name-button calificationsLenged">Profesores</span>
+          <span class="name-button calificationsLenged"> Profesores</span>
         </button>
       </mat-list-item>
 
       <mat-divider></mat-divider>
 
       <mat-list-item class="button-menu-container">
-        <button [ngClass]="{'option-selected': blockDinamicActually=='account'}" class="button-menu" mat-button color
-          (click)="changeBlock('account')">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='homework'}" class="button-menu" mat-button color
+          (click)="changeBlock('homework')">
 
 
 
-          <svg class="icon-svg" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 452">
+          <svg class="icon-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 469.341 469.341" style="enable-background:new 0 0 469.341 469.341;"
+            xml:space="preserve">
             <defs>
               <style>
                 .cls-1 {
@@ -124,12 +126,25 @@
           <div *ngSwitchCase="'student'">
             <app-add-student></app-add-student>
           </div>
-          <div *ngSwitchCase="'grades'">
-            <app-grades></app-grades>
+          <div *ngSwitchCase="'teacher'">
+            <app-add-teacher></app-add-teacher>
           </div>
-          <div *ngSwitchCase="'account'">
+          <div *ngSwitchCase="'homework'">
             <app-account></app-account>
           </div>
+          <div *ngSwitchCase="'message'">
+            <app-messages [view]="view "></app-messages>
+          </div>
+          <div *ngSwitchCase="'library'">
+            <app-library></app-library>
+          </div>
+          <div *ngSwitchCase="'groups'">
+            <app-groups></app-groups>
+          </div>
+
+
+
+
 
 
           <div *ngSwitchDefault>Default Option</div>

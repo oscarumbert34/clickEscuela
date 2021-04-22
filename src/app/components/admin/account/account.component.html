@@ -39,18 +39,21 @@
 
     </div>
 
-    <div class="col-lg-6 col-md-10 col-8 text-center">
-
-      <h5>Calificaciones</h5>
+    <div class="col-lg-6 col-md-10 col-8 text-center"  >
+      
+      <h5 >Calificaciones</h5>
     </div>
+
+  
   </div>
 
+  <button (click)="makePDF()">Download</button>
 
-  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" #tabGroup>
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4"  id="toPDF">
 
     <mat-tab #listTab>
 
-      <app-account-list #appList [son]='son'></app-account-list>
+      <app-account-list #appList></app-account-list>
 
     </mat-tab>
 
@@ -59,5 +62,15 @@
 
 
   </mat-tab-group>
+
+  <!-- <div class="container no-gutters" class="pdf-content"#tabGroup>
+    <div class="row no-gutters"  >
+      <div class="col-12" style="width: 100%;background-color: #9acd8d;border-radius: 15px;">
+
+        <h1>Hola buenos dias</h1>
+        <img style="width: 80%;" src="../../../../assets/images/libros.jpg" alt="">
+      </div>
+    </div>
+  </div> -->
 
 </div>

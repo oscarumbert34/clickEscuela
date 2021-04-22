@@ -1,5 +1,8 @@
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AccountComponent } from './account/account.component';
+import { EditTeacherComponent } from './teacher-component/edit-teacher/edit-teacher.component';
+import { AddTeacherComponent } from './teacher-component/add-teacher/add-teacher.component';
+import { TeacherBaseModelComponent } from './teacher-component/teacher-base-model/teacher-base-model.component';
 import { EditStudentComponent } from './students-component/edit-student/edit-student.component';
 import { StudentBaseModelComponent } from './students-component/student-base-model/student-base-model.component';
 import { AddStudentComponent } from './students-component/add-student/add-student.component';
@@ -36,11 +39,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ParentModule } from '../parent/parent.module';
+import { MatChipsModule } from '@angular/material/chips';
+import { ContactInfoComponent } from '../commons/contact-info/contact-info.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -52,7 +57,6 @@ import { ParentModule } from '../parent/parent.module';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-
     MatTabsModule,
     MatAutocompleteModule,
     MatDividerModule,
@@ -70,7 +74,7 @@ import { ParentModule } from '../parent/parent.module';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, ParentModule, MatSelectModule, MatGridListModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, ParentModule, MatSelectModule, MatGridListModule,MatChipsModule
   ],
   exports: [RegisterComponent]
 })
