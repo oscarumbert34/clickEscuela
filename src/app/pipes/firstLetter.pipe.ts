@@ -13,6 +13,11 @@ export class FirstLetterPipe implements PipeTransform {
         return val
 
       }
+
+      if (args=='normalize'){
+        let val=value.charAt(0).toUpperCase()+value.substring(1,value.length).toLowerCase()
+        return val;
+      }
     }
     return null;
   }
