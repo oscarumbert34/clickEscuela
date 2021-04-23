@@ -7,7 +7,7 @@
   <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
-    <ng-container matColumnDef="student">
+    <ng-container *ngIf="routeLink==='/parent/menu'" matColumnDef="student">
       <th id="column1" mat-header-cell *matHeaderCellDef mat-sort-header>Alumno</th>
       <td mat-cell *matCellDef="let row"> {{row.student}} </td>
     </ng-container>

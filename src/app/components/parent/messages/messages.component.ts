@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -8,12 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class MessagesComponent implements OnInit {
 
   tabs: string[];
+  @Input() view;
 
   constructor() {
-    this.tabs = ["Mensajes", "Notificaciones"]
+    
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    console.log(this.view+' '+this.tabs)
+    if (this.view=="student")
+    {
+      this.tabs = ["Notificaciones"]
+    }
+    else{
+
+      this.tabs = ["Mensajes", "Notificaciones"]
+    }
   }
 
 }

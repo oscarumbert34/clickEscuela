@@ -3,14 +3,16 @@ export class ReportCard {
     private name: string;
     private surname: string;
     matters: Map<string, number>;
+     period: Date;
 
     constructor
         (
-            name: string, surname: string
+            name: string, surname: string, period: Date
         ) {
         this.name = name
         this.surname = surname;
         this.matters = new Map();
+        this.period=period
     }
 
     loadMatter(matter: string, grade: number) {

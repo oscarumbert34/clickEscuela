@@ -16,8 +16,8 @@ export class TrimesterService {
   constructor() {
     this.reportCardList = new Array(3);
 
-    let reportCard = new ReportCard('Jazmin', "Fernandez");
-    let reportCard2 = new ReportCard('Jazmin', "Fernandez");
+    let reportCard = new ReportCard('Jazmin', "Fernandez",new Date);
+    let reportCard2 = new ReportCard('Jazmin', "Fernandez",new Date);
 
     for (let mat of this.mattersList) {
       let grade = Math.random() * (10 - 1) + 1

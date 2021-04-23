@@ -46,7 +46,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, FirstLetterPipe, ReportCardListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, FirstLetterPipe, ReportCardListComponent, AsistanceComponent, AsistanceListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -77,7 +77,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatButtonModule,
     MatFormFieldModule,
     MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
-  ]
+  ], 
+  exports:[ReportCardComponent, GradesComponent,MessagesComponent, FirstLetterPipe]
 
 })
 export class ParentModule { }

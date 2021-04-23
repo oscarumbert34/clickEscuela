@@ -9,6 +9,7 @@ import 'jspdf-autotable';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 
@@ -27,15 +28,30 @@ export class ReportCardListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   reportCardList: ReportCard[];
+  routeLink: string;
 
 
 
-  constructor(private reportCardService: ReportCardService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private reportCardService: ReportCardService, public dialog: MatDialog, private snackBar: MatSnackBar,private route: Router) {
     this.reportCardList = reportCardService.reportCardList
+    this.routeLink=route.url
   }
 
-  ngOnInit() {
-    this.displayedColumns = ['name', 'surname', 'download'];
+  ngOnInit() 
+  {
+    
+    console.log(this.routeLink)
+    if (this.routeLink==='/parent/menu')
+    {
+
+      this.displayedColumns = ['name', 'surname', 'download'];
+    }
+    else 
+    {
+    this.displayedColumns = ['period', 'download'];
+    }
+
+    console.log(this.displayedColumns)
 
 
 

@@ -168,7 +168,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{row.content}}</p>
-            <button *ngIf="currentTab=='Mensajes'" mat-button class="chat-button"
+            <button *ngIf="currentTab=='Mensajes' && view!='student'" mat-button class="chat-button"
               (click)="openChat(); !minimizedChat ? chatInputContent.focus() : any">Abrir chat</button>
 
           </mat-expansion-panel>

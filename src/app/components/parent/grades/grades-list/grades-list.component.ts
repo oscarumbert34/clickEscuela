@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, Output, Input } from '@angular/core';
 import { Grade } from 'src/app/models/Grade';
@@ -33,6 +34,8 @@ export class GradesListComponent implements OnInit {
 
   @Input() son;
 
+  routeLink: string
+
 
 
   public selectedIndexBinding = 0;
@@ -40,10 +43,11 @@ export class GradesListComponent implements OnInit {
 
   gradesList: Grade[];
 
-  constructor(private gradeService: GradesService, public dialog: MatDialog) {
+  constructor(private gradeService: GradesService, public dialog: MatDialog, private router: Router) {
 
     this.gradesList = new Array();
     this.gradesList = gradeService.gradesList.filter(a => a.student == "Alberto Sanchez")
+    this.routeLink=this.router.url
 
   }
 
@@ -57,8 +61,19 @@ export class GradesListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.displayedColumns = ['student', 'description', 'matter', 'grade'];
+    if (this.routeLink==="/parent/menu")
+    {
 
+      this.displayedColumns = ['student', 'description', 'matter', 'grade'];
+    }
+
+    else
+    {
+
+      this.displayedColumns = ['description', 'matter', 'grade'];
+    }
+
+    console.log(this.displayedColumns)
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
@@ -67,6 +82,8 @@ export class GradesListComponent implements OnInit {
     this.dataSource.sort = this.sort;
 
     this.applySonFilter()
+
+    console.log(this.routeLink)
 
 
   }

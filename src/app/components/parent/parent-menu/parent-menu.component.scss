@@ -328,6 +328,33 @@
         width: 100%;
         margin-top:8em;
       }
+
+  
+
+    
+      
+      ::ng-deep td
+      {
+        padding-right: 0 !important;
+        width: 10vw !important;
+      text-align: center !important;}
+
+      
+      ::ng-deep th
+      {
+        padding-right: 0 !important;
+
+      width: 10vw !important;
+      text-align: center !important;}
+
+      ::ng-deep .eye
+      {
+        display: inline-block;}
+      
+      
+    
+
+      
       
     }
     
