@@ -1,3 +1,4 @@
+
 import { NormalizeWordPipe } from './pipes/normalize-word.pipe';
 import { StudentModule } from './components/student/student.module';
 import { CommonModule } from '@angular/common';
