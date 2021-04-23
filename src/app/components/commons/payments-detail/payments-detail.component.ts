@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -5,6 +6,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Payment } from 'src/app/models/Payment';
+
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-payments-detail',
@@ -122,6 +126,88 @@ export class PaymentsDetailComponent implements OnInit {
   showSnackBar(message: string) {
     this.snackBar.open(message, "Aceptar", { duration: 5500 })
   }
+
+
+  public downloadPDF(payment:Payment): void {
+    let date = new Date()
+    let billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds()
+
+    
+
+    const doc = new jsPDF();
+    doc.setFontSize(10)
+
+
+    doc.text("[Nombre de la escuela]",10,15)
+    doc.text('[Calle]',10,20)
+    doc.text('[Cidad, Provincia y codigo postal]',10,25)
+    doc.text('[Telefono (000)000-0000]',10,30)
+
+    doc.setFontSize(20)
+    doc.setTextColor(45,92,132)
+
+    doc.text("FACTURA",150,15)
+
+    doc.setFontSize(10)
+    doc.setTextColor(0,0,0)
+
+    
+    doc.setFillColor(45,92,132)
+    doc.rect(10, 35, 60, 7, 'F')
+
+    doc.setTextColor(255,255,255)
+    doc.text("Datos del alumno",27,40)
+
+    doc.setTextColor(0,0,0)
+
+    doc.text("[Nombre y apellido del alumno]",10,50)
+
+    doc.setFillColor(45,92,132)
+    doc.rect(125, 25, 60, 7, 'F')
+
+
+
+  
+   
+    var columns = ["Descripcion", "Cant","Precio Unitario","Importe"]
+    var data = ["Pago de cuota","1"];
+
+    var voidCells=["","","",""]
+    data.push(""+payment.amount+"$")
+    data.push(""+payment.amount+"$")
+
+    let tableData:any[]=[];
+
+    tableData.push(data)
+
+    for (let i=0;i<15;i++){
+      tableData.push(voidCells)
+    }
+
+    
+    console.log(data)
+
+    
+
+    doc.autoTable(columns, tableData,
+      { 
+        margin: { top: 60 },
+        styles:
+        {
+          lineWidth:0.1,
+          lineColor:[60,60,60]
+        },
+        
+        headStyles:{ fillColor: [45,92,132]}
+      }
+    );
+
+    
+
+   // doc.save(billname + '.pdf');
+   doc.output('dataurlnewwindow')
+  }
+
 
 
 
