@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
+
 import { NormalizeWordPipe } from './pipes/normalize-word.pipe';
->>>>>>> master
 import { StudentModule } from './components/student/student.module';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
