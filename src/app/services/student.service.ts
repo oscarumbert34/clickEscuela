@@ -112,28 +112,18 @@ export class studentService {
     this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date(), 11, '', "2A", 44444444, "Calle Falsa 123","1566666666","something@gmail.com");
 
     let parent = new Parent('12', "Daniel", "Perez", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
-    this.studentsArray[0].parent_1=parent;
-    this.studentsArray[1].parent_1=parent;
-    this.studentsArray[2].parent_1=parent;
-    this.studentsArray[3].parent_1=parent;
-    this.studentsArray[4].parent_1=parent;
-    this.studentsArray[5].parent_1=parent;
-    
-    let students = sort(this.studentsArray, sortColumn, sortDirection);
-    
-    this.studentsArray[0] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '',"3B");
-    this.studentsArray[1] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '',"3B");
-    this.studentsArray[2] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '',"3B");
-    this.studentsArray[3] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '',"2A");
-    this.studentsArray[4] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '',"2A");
-    this.studentsArray[5] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '',"2A");
-    this.studentsArray[6] = new Student('1', 'OSCAR', 'UMBERT', new Date().toString(), 12, '',"3B");
-    this.studentsArray[7] = new Student('2', 'CLAUDIO', 'GOMEZ', new Date().toString(), 5, '',"3B");
-    this.studentsArray[8] = new Student('3', 'FELIPE', 'ROMERO', new Date().toString(), 0, '',"3B");
-    this.studentsArray[9] = new Student('4', 'OMAR', 'GOMEZ', new Date().toString(), 18, '',"2A");
-    this.studentsArray[10] = new Student('5', 'MARTA', 'GIMENEZ', new Date().toString(), 15, '',"2A");
-    this.studentsArray[11] = new Student('6', 'MARIANA', 'FERREIRA', new Date().toString(), 11, '',"2A");
-    let students = sort(this.studentsArray, sortColumn, sortDirection);
+    let parent2 = new Parent('25', "Humberto", "Gomez", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
+    let parent3 = new Parent('68', "Osvaldo", "Ferreira", new Date(), 37844777,"Calle falsa 123","1544444444","alguien@hotmail.com")
+
+      this.studentsArray[0].parent_1=parent;
+      this.studentsArray[1].parent_1=parent2;
+      this.studentsArray[2].parent_1=parent3;
+      this.studentsArray[3].parent_1=parent2;
+      this.studentsArray[4].parent_1=parent2;
+      this.studentsArray[5].parent_1=parent3;
+
+
+      let students = sort(this.studentsArray, sortColumn, sortDirection);
 
     // 2. filter
     students = students.filter(student => matches(student, searchTerm, this.pipe));

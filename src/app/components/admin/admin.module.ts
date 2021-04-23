@@ -1,3 +1,5 @@
+import { AccountListComponent } from './account/account-list/account-list.component';
+import { AccountComponent } from './account/account.component';
 import { EditTeacherComponent } from './teacher-component/edit-teacher/edit-teacher.component';
 import { AddTeacherComponent } from './teacher-component/add-teacher/add-teacher.component';
 import { TeacherBaseModelComponent } from './teacher-component/teacher-base-model/teacher-base-model.component';
@@ -39,11 +41,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ParentModule } from '../parent/parent.module';
 import { MatChipsModule } from '@angular/material/chips';
 import { ContactInfoComponent } from '../commons/contact-info/contact-info.component';
+import { PaymentsDetailComponent } from '../commons/payments-detail/payments-detail.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent,PaymentsDetailComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
