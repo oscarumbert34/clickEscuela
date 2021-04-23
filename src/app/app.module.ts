@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { NormalizeWordPipe } from './pipes/normalize-word.pipe';
+>>>>>>> master
 import { StudentModule } from './components/student/student.module';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -35,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     DetailStudentComponent,
-    VerticalBarChartComponent
+    VerticalBarChartComponent,
+    NormalizeWordPipe
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { HttpClientModule } from '@angular/common/http';
 
     ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[NormalizeWordPipe]
 })
 export class AppModule { }
