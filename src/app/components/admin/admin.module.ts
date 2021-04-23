@@ -41,11 +41,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ParentModule } from '../parent/parent.module';
 import { MatChipsModule } from '@angular/material/chips';
 import { ContactInfoComponent } from '../commons/contact-info/contact-info.component';
+import { PaymentsDetailComponent } from '../commons/payments-detail/payments-detail.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent,PaymentsDetailComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

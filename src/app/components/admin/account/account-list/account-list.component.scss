@@ -1,3 +1,6 @@
+@import "../../../../stylings/color-pallete.scss";
+
+
 .icon-svg{
     width: 20px;
     cursor: pointer;
@@ -49,6 +52,10 @@ svg{
     animation-name: titile;
     animation-iteration-count: 3;
     opacity: 1;
+}
+
+::ng-deep ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+    background-color: $custom-blue !important;
 }
 
 @keyframes titile{

@@ -5,17 +5,25 @@ export class Account {
     private titularName: string;
     private titularSurname: string;
     private payments: Payment[];
-    private state: boolean;
+    private state:boolean;
+    
 
 
-    constructor($titularId: string, $titularName: string, $titularSurname: string, $payments: Payment[], $state: boolean) {
+    constructor($titularId: string, $titularName: string, $titularSurname: string, $payments: Payment[]) {
         this.titularId = $titularId;
         this.titularName = $titularName;
         this.titularSurname = $titularSurname;
         this.payments = $payments;
-        this.state = $state;
+        this.state = this.getState($payments);
     }
 
+     getState(payments): any 
+{
+    for(let payment of payments){
+        if (!payment.status) return false
+    }
+    return true
+}
 
     /**
      * Getter $titularId
@@ -100,4 +108,6 @@ export class Account {
 
 
 }
+
+
 

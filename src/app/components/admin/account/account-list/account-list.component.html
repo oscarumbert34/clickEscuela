@@ -1,7 +1,18 @@
-<mat-form-field>
+
+<div class="row">
+  <div class="col-8">
+    <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+
 </mat-form-field>
+</div>
+<div class="col-4" style="display: flex;align-items: center;">
+  <mat-checkbox class="example-margin" [(ngModel)]="checked" (change)="showDebtors()">{{!checked ? 'Filtrar cuentas con deuda' : 'Cancelar Filtro' }}</mat-checkbox>
+
+</div>
+</div>
+
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
