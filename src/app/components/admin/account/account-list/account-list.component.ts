@@ -40,6 +40,7 @@ export class AccountListComponent implements OnInit {
         course: student.course,
         titular: student.parent_1.name+' '+student.parent_1.surname,
         titularID:student.id,
+        idAccount:student.parent_1.id,
         state: this.getAccountState(student.id)
       }
 
@@ -91,13 +92,13 @@ export class AccountListComponent implements OnInit {
     return this.accountsService.accountsList.filter(a =>a.$titularId==id)[0].$state
   }
 
-  getPaymentDetail(id:string)
+  getPaymentDetail(id:string,student)
   {
     
     let payment=(this.accountsService.accountsList.filter(a =>a.$titularId==id)[0].$payments)
     const dialogRef = this.dialog.open(PaymentsDetailComponent,
       {
-        data: payment,
+        data: {payment:payment,student:student},
         width: '100vw',
         height: '95vh',
         maxWidth:"95vw"
