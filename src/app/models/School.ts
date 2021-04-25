@@ -7,9 +7,10 @@ export class School
     private province:string;
     private postalCode:string;
     private telephone:string;
+    private email:string;
 
 
-	constructor($name: string, $adress: string, $city: string, $province: string, $postalCode: string, $telephone: string)
+	constructor($name: string, $adress: string, $city: string, $province: string, $postalCode: string, $telephone: string,$email:string)
     {
 		this.name = $name;
 		this.adress = $adress;
@@ -17,6 +18,7 @@ export class School
 		this.province = $province;
 		this.postalCode = $postalCode;
 		this.telephone = $telephone;
+        this.email = $email
 	}
 
 
@@ -27,6 +29,16 @@ export class School
 	public get $id(): string {
 		return this.id;
 	}
+
+       /**
+     * Getter $id
+     * @return {string}
+     */
+	public get $email(): string {
+		return this.email;
+	}
+
+    
 
     /**
      * Getter $name

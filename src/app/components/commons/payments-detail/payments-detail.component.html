@@ -77,10 +77,10 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
       <td mat-cell *matCellDef="let row" [ngClass]="{'light-red': !row.status}">
       
-        <div class="action-button" matTooltip="Ver Factura" (click)="downloadPDF(row)">
+        <div class="action-button" matTooltip="Ver Factura" (click)="downloadPDF(row,1)">
           <img src="../../../../assets/images/view-pdf.svg" alt="">
         </div>
-        <div class="action-button" matTooltip="Imprimir">
+        <div class="action-button" matTooltip="Imprimir" (click)="downloadPDF(row,2)">
           <img src="../../../../assets/images/printer.svg" alt="">
 
         </div>
@@ -104,5 +104,7 @@
     </tr>
   </table>
 
+  
   <mat-paginator [pageSize]="1000"></mat-paginator>
+  
 </div>
