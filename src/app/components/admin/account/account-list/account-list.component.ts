@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountService } from './../../../../services/account.service';
 import { Student } from './../../../../models/student';
@@ -25,7 +26,7 @@ export class AccountListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   checked:boolean
 
-  constructor(private studentsService:studentService,private accountsService: AccountService, private dialog: MatDialog) 
+  constructor(private studentsService:studentService,private accountsService: AccountService, private dialog: MatDialog, private snackBar: MatSnackBar) 
   {
     this.accounts=[]
 
@@ -69,7 +70,17 @@ export class AccountListComponent implements OnInit {
     if (this.checked)
     {
     let accountsDebtor=this.accounts.filter(a => a.state==false)
-    this.dataSource.data=accountsDebtor
+    if (accountsDebtor.length>0)
+    {
+      this.dataSource.data=accountsDebtor
+      this.showSnackBar("Se encontraron las siguientes cuentas a regularizar")
+    }
+    else{
+      this.dataSource.data = this.accounts;
+      this.showSnackBar("No se encontraron cuentas a regularizar")
+
+
+    }
     console.log(accountsDebtor)
     
     }else{
@@ -112,5 +123,10 @@ export class AccountListComponent implements OnInit {
     });
 
   }
+
+  showSnackBar(message: string) {
+    this.snackBar.open(message, "Aceptar", { duration: 5500 })
+  }
+
 
 }

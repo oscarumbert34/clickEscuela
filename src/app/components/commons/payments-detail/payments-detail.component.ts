@@ -13,6 +13,7 @@ import 'jspdf-autotable';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
 
+
 @Component({
   selector: 'app-payments-detail',
   templateUrl: './payments-detail.component.html',
@@ -90,10 +91,6 @@ export class PaymentsDetailComponent implements OnInit {
         this.showSnackBar("No se encontraron para facturas para el periodo solicitado")
 
       }
-
-
-
-
     }
     else {
       this.showSnackBar("Selecciones un mes valido")
@@ -327,6 +324,10 @@ export class PaymentsDetailComponent implements OnInit {
     {
       doc.autoPrint();
       window.open(doc.output('bloburl',{filename:billname}))
+    }
+
+    else if (method==3){
+    this.showSnackBar("Funcion a implementar por backend")
     }
    
   }
