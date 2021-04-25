@@ -1,4 +1,4 @@
-import { Payment } from "./Payment";
+import { Payment } from "./payment";
 
 export class Account {
     private titularId: string;

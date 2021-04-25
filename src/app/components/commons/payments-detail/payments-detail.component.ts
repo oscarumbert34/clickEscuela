@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Payment } from 'src/app/models/Payment';
+import { Payment } from 'src/app/models/payment';
 
 @Component({
   selector: 'app-payments-detail',

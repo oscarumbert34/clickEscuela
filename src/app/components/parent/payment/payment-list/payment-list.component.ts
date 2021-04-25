@@ -1,4 +1,4 @@
-import { Payment } from './../../../../models/Payment';
+import { Payment } from './../../../../models/payment';
 import { PaymentService } from './../../../../services/payment.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
