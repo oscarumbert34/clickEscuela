@@ -12,9 +12,9 @@ button{
     border: none;
 }
 
-::ng-deep .mat-dialog-container {
+::ng-deep .url-frame  >.mat-dialog-container{
 
     overflow: hidden !important;
-    border-radius: 15px;
-    background-color:  #2d5b84e0;
+    border-radius: 15px !important;
+    background-color:  #2d5b84e0 !important;
   }

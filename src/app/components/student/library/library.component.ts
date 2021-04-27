@@ -58,7 +58,8 @@ export class LibraryComponent implements OnInit {
       {
         data: this.currentURL,
         width: '530px',
-        height: '90%'
+        height: '90%',
+        panelClass:"url-frame"
       }
     )
 
