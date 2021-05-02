@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { element } from 'protractor';
 import { PaymentService } from './../../../services/payment.service';
 import { Component, OnInit } from '@angular/core';
-import { Payment } from 'src/app/models/Payment';
+import { Payment } from 'src/app/models/payment';
 
 @Component({
   selector: 'app-payment',

@@ -6,7 +6,13 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Payment } from 'src/app/models/Payment';
+import { Payment } from 'src/app/models/payment';
+
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
+
 
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -121,7 +127,6 @@ export class PaymentsDetailComponent implements OnInit {
   showSnackBar(message: string) {
     this.snackBar.open(message, "Aceptar", { duration: 5500 })
   }
-
 
   public downloadPdf(payment: Payment,method:number): void {
     let date = new Date()
