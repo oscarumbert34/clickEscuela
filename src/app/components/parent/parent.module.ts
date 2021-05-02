@@ -46,7 +46,7 @@ import { ReportCardListComponent } from './report-card/report-card-list/report-c
 
 
 @NgModule({
-  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, MessageContentComponent, FirstLetterPipe, ReportCardListComponent, AsistanceComponent, AsistanceListComponent],
+  declarations: [AsistanceComponent, PaymentComponent, MessagesComponent, MessageContentComponent, GradesComponent, ReportCardComponent, ParentMenuComponent, AsistanceListComponent, PaymentListComponent, GradesComponent, GradesListComponent, FirstLetterPipe, ReportCardListComponent, AsistanceComponent, AsistanceListComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -78,7 +78,7 @@ import { ReportCardListComponent } from './report-card/report-card-list/report-c
     MatFormFieldModule,
     MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
   ], 
-  exports:[ReportCardComponent, GradesComponent,MessagesComponent, FirstLetterPipe]
+  exports:[ReportCardComponent, GradesComponent,MessagesComponent, FirstLetterPipe, MessagesComponent]
 
 })
 export class ParentModule { }

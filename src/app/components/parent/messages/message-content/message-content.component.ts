@@ -34,6 +34,7 @@ export class MessageContentComponent implements OnInit {
 
   @Input() currentTab;
   @Input() view;
+  @Input() index;
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -72,6 +73,7 @@ export class MessageContentComponent implements OnInit {
 
   messagesLenght: number;
 
+  
 
 
 
