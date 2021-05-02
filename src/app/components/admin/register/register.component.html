@@ -1,6 +1,6 @@
-<mat-drawer-container [ngClass]="classMenu" autosize class="h-100">
+<mat-drawer-container  autosize class="h-100">
   <img id="background-img" src="../../../../assets/images/background.png" alt="">
-  <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side">
+  <mat-drawer #drawer class="menu-nav"  mode="side">
     <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
       <div class="col-12" (click)="changeBlock('home')">
         <div>
@@ -132,7 +132,7 @@
   <div class="sidenav-content">
     <div class="container">
       <div class="row">
-        <div [ngClass]="dinamicDisplay" [ngSwitch]="blockDinamicActually" style="width: 100%;">
+        <div  [ngSwitch]="blockDinamicActually" style="width: 100%;">
 
           <div *ngSwitchCase="'student'">
             <app-add-student></app-add-student>
@@ -143,15 +143,7 @@
           <div *ngSwitchCase="'homework'">
             <app-account></app-account>
           </div>
-          <div *ngSwitchCase="'message'">
-            <app-messages [view]="view "></app-messages>
-          </div>
-          <div *ngSwitchCase="'library'">
-            <app-library></app-library>
-          </div>
-          <div *ngSwitchCase="'groups'">
-            <app-groups></app-groups>
-          </div>
+         
 
 
 
@@ -160,10 +152,7 @@
 
           <div *ngSwitchDefault>Default Option</div>
         </div>
-        <div [@changeDisplay]="notificationShow" *ngIf="notificationShow; else notShow">
-          <app-notification (messageEvent)="receiveChange($event)" (openNotification)="receiveNotification($event)"
-            (notificationNumber)="receiveNotificationsNumber($event)"></app-notification>
-        </div>
+      
 
 
       </div>

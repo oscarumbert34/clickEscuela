@@ -76,8 +76,6 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
       <td mat-cell *matCellDef="let row" [ngClass]="{'light-red': !row.status}">
-      
-
         <div class="action-button" matTooltip="Ver Factura" (click)="downloadPdf(row,1)">
           <img src="../../../../assets/images/view-pdf.svg" alt="">
         </div>
