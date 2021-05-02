@@ -555,21 +555,6 @@ export class PaymentsDetailComponent implements OnInit {
    
   }
 
-  centerText(initialPoint: number, containerWidth: number, stringWidht: number) {
-    console.log(initialPoint + stringWidht / 2)
-    return initialPoint + (containerWidth - stringWidht) / 2;
-  }
-
-  endText(initialPoint: number, stringWidht: number)
-  {
-    return initialPoint-stringWidht-4;
-  }
-
-  normalizeString(value:string)
-  {
-    return value.charAt(0).toUpperCase()+value.substring(1,value.length).toLowerCase()
-  }
-
 
 
 
