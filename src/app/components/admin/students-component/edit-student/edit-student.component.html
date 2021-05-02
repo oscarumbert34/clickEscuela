@@ -31,7 +31,7 @@
 
   <div class="col-4 action-buttons">
     
-    <div class="action-item" matTooltip="Buscar Alumnos" (click)="openStudentModelBase()">
+    <div class="action-item" matTooltip="Buscar Alumnos">
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.93 287.31">
         <defs>
           <style>
@@ -260,7 +260,7 @@
         <mat-label>Fecha de nacimiento</mat-label>
         <input matInput [matDatepicker]="parent2Born" [(ngModel)]="data.student.parent_2.bornDate">
         <mat-datepicker-toggle matSuffix [for]="parent2Born"></mat-datepicker-toggle>
-        <mat-datepicker #parentBorn></mat-datepicker>
+        <mat-datepicker #parent2Born></mat-datepicker>
       </mat-form-field>
     </div>
   </div>

@@ -112,6 +112,10 @@ export class MessageContentComponent implements OnInit {
 
   }
 
+  def(){
+    return null;
+  }
+
   trueShake() {
     this.shake = true
   }
