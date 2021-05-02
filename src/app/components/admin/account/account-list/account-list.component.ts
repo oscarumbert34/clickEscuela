@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountService } from './../../../../services/account.service';
 import { Student } from './../../../../models/student';
@@ -25,7 +26,7 @@ export class AccountListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   checked:boolean
 
-  constructor(private studentsService:studentService,private accountsService: AccountService, private dialog: MatDialog) 
+  constructor(private studentsService:studentService,private accountsService: AccountService, private dialog: MatDialog, private snackBar: MatSnackBar) 
   {
     this.accounts=[]
 
@@ -38,8 +39,9 @@ export class AccountListComponent implements OnInit {
         name:student.name,
         surname:student.surname,
         course: student.course,
-        titular: student.parent_1.name+' '+student.parent_1.surname,
-        titularID:student.id,
+        titular: student.parent1.name+' '+student.parent1.surname,
+        titularId:student.id,
+        idAccount:student.parent1.id,
         state: this.getAccountState(student.id)
       }
 
@@ -67,8 +69,18 @@ export class AccountListComponent implements OnInit {
   {
     if (this.checked)
     {
-    let accountsDebtor=this.accounts.filter(a => a.state==false)
-    this.dataSource.data=accountsDebtor
+    let accountsDebtor=this.accounts.filter(a => a.state===false)
+    if (accountsDebtor.length>0)
+    {
+      this.dataSource.data=accountsDebtor
+      this.showSnackBar("Se encontraron las siguientes cuentas a regularizar")
+    }
+    else{
+      this.dataSource.data = this.accounts;
+      this.showSnackBar("No se encontraron cuentas a regularizar")
+
+
+    }
     console.log(accountsDebtor)
     
     }else{
@@ -88,16 +100,16 @@ export class AccountListComponent implements OnInit {
   }
   getAccountState(id:string)
   {
-    return this.accountsService.accountsList.filter(a =>a.$titularId==id)[0].$state
+    return this.accountsService.accountsList.filter(a =>a.$titularId===id)[0].$state
   }
 
-  getPaymentDetail(id:string)
+  getPaymentDetail(id:string,student)
   {
     
-    let payment=(this.accountsService.accountsList.filter(a =>a.$titularId==id)[0].$payments)
+    let payment=(this.accountsService.accountsList.filter(a =>a.$titularId===id)[0].$payments)
     const dialogRef = this.dialog.open(PaymentsDetailComponent,
       {
-        data: payment,
+        data: {payment:payment,student:student},
         width: '100vw',
         height: '95vh',
         maxWidth:"95vw"
@@ -111,5 +123,10 @@ export class AccountListComponent implements OnInit {
     });
 
   }
+
+  showSnackBar(message: string) {
+    this.snackBar.open(message, "Aceptar", { duration: 5500 })
+  }
+
 
 }

@@ -13,8 +13,8 @@ export class Student {
      telephone: string;
      email: string;
 
-     parent_1: Parent;
-     parent_2: Parent;
+     parent1: Parent;
+     parent2: Parent;
 
      constructor(id: string,
           name: string,
