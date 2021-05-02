@@ -231,9 +231,9 @@ export class AccountComponent implements OnInit {
         name: student.name,
         surname: student.surname,
         course: student.course,
-        titular: student.parent_1.name + ' ' + student.parent_1.surname,
+        titular: student.parent1.name + ' ' + student.parent1.surname,
         titularID: student.id,
-        idAccount: student.parent_1.id,
+        idAccount: student.parent1.id,
         state: this.getAccountState(student.id)
       }
 

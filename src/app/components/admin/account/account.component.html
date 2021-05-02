@@ -40,16 +40,82 @@
     <h5>Gestión de cuentas</h5>
   </div>
 
-    <div class="col-lg-6 col-md-10 col-8 text-center"  >
-      
-      <h5 >Cuentas</h5>
+  <div class="col-4 action-buttons">
 
+    
+
+    <div class="action-item" matTooltip="Reportes" [matMenuTriggerFor]="menu">
+      <svg id="_x31_" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+          <style>
+            .report-path {
+              fill: #9acd8d;
+            }
+          </style>
+        </defs>
+
+
+        <path class="report-path"
+          d="m19.5 24h-15c-1.378 0-2.5-1.122-2.5-2.5v-19c0-1.378 1.122-2.5 2.5-2.5h15c1.378 0 2.5 1.122 2.5 2.5v19c0 1.378-1.122 2.5-2.5 2.5zm-15-23c-.827 0-1.5.673-1.5 1.5v19c0 .827.673 1.5 1.5 1.5h15c.827 0 1.5-.673 1.5-1.5v-19c0-.827-.673-1.5-1.5-1.5z" />
+        <path class="report-path" d="m18.5 12h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.276 0 .5.224.5.5s-.224.5-.5.5z" />
+        <path class="report-path" d="m18.5 9h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.276 0 .5.224.5.5s-.224.5-.5.5z" />
+        <path class="report-path" d="m18.5 15h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.276 0 .5.224.5.5s-.224.5-.5.5z" />
+        <path class="report-path" d="m18.5 18h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.276 0 .5.224.5.5s-.224.5-.5.5z" />
+        <path class="report-path" d="m18.5 21h-13c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h13c.276 0 .5.224.5.5s-.224.5-.5.5z" />
+        <path class="report-path"
+          d="m10 18c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5zm0-9c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4z" />
+        <path class="report-path"
+          d="m6.818 16.682c-.128 0-.256-.049-.354-.146-.195-.195-.195-.512 0-.707l3.036-3.036v-4.293c0-.276.224-.5.5-.5s.5.224.5.5v4.5c0 .133-.053.26-.146.354l-3.182 3.182c-.098.097-.226.146-.354.146z" />
+      </svg>
+      <mat-menu #menu="matMenu">
+        <button class="action-button" mat-menu-item [matMenuTriggerFor]="debtorReport">
+          <mat-icon class="option-icon" svgIcon="debtors"></mat-icon>
+          <span class="report-option">Reporte de deudores</span>
+        </button>
+        <button class="action-button" mat-menu-item [matMenuTriggerFor]="expensesReport">
+          <mat-icon class="option-icon" svgIcon="out-expenses"></mat-icon>
+          <span class="report-option">Reporte de gastos</span>
+        </button>
+      </mat-menu>
+
+      <mat-menu #debtorReport="matMenu">
+        <button class="action-button" mat-menu-item (click)="generateDebtorsReport(1)">
+          <mat-icon class="option-icon" svgIcon="pdf-icon"></mat-icon>
+          <span class="report-option">Exportar PDF</span>
+        </button>
+        <button class="action-button" mat-menu-item (click)="generateDebtorsReport(2)">
+          <mat-icon class="option-icon" svgIcon="csv-icon"></mat-icon>
+          <span class="report-option">Exportar CSV</span>
+        </button>
+      </mat-menu>
+
+      <mat-menu #expensesReport="matMenu">
+        <button class="action-button" mat-menu-item >
+          <mat-icon class="option-icon" svgIcon="daily"></mat-icon>
+          <span class="report-option">Diarios</span>
+        </button>
+        <button class="action-button" mat-menu-item>
+          <mat-icon class="option-icon" svgIcon="weekly"></mat-icon>
+          <span class="report-option">Semanales</span>
+        </button>
+        <button class="action-button" mat-menu-item>
+          <mat-icon class="option-icon" svgIcon="monthly"></mat-icon>
+          <span class="report-option">Mensuales</span>
+        </button>
+        <button class="action-button" mat-menu-item >
+          <mat-icon class="option-icon" svgIcon="custom-date"></mat-icon>
+          <span class="report-option">Seleccionar Rango</span>
+        </button>
+      </mat-menu>
     </div>
 
   </div>
-  <button (click)="makePDF()">Download</button>
+
 
 </div>
+
 
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" id="toPDF">
 
@@ -68,7 +134,6 @@
 <!-- <div class="container no-gutters" class="pdf-content"#tabGroup>
     <div class="row no-gutters"  >
       <div class="col-12" style="width: 100%;background-color: #9acd8d;border-radius: 15px;">
-
         <h1>Hola buenos dias</h1>
         <img style="width: 80%;" src="../../../../assets/images/libros.jpg" alt="">
       </div>
