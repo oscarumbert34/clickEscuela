@@ -123,7 +123,7 @@ export class PaymentsDetailComponent implements OnInit {
   }
 
 
-  public downloadPDF(payment: Payment,method:number): void {
+  public downloadPdf(payment: Payment,method:number): void {
     let date = new Date()
     let billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds()
 
