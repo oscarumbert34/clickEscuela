@@ -114,7 +114,7 @@ export class GroupsListComponent implements OnInit {
   unused() { return null }
 
   showThumbs() {
-    this.selectedFiles=[]
+    this.selectedFiles = []
     this.selectedFiles.push(this.attachs.nativeElement.files[0])
 
     console.log(this.selectedFiles)
@@ -141,42 +141,42 @@ export class GroupsListComponent implements OnInit {
           this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/doc.svg";
           break
 
-          case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+        case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
           this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/ppt.svg";
           break
 
-          case 'text/css':
+        case 'text/css':
           this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/css.svg";
           break
 
-          case 'text/plain':
+        case 'text/plain':
           this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/txt.svg";
           break
 
-          case 'application/postscript':
+        case 'application/postscript':
           this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/ai.svg";
           break
 
-          case 'text/xml':
-            this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/xml.svg";
-            break
+        case 'text/xml':
+          this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/xml.svg";
+          break
 
         //En algunos casos el type sale vacio se obtiene la extension mediante el nombre completo del archivo
         case '':
-          let splitWord=this.selectedFiles[0].name.split(".")
+          let splitWord = this.selectedFiles[0].name.split(".")
           console.log(splitWord)
 
-          if (splitWord[splitWord.length-1]== "php")
+          if (splitWord[splitWord.length - 1] == "php")
             this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/php.svg";
 
-            if (splitWord[splitWord.length-1]== "scss")
+          if (splitWord[splitWord.length - 1] == "scss")
             this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/css.svg";
 
-            if (splitWord[splitWord.length-1]== "psd")
+          if (splitWord[splitWord.length - 1] == "psd")
             this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/ps.svg";
 
           else
-          this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/unknown.svg";
+            this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/unknown.svg";
 
           break
 
@@ -185,7 +185,7 @@ export class GroupsListComponent implements OnInit {
         default:
           if (this.selectedFiles[0].type.split("/")[0] != "image")
             this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/unknown.svg";
-            if (this.selectedFiles[0].type.split("/")[0] == "video")
+          if (this.selectedFiles[0].type.split("/")[0] == "video")
             this.thumb.nativeElement.src = "../../../../../assets/images/thumbs/video.svg";
           break
       }
@@ -204,15 +204,15 @@ export class GroupsListComponent implements OnInit {
 
   }
 
-  deleteAttach(){
-    this.selectedFiles=[]
+  deleteAttach() {
+    this.selectedFiles = []
   }
 
 
 
-  loadAttachs(){
-    let cantArch= this.selectedFiles.length>1 ? ' archivos' : " archivo"
-    this.addHistory(this.currentIndex,"Ah adjuntado "+this.selectedFiles.length+ cantArch)
+  loadAttachs() {
+    let cantArch = this.selectedFiles.length > 1 ? ' archivos' : " archivo"
+    this.addHistory(this.currentIndex, "Ah adjuntado " + this.selectedFiles.length + cantArch)
     this.deleteAttach()
   }
 

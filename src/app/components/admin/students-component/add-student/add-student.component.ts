@@ -40,7 +40,7 @@ export class AddStudentComponent implements OnInit {
     adress: "",
     telephone: "",
     email: "",
-    parent_1:
+    parent1:
     {
       id: "",
       name: "",
@@ -51,7 +51,7 @@ export class AddStudentComponent implements OnInit {
       telephone: "",
       email: ""
     },
-    parent_2:
+    parent2:
     {
       id: "",
       name: "",
