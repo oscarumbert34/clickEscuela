@@ -14,6 +14,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
 
 
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
+
+
 @Component({
   selector: 'app-payments-detail',
   templateUrl: './payments-detail.component.html',
@@ -122,8 +128,7 @@ export class PaymentsDetailComponent implements OnInit {
     this.snackBar.open(message, "Aceptar", { duration: 5500 })
   }
 
-
-  public downloadPDF(payment: Payment,method:number): void {
+  public downloadPdf(payment: Payment,method:number): void {
     let date = new Date()
     let billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds()
 
