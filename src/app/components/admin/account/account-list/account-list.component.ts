@@ -69,7 +69,7 @@ export class AccountListComponent implements OnInit {
   {
     if (this.checked)
     {
-    let accountsDebtor=this.accounts.filter(a => a.state===false)
+    let accountsDebtor=this.accounts.filter(a => a.state==false)
     if (accountsDebtor.length>0)
     {
       this.dataSource.data=accountsDebtor
