@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpensesService } from './../../../services/expenses.service';
 
 
@@ -13,6 +14,8 @@ import { studentService } from 'src/app/services/student.service';
 import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
 import { table } from 'console';
 import { N } from '@angular/cdk/keycodes';
+import moment from 'moment';
+
 
 const EXPENSES =
   '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.61 278.51">'
@@ -218,7 +221,8 @@ export class AccountComponent implements OnInit {
     private studentsService: studentService,
     private sanitazer: DomSanitizer,
     private dialog: MatDialog,
-    private expensesService: ExpensesService) {
+    private expensesService: ExpensesService,
+    private snackBar: MatSnackBar) {
     iconRegistry.addSvgIconLiteral('out-expenses', sanitizer.bypassSecurityTrustHtml(EXPENSES));
     iconRegistry.addSvgIconLiteral('debtors', sanitizer.bypassSecurityTrustHtml(DEBTORS));
     iconRegistry.addSvgIconLiteral('csv-icon', sanitizer.bypassSecurityTrustHtml(CSV_ICON));
@@ -359,13 +363,56 @@ export class AccountComponent implements OnInit {
     }
   };
 
-  getExpensesReport(method){
+  getExpensesReport(period,method){
     
     
     let doc = new jsPDF('a4')
     let columns = ["Importe", "Descripcion", "Fecha"]
+    let expenses=[]
 
-    let expenses=(this.expensesService.expenseList.filter(a=>a.$date.getMonth()===this.currentDate.getMonth()))
+    let weekDays=this.getweekstart(new Date())
+
+  
+
+    if (period=="DAY")
+    {
+      expenses=
+      (
+        this.expensesService.expenseList.filter(
+          
+        a=>
+        a.$date.getDate()===this.currentDate.getDate() && 
+        a.$date.getMonth()===this.currentDate.getMonth() && 
+        a.$date.getFullYear()===this.currentDate.getFullYear())
+      )
+      if (expenses.length===0)
+      {
+        this.showSnackBar("No encontaron registros para el dia de la fecha: "+moment(this.currentDate).format('DD/MM/YYYY'))
+      }
+    }
+    if (period=="WEEK")
+    {
+
+      console.log(weekDays)
+    
+
+
+      expenses=(this.expensesService.expenseList.filter
+        (a=>
+        moment(a.$date,"DD-MM-YYYY").isSameOrAfter(moment(weekDays[0],"DD-MM-YYYY"),'day')  &&
+        moment(a.$date,"DD-MM-YYYY").isSameOrBefore(moment(weekDays[weekDays.length-1],"DD-MM-YYYY"),'day')
+        ))
+
+        this.showSnackBar("No se encontaron ingresos para el periodo: "+moment(weekDays[0]).format('DD/MM/YYYY')+" => "+moment(weekDays[weekDays.length-1]).format('DD/MM/YYYY'))
+    }
+    if (period=="MONTH")
+    {
+      expenses=(this.expensesService.expenseList.filter(a=>a.$date.getMonth()===this.currentDate.getMonth() && a.$date.getFullYear()==this.currentDate.getFullYear()))
+    }
+    if (period=="CUSTOM_PERIOD")
+    {
+      expenses=(this.expensesService.expenseList.filter(a=>a.$date.getMonth()===this.currentDate.getMonth()))
+    }
    
     if (expenses.length>0)
     {
@@ -402,6 +449,9 @@ let tableData = this.generateTableData(expenses)
       this.arrayObjToCsv(tableData);
     }
 
+    }
+    else{
+      //this.showSnackBar("No existen entradas para el reporte: "+period)
     }
  
 
@@ -447,5 +497,35 @@ generateTableData(data)
   return tableData
 }
 
+showSnackBar(message: string) {
+  this.snackBar.open(message, "Aceptar", { duration: 5500 })
+}
+
+getweekstart(current) {
+  const week = [];
+  const weekFormat = [];
+  
+  if(current.getDay() == 0){//En los casos en que es domingo, restar como si fuera septimo dia y no cero
+      current.setDate(((current.getDate() - 7) + 1));
+  }else{
+      current.setDate(((current.getDate() - current.getDay()) + 1));
+  }
+  
+  for (let i = 0; i < 7; i++) {
+      week.push(new Date(current));
+      current.setDate(current.getDate()+1);
+  }
+  week.forEach((w) => {
+      weekFormat.push(w);
+  });
+  return weekFormat;
+
+
+}
+
+isSameDate()
+{
+
+}
 
 }
