@@ -1,3 +1,4 @@
+import { ExpensesService } from './../../../services/expenses.service';
 
 
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
@@ -10,6 +11,8 @@ import { Student } from 'src/app/models/student';
 import { AccountService } from 'src/app/services/account.service';
 import { studentService } from 'src/app/services/student.service';
 import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
+import { table } from 'console';
+import { N } from '@angular/cdk/keycodes';
 
 const EXPENSES =
   '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.61 278.51">'
@@ -204,10 +207,18 @@ export class AccountComponent implements OnInit {
 
   accounts: any[];
   studentsList: Student[]
+  currentDate=new Date()
 
 
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private accountsService: AccountService, private studentsService: studentService, private sanitazer: DomSanitizer, private dialog: MatDialog) {
+  constructor(
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+    private accountsService: AccountService,
+    private studentsService: studentService,
+    private sanitazer: DomSanitizer,
+    private dialog: MatDialog,
+    private expensesService: ExpensesService) {
     iconRegistry.addSvgIconLiteral('out-expenses', sanitizer.bypassSecurityTrustHtml(EXPENSES));
     iconRegistry.addSvgIconLiteral('debtors', sanitizer.bypassSecurityTrustHtml(DEBTORS));
     iconRegistry.addSvgIconLiteral('csv-icon', sanitizer.bypassSecurityTrustHtml(CSV_ICON));
@@ -232,12 +243,11 @@ export class AccountComponent implements OnInit {
         surname: student.surname,
         course: student.course,
         titular: student.parent1.name + ' ' + student.parent1.surname,
+        state: this.getAccountState(student.id),
         titularID: student.id,
-        idAccount: student.parent1.id,
-        state: this.getAccountState(student.id)
+        idAccount: student.parent1.id
       }
 
-      console.log(account)
       this.accounts.push(account)
     }
 
@@ -250,20 +260,12 @@ export class AccountComponent implements OnInit {
   generateDebtorsReport(method: number) {
     //alert("Se esta generando el repore")
 
-    let tableData = []
     let doc = new jsPDF('a4')
-    let columns = ["Nombre", "Apellido", "Curso", "Titular", "Estado de la cuenta"]
+    let columns = ["Nombre", "Apellido", "Curso", "Titular"]
     let debtors = this.accounts.filter(a => a.state == false)
-
-    for (let debtor of debtors) {
-      let row = [];
-      row.push(debtor.name)
-      row.push(debtor.surname)
-      row.push(debtor.course)
-      row.push(debtor.titular)
-      row.push(debtor.state ? "Pago" : "Impago")
-      tableData.push(row)
-    }
+    
+    let tableData =this.generateTableData(debtors)
+   
 
     if (method == 1) {
       doc.autoTable(columns, tableData,
@@ -285,16 +287,7 @@ export class AccountComponent implements OnInit {
       let url = this.sanitazer.bypassSecurityTrustResourceUrl(string)
 
 
-      const dialogRef = this.dialog.open(ModalFrameComponent,
-        {
-          data: url,
-          width: '90vw',
-          height: '100vh',
-          panelClass: "url-frame"
-        }
-      )
-
-      dialogRef.afterClosed().subscribe(result => { });
+      this.openModalFrame(url)
     }
 
     else if (method == 2) {
@@ -366,11 +359,93 @@ export class AccountComponent implements OnInit {
     }
   };
 
+  getExpensesReport(method){
+    
+    
+    let doc = new jsPDF('a4')
+    let columns = ["Importe", "Descripcion", "Fecha"]
+
+    let expenses=(this.expensesService.expenseList.filter(a=>a.$date.getMonth()===this.currentDate.getMonth()))
+   
+    if (expenses.length>0)
+    {
+let tableData = this.generateTableData(expenses)
+
+    if (method == 1) {
+      doc.autoTable(columns, tableData,
+        {
+          margin: { top: 60 },
+          styles:
+          {
+            lineWidth: 0.1,
+            lineColor: [60, 60, 60]
+          },
+
+          headStyles: { fillColor: [45, 92, 132] }
+        }
+
+      );
+
+      var string = doc.output('datauristring');
+
+      let url = this.sanitazer.bypassSecurityTrustResourceUrl(string)
+
+      this.openModalFrame(url)
 
 
+     
+    }
+
+    else if (method == 2) 
+    {
+      tableData.splice(0, 0, columns)
+      this.arrayObjToCsv(tableData);
+    }
+
+    }
+ 
+
+    
+    
 
 
+  }
 
+
+openModalFrame(url)
+{
+  const dialogRef = this.dialog.open(ModalFrameComponent,
+    {
+      data: url,
+      width: '90vw',
+      height: '100vh',
+      panelClass: "url-frame"
+    }
+  )
+
+  dialogRef.afterClosed().subscribe(result => { });
+}
+
+generateTableData(data)
+{
+  let tableData=[]
+
+  for (let obj of data) 
+  {
+    
+
+    let row=(Array.from(Object.values(obj)))
+
+    tableData.push(row)
+      
+    
+       
+  }
+
+  console.log(tableData)
+
+  return tableData
+}
 
 
 }
