@@ -104,7 +104,7 @@
           <mat-icon class="option-icon" svgIcon="monthly"></mat-icon>
           <span class="report-option">Mensuales</span>
         </button>
-        <button class="action-button" mat-menu-item >
+        <button class="action-button" mat-menu-item (click)="openDateRangeSelector()" >
           <mat-icon class="option-icon" svgIcon="custom-date"></mat-icon>
           <span class="report-option">Seleccionar Rango</span>
         </button>
@@ -142,6 +142,9 @@
           <span class="report-option">Exportar CSV</span>
         </button>
       </mat-menu>
+
+    
+
     </div>
 
   </div>

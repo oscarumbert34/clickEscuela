@@ -15,6 +15,8 @@ import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.compo
 import { table } from 'console';
 import { N } from '@angular/cdk/keycodes';
 import moment from 'moment';
+import { RangeSelectorComponent } from '../../commons/range-selector/range-selector.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 const EXPENSES =
@@ -50,26 +52,26 @@ const DEBTORS =
 
 const CSV_ICON =
 
-'<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210.94 281.25">'
-+'  <defs>'
-+'    <style>'
-+'      .cls-1 {'
-+'        fill: #9acd8d;'
-+'      }'
-+'    </style>'
-+'  </defs>'
-+'  <path class="cls-1" d="M249.32,65,190.73,6.44a5.86,5.86,0,0,0-4.15-1.71h-123A23.46,23.46,0,0,0,40.1,28.16V262.54A23.46,23.46,0,0,0,63.54,286H227.6A23.46,23.46,0,0,0,251,262.54V69.18A5.83,5.83,0,0,0,249.32,65ZM192.44,24.73,231,63.32H204.16A11.74,11.74,0,0,1,192.44,51.6Zm46.88,237.81a11.74,11.74,0,0,1-11.72,11.72H63.54a11.74,11.74,0,0,1-11.72-11.72V28.16A11.74,11.74,0,0,1,63.54,16.44H180.72V51.6A23.46,23.46,0,0,0,204.16,75h35.16Z" transform="translate(-40.1 -4.73)"/>'
-+'  <g>'
-+'    <path class="cls-1" d="M219.79,97.67H160V87.33A9.44,9.44,0,0,0,148.78,78L69.61,92.89a9.44,9.44,0,0,0-7.72,9.28V211a9.44,9.44,0,0,0,7.71,9.28l79.12,14.84a9,9,0,0,0,1.8.18,9.44,9.44,0,0,0,9.44-9.45V215.53h59.83a9.45,9.45,0,0,0,9.45-9.44v-99A9.46,9.46,0,0,0,219.79,97.67ZM151,225.88a.46.46,0,0,1-.17.35.44.44,0,0,1-.36.08L71.25,211.47a.45.45,0,0,1-.36-.44V102.17a.45.45,0,0,1,.37-.44l79.26-14.86h0a.48.48,0,0,1,.25.1l0,0a.42.42,0,0,1,.15.34Zm69.28-19.79a.45.45,0,0,1-.45.44H160V191.24h10.35a5,5,0,1,0,0-9.9H160v-9.89h10.35a4.95,4.95,0,0,0,0-9.9H160v-9.9h10.35a4.95,4.95,0,1,0,0-9.89H160v-9.9h10.35a5,5,0,0,0,0-9.9H160V106.67h59.83a.45.45,0,0,1,.45.45Z" transform="translate(-40.1 -4.73)"/>'
-+'    <path class="cls-1" d="M200,122h-9.9a4.95,4.95,0,1,0,0,9.9H200a4.95,4.95,0,0,0,0-9.9Z" transform="translate(-40.1 -4.73)"/>'
-+'    <path class="cls-1" d="M200,141.76h-9.9a4.95,4.95,0,1,0,0,9.89H200a4.95,4.95,0,1,0,0-9.89Z" transform="translate(-40.1 -4.73)"/>'
-+'    <path class="cls-1" d="M200,161.55h-9.9a4.95,4.95,0,0,0,0,9.9H200a4.95,4.95,0,0,0,0-9.9Z" transform="translate(-40.1 -4.73)"/>'
-+'    <path class="cls-1" d="M200,181.34h-9.9a4.95,4.95,0,1,0,0,9.9H200a4.95,4.95,0,0,0,0-9.9Z" transform="translate(-40.1 -4.73)"/>'
-+'    <path class="cls-1" d="M118.8,155.26l15.82-20.35a5,5,0,0,0-7.81-6.09l-14.65,18.85L99.81,133.55a4.95,4.95,0,0,0-7.45,6.51L106,155.62,92.18,173.36a4.95,4.95,0,0,0,7.81,6.07l12.62-16.23L127,179.64a4.94,4.94,0,1,0,7.44-6.5Z" transform="translate(-40.1 -4.73)"/>'
-+'  </g>'
-+'</svg>'
+  '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210.94 281.25">'
+  + '  <defs>'
+  + '    <style>'
+  + '      .cls-1 {'
+  + '        fill: #9acd8d;'
+  + '      }'
+  + '    </style>'
+  + '  </defs>'
+  + '  <path class="cls-1" d="M249.32,65,190.73,6.44a5.86,5.86,0,0,0-4.15-1.71h-123A23.46,23.46,0,0,0,40.1,28.16V262.54A23.46,23.46,0,0,0,63.54,286H227.6A23.46,23.46,0,0,0,251,262.54V69.18A5.83,5.83,0,0,0,249.32,65ZM192.44,24.73,231,63.32H204.16A11.74,11.74,0,0,1,192.44,51.6Zm46.88,237.81a11.74,11.74,0,0,1-11.72,11.72H63.54a11.74,11.74,0,0,1-11.72-11.72V28.16A11.74,11.74,0,0,1,63.54,16.44H180.72V51.6A23.46,23.46,0,0,0,204.16,75h35.16Z" transform="translate(-40.1 -4.73)"/>'
+  + '  <g>'
+  + '    <path class="cls-1" d="M219.79,97.67H160V87.33A9.44,9.44,0,0,0,148.78,78L69.61,92.89a9.44,9.44,0,0,0-7.72,9.28V211a9.44,9.44,0,0,0,7.71,9.28l79.12,14.84a9,9,0,0,0,1.8.18,9.44,9.44,0,0,0,9.44-9.45V215.53h59.83a9.45,9.45,0,0,0,9.45-9.44v-99A9.46,9.46,0,0,0,219.79,97.67ZM151,225.88a.46.46,0,0,1-.17.35.44.44,0,0,1-.36.08L71.25,211.47a.45.45,0,0,1-.36-.44V102.17a.45.45,0,0,1,.37-.44l79.26-14.86h0a.48.48,0,0,1,.25.1l0,0a.42.42,0,0,1,.15.34Zm69.28-19.79a.45.45,0,0,1-.45.44H160V191.24h10.35a5,5,0,1,0,0-9.9H160v-9.89h10.35a4.95,4.95,0,0,0,0-9.9H160v-9.9h10.35a4.95,4.95,0,1,0,0-9.89H160v-9.9h10.35a5,5,0,0,0,0-9.9H160V106.67h59.83a.45.45,0,0,1,.45.45Z" transform="translate(-40.1 -4.73)"/>'
+  + '    <path class="cls-1" d="M200,122h-9.9a4.95,4.95,0,1,0,0,9.9H200a4.95,4.95,0,0,0,0-9.9Z" transform="translate(-40.1 -4.73)"/>'
+  + '    <path class="cls-1" d="M200,141.76h-9.9a4.95,4.95,0,1,0,0,9.89H200a4.95,4.95,0,1,0,0-9.89Z" transform="translate(-40.1 -4.73)"/>'
+  + '    <path class="cls-1" d="M200,161.55h-9.9a4.95,4.95,0,0,0,0,9.9H200a4.95,4.95,0,0,0,0-9.9Z" transform="translate(-40.1 -4.73)"/>'
+  + '    <path class="cls-1" d="M200,181.34h-9.9a4.95,4.95,0,1,0,0,9.9H200a4.95,4.95,0,0,0,0-9.9Z" transform="translate(-40.1 -4.73)"/>'
+  + '    <path class="cls-1" d="M118.8,155.26l15.82-20.35a5,5,0,0,0-7.81-6.09l-14.65,18.85L99.81,133.55a4.95,4.95,0,0,0-7.45,6.51L106,155.62,92.18,173.36a4.95,4.95,0,0,0,7.81,6.07l12.62-16.23L127,179.64a4.94,4.94,0,1,0,7.44-6.5Z" transform="translate(-40.1 -4.73)"/>'
+  + '  </g>'
+  + '</svg>'
 
- 
+
 
 const PDF_ICON =
   '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210.94 281.25">'
@@ -86,110 +88,110 @@ const PDF_ICON =
   + '  </g>'
   + '</svg>'
 
-  const DAILY=
-'  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 272.06">'
-+'  <defs>'
-+'    <style>'
-+'      .cls-1 {'
-+'        fill: #9acd8d;'
-+'      }'
-+''
-+'      .marked {'
-+'        fill: #0e3004;'
-+'      }'
-+'    </style>'
-+'  </defs>'
-+'  <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
-+'  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
-+'  <rect class="marked" x="40.38" y="121.15" width="39.92" height="29.76"/>'
-+'  <path class="cls-1" d="M145.35,100.72a5.31,5.31,0,1,0-3.76-1.56A5.36,5.36,0,0,0,145.35,100.72Z" transform="translate(-9.32 -9.32)"/>'
-+'</svg>'
+const DAILY =
+  '  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 272.06">'
+  + '  <defs>'
+  + '    <style>'
+  + '      .cls-1 {'
+  + '        fill: #9acd8d;'
+  + '      }'
+  + ''
+  + '      .marked {'
+  + '        fill: #0e3004;'
+  + '      }'
+  + '    </style>'
+  + '  </defs>'
+  + '  <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <rect class="marked" x="40.38" y="121.15" width="39.92" height="29.76"/>'
+  + '  <path class="cls-1" d="M145.35,100.72a5.31,5.31,0,1,0-3.76-1.56A5.36,5.36,0,0,0,145.35,100.72Z" transform="translate(-9.32 -9.32)"/>'
+  + '</svg>'
 
-const WEEKLY=
-'<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 272.06">'
-+'  <defs>'
-+'    <style>'
-+'      .cls-1 {'
-+'        fill: #9acd8d;'
-+'      }'
-+''
-+'      .marked {'
-+'        fill: #0e3004;'
-+'      }'
-+'    </style>'
-+'  </defs>'
-+'  <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
-+'  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
-+'  <rect class="marked" x="191.89" y="121.15" width="39.79" height="29.76"/>'
-+'  <rect class="marked" x="141.41" y="121.15" width="39.85" height="29.76"/>'
-+'  <rect class="marked" x="90.93" y="121.15" width="39.85" height="29.76"/>'
-+'  <rect class="marked" x="40.38" y="121.15" width="39.92" height="29.76"/>'
-+'  <path class="cls-1" d="M145.35,100.72a5.31,5.31,0,1,0-3.76-1.56A5.36,5.36,0,0,0,145.35,100.72Z" transform="translate(-9.32 -9.32)"/>'
-+'</svg>'
+const WEEKLY =
+  '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 272.06">'
+  + '  <defs>'
+  + '    <style>'
+  + '      .cls-1 {'
+  + '        fill: #9acd8d;'
+  + '      }'
+  + ''
+  + '      .marked {'
+  + '        fill: #0e3004;'
+  + '      }'
+  + '    </style>'
+  + '  </defs>'
+  + '  <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <rect class="marked" x="191.89" y="121.15" width="39.79" height="29.76"/>'
+  + '  <rect class="marked" x="141.41" y="121.15" width="39.85" height="29.76"/>'
+  + '  <rect class="marked" x="90.93" y="121.15" width="39.85" height="29.76"/>'
+  + '  <rect class="marked" x="40.38" y="121.15" width="39.92" height="29.76"/>'
+  + '  <path class="cls-1" d="M145.35,100.72a5.31,5.31,0,1,0-3.76-1.56A5.36,5.36,0,0,0,145.35,100.72Z" transform="translate(-9.32 -9.32)"/>'
+  + '</svg>'
 
-const MONTHLY=
-'<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 272.06">'
-+'  <defs>'
-+'    <style>'
-+'      .cls-1 {'
-+'        fill: #9acd8d;'
-+'      }'
-+''
-+'      .marked {'
-+'        fill: #0e3004;'
-+'      }'
-+'    </style>'
-+'  </defs>'
-+'  <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
-+'  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
-+'  <rect class="marked" x="191.89" y="201.92" width="39.79" height="29.76"/>'
-+'  <rect class="marked" x="141.41" y="201.92" width="39.85" height="29.76"/>'
-+'  <rect class="marked" x="90.93" y="201.92" width="39.85" height="29.76"/>'
-+'  <rect class="marked" x="40.38" y="201.92" width="39.92" height="29.76"/>'
-+'  <rect class="marked" x="191.89" y="161.54" width="39.79" height="29.75"/>'
-+'  <rect class="marked" x="141.41" y="161.54" width="39.85" height="29.75"/>'
-+'  <rect class="marked" x="90.93" y="161.54" width="39.85" height="29.75"/>'
-+'  <rect class="marked" x="40.38" y="161.54" width="39.92" height="29.75"/>'
-+'  <rect class="marked" x="191.89" y="121.15" width="39.79" height="29.76"/>'
-+'  <rect class="marked" x="141.41" y="121.15" width="39.85" height="29.76"/>'
-+'  <rect class="marked" x="90.93" y="121.15" width="39.85" height="29.76"/>'
-+'  <rect class="marked" x="40.38" y="121.15" width="39.92" height="29.76"/>'
-+'  <path class="cls-1" d="M145.35,100.72a5.31,5.31,0,1,0-3.76-1.56A5.36,5.36,0,0,0,145.35,100.72Z" transform="translate(-9.32 -9.32)"/>'
-+'</svg>'
+const MONTHLY =
+  '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 272.06">'
+  + '  <defs>'
+  + '    <style>'
+  + '      .cls-1 {'
+  + '        fill: #9acd8d;'
+  + '      }'
+  + ''
+  + '      .marked {'
+  + '        fill: #0e3004;'
+  + '      }'
+  + '    </style>'
+  + '  </defs>'
+  + '  <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <rect class="marked" x="191.89" y="201.92" width="39.79" height="29.76"/>'
+  + '  <rect class="marked" x="141.41" y="201.92" width="39.85" height="29.76"/>'
+  + '  <rect class="marked" x="90.93" y="201.92" width="39.85" height="29.76"/>'
+  + '  <rect class="marked" x="40.38" y="201.92" width="39.92" height="29.76"/>'
+  + '  <rect class="marked" x="191.89" y="161.54" width="39.79" height="29.75"/>'
+  + '  <rect class="marked" x="141.41" y="161.54" width="39.85" height="29.75"/>'
+  + '  <rect class="marked" x="90.93" y="161.54" width="39.85" height="29.75"/>'
+  + '  <rect class="marked" x="40.38" y="161.54" width="39.92" height="29.75"/>'
+  + '  <rect class="marked" x="191.89" y="121.15" width="39.79" height="29.76"/>'
+  + '  <rect class="marked" x="141.41" y="121.15" width="39.85" height="29.76"/>'
+  + '  <rect class="marked" x="90.93" y="121.15" width="39.85" height="29.76"/>'
+  + '  <rect class="marked" x="40.38" y="121.15" width="39.92" height="29.76"/>'
+  + '  <path class="cls-1" d="M145.35,100.72a5.31,5.31,0,1,0-3.76-1.56A5.36,5.36,0,0,0,145.35,100.72Z" transform="translate(-9.32 -9.32)"/>'
+  + '</svg>'
 
-const CUSTOM_DATE=
-'<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 311.38">'
-+'  <defs>'
-+'    <style>'
-+'      .cls-1 {'
-+'        fill: #9acd8d;'
-+'      }'
-+''
-+'      .marked {'
-+'        fill: #0e3004;'
-+'      }'
-+''
-+'      .cls-3 {'
-+'        fill: #fff;'
-+'      }'
-+'    </style>'
-+'  </defs>'
-+'  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
-+'  <g>'
-+'    <rect class="marked" x="40.38" y="161.54" width="39.92" height="29.75"/>'
-+'    <rect class="marked" x="90.67" y="161.28" width="39.85" height="29.75"/>'
-+'    <rect class="marked" x="191.63" y="120.89" width="39.79" height="29.76"/>'
-+'    <rect class="marked" x="141.15" y="120.89" width="39.85" height="29.76"/>'
-+'  </g>'
-+'  <g>'
-+'    <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
-+'    <path class="cls-1" d="M145.35,90.09a5.31,5.31,0,1,0,3.76,1.56A5.36,5.36,0,0,0,145.35,90.09Z" transform="translate(-9.32 -9.32)"/>'
-+'  </g>'
-+'  <g>'
-+'    <path d="M265.59,216.75a13.72,13.72,0,0,0-7.72,2.35,13.89,13.89,0,0,0-13.08-9.28,13.73,13.73,0,0,0-7.71,2.35,13.87,13.87,0,0,0-20-7.43V175.16a13.86,13.86,0,0,0-27.72,0v73.52l-20.49-12.56-.16-.1a13.53,13.53,0,0,0-7.08-2,13.89,13.89,0,0,0-13.86,13.88,13.49,13.49,0,0,0,2.16,7.42l.05.07,31.77,50.65a31,31,0,0,0,26.42,14.62h40.1a31.22,31.22,0,0,0,31.19-31.19v-58.9A13.87,13.87,0,0,0,265.59,216.75Zm6.93,72.76a24.29,24.29,0,0,1-24.26,24.26h-40.1a24.14,24.14,0,0,1-20.56-11.36l-31.86-50.8s-.05-.1-.08-.14a6.7,6.7,0,0,1-1-3.53,6.93,6.93,0,0,1,6.93-6.93,6.58,6.58,0,0,1,3.55,1l.22.14L191,257.81l.09.06.13.06.19.1.1,0,.24.09s.05,0,.08,0l.24.06h.1a.91.91,0,0,0,.23,0,.27.27,0,0,0,.12,0H193a.68.68,0,0,0,.21,0h.1l.25,0h0l.29-.07a0,0,0,0,1,0,0l.29-.11,0,0,.24-.13.09,0a2,2,0,0,1,.18-.13l.12-.09a1.3,1.3,0,0,1,.15-.1l.13-.14a.39.39,0,0,0,.1-.08.75.75,0,0,1,.15-.16.3.3,0,0,0,.07-.11,1.12,1.12,0,0,0,.13-.16.26.26,0,0,0,.07-.11s0-.05.06-.08l0-.08s.05-.09.07-.15a1.14,1.14,0,0,0,.09-.16s0-.1.05-.15a.49.49,0,0,0,.06-.17.38.38,0,0,0,0-.15.53.53,0,0,0,.05-.19,1.21,1.21,0,0,1,0-.14,1.25,1.25,0,0,0,0-.19s0-.1,0-.15V255a.25.25,0,0,0,0-.08V175.16a6.93,6.93,0,1,1,13.86,0v72.78a3.47,3.47,0,0,0,6.93,0V216.75a6.93,6.93,0,0,1,13.86,0v31.19a3.47,3.47,0,0,0,6.93,0V223.68a6.94,6.94,0,0,1,13.87,0v24.26a3.47,3.47,0,0,0,6.93,0V230.61a6.93,6.93,0,0,1,13.86,0Z" transform="translate(-9.32 -9.32)"/>'
-+'    <path class="cls-3" d="M272.52,230.61v58.9a24.29,24.29,0,0,1-24.26,24.26h-40.1a24.14,24.14,0,0,1-20.56-11.36l-31.86-50.8s-.05-.1-.08-.14a6.7,6.7,0,0,1-1-3.53,6.93,6.93,0,0,1,6.93-6.93,6.58,6.58,0,0,1,3.55,1l.22.14L191,257.81l.09.06.13.06.19.1.1,0,.24.09s.05,0,.08,0l.24.06h.1a.91.91,0,0,0,.23,0,.27.27,0,0,0,.12,0H193a.68.68,0,0,0,.21,0h.1l.25,0h0l.29-.07a0,0,0,0,1,0,0l.29-.11,0,0,.24-.13.09,0a2,2,0,0,1,.18-.13l.12-.09a1.3,1.3,0,0,1,.15-.1l.13-.14a.39.39,0,0,0,.1-.08.75.75,0,0,1,.15-.16.3.3,0,0,0,.07-.11,1.12,1.12,0,0,0,.13-.16.26.26,0,0,0,.07-.11s0-.05.06-.08l0-.08s.05-.09.07-.15a1.14,1.14,0,0,0,.09-.16s0-.1.05-.15a.49.49,0,0,0,.06-.17.38.38,0,0,0,0-.15.53.53,0,0,0,.05-.19,1.21,1.21,0,0,1,0-.14,1.25,1.25,0,0,0,0-.19s0-.1,0-.15V255a.25.25,0,0,0,0-.08V175.16a6.93,6.93,0,1,1,13.86,0v72.78a3.47,3.47,0,0,0,6.93,0V216.75a6.93,6.93,0,0,1,13.86,0v31.19a3.47,3.47,0,0,0,6.93,0V223.68a6.94,6.94,0,0,1,13.87,0v24.26a3.47,3.47,0,0,0,6.93,0V230.61a6.93,6.93,0,0,1,13.86,0Z" transform="translate(-9.32 -9.32)"/>'
-+'  </g>'
-+'</svg>'
+const CUSTOM_DATE =
+  '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.06 311.38">'
+  + '  <defs>'
+  + '    <style>'
+  + '      .cls-1 {'
+  + '        fill: #9acd8d;'
+  + '      }'
+  + ''
+  + '      .marked {'
+  + '        fill: #0e3004;'
+  + '      }'
+  + ''
+  + '      .cls-3 {'
+  + '        fill: #fff;'
+  + '      }'
+  + '    </style>'
+  + '  </defs>'
+  + '  <path class="cls-1" d="M246.31,119.84H44.39a5.32,5.32,0,0,0-5.31,5.32V246.31a5.31,5.31,0,0,0,5.31,5.31H246.31a5.31,5.31,0,0,0,5.31-5.31V125.16A5.32,5.32,0,0,0,246.31,119.84ZM89.62,241H49.7V211.24H89.62Zm0-40.39H49.7V170.86H89.62Zm0-40.38H49.7V130.47H89.62ZM140.1,241H100.25V211.24H140.1Zm0-40.39H100.25V170.86H140.1Zm0-40.38H100.25V130.47H140.1ZM190.58,241H150.73V211.24h39.85Zm0-40.39H150.73V170.86h39.85Zm0-40.38H150.73V130.47h39.85ZM241,241H201.21V211.24H241Zm0-40.39H201.21V170.86H241Zm0-40.38H201.21V130.47H241Z" transform="translate(-9.32 -9.32)"/>'
+  + '  <g>'
+  + '    <rect class="marked" x="40.38" y="161.54" width="39.92" height="29.75"/>'
+  + '    <rect class="marked" x="90.67" y="161.28" width="39.85" height="29.75"/>'
+  + '    <rect class="marked" x="191.63" y="120.89" width="39.79" height="29.76"/>'
+  + '    <rect class="marked" x="141.15" y="120.89" width="39.85" height="29.76"/>'
+  + '  </g>'
+  + '  <g>'
+  + '    <path class="cls-1" d="M276.07,30.58H248.43V26.32a17,17,0,1,0-34,0v4.26H191.05V26.32a17,17,0,0,0-34,0v4.26H133.66V26.32a17,17,0,0,0-34,0v4.26H76.27V26.32a17,17,0,1,0-34,0v4.26H14.63a5.31,5.31,0,0,0-5.31,5.31V276.07a5.31,5.31,0,0,0,5.31,5.31H276.07a5.31,5.31,0,0,0,5.31-5.31V35.89A5.31,5.31,0,0,0,276.07,30.58Zm-51-4.26a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,0,1-12.76,0Zm-57.38,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.75,0V49.7a6.38,6.38,0,1,1-12.75,0Zm-57.39,0a6.38,6.38,0,0,1,12.76,0V49.7a6.38,6.38,0,1,1-12.76,0ZM270.75,90.09H169.26a5.32,5.32,0,0,0,0,10.63H270.75v170H20v-170H121.44a5.32,5.32,0,0,0,0-10.63H20V41.2H42.27v8.5a17,17,0,1,0,34,0V41.2H99.65v8.5a17,17,0,1,0,34,0V41.2H157v8.5a17,17,0,1,0,34,0V41.2h23.38v8.5a17,17,0,1,0,34,0V41.2h22.32Z" transform="translate(-9.32 -9.32)"/>'
+  + '    <path class="cls-1" d="M145.35,90.09a5.31,5.31,0,1,0,3.76,1.56A5.36,5.36,0,0,0,145.35,90.09Z" transform="translate(-9.32 -9.32)"/>'
+  + '  </g>'
+  + '  <g>'
+  + '    <path d="M265.59,216.75a13.72,13.72,0,0,0-7.72,2.35,13.89,13.89,0,0,0-13.08-9.28,13.73,13.73,0,0,0-7.71,2.35,13.87,13.87,0,0,0-20-7.43V175.16a13.86,13.86,0,0,0-27.72,0v73.52l-20.49-12.56-.16-.1a13.53,13.53,0,0,0-7.08-2,13.89,13.89,0,0,0-13.86,13.88,13.49,13.49,0,0,0,2.16,7.42l.05.07,31.77,50.65a31,31,0,0,0,26.42,14.62h40.1a31.22,31.22,0,0,0,31.19-31.19v-58.9A13.87,13.87,0,0,0,265.59,216.75Zm6.93,72.76a24.29,24.29,0,0,1-24.26,24.26h-40.1a24.14,24.14,0,0,1-20.56-11.36l-31.86-50.8s-.05-.1-.08-.14a6.7,6.7,0,0,1-1-3.53,6.93,6.93,0,0,1,6.93-6.93,6.58,6.58,0,0,1,3.55,1l.22.14L191,257.81l.09.06.13.06.19.1.1,0,.24.09s.05,0,.08,0l.24.06h.1a.91.91,0,0,0,.23,0,.27.27,0,0,0,.12,0H193a.68.68,0,0,0,.21,0h.1l.25,0h0l.29-.07a0,0,0,0,1,0,0l.29-.11,0,0,.24-.13.09,0a2,2,0,0,1,.18-.13l.12-.09a1.3,1.3,0,0,1,.15-.1l.13-.14a.39.39,0,0,0,.1-.08.75.75,0,0,1,.15-.16.3.3,0,0,0,.07-.11,1.12,1.12,0,0,0,.13-.16.26.26,0,0,0,.07-.11s0-.05.06-.08l0-.08s.05-.09.07-.15a1.14,1.14,0,0,0,.09-.16s0-.1.05-.15a.49.49,0,0,0,.06-.17.38.38,0,0,0,0-.15.53.53,0,0,0,.05-.19,1.21,1.21,0,0,1,0-.14,1.25,1.25,0,0,0,0-.19s0-.1,0-.15V255a.25.25,0,0,0,0-.08V175.16a6.93,6.93,0,1,1,13.86,0v72.78a3.47,3.47,0,0,0,6.93,0V216.75a6.93,6.93,0,0,1,13.86,0v31.19a3.47,3.47,0,0,0,6.93,0V223.68a6.94,6.94,0,0,1,13.87,0v24.26a3.47,3.47,0,0,0,6.93,0V230.61a6.93,6.93,0,0,1,13.86,0Z" transform="translate(-9.32 -9.32)"/>'
+  + '    <path class="cls-3" d="M272.52,230.61v58.9a24.29,24.29,0,0,1-24.26,24.26h-40.1a24.14,24.14,0,0,1-20.56-11.36l-31.86-50.8s-.05-.1-.08-.14a6.7,6.7,0,0,1-1-3.53,6.93,6.93,0,0,1,6.93-6.93,6.58,6.58,0,0,1,3.55,1l.22.14L191,257.81l.09.06.13.06.19.1.1,0,.24.09s.05,0,.08,0l.24.06h.1a.91.91,0,0,0,.23,0,.27.27,0,0,0,.12,0H193a.68.68,0,0,0,.21,0h.1l.25,0h0l.29-.07a0,0,0,0,1,0,0l.29-.11,0,0,.24-.13.09,0a2,2,0,0,1,.18-.13l.12-.09a1.3,1.3,0,0,1,.15-.1l.13-.14a.39.39,0,0,0,.1-.08.75.75,0,0,1,.15-.16.3.3,0,0,0,.07-.11,1.12,1.12,0,0,0,.13-.16.26.26,0,0,0,.07-.11s0-.05.06-.08l0-.08s.05-.09.07-.15a1.14,1.14,0,0,0,.09-.16s0-.1.05-.15a.49.49,0,0,0,.06-.17.38.38,0,0,0,0-.15.53.53,0,0,0,.05-.19,1.21,1.21,0,0,1,0-.14,1.25,1.25,0,0,0,0-.19s0-.1,0-.15V255a.25.25,0,0,0,0-.08V175.16a6.93,6.93,0,1,1,13.86,0v72.78a3.47,3.47,0,0,0,6.93,0V216.75a6.93,6.93,0,0,1,13.86,0v31.19a3.47,3.47,0,0,0,6.93,0V223.68a6.94,6.94,0,0,1,13.87,0v24.26a3.47,3.47,0,0,0,6.93,0V230.61a6.93,6.93,0,0,1,13.86,0Z" transform="translate(-9.32 -9.32)"/>'
+  + '  </g>'
+  + '</svg>'
 
 
 
@@ -206,11 +208,15 @@ const CUSTOM_DATE=
 })
 export class AccountComponent implements OnInit {
 
+
+
+
   @ViewChild('tabGroup', { static: false }) tab: ElementRef;
 
   accounts: any[];
   studentsList: Student[]
-  currentDate=new Date()
+  currentDate = new Date()
+  selectedRange:any
 
 
 
@@ -252,6 +258,15 @@ export class AccountComponent implements OnInit {
         idAccount: student.parent1.id
       }
 
+      this.selectedRange={
+        range:
+        {
+          start:Date,
+          end:Date
+        },
+        option:-1
+      }
+
       this.accounts.push(account)
     }
 
@@ -267,9 +282,9 @@ export class AccountComponent implements OnInit {
     let doc = new jsPDF('a4')
     let columns = ["Nombre", "Apellido", "Curso", "Titular"]
     let debtors = this.accounts.filter(a => a.state == false)
-    
-    let tableData =this.generateTableData(debtors)
-   
+
+    let tableData = this.generateTableData(debtors)
+
 
     if (method == 1) {
       doc.autoTable(columns, tableData,
@@ -357,175 +372,203 @@ export class AccountComponent implements OnInit {
         (window.URL || window.webkitURL).revokeObjectURL(save.href);
       }
       reader1.readAsDataURL(blob);
-      
+
     } else {
       alert("Su navegador no permite esta acción");
     }
   };
 
-  getExpensesReport(period,method){
-    
-    
+  getExpensesReport(period, method) {
+
+
     let doc = new jsPDF('a4')
     let columns = ["Importe", "Descripcion", "Fecha"]
-    let expenses=[]
+    let expenses = []
 
-    let weekDays=this.getweekstart(new Date())
+    let weekDays = this.getweekstart(new Date())
+    let customPeriod=this.selectedRange;
 
-  
 
-    if (period=="DAY")
-    {
-      expenses=
-      (
-        this.expensesService.expenseList.filter(
-          
-        a=>
-        a.$date.getDate()===this.currentDate.getDate() && 
-        a.$date.getMonth()===this.currentDate.getMonth() && 
-        a.$date.getFullYear()===this.currentDate.getFullYear())
-      )
-      if (expenses.length===0)
-      {
-        this.showSnackBar("No encontaron registros para el dia de la fecha: "+moment(this.currentDate).format('DD/MM/YYYY'))
+
+    if (period == "DAY") {
+      expenses =
+        (
+          this.expensesService.expenseList.filter(
+
+            a =>
+              a.$date.getDate() === this.currentDate.getDate() &&
+              a.$date.getMonth() === this.currentDate.getMonth() &&
+              a.$date.getFullYear() === this.currentDate.getFullYear())
+        )
+      if (expenses.length === 0) {
+        this.showSnackBar("No encontaron registros para el dia de la fecha: " + moment(this.currentDate).format('DD/MM/YYYY'))
       }
     }
-    if (period=="WEEK")
-    {
+    if (period == "WEEK") {
 
       console.log(weekDays)
-    
 
 
-      expenses=(this.expensesService.expenseList.filter
-        (a=>
-        moment(a.$date,"DD-MM-YYYY").isSameOrAfter(moment(weekDays[0],"DD-MM-YYYY"),'day')  &&
-        moment(a.$date,"DD-MM-YYYY").isSameOrBefore(moment(weekDays[weekDays.length-1],"DD-MM-YYYY"),'day')
+
+      expenses = (this.expensesService.expenseList.filter
+        (a => moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(weekDays[0], "DD-MM-YYYY"), 'day') &&
+          moment(a.$date, "DD-MM-YYYY").isSameOrBefore(moment(weekDays[weekDays.length - 1], "DD-MM-YYYY"), 'day')
         ))
 
-        this.showSnackBar("No se encontaron ingresos para el periodo: "+moment(weekDays[0]).format('DD/MM/YYYY')+" => "+moment(weekDays[weekDays.length-1]).format('DD/MM/YYYY'))
-    }
-    if (period=="MONTH")
-    {
-      expenses=(this.expensesService.expenseList.filter(a=>a.$date.getMonth()===this.currentDate.getMonth() && a.$date.getFullYear()==this.currentDate.getFullYear()))
-    }
-    if (period=="CUSTOM_PERIOD")
-    {
-      expenses=(this.expensesService.expenseList.filter(a=>a.$date.getMonth()===this.currentDate.getMonth()))
-    }
-   
-    if (expenses.length>0)
-    {
-let tableData = this.generateTableData(expenses)
+      if (expenses.length === 0) {
+        this.showSnackBar("No se encontaron ingresos para el periodo: " +
+          moment(weekDays[0]).format('DD/MM/YYYY') +
+          " => " +
+          moment(weekDays[weekDays.length - 1]).format('DD/MM/YYYY'))
+      }
 
-    if (method == 1) {
-      doc.autoTable(columns, tableData,
-        {
-          margin: { top: 60 },
-          styles:
+
+    }
+    if (period == "MONTH") {
+      expenses = (this.expensesService.expenseList.filter(a => a.$date.getMonth() === this.currentDate.getMonth() && a.$date.getFullYear() == this.currentDate.getFullYear()))
+    }
+    if (period == "CUSTOM_PERIOD") 
+    {
+      console.log(this.selectedRange)
+
+
+
+      expenses = (this.expensesService.expenseList.filter
+        (a => moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(this.selectedRange.range.start, "DD-MM-YYYY"), 'day') &&
+          moment(a.$date, "DD-MM-YYYY").isSameOrBefore(moment(this.selectedRange.range.end, "DD-MM-YYYY"), 'day')
+        ))
+
+      if (expenses.length === 0) {
+        this.showSnackBar("No se encontaron ingresos para el periodo: " +
+          moment(this.selectedRange.range.start).format('DD/MM/YYYY') +
+          " => " +
+          moment(this.selectedRange.range.end).format('DD/MM/YYYY'))
+      }    }
+
+    if (expenses.length > 0) {
+      let tableData = this.generateTableData(expenses)
+
+      if (method == 1) {
+        doc.autoTable(columns, tableData,
           {
-            lineWidth: 0.1,
-            lineColor: [60, 60, 60]
-          },
+            margin: { top: 60 },
+            styles:
+            {
+              lineWidth: 0.1,
+              lineColor: [60, 60, 60]
+            },
 
-          headStyles: { fillColor: [45, 92, 132] }
-        }
+            headStyles: { fillColor: [45, 92, 132] }
+          }
 
-      );
+        );
 
-      var string = doc.output('datauristring');
+        var string = doc.output('datauristring');
 
-      let url = this.sanitazer.bypassSecurityTrustResourceUrl(string)
+        let url = this.sanitazer.bypassSecurityTrustResourceUrl(string)
 
-      this.openModalFrame(url)
+        this.openModalFrame(url)
 
 
-     
+
+      }
+
+      else if (method == 2) {
+        tableData.splice(0, 0, columns)
+        this.arrayObjToCsv(tableData);
+      }
+
     }
-
-    else if (method == 2) 
-    {
-      tableData.splice(0, 0, columns)
-      this.arrayObjToCsv(tableData);
-    }
-
-    }
-    else{
+    else {
       //this.showSnackBar("No existen entradas para el reporte: "+period)
     }
- 
 
-    
-    
+
+
+
 
 
   }
 
 
-openModalFrame(url)
-{
-  const dialogRef = this.dialog.open(ModalFrameComponent,
-    {
-      data: url,
-      width: '90vw',
-      height: '100vh',
-      panelClass: "url-frame"
+  openModalFrame(url) {
+    const dialogRef = this.dialog.open(ModalFrameComponent,
+      {
+        data: url,
+        width: '90vw',
+        height: '100vh',
+        panelClass: "url-frame"
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => { });
+  }
+
+  generateTableData(data) {
+    let tableData = []
+
+    for (let obj of data) {
+
+
+      let row = (Array.from(Object.values(obj)))
+
+      tableData.push(row)
+
+
+
     }
-  )
 
-  dialogRef.afterClosed().subscribe(result => { });
-}
+    console.log(tableData)
 
-generateTableData(data)
-{
-  let tableData=[]
-
-  for (let obj of data) 
-  {
-    
-
-    let row=(Array.from(Object.values(obj)))
-
-    tableData.push(row)
-      
-    
-       
+    return tableData
   }
 
-  console.log(tableData)
+  showSnackBar(message: string) {
+    this.snackBar.open(message, "Aceptar", { duration: 5500 })
+  }
 
-  return tableData
-}
+  getweekstart(current) {
+    const week = [];
+    const weekFormat = [];
 
-showSnackBar(message: string) {
-  this.snackBar.open(message, "Aceptar", { duration: 5500 })
-}
-
-getweekstart(current) {
-  const week = [];
-  const weekFormat = [];
-  
-  if(current.getDay() == 0){//En los casos en que es domingo, restar como si fuera septimo dia y no cero
+    if (current.getDay() == 0) {//En los casos en que es domingo, restar como si fuera septimo dia y no cero
       current.setDate(((current.getDate() - 7) + 1));
-  }else{
+    } else {
       current.setDate(((current.getDate() - current.getDay()) + 1));
-  }
-  
-  for (let i = 0; i < 7; i++) {
+    }
+
+    for (let i = 0; i < 7; i++) {
       week.push(new Date(current));
-      current.setDate(current.getDate()+1);
-  }
-  week.forEach((w) => {
+      current.setDate(current.getDate() + 1);
+    }
+    week.forEach((w) => {
       weekFormat.push(w);
-  });
-  return weekFormat;
+    });
+    return weekFormat;
 
 
-}
+  }
 
-isSameDate()
-{
+  openDateRangeSelector() {
+    const dialogRef = this.dialog.open(RangeSelectorComponent,
+      {
 
-}
+        width: '400px',
+        height: '250px',
+        panelClass: "url-frame"
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+
+      this.selectedRange=result
+
+      
+
+      this.getExpensesReport("CUSTOM_PERIOD", result.option)
+
+    });
+  }
 
 }
