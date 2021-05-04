@@ -216,7 +216,16 @@ export class AccountComponent implements OnInit {
   accounts: any[];
   studentsList: Student[]
   currentDate = new Date()
-  selectedRange:any
+  selectedRange: any
+  TYPE=
+  {
+    DAY:"Diario",
+    WEEK:"Semanal",
+    MONTH:"Mensual",
+    CUSTOM_PERIOD:"Personalizado"
+
+
+  }
 
 
 
@@ -258,13 +267,13 @@ export class AccountComponent implements OnInit {
         idAccount: student.parent1.id
       }
 
-      this.selectedRange={
+      this.selectedRange = {
         range:
         {
-          start:Date,
-          end:Date
+          start: Date,
+          end: Date
         },
-        option:-1
+        option: -1
       }
 
       this.accounts.push(account)
@@ -386,7 +395,6 @@ export class AccountComponent implements OnInit {
     let expenses = []
 
     let weekDays = this.getweekstart(new Date())
-    let customPeriod=this.selectedRange;
 
 
 
@@ -410,8 +418,9 @@ export class AccountComponent implements OnInit {
 
 
 
-      expenses = (this.expensesService.expenseList.filter
-        (a => moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(weekDays[0], "DD-MM-YYYY"), 'day') &&
+      expenses =
+        (this.expensesService.expenseList.filter(a => 
+          moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(weekDays[0], "DD-MM-YYYY"), 'day') &&
           moment(a.$date, "DD-MM-YYYY").isSameOrBefore(moment(weekDays[weekDays.length - 1], "DD-MM-YYYY"), 'day')
         ))
 
@@ -427,14 +436,15 @@ export class AccountComponent implements OnInit {
     if (period == "MONTH") {
       expenses = (this.expensesService.expenseList.filter(a => a.$date.getMonth() === this.currentDate.getMonth() && a.$date.getFullYear() == this.currentDate.getFullYear()))
     }
-    if (period == "CUSTOM_PERIOD") 
-    {
+    if (period == "CUSTOM_PERIOD") {
       console.log(this.selectedRange)
 
 
 
-      expenses = (this.expensesService.expenseList.filter
-        (a => moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(this.selectedRange.range.start, "DD-MM-YYYY"), 'day') &&
+      expenses =
+
+        (this.expensesService.expenseList.filter(a =>
+          moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(this.selectedRange.range.start, "DD-MM-YYYY"), 'day') &&
           moment(a.$date, "DD-MM-YYYY").isSameOrBefore(moment(this.selectedRange.range.end, "DD-MM-YYYY"), 'day')
         ))
 
@@ -443,12 +453,30 @@ export class AccountComponent implements OnInit {
           moment(this.selectedRange.range.start).format('DD/MM/YYYY') +
           " => " +
           moment(this.selectedRange.range.end).format('DD/MM/YYYY'))
-      }    }
+      }
+    }
 
     if (expenses.length > 0) {
       let tableData = this.generateTableData(expenses)
 
-      if (method == 1) {
+      if (method == 1) 
+      {
+        let text1="Reporte de gastos " +this.TYPE[period]
+        let text2="Generado el dia "+moment(this.currentDate).format("DD/MM/YYYY")
+        
+
+        doc.setFontSize(15)
+        doc.text(text1, this.centerText(0, 210, doc.getTextWidth(text1)), 25)
+        doc.setFontSize(12)
+        doc.text(text2, this.centerText(0, 210, doc.getTextWidth(text2)), 35)
+
+        if (period=="CUSTOM_PERIOD")
+        {
+          let text3=moment(this.selectedRange.range.start).format("DD-MM-YYYY")+" a s"+moment(this.selectedRange.range.end).format("DD-MM-YYYY")
+          doc.text(text3, this.centerText(0, 210, doc.getTextWidth(text3)), 45)
+
+        }
+
         doc.autoTable(columns, tableData,
           {
             margin: { top: 60 },
@@ -496,15 +524,20 @@ export class AccountComponent implements OnInit {
       {
         data: url,
         width: '90vw',
-        height: '100vh',
-        panelClass: "url-frame"
+        height: '100vh'
       }
     )
 
     dialogRef.afterClosed().subscribe(result => { });
   }
 
-  generateTableData(data) {
+  centerText(initialPoint: number, containerWidth: number, stringWidht: number) {
+    console.log(initialPoint + stringWidht / 2)
+    return initialPoint + (containerWidth - stringWidht) / 2;
+  }
+
+  generateTableData(data) 
+  {
     let tableData = []
 
     for (let obj of data) {
@@ -554,17 +587,16 @@ export class AccountComponent implements OnInit {
       {
 
         width: '400px',
-        height: '250px',
-        panelClass: "url-frame"
+        height: '250px'
       }
     )
 
     dialogRef.afterClosed().subscribe(result => {
-      
 
-      this.selectedRange=result
 
-      
+      this.selectedRange = result
+
+
 
       this.getExpensesReport("CUSTOM_PERIOD", result.option)
 
