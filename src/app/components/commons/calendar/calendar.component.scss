@@ -1,0 +1,32 @@
+@import '../../../stylings/color-pallete';
+
+
+.days{
+    background-color: yellowgreen;
+}
+
+.day{
+    border-bottom: 1px solid $custom-blue-glass;
+    overflow: auto;
+    
+}
+.day span{
+    margin-top: 0.2em;
+}
+
+::ng-deep .mat-grid-tile .mat-figure{
+    display: flex;
+    
+    align-items: flex-start !important;
+}
+
+::ng-deep .mat-grid-tile .mat-figure:hover{
+    transition: 0.5s ease-in-out;
+    transition-delay: 0;
+    cursor: pointer;
+}
+::ng-deep .mat-grid-tile .mat-figure:hover{
+    background-color: rgba(0, 0, 0, 0.089);
+}
+
+

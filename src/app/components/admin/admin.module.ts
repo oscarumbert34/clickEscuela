@@ -1,3 +1,4 @@
+import { CalendarComponent } from './../commons/calendar/calendar.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AccountComponent } from './account/account.component';
 import { EditTeacherComponent } from './teacher-component/edit-teacher/edit-teacher.component';
@@ -46,7 +47,19 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent,PaymentsDetailComponent],
+  declarations: [
+    RegisterComponent,
+     AddStudentComponent,
+     StudentBaseModelComponent,
+     EditStudentComponent,
+     AccountComponent,
+     AccountListComponent,
+     TeacherBaseModelComponent,
+     AddTeacherComponent,
+     EditTeacherComponent,
+     ContactInfoComponent,
+     PaymentsDetailComponent,
+     CalendarComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

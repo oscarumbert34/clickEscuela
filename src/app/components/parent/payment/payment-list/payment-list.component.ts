@@ -3,11 +3,8 @@ import { PaymentService } from './../../../../services/payment.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AsistanceParent } from 'src/app/models/AsistanceParent';
 import { MatTableDataSource } from '@angular/material/table';
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas'; // Todavía no lo usamos
-import Base64 from 'angular-base64/angular-base64';
 
 
 @Component({

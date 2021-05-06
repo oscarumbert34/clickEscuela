@@ -19,6 +19,10 @@ body { margin: 0;
   display: none;
 }
 
+::ng-deep .container{
+  max-width: 100%;
+}
+
 // //alto del 
 // tr.mat-row, tr.mat-footer-row
 // {
