@@ -90,23 +90,59 @@
       </mat-menu>
 
       <mat-menu #expensesReport="matMenu">
-        <button class="action-button" mat-menu-item >
+        <button class="action-button" mat-menu-item [matMenuTriggerFor]="dailyReport">
           <mat-icon class="option-icon" svgIcon="daily"></mat-icon>
           <span class="report-option">Diarios</span>
         </button>
-        <button class="action-button" mat-menu-item>
+        <button class="action-button" mat-menu-item [matMenuTriggerFor]="weeklyReport">
           <mat-icon class="option-icon" svgIcon="weekly"></mat-icon>
           <span class="report-option">Semanales</span>
         </button>
-        <button class="action-button" mat-menu-item>
+        <button class="action-button" mat-menu-item [matMenuTriggerFor]="monthlyReport" >
           <mat-icon class="option-icon" svgIcon="monthly"></mat-icon>
           <span class="report-option">Mensuales</span>
         </button>
-        <button class="action-button" mat-menu-item >
+        <button class="action-button" mat-menu-item (click)="openDateRangeSelector()" >
           <mat-icon class="option-icon" svgIcon="custom-date"></mat-icon>
           <span class="report-option">Seleccionar Rango</span>
         </button>
       </mat-menu>
+
+      <mat-menu #monthlyReport="matMenu">
+        <button class="action-button" mat-menu-item (click)="getExpensesReport('MONTH',1)">
+          <mat-icon class="option-icon" svgIcon="pdf-icon"></mat-icon>
+          <span class="report-option">Exportar PDF</span>
+        </button>
+        <button class="action-button" mat-menu-item (click)="getExpensesReport('MONTH',2)">
+          <mat-icon class="option-icon" svgIcon="csv-icon"></mat-icon>
+          <span class="report-option">Exportar CSV</span>
+        </button>
+      </mat-menu>
+
+      <mat-menu #dailyReport="matMenu">
+        <button class="action-button" mat-menu-item (click)="getExpensesReport('DAY',1)">
+          <mat-icon class="option-icon" svgIcon="pdf-icon"></mat-icon>
+          <span class="report-option">Exportar PDF</span>
+        </button>
+        <button class="action-button" mat-menu-item (click)="getExpensesReport('DAY',2)">
+          <mat-icon class="option-icon" svgIcon="csv-icon"></mat-icon>
+          <span class="report-option">Exportar CSV</span>
+        </button>
+      </mat-menu>
+
+      <mat-menu #weeklyReport="matMenu">
+        <button class="action-button" mat-menu-item (click)="getExpensesReport('WEEK',1)">
+          <mat-icon class="option-icon" svgIcon="pdf-icon"></mat-icon>
+          <span class="report-option">Exportar PDF</span>
+        </button>
+        <button class="action-button" mat-menu-item (click)="getExpensesReport('WEEK',2)">
+          <mat-icon class="option-icon" svgIcon="csv-icon"></mat-icon>
+          <span class="report-option">Exportar CSV</span>
+        </button>
+      </mat-menu>
+
+    
+
     </div>
 
   </div>
