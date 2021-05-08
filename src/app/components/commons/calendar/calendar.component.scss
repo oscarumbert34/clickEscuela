@@ -96,4 +96,35 @@
     background-color: $green;
 }
 
+.month{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+#monthNumber
+{
+    font-size: 2em;
+}
+#monthLegend{
+font-size: 1.5em;
+}
+#yearLegend{
+    font-size: 2em;
+}
+
+.prev-month, .next-month{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $green;
+    color: $custom-blue-glass;
+}
 

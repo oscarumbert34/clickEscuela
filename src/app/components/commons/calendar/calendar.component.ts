@@ -9,6 +9,7 @@ export class CalendarComponent implements OnInit {
   weeks: any[]
 
   @ViewChildren('day') calendarDays: QueryList<ElementRef>
+  monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
   constructor() {
     this.weeks = []
@@ -44,7 +45,7 @@ export class CalendarComponent implements OnInit {
   fillCalendar(anio, mes) {
 
 
-    var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    
     var displacementdays = [0, 1, 2, 3, 4, 5, 6];
 
     var currentDate;
@@ -57,7 +58,7 @@ export class CalendarComponent implements OnInit {
     console.log(currentDate)
 
 
-    var monthLegend = monthNames[currentDate.getMonth()];
+    var monthLegend = this.monthNames[currentDate.getMonth()];
 
     document.getElementById("monthLegend").innerHTML = monthLegend;
     document.getElementById("yearLegend").innerHTML = currentDate.getFullYear();
@@ -101,6 +102,34 @@ export class CalendarComponent implements OnInit {
 
   daysInMonth(mes, año) {
     return new Date(año, mes, 0).getDate();
+  }
+
+  getNextMonth(){
+    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
+    if (month == 11) {
+      month = 0;
+    }
+    else {
+      month++;
+    }
+
+   
+
+    return this.monthNames[month]
+  }
+
+  getPrevMonth(){
+    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
+    
+    if (month == 0) {
+      month = 11;
+    }
+    else {
+      month--;
+    }
+   
+
+    return this.monthNames[month]
   }
 
 
