@@ -36,12 +36,12 @@ export class CalendarComponent implements OnInit {
 
   ngAfterViewInit() {
     console.log(this.calendarDays)
-    this.llenarCalendario(0, 0)
+    this.fillCalendar(0, 0)
     document.getElementById("day8").innerHTML == "Hola"
   }
 
 
-  llenarCalendario(anio, mes) {
+  fillCalendar(anio, mes) {
 
 
     var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -57,12 +57,12 @@ export class CalendarComponent implements OnInit {
     console.log(currentDate)
 
 
-    var mesnombre = monthNames[currentDate.getMonth()];
+    var monthLegend = monthNames[currentDate.getMonth()];
 
-    document.getElementById("mesnombre").innerHTML = mesnombre;
-    document.getElementById("numeroanio").innerHTML = currentDate.getFullYear();
+    document.getElementById("monthLegend").innerHTML = monthLegend;
+    document.getElementById("yearLegend").innerHTML = currentDate.getFullYear();
 
-    var numberMonth = document.getElementById("numeromes");
+    var numberMonth = document.getElementById("monthNumber");
     var currentMonth = (currentDate.getMonth() + 1) + "";
 
 
@@ -107,8 +107,8 @@ export class CalendarComponent implements OnInit {
 
 
   prevMonth() {
-    var month = parseInt(document.getElementById("numeromes").innerHTML) - 1;
-    var year = parseInt(document.getElementById("numeroanio").innerHTML);
+    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
+    var year = parseInt(document.getElementById("yearLegend").innerHTML);
 
     if (month == 0) {
       month = 11;
@@ -118,7 +118,7 @@ export class CalendarComponent implements OnInit {
       month--;
     }
 
-    this.llenarCalendario(year, month);
+    this.fillCalendar(year, month);
     // for (var i = 1; i <= 37; i++) {
     //   document.getElementById("dia" + i).style.fill = "black"
     //   document.getElementById("dia" + i).style.fontSize = "41.4646px"
@@ -129,8 +129,8 @@ export class CalendarComponent implements OnInit {
   }
 
   nextMonth() {
-    var month = parseInt(document.getElementById("numeromes").innerHTML) - 1;
-    var year = parseInt(document.getElementById("numeroanio").innerHTML);
+    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
+    var year = parseInt(document.getElementById("yearLegend").innerHTML);
 
     if (month == 11) {
       month = 0;
@@ -140,7 +140,7 @@ export class CalendarComponent implements OnInit {
       month++;
     }
 
-    this.llenarCalendario(year, month);
+    this.fillCalendar(year, month);
 
     // for (var i = 1; i <= 37; i++) {
     //   document.getElementById("dia" + i).style.fill = "black"
