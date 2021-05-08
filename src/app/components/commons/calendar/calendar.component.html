@@ -1,81 +1,41 @@
-<mat-grid-list cols="7" rowHeight="7:2" id="tableHead">
-  <mat-grid-tile class="days">LUN</mat-grid-tile>
-  <mat-grid-tile class="days">MAR</mat-grid-tile> 
-  <mat-grid-tile class="days">MIÉ</mat-grid-tile>
-  <mat-grid-tile class="days">JUE</mat-grid-tile>
-  <mat-grid-tile class="days">VIE</mat-grid-tile>
-  <mat-grid-tile class="days">SAB</mat-grid-tile>
-  <mat-grid-tile class="days">DOM</mat-grid-tile>
-</mat-grid-list>
 
-<mat-grid-list cols="7" rowHeight="7:6">
-  <mat-grid-tile class="day">LUN</mat-grid-tile>
-  <mat-grid-tile class="day">MAR</mat-grid-tile>
-  <mat-grid-tile class="day">MIÉ</mat-grid-tile>
-  <mat-grid-tile class="day">JUE</mat-grid-tile>
-  <mat-grid-tile class="day">VIE</mat-grid-tile>
-  <mat-grid-tile class="day">SAB</mat-grid-tile>
-  <mat-grid-tile class="day">DOM</mat-grid-tile>
-</mat-grid-list>
+<div class="row month">
+  <button (click)="prevMonth()">prev</button>
+  <span id="numeromes">5</span>
+  <span id="mesnombre">MAYO</span> 
+  <span id="numeroanio">2021</span>
+  <button (click)="nextMonth()">next</button>
+</div>
+<div class="row header">
+  <div class="column-header">
+    DOM
+  </div>
+  <div class="column-header">
+    LUN
+  </div>
+  <div class="column-header">
+    MAR
+  </div>
+  <div class="column-header">
+    MIÉ
+  </div>
+  <div class="column-header">
+    JUE
+  </div>
+  <div class="column-header">
+    VIE
+  </div>
+  <div class="column-header">
+    SAB
+  </div>
+ 
+    
+</div>
 
-<mat-grid-list cols="7" rowHeight="7:6">
-  <mat-grid-tile class="day">LUN</mat-grid-tile>
-  <mat-grid-tile class="day">MAR</mat-grid-tile>
-  <mat-grid-tile class="day">MIÉ</mat-grid-tile>
-  <mat-grid-tile class="day">JUE</mat-grid-tile>
-  <mat-grid-tile class="day">VIE</mat-grid-tile>
-  <mat-grid-tile class="day">SAB</mat-grid-tile>
-  <mat-grid-tile class="day">DOM</mat-grid-tile>
-</mat-grid-list>
-
-<mat-grid-list cols="7" rowHeight="7:6">
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-  <mat-grid-tile class="day">
-    <span>1</span>
-  </mat-grid-tile>
-</mat-grid-list>
-
-<mat-grid-list cols="7" rowHeight="7:6">
-  <mat-grid-tile class="day">LUN</mat-grid-tile>
-  <mat-grid-tile class="day">MAR</mat-grid-tile>
-  <mat-grid-tile class="day">MIÉ</mat-grid-tile>
-  <mat-grid-tile class="day">JUE</mat-grid-tile>
-  <mat-grid-tile class="day">VIE</mat-grid-tile>
-  <mat-grid-tile class="day">SAB</mat-grid-tile>
-  <mat-grid-tile class="day">DOM</mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="7" rowHeight="7:6">
-  <mat-grid-tile class="day">LUN</mat-grid-tile>
-  <mat-grid-tile class="day">MAR</mat-grid-tile>
-  <mat-grid-tile class="day">MIÉ</mat-grid-tile>
-  <mat-grid-tile class="day">JUE</mat-grid-tile>
-  <mat-grid-tile class="day">VIE</mat-grid-tile>
-  <mat-grid-tile class="day">SAB</mat-grid-tile>
-  <mat-grid-tile class="day">DOM</mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="7" rowHeight="7:6">
-  <mat-grid-tile class="day">LUN</mat-grid-tile>
-  <mat-grid-tile class="day">MAR</mat-grid-tile>
-  <mat-grid-tile class="day">MIÉ</mat-grid-tile>
-  <mat-grid-tile class="day">JUE</mat-grid-tile>
-  <mat-grid-tile class="day">VIE</mat-grid-tile>
-  <mat-grid-tile class="day">SAB</mat-grid-tile>
-  <mat-grid-tile class="day">DOM</mat-grid-tile>
-</mat-grid-list>
+<div *ngFor="let week of weeks;let index=index" class="row week" [id]="'week'+(index+1)">
+  <div *ngFor="let day of week" class="day" [id]="day" #day>
+    <div class="number-day">
+      <span [id]="'number'+day">10</span>
+    </div>
+  </div>
+</div>
