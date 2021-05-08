@@ -1,4 +1,7 @@
+import { SVG_CONST } from './../../../enums/svg-constants';
 import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-calendar',
@@ -11,7 +14,7 @@ export class CalendarComponent implements OnInit {
   @ViewChildren('day') calendarDays: QueryList<ElementRef>
   monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-  constructor() {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     this.weeks = []
 
     let count = 1;
@@ -26,6 +29,11 @@ export class CalendarComponent implements OnInit {
     }
 
     console.log(this.weeks)
+
+    
+     iconRegistry.addSvgIconLiteral('leftSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW))
+     iconRegistry.addSvgIconLiteral('rightSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW))
+
   }
 
 
@@ -120,7 +128,7 @@ export class CalendarComponent implements OnInit {
 
   getPrevMonth(){
     var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
-    
+
     if (month == 0) {
       month = 11;
     }

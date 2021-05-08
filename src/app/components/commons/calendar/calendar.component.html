@@ -1,10 +1,10 @@
 
 <div class="row month">
-  <button [matTooltip]="getPrevMonth()" class="next-month" (click)="prevMonth()">prev</button>
+  <button [matTooltip]="getPrevMonth()" class="next-month" (click)="prevMonth()"><mat-icon class="option-icon" svgIcon="leftSvg"></mat-icon></button>
   <span id="monthNumber">5</span>
   <span id="monthLegend">MAYO</span> 
   <span id="yearLegend">2021</span>
-  <button [matTooltip]="getNextMonth()" class="prev-month" (click)="nextMonth()"><fa-icon [icon]="faCoffee"></fa-icon>
+  <button [matTooltip]="getNextMonth()" class="prev-month" (click)="nextMonth()"><mat-icon class="option-icon" svgIcon="rightSvg"></mat-icon>
   </button>
 </div>
 <div class="row header">
