@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="row month">
   <button [matTooltip]="getPrevMonth()" class="next-month" (click)="prevMonth()"><mat-icon class="option-icon" svgIcon="leftSvg"></mat-icon></button>
   <span id="monthNumber">5</span>
@@ -39,4 +39,38 @@
       <span [id]="'number'+day">10</span>
     </div>
   </div>
+</div> -->
+
+<div class="wrapper-calendar">
+	<div class="header-calendar">
+		<div>
+			<!-- <button (click)="changeMonth(-1)" class="btn-prev">Antes</button> -->
+      <button [matTooltip]="getPrevMonth()"  class="prev-month" (click)="changeMonth(-1)"><mat-icon class="option-icon" svgIcon="leftSvg"></mat-icon></button>
+		</div>
+  <span id="monthNumber">{{monthNumber}}</span>
+  <span id="monthLegend">{{monthName}}</span> 
+  <span id="yearLegend">{{yearName}}</span>
+		<!-- <h1>{{dateSelect | date:'MMMM, yyyy'}}</h1> -->
+		<div>
+			<!-- <button (click)="changeMonth(1)" class="btn-next">Siguiente</button> -->
+      <button [matTooltip]="getNextMonth()" class="next-month" (click)="changeMonth(1)"><mat-icon class="option-icon" svgIcon="rightSvg"></mat-icon></button>
+
+		</div>
+	</div>
+	<ol>
+		<li *ngFor="let day of week" class="day-name">{{day | slice:0:3}}</li>
+
+        <li class="grid-days" (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+         *ngFor="let day of monthSelect;let first = first">
+			<span>{{day?.value}}</span>
+      <div *ngFor="let event of day.events" class="event-chip" #eventDiv (click)="showEvent(eventDiv,event)">
+        {{event.title}}
+      </div>
+		</li>
+	</ol>
+</div>
+
+<hr>
+<div>
+	Fecha: {{dateValue | date}}
 </div>

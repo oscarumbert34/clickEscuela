@@ -1,7 +1,12 @@
+import { element } from 'protractor';
+import { EventDetailComponent } from './../eventDetail/eventDetail.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CalendarEventsService } from './../../../services/calendar-events.service';
 import { SVG_CONST } from './../../../enums/svg-constants';
 import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import moment from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -10,29 +15,42 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CalendarComponent implements OnInit {
   weeks: any[]
-
+  
   @ViewChildren('day') calendarDays: QueryList<ElementRef>
+  currentDate:Date;
+
   monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  monthNumber:any;
+  monthName:any;
+  yearName:any;
+  
+  week: any = [
+    "Lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sabado",
+    "Domingo"
+  ];
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    this.weeks = []
 
-    let count = 1;
+  monthSelect: any[];
+  dateSelect: any;
+  dateValue: any;
 
-    for (let i = 1; i <= 6; i++) {
-      let week = []
-      for (let j = 1; j <= 7; j++) {
-        week.push("day" + count);
-        count++
-      }
-      this.weeks.push(week)
-    }
+  innerWidth:any;
 
-    console.log(this.weeks)
 
+
+
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private calendarService: CalendarEventsService, private dialog: MatDialog) {
     
      iconRegistry.addSvgIconLiteral('leftSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW))
      iconRegistry.addSvgIconLiteral('rightSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW))
+     this.currentDate=new Date()
+     
+     this.innerWidth=window.innerWidth
 
   }
 
@@ -40,151 +58,125 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
 
+    
+    this.getDaysFromDate(this.currentDate.getMonth()+1, this.currentDate.getFullYear())
+    
 
   }
-
-  ngAfterViewInit() {
-    console.log(this.calendarDays)
-    this.fillCalendar(0, 0)
-    document.getElementById("day8").innerHTML == "Hola"
-  }
-
-
-  fillCalendar(anio, mes) {
-
+  getPrevMonth(){
+    const prevDate = this.dateSelect.clone().subtract(1, "month").format("MM");
+    return this.monthNames[parseInt(prevDate)]
 
     
-    var displacementdays = [0, 1, 2, 3, 4, 5, 6];
-
-    var currentDate;
-    if (mes == 0 && anio == 0) {
-      currentDate = new Date();
-    } else {
-      currentDate = new Date(anio, mes, 1);
-    }
-
-    console.log(currentDate)
-
-
-    var monthLegend = this.monthNames[currentDate.getMonth()];
-
-    document.getElementById("monthLegend").innerHTML = monthLegend;
-    document.getElementById("yearLegend").innerHTML = currentDate.getFullYear();
-
-    var numberMonth = document.getElementById("monthNumber");
-    var currentMonth = (currentDate.getMonth() + 1) + "";
-
-
-
-    var large = currentMonth.length;
-
-    var day = ("0" + currentDate.getDate()).slice(-2)
-    var month = ("0" + (currentDate.getMonth() + 1)).slice(-2)
-    var year = currentDate.getFullYear();
-
-    numberMonth.innerHTML = month;
-
-    var firstDay = new Date((currentDate.getMonth() + 1) + ' ' + '01' + ', ' + currentDate.getFullYear() + ' 12:00:00');
-
-
-
-    var displace = displacementdays[firstDay.getUTCDay()];
-    console.log(displace)
-
-    for (var i = 1; i <= 42; i++) {
-      var celd = document.getElementById("numberday" + i)
-      celd.innerHTML = "";
-    }
-
-    var dia = 1;
-    var totaldays = this.daysInMonth(currentDate.getMonth() + 1, currentDate.getFullYear());
-
-    for (var i = displace + 1; i <= totaldays + displace; i++) {
-      let id = 'numberday' + i
-      document.getElementById(id).innerHTML =dia+""
-       
-      dia++;
-    }
-  }
-
-
-  daysInMonth(mes, año) {
-    return new Date(año, mes, 0).getDate();
   }
 
   getNextMonth(){
-    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
-    if (month == 11) {
-      month = 0;
-    }
-    else {
-      month++;
-    }
-
-   
-
-    return this.monthNames[month]
+    const nextDate = this.dateSelect.clone().add(1, "month").format("MM");
+    return this.monthNames[parseInt(nextDate)]
+    
   }
 
-  getPrevMonth(){
-    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
+  getDaysFromDate(month, year) {
 
-    if (month == 0) {
-      month = 11;
-    }
-    else {
-      month--;
-    }
-   
+    const startDate = moment.utc(`${year}/${month}/01`)
+    const endDate = startDate.clone().endOf('month')
+    this.dateSelect = startDate;
 
-    return this.monthNames[month]
+    
+    const diffDays = endDate.diff(startDate, 'days', true)
+    const numberDays = Math.round(diffDays);
+    
+    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
+      a = parseInt(a) + 1;
+      const dayObject = moment(`${year}-${month}-${a}`);
+      return {
+        name: dayObject.format("dddd"),
+        value: a,
+        indexWeek: dayObject.isoWeekday(),
+        events:this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject))
+      };
+    });
+    
+    this.monthSelect = arrayDays;
+
+    var m = this.dateSelect.format("MM");
+    this.monthName=this.monthNames[parseInt(m)]
+    this.monthNumber=m;
+
+    var y = this.dateSelect.clone().subtract(1, "month").format("YYYY");
+    this.yearName=y;
   }
 
-
-
-
-  prevMonth() {
-    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
-    var year = parseInt(document.getElementById("yearLegend").innerHTML);
-
-    if (month == 0) {
-      month = 11;
-      year--
+  changeMonth(flag) {
+    if (flag < 0) {
+      const prevDate = this.dateSelect.clone().subtract(1, "month");
+      this.getDaysFromDate(prevDate.format("MM"), prevDate.format("YYYY"));
+    } else {
+      const nextDate = this.dateSelect.clone().add(1, "month");
+      this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
     }
-    else {
-      month--;
-    }
+  }
 
-    this.fillCalendar(year, month);
-    // for (var i = 1; i <= 37; i++) {
-    //   document.getElementById("dia" + i).style.fill = "black"
-    //   document.getElementById("dia" + i).style.fontSize = "41.4646px"
-    // }
-
+  clickDay(day) 
+  {
+    const monthYear = this.dateSelect.format('YYYY-MM')
+    const parse = `${monthYear}-${day.value}`
+    const objectDate = moment(parse)
+    this.dateValue = objectDate;
 
 
   }
 
-  nextMonth() {
-    var month = parseInt(document.getElementById("monthNumber").innerHTML) - 1;
-    var year = parseInt(document.getElementById("yearLegend").innerHTML);
+  showEvent(element: Element,event:Event)
+  {
 
-    if (month == 11) {
-      month = 0;
-      year++
+    let leftDialog=0
+    
+    let elementRect=element.getBoundingClientRect()
+    
+    let viewportWidth=window.innerWidth;
+    let leftSpace=elementRect.left
+    let elementWidth=elementRect.width;
+    
+    
+    let rightSpace=viewportWidth-elementWidth-leftSpace;
+    
+    
+    
+    if (rightSpace<leftSpace)
+      leftDialog=(elementRect.left-5-300)/viewportWidth*100;
+    else
+      leftDialog=(element.clientWidth+elementRect.left+5)/viewportWidth*100;
+    
+    let topDialog=elementRect.top/2;
+    let topDialogaux=topDialog+450
+
+ 
+    if (topDialogaux>window.innerHeight)
+    {
+
+      topDialog=window.innerHeight-450-20
+      
     }
-    else {
-      month++;
-    }
 
-    this.fillCalendar(year, month);
 
-    // for (var i = 1; i <= 37; i++) {
-    //   document.getElementById("dia" + i).style.fill = "black"
-    //   document.getElementById("dia" + i).style.fontSize = "41.4646px"
-    // }
+      
+
+
+    const dialogRef = this.dialog.open(EventDetailComponent,
+      {
+        data: event,
+        width: '300px',
+        height: '450px',
+        panelClass:"contact-info-back",
+        position: {top:topDialog+'px', left: leftDialog+'%' }
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {console.log("finish")}});
   }
-
-
 
 }
+
+
