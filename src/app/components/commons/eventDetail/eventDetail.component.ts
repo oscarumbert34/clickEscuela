@@ -9,7 +9,7 @@ import { M } from '@angular/cdk/keycodes';
 @Component({
   selector: 'app-eventDetail',
   templateUrl: './eventDetail.component.html',
-  styleUrls: ['./eventDetail.component.css']
+  styleUrls: ['./eventDetail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
 
@@ -31,12 +31,15 @@ export class EventDetailComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EventDetailComponent>, @Inject(MAT_DIALOG_DATA) public event: CalendarEvent) 
   { 
-    let day=moment(event.$day).day()
-    let month=moment(event.$day).month()
-    let hour=moment(event.$day).format("HH:MM")
+    let date=moment(event.$day)
+    let day=date.day()
+    let month=date.month()
+    let hour=date.format("HH:mm")
+    console.log(hour)
+
     this.dayName=
     this.week[day]+
-    ", "+moment(event.$day).format('DD')+
+    ", "+date.format('DD')+
     ' de '+this.monthNames[month]+" " 
     +hour+" horas"
   }

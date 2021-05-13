@@ -1,3 +1,4 @@
+import { EventDetailComponent } from './../commons/eventDetail/eventDetail.component';
 import { CalendarComponent } from './../commons/calendar/calendar.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AccountComponent } from './account/account.component';
@@ -59,7 +60,8 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
      EditTeacherComponent,
      ContactInfoComponent,
      PaymentsDetailComponent,
-     CalendarComponent],
+     CalendarComponent,
+    EventDetailComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

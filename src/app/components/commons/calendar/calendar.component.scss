@@ -1,108 +1,5 @@
 @import '../../../stylings/color-pallete';
 
-
-.days{
-    background-color: yellowgreen;
-}
-
-.day{
-    border-bottom: 1px solid $custom-blue-glass;
-    overflow: auto;
-    
-}
-.day span{
-    margin-top: 0.2em;
-}
-
-::ng-deep .mat-grid-tile{
-    max-height: 14.28% !important;
-}
-
-::ng-deep .mat-grid-tile .mat-figure{
-    display: flex;
-    align-items: flex-start !important;
-    
-}
-
-::ng-deep .mat-grid-tile .mat-figure:hover{
-    transition: 0.5s ease-in-out;
-    transition-delay: 0;
-    cursor: pointer;
-}
-::ng-deep .mat-grid-tile .mat-figure:hover{
-    background-color: rgba(0, 0, 0, 0.089);
-}
-
-.header{
-    height: 20px;
-    background-color: $custom-blue-glass;
-    color: whitesmoke;
-    border-radius: 10px 10px 0 0 ;
-}
-
-.column-header{
-    display: flex;
-    justify-content: center;
-    max-width: 14.28%;
-    width: 14.28%;
-}
-
-.week{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  
-    height: 13.3vh;
-}
-
-.day{
-    width: 14.28%;
-    background-color: transparent;
-    height: 100%;
-    transition: 0.5s ease-in-out;
-    cursor: pointer;
-    overflow-x: hidden;
-    overflow-x: auto;
-}
-.day:hover{
-    background-color: rgba(0, 0, 0, 0.123);
-    
-}
-
-.number-day{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    text-align: center;
-    transition: 0.5s ease-in-out;
-    
-}
-
-.number-day span{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: transparent;
-    transition: 0.5s ease-in-out;
-}
-
-.day:hover .number-day{
-
-    background-color: $green;
-}
-
-.month{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-}
-
 #monthNumber
 {
     font-size: 2em;
@@ -128,8 +25,6 @@ font-size: 1.5em;
     color: $custom-blue-glass;
 }
 
-
-//inicia ejemplo 
 
       
       .wrapper-calendar{
@@ -177,7 +72,7 @@ font-size: 1.5em;
             display: none;
         }
         li:hover span{
-            background-color: $green;
+            
             transform: scale(1.1);
             font-weight: bold;
         }
@@ -226,6 +121,7 @@ font-size: 1.5em;
         .grid-days{
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
         
 
@@ -254,4 +150,18 @@ font-size: 1.5em;
             background-color: #f2c84b
         }
 
-        
+
+        .thisDay{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $custom-blue-glass !important;
+            color: whitesmoke;
+            font-weight: bold;
+            width: 30px !important;
+            height: 30px !important;
+            border-radius: 50% !important;
+        }
+
+

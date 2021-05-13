@@ -3,7 +3,7 @@ import { EventDetailComponent } from './../eventDetail/eventDetail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarEventsService } from './../../../services/calendar-events.service';
 import { SVG_CONST } from './../../../enums/svg-constants';
-import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import moment from 'moment';
@@ -16,7 +16,13 @@ import moment from 'moment';
 export class CalendarComponent implements OnInit {
   weeks: any[]
   
-  @ViewChildren('day') calendarDays: QueryList<ElementRef>
+  @ViewChild("monthNum") monthNumberElement: ElementRef;
+  @ViewChild("yearNumber") yearNumberElement: ElementRef;
+
+  calendarType:number
+  
+
+
   currentDate:Date;
 
   monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -24,7 +30,8 @@ export class CalendarComponent implements OnInit {
   monthName:any;
   yearName:any;
   
-  week: any = [
+  week: any = 
+  [
     "Lunes",
     "Martes",
     "Miercoles",
@@ -35,12 +42,16 @@ export class CalendarComponent implements OnInit {
   ];
 
 
+
+
   monthSelect: any[];
   dateSelect: any;
   dateValue: any;
 
   innerWidth:any;
 
+
+  currentDay:string;
 
 
 
@@ -51,7 +62,20 @@ export class CalendarComponent implements OnInit {
      this.currentDate=new Date()
      
      this.innerWidth=window.innerWidth
+     this.calendarType=2
 
+     this.currentDay=moment(this.currentDate).format("DD/MM/yyyy")
+
+     console.log(this.currentDay)
+
+   
+
+
+  }
+
+  selectType(num:number){
+    console.log(num)
+    this.calendarType=num
   }
 
 
@@ -76,6 +100,12 @@ export class CalendarComponent implements OnInit {
     
   }
 
+  geyDaysFromWeek(){
+    
+  
+    
+  }
+
   getDaysFromDate(month, year) {
 
     const startDate = moment.utc(`${year}/${month}/01`)
@@ -93,14 +123,16 @@ export class CalendarComponent implements OnInit {
         name: dayObject.format("dddd"),
         value: a,
         indexWeek: dayObject.isoWeekday(),
-        events:this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject))
+        completeDate:dayObject.format("DD/MM/yyyy"),
+        events:this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject,"day"))
       };
     });
     
     this.monthSelect = arrayDays;
 
+   
     var m = this.dateSelect.format("MM");
-    this.monthName=this.monthNames[parseInt(m)]
+    this.monthName=this.monthNames[parseInt(m)-1]
     this.monthNumber=m;
 
     var y = this.dateSelect.clone().subtract(1, "month").format("YYYY");
