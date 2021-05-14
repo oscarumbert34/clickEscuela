@@ -1,3 +1,4 @@
+import { ConfigurationComponent } from './configuration/configuration.component';
 import { RangeSelectorComponent } from './../commons/range-selector/range-selector.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AccountComponent } from './account/account.component';
@@ -47,7 +48,8 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
 
 
 @NgModule({
-  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent,PaymentsDetailComponent,RangeSelectorComponent],
+  declarations: [RegisterComponent, AddStudentComponent,StudentBaseModelComponent,EditStudentComponent,AccountComponent,AccountListComponent,TeacherBaseModelComponent,AddTeacherComponent,EditTeacherComponent,ContactInfoComponent,PaymentsDetailComponent,RangeSelectorComponent,
+  ConfigurationComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
