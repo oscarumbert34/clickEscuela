@@ -7,7 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigurationComponent implements OnInit {
 
-  constructor() { }
+  selectedMenu:boolean;
+  selectedOption:number
+
+  constructor() 
+  {
+    this.selectedMenu=false;
+  }
+
+  selectMenuOption(opt:number)
+  {
+    this.selectedMenu=true;
+    this.selectedOption=opt;
+  }
+
+  goToMainMenu(){
+    this.selectedMenu=false
+    this.selectedOption=0
+  }
 
   ngOnInit() {
   }
