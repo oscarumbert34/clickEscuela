@@ -1,4 +1,5 @@
-import { EventDetailComponent } from './../commons/eventDetail/eventDetail.component';
+import { CommonsModule } from './../commons/commons.module';
+import { EventDetailComponent } from './../commons/event-detail/event-detail.component';
 import { CalendarComponent } from './../commons/calendar/calendar.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AccountComponent } from './account/account.component';
@@ -60,8 +61,7 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
      EditTeacherComponent,
      ContactInfoComponent,
      PaymentsDetailComponent,
-     CalendarComponent,
-    EventDetailComponent],
+    ],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -90,8 +90,18 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, ParentModule, MatSelectModule, MatGridListModule,MatChipsModule
-  ],
+    MatNativeDateModule,
+    MatMenuModule, 
+    MatCheckboxModule, 
+    MatTooltipModule,
+    MatProgressSpinnerModule, 
+    MatExpansionModule,
+    MatRippleModule,
+    ParentModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatChipsModule,
+    CommonsModule  ],
   exports: [RegisterComponent]
 })
 export class AdminModule { }

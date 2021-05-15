@@ -1,5 +1,4 @@
 import { element } from 'protractor';
-import { EventDetailComponent } from './../eventDetail/eventDetail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarEventsService } from './../../../services/calendar-events.service';
 import { SVG_CONST } from './../../../enums/svg-constants';
@@ -7,6 +6,7 @@ import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild } fro
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import moment from 'moment';
+import { EventDetailComponent } from '../event-detail/event-detail.component';
 
 @Component({
   selector: 'app-calendar',
