@@ -1,6 +1,8 @@
+
 import { CommonsModule } from './../commons/commons.module';
 import { EventDetailComponent } from './../commons/event-detail/event-detail.component';
 import { CalendarComponent } from './../commons/calendar/calendar.component';
+import { RangeSelectorComponent } from './../commons/range-selector/range-selector.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AccountComponent } from './account/account.component';
 import { EditTeacherComponent } from './teacher-component/edit-teacher/edit-teacher.component';
@@ -49,6 +51,7 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
 
 
 @NgModule({
+
   declarations: [
     RegisterComponent,
      AddStudentComponent,
@@ -62,6 +65,7 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
      ContactInfoComponent,
      PaymentsDetailComponent,
     ],
+
   imports: [
     CommonModule,
     MatSidenavModule,
