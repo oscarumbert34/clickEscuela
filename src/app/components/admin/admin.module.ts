@@ -65,7 +65,9 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
      AddTeacherComponent,
      EditTeacherComponent,
      ContactInfoComponent,
-     PaymentsDetailComponent,ConfigurationComponent
+     PaymentsDetailComponent,
+     ConfigurationComponent,
+     RangeSelectorComponent
     ],
   
   imports: [

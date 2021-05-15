@@ -2,7 +2,7 @@
   <div class="col-12 no-gutters">
     <div class="row">
       <div class="event-color"></div>
-      <strong>{{event.title}}</strong>
+      <strong>{{event.$title}}</strong>
     </div>
     <div class="row">
       <span class="row-info">
@@ -13,7 +13,7 @@
     <div class="row">
       <span class="row-info">
         <strong>Descripcion:</strong> <br>
-        {{event.description}}
+        {{event.$description}}
       </span>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
       <span class="row-info guests">
         <strong>Organizador:</strong>
         <p>
-          {{event.owner}}
+          {{event.$owner}}
         </p>
       </span>
     </div>
