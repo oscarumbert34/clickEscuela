@@ -1,4 +1,5 @@
 
+import { ConfigurationComponent } from './configuration/configuration.component';
 import { CommonsModule } from './../commons/commons.module';
 import { EventDetailComponent } from './../commons/event-detail/event-detail.component';
 import { CalendarComponent } from './../commons/calendar/calendar.component';
@@ -52,6 +53,7 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
 
 @NgModule({
 
+
   declarations: [
     RegisterComponent,
      AddStudentComponent,
@@ -65,7 +67,7 @@ import { PaymentsDetailComponent } from '../commons/payments-detail/payments-det
      ContactInfoComponent,
      PaymentsDetailComponent,
     ],
-
+  
   imports: [
     CommonModule,
     MatSidenavModule,
