@@ -7,9 +7,9 @@
 
       <mat-form-field class="example-form-field">
         <mat-label>Titulo del evento</mat-label>
-        <input matInput type="text" [(ngModel)]="newEvent.title">
-        <button mat-button *ngIf="newEvent.title" matSuffix mat-icon-button aria-label="Clear"
-          (click)="newEvent.title=''">
+        <input matInput type="text" [(ngModel)]="newEvent.$title">
+        <button mat-button *ngIf="newEvent.$title" matSuffix mat-icon-button aria-label="Clear"
+          (click)="newEvent.$title=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -18,7 +18,7 @@
     <div class="row mb-2" style="padding-left: 30px;">
 
       <mat-label>Fecha del evento</mat-label>
-      <input style="width: 0;" matInput [matDatepicker]="startDate" [(ngModel)]="newEvent.day"
+      <input style="width: 0;" matInput [matDatepicker]="startDate" [(ngModel)]="newEvent.$day"
         (dateChange)="setDayName()">
       <mat-datepicker #startDate></mat-datepicker>
 
@@ -30,9 +30,9 @@
     <div class="row mb-2">
       <mat-form-field class="example-form-field">
         <mat-label>Descripcion</mat-label>
-        <textarea matInput type="text" [(ngModel)]="newEvent.description"></textarea>
-        <button mat-button *ngIf="newEvent.description" matSuffix mat-icon-button aria-label="Clear"
-          (click)="newEvent.description=''">
+        <textarea matInput type="text" [(ngModel)]="newEvent.$description"></textarea>
+        <button mat-button *ngIf="newEvent.$description" matSuffix mat-icon-button aria-label="Clear"
+          (click)="newEvent.$description=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
