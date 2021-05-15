@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class CalendarEventsService 
 {
+ 
   eventsList:CalendarEvent[]
 
 constructor() 
@@ -21,6 +22,10 @@ constructor()
 
 get eventList(){
   return this.eventsList
+}
+
+addEvent(newEvent: CalendarEvent) {
+  this.eventsList.push(newEvent)
 }
 
 }

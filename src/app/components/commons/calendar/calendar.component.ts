@@ -1,3 +1,4 @@
+import { AddCalendarEventComponent } from './../add-calendar-event/add-calendar-event.component';
 import { element } from 'protractor';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarEventsService } from './../../../services/calendar-events.service';
@@ -124,6 +125,7 @@ export class CalendarComponent implements OnInit {
         value: a,
         indexWeek: dayObject.isoWeekday(),
         completeDate:dayObject.format("DD/MM/yyyy"),
+        dayObject:dayObject,
         events:this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject,"day"))
       };
     });
@@ -197,7 +199,7 @@ export class CalendarComponent implements OnInit {
 
     const dialogRef = this.dialog.open(EventDetailComponent,
       {
-        data: event,
+        data:   event,
         width: '300px',
         height: '450px',
         panelClass:"contact-info-back",
@@ -207,6 +209,61 @@ export class CalendarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {console.log("finish")}});
+  }
+
+  addEvent(element: Element,event:Event)
+  {
+
+    let leftDialog=0
+    
+    let elementRect=element.getBoundingClientRect()
+    
+    let viewportWidth=window.innerWidth;
+    let leftSpace=elementRect.left
+    let elementWidth=elementRect.width;
+    
+    
+    let rightSpace=viewportWidth-elementWidth-leftSpace;
+    
+    
+    
+    if (rightSpace<leftSpace)
+      leftDialog=(elementRect.left-5-300)/viewportWidth*100;
+    else
+      leftDialog=(element.clientWidth+elementRect.left+5)/viewportWidth*100;
+    
+    let topDialog=elementRect.top/2;
+    let topDialogaux=topDialog+450
+
+ 
+    if (topDialogaux>window.innerHeight)
+    {
+
+      topDialog=window.innerHeight-450-20
+      
+    }
+
+
+      
+
+
+    const dialogRef = this.dialog.open(AddCalendarEventComponent,
+      {
+        data: event,
+        width: '300px',
+        height: '450px',
+        panelClass:"contact-info-back",
+        position: {top:topDialog+'px', left: leftDialog+'%' }
+      }
+    )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) 
+      {
+        this.getDaysFromDate(this.currentDate.getMonth()+1, this.currentDate.getFullYear())
+    
+      }
+    });
   }
 
 }

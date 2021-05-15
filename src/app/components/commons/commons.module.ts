@@ -1,3 +1,4 @@
+import { AddCalendarEventComponent } from './add-calendar-event/add-calendar-event.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NgModule } from '@angular/core';
@@ -68,8 +69,10 @@ import { ParentModule } from '../parent/parent.module';
   ],
   declarations: [
     CalendarComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    AddCalendarEventComponent
   ],
-  exports:[CalendarComponent,EventDetailComponent]
+  exports:[CalendarComponent,EventDetailComponent,
+  AddCalendarEventComponent]
 })
 export class CommonsModule { }

@@ -15,12 +15,17 @@
 	<ol>
 		<li *ngFor="let day of week" class="day-name">{{day | slice:0:3}}</li>
 
-        <li class="grid-days" (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+        <li class="grid-days" #calendarDay  [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
          *ngFor="let day of monthSelect;let first = first">
 			<span [ngClass]="{'thisDay': day.completeDate===currentDay}">{{day?.value}}</span>
       <div *ngFor="let event of day.events" class="event-chip" #eventDiv (click)="showEvent(eventDiv,event)">
         {{event.title}}
       </div>
+	  <div class="add-event-trigger">
+		  <div class="add-event" (click)="addEvent(calendarDay,day)">
+			  <img src="../../../../assets/images/plus.svg" alt="">
+		  </div>
+	  </div>
 		</li>
 	</ol>
 </div>
