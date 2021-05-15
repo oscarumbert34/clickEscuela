@@ -1,3 +1,4 @@
+import { CommonsModule } from './../commons/commons.module';
 import { FirstLetterPipe } from './../../pipes/firstLetter.pipe';
 import { MessageContentComponent } from './messages/message-content/message-content.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -76,7 +77,8 @@ import { ReportCardListComponent } from './report-card/report-card-list/report-c
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule
+    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule,
+    CommonsModule
   ], 
   exports:[ReportCardComponent, GradesComponent,MessagesComponent, FirstLetterPipe, MessagesComponent]
 

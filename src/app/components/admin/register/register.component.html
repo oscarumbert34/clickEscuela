@@ -1,6 +1,6 @@
-<mat-drawer-container  autosize class="h-100">
+<mat-drawer-container autosize class="h-100">
   <img id="background-img" src="../../../../assets/images/background.png" alt="">
-  <mat-drawer #drawer class="menu-nav"  mode="side">
+  <mat-drawer #drawer class="menu-nav" mode="side">
     <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
       <div class="col-12" (click)="changeBlock('home')">
         <div>
@@ -27,13 +27,6 @@
           (click)="changeBlock('student')">
           <svg class="icon-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 396.05 448">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #9acd8d;
-                }
-              </style>
-            </defs>
             <g>
               <path class="cls-1" d="M325.69,124.83a102,102,0,1,1-5.05-42H335a115.8,115.8,0,1,0,4.44,42Z"
                 transform="translate(-39.3)" />
@@ -58,13 +51,7 @@
           (click)="changeBlock('teacher')">
           <svg class="icon-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 396.05 448">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #9acd8d;
-                }
-              </style>
-            </defs>
+
             <path class="cls-1"
               d="M435.35,103.83a11,11,0,0,1-11,11h-41v41a11,11,0,1,1-22,0v-41h-41a11,11,0,0,1,0-22h41v-41a11,11,0,1,1,22,0v41h41A11,11,0,0,1,435.35,103.83Z"
               transform="translate(-39.3)" />
@@ -88,19 +75,13 @@
           (click)="changeBlock('homework')">
 
           <svg class="icon-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 469.341 469.341"
-          style="enable-background:new 0 0 469.341 469.341;" xml:space="preserve">
-          <defs>
-            <style>
-              .cls-1 {
-                fill: #9acd8d;
-              }
-            </style>
-          </defs>
-          <g>
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 469.341 469.341"
+            style="enable-background:new 0 0 469.341 469.341;" xml:space="preserve">
+
             <g>
               <g>
-                <path class="cls-1" d="M448.004,236.639v-65.965c0-22.368-17.35-40.559-39.271-42.323l-61.26-107c-5.677-9.896-14.844-16.969-25.813-19.906
+                <g>
+                  <path class="cls-1" d="M448.004,236.639v-65.965c0-22.368-17.35-40.559-39.271-42.323l-61.26-107c-5.677-9.896-14.844-16.969-25.813-19.906
            c-10.917-2.917-22.333-1.385-32.104,4.302L79.553,128.007H42.67c-23.531,0-42.667,19.135-42.667,42.667v256
            c0,23.531,19.135,42.667,42.667,42.667h362.667c23.531,0,42.667-19.135,42.667-42.667v-65.965
            c12.389-4.418,21.333-16.147,21.333-30.035v-64C469.337,252.786,460.393,241.057,448.004,236.639z M383.944,128.007h-92.971
@@ -111,14 +92,54 @@
            c0,35.292,28.708,64,64,64h64V426.674z M448.004,330.674c0,5.885-4.781,10.667-10.667,10.667H362.67
            c-23.531,0-42.667-19.135-42.667-42.667c0-23.531,19.135-42.667,42.667-42.667h74.667c5.885,0,10.667,4.781,10.667,10.667
            V330.674z" />
-                <path class="cls-1" d="M362.67,277.341c-11.76,0-21.333,9.573-21.333,21.333c0,11.76,9.573,21.333,21.333,21.333
+                  <path class="cls-1" d="M362.67,277.341c-11.76,0-21.333,9.573-21.333,21.333c0,11.76,9.573,21.333,21.333,21.333
            c11.76,0,21.333-9.573,21.333-21.333C384.004,286.914,374.431,277.341,362.67,277.341z" />
+                </g>
               </g>
+
+
             </g>
-    
-    
-          </g>
-        </svg>
+          </svg>
+
+
+          <span class="name-button paymentLegend">Cuentas</span>
+
+
+        </button>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item class="button-menu-container">
+        <button [ngClass]="{'option-selected': blockDinamicActually=='calendar'}" class="button-menu" mat-button color
+          (click)="changeBlock('calendar')">
+
+          <svg class="icon-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 469.341 469.341"
+            style="enable-background:new 0 0 469.341 469.341;" xml:space="preserve">
+
+            <g>
+              <g>
+                <g>
+                  <path class="cls-1" d="M448.004,236.639v-65.965c0-22.368-17.35-40.559-39.271-42.323l-61.26-107c-5.677-9.896-14.844-16.969-25.813-19.906
+           c-10.917-2.917-22.333-1.385-32.104,4.302L79.553,128.007H42.67c-23.531,0-42.667,19.135-42.667,42.667v256
+           c0,23.531,19.135,42.667,42.667,42.667h362.667c23.531,0,42.667-19.135,42.667-42.667v-65.965
+           c12.389-4.418,21.333-16.147,21.333-30.035v-64C469.337,252.786,460.393,241.057,448.004,236.639z M383.944,128.007h-92.971
+           l69.729-40.596L383.944,128.007z M350.103,68.898l-101.529,59.109h-42.113l133.112-77.5L350.103,68.898z M300.295,24.184
+           c4.823-2.823,10.458-3.573,15.844-2.135c5.448,1.458,9.99,4.979,12.813,9.906l0.022,0.039l-164.91,96.013h-42.111L300.295,24.184
+           z M426.67,426.674c0,11.76-9.573,21.333-21.333,21.333H42.67c-11.76,0-21.333-9.573-21.333-21.333v-256
+           c0-11.76,9.573-21.333,21.333-21.333h362.667c11.76,0,21.333,9.573,21.333,21.333v64h-64c-35.292,0-64,28.708-64,64
+           c0,35.292,28.708,64,64,64h64V426.674z M448.004,330.674c0,5.885-4.781,10.667-10.667,10.667H362.67
+           c-23.531,0-42.667-19.135-42.667-42.667c0-23.531,19.135-42.667,42.667-42.667h74.667c5.885,0,10.667,4.781,10.667,10.667
+           V330.674z" />
+                  <path class="cls-1" d="M362.67,277.341c-11.76,0-21.333,9.573-21.333,21.333c0,11.76,9.573,21.333,21.333,21.333
+           c11.76,0,21.333-9.573,21.333-21.333C384.004,286.914,374.431,277.341,362.67,277.341z" />
+                </g>
+              </g>
+
+
+            </g>
+          </svg>
 
 
           <span class="name-button paymentLegend">Cuentas</span>
@@ -132,7 +153,7 @@
   <div class="sidenav-content">
     <div class="container">
       <div class="row">
-        <div  [ngSwitch]="blockDinamicActually" style="width: 100%;">
+        <div [ngSwitch]="blockDinamicActually" style="width: 100%;">
 
           <div *ngSwitchCase="'student'">
             <app-add-student></app-add-student>
@@ -143,7 +164,12 @@
           <div *ngSwitchCase="'homework'">
             <app-account></app-account>
           </div>
-         
+
+          <div *ngSwitchCase="'calendar'">
+            <app-calendar></app-calendar>
+          </div>
+
+
 
 
 
@@ -152,7 +178,7 @@
 
           <div *ngSwitchDefault>Default Option</div>
         </div>
-      
+
 
 
       </div>
