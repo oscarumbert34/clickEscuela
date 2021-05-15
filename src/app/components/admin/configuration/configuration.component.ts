@@ -12,7 +12,7 @@ export class ConfigurationComponent implements OnInit {
 
   constructor() 
   {
-    this.selectedMenu=false;
+    this.selectedOption=0;
   }
 
   selectMenuOption(opt:number)
