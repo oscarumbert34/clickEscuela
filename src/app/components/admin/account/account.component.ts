@@ -13,7 +13,7 @@ import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.compo
 import moment from 'moment';
 import { RangeSelectorComponent } from '../../commons/range-selector/range-selector.component';
 import { SVG_CONST } from '../svg-constants';
-import { DAY, TYPE,MONTH,WEEK,CUSTOM_PERIOD } from '../type-constants';
+import { DAY, TYPE, MONTH, WEEK, CUSTOM_PERIOD } from '../type-constants';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit {
   studentsList: Student[]
   currentDate = new Date()
   selectedRange: any
- 
+
 
 
 
@@ -226,7 +226,7 @@ export class AccountComponent implements OnInit {
 
 
       expenses =
-        (this.expensesService.expenseList.filter(a => 
+        (this.expensesService.expenseList.filter(a =>
           moment(a.$date, "DD-MM-YYYY").isSameOrAfter(moment(weekDays[0], "DD-MM-YYYY"), 'day') &&
           moment(a.$date, "DD-MM-YYYY").isSameOrBefore(moment(weekDays[weekDays.length - 1], "DD-MM-YYYY"), 'day')
         ))
@@ -266,20 +266,18 @@ export class AccountComponent implements OnInit {
     if (expenses.length > 0) {
       let tableData = this.generateTableData(expenses)
 
-      if (method == 1) 
-      {
-        let text1="Reporte de gastos " +TYPE[period]
-        let text2="Generado el dia "+moment(this.currentDate).format("DD/MM/YYYY")
-        
+      if (method == 1) {
+        let text1 = "Reporte de gastos " + TYPE[period]
+        let text2 = "Generado el dia " + moment(this.currentDate).format("DD/MM/YYYY")
+
 
         doc.setFontSize(15)
         doc.text(text1, this.centerText(0, 210, doc.getTextWidth(text1)), 25)
         doc.setFontSize(12)
         doc.text(text2, this.centerText(0, 210, doc.getTextWidth(text2)), 35)
 
-        if (period=="CUSTOM_PERIOD")
-        {
-          let text3=moment(this.selectedRange.range.start).format("DD-MM-YYYY")+" a s"+moment(this.selectedRange.range.end).format("DD-MM-YYYY")
+        if (period == "CUSTOM_PERIOD") {
+          let text3 = moment(this.selectedRange.range.start).format("DD-MM-YYYY") + " a s" + moment(this.selectedRange.range.end).format("DD-MM-YYYY")
           doc.text(text3, this.centerText(0, 210, doc.getTextWidth(text3)), 45)
 
         }
@@ -343,8 +341,7 @@ export class AccountComponent implements OnInit {
     return initialPoint + (containerWidth - stringWidht) / 2;
   }
 
-  generateTableData(data) 
-  {
+  generateTableData(data) {
     let tableData = []
 
     for (let obj of data) {

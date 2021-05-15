@@ -29,20 +29,18 @@ export class RegisterComponent implements OnInit {
   blockDinamicActually = 'student';
   showHomeButton = false;
 
-  currentEdit:any;
+  currentEdit: any;
 
 
 
-  constructor(private studentService: studentService) 
-  { 
-    this.currentEdit=studentService.editStudent
+  constructor(private studentService: studentService) {
+    this.currentEdit = studentService.editStudent
   }
-  
 
-  ngOnInit() 
-  {
+
+  ngOnInit() {
     this.sidenav.open()
-  
+
   }
 
   changeBlock(newBlock: string) {

@@ -7,23 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigurationComponent implements OnInit {
 
-  selectedMenu:boolean;
-  selectedOption:number
+  selectedMenu: boolean;
+  selectedOption: number
 
-  constructor() 
-  {
-    this.selectedOption=0;
+  constructor() {
+    this.selectedOption = 0;
   }
 
-  selectMenuOption(opt:number)
-  {
-    this.selectedMenu=true;
-    this.selectedOption=opt;
+  selectMenuOption(opt: number) {
+    this.selectedMenu = true;
+    this.selectedOption = opt;
   }
 
-  goToMainMenu(){
-    this.selectedMenu=false
-    this.selectedOption=0
+  goToMainMenu() {
+    this.selectedMenu = false
+    this.selectedOption = 0
   }
 
   ngOnInit() {
