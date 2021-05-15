@@ -16,31 +16,31 @@ import { EventDetailComponent } from '../event-detail/event-detail.component';
 })
 export class CalendarComponent implements OnInit {
   weeks: any[]
-  
+
   @ViewChild("monthNum") monthNumberElement: ElementRef;
   @ViewChild("yearNumber") yearNumberElement: ElementRef;
 
-  calendarType:number
-  
+  calendarType: number
 
 
-  currentDate:Date;
+
+  currentDate: Date;
 
   monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-  monthNumber:any;
-  monthName:any;
-  yearName:any;
-  
-  week: any = 
-  [
-    "Lunes",
-    "Martes",
-    "Miercoles",
-    "Jueves",
-    "Viernes",
-    "Sabado",
-    "Domingo"
-  ];
+  monthNumber: any;
+  monthName: any;
+  yearName: any;
+
+  week: any =
+    [
+      "Lunes",
+      "Martes",
+      "Miercoles",
+      "Jueves",
+      "Viernes",
+      "Sabado",
+      "Domingo"
+    ];
 
 
 
@@ -49,62 +49,62 @@ export class CalendarComponent implements OnInit {
   dateSelect: any;
   dateValue: any;
 
-  innerWidth:any;
+  innerWidth: any;
 
 
-  currentDay:string;
+  currentDay: string;
 
 
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private calendarService: CalendarEventsService, private dialog: MatDialog) {
-    
-     iconRegistry.addSvgIconLiteral('leftSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW))
-     iconRegistry.addSvgIconLiteral('rightSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW))
-     this.currentDate=new Date()
-     
-     this.innerWidth=window.innerWidth
-     this.calendarType=2
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private calendarService: CalendarEventsService, private dialog: MatDialog) {
 
-     this.currentDay=moment(this.currentDate).format("DD/MM/yyyy")
+    iconRegistry.addSvgIconLiteral('leftSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW))
+    iconRegistry.addSvgIconLiteral('rightSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW))
+    this.currentDate = new Date()
 
-     console.log(this.currentDay)
+    this.innerWidth = window.innerWidth
+    this.calendarType = 2
 
-   
+    this.currentDay = moment(this.currentDate).format("DD/MM/yyyy")
+
+    console.log(this.currentDay)
+
+
 
 
   }
 
-  selectType(num:number){
+  selectType(num: number) {
     console.log(num)
-    this.calendarType=num
+    this.calendarType = num
   }
 
 
 
   ngOnInit() {
 
-    
-    this.getDaysFromDate(this.currentDate.getMonth()+1, this.currentDate.getFullYear())
-    
+
+    this.getDaysFromDate(this.currentDate.getMonth() + 1, this.currentDate.getFullYear())
+
 
   }
-  getPrevMonth(){
+  getPrevMonth() {
     const prevDate = this.dateSelect.clone().subtract(1, "month").format("MM");
     return this.monthNames[parseInt(prevDate)]
 
-    
+
   }
 
-  getNextMonth(){
+  getNextMonth() {
     const nextDate = this.dateSelect.clone().add(1, "month").format("MM");
     return this.monthNames[parseInt(nextDate)]
-    
+
   }
 
-  geyDaysFromWeek(){
-    
-  
-    
+  geyDaysFromWeek() {
+
+
+
   }
 
   getDaysFromDate(month, year) {
@@ -113,10 +113,10 @@ export class CalendarComponent implements OnInit {
     const endDate = startDate.clone().endOf('month')
     this.dateSelect = startDate;
 
-    
+
     const diffDays = endDate.diff(startDate, 'days', true)
     const numberDays = Math.round(diffDays);
-    
+
     const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
       a = parseInt(a) + 1;
       const dayObject = moment(`${year}-${month}-${a}`);
@@ -124,21 +124,21 @@ export class CalendarComponent implements OnInit {
         name: dayObject.format("dddd"),
         value: a,
         indexWeek: dayObject.isoWeekday(),
-        completeDate:dayObject.format("DD/MM/yyyy"),
-        dayObject:dayObject,
-        events:this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject,"day"))
+        completeDate: dayObject.format("DD/MM/yyyy"),
+        dayObject: dayObject,
+        events: this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject, "day"))
       };
     });
-    
+
     this.monthSelect = arrayDays;
 
-   
+
     var m = this.dateSelect.format("MM");
-    this.monthName=this.monthNames[parseInt(m)-1]
-    this.monthNumber=m;
+    this.monthName = this.monthNames[parseInt(m) - 1]
+    this.monthNumber = m;
 
     var y = this.dateSelect.clone().subtract(1, "month").format("YYYY");
-    this.yearName=y;
+    this.yearName = y;
   }
 
   changeMonth(flag) {
@@ -151,8 +151,7 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  clickDay(day) 
-  {
+  clickDay(day) {
     const monthYear = this.dateSelect.format('YYYY-MM')
     const parse = `${monthYear}-${day.value}`
     const objectDate = moment(parse)
@@ -161,90 +160,87 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  showEvent(element: Element,event:Event)
-  {
+  showEvent(element: Element, event: Event) {
 
-    let leftDialog=0
-    
-    let elementRect=element.getBoundingClientRect()
-    
-    let viewportWidth=window.innerWidth;
-    let leftSpace=elementRect.left
-    let elementWidth=elementRect.width;
-    
-    
-    let rightSpace=viewportWidth-elementWidth-leftSpace;
-    
-    
-    
-    if (rightSpace<leftSpace)
-      leftDialog=(elementRect.left-5-300)/viewportWidth*100;
+    let leftDialog = 0
+
+    let elementRect = element.getBoundingClientRect()
+
+    let viewportWidth = window.innerWidth;
+    let leftSpace = elementRect.left
+    let elementWidth = elementRect.width;
+
+
+    let rightSpace = viewportWidth - elementWidth - leftSpace;
+
+
+
+    if (rightSpace < leftSpace)
+      leftDialog = (elementRect.left - 5 - 300) / viewportWidth * 100;
     else
-      leftDialog=(element.clientWidth+elementRect.left+5)/viewportWidth*100;
-    
-    let topDialog=elementRect.top/2;
-    let topDialogaux=topDialog+450
+      leftDialog = (element.clientWidth + elementRect.left + 5) / viewportWidth * 100;
 
- 
-    if (topDialogaux>window.innerHeight)
-    {
+    let topDialog = elementRect.top / 2;
+    let topDialogaux = topDialog + 450
 
-      topDialog=window.innerHeight-450-20
-      
+
+    if (topDialogaux > window.innerHeight) {
+
+      topDialog = window.innerHeight - 450 - 20
+
     }
 
 
-      
+
 
 
     const dialogRef = this.dialog.open(EventDetailComponent,
       {
-        data:   event,
+        data: event,
         width: '300px',
         height: '450px',
-        panelClass:"contact-info-back",
-        position: {top:topDialog+'px', left: leftDialog+'%' }
+        panelClass: "contact-info-back",
+        position: { top: topDialog + 'px', left: leftDialog + '%' }
       }
     )
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {console.log("finish")}});
+      if (result) { console.log("finish") }
+    });
   }
 
-  addEvent(element: Element,event:Event)
-  {
+  addEvent(element: Element, event: Event) {
 
-    let leftDialog=0
-    
-    let elementRect=element.getBoundingClientRect()
-    
-    let viewportWidth=window.innerWidth;
-    let leftSpace=elementRect.left
-    let elementWidth=elementRect.width;
-    
-    
-    let rightSpace=viewportWidth-elementWidth-leftSpace;
-    
-    
-    
-    if (rightSpace<leftSpace)
-      leftDialog=(elementRect.left-5-300)/viewportWidth*100;
+    let leftDialog = 0
+
+    let elementRect = element.getBoundingClientRect()
+
+    let viewportWidth = window.innerWidth;
+    let leftSpace = elementRect.left
+    let elementWidth = elementRect.width;
+
+
+    let rightSpace = viewportWidth - elementWidth - leftSpace;
+
+
+
+    if (rightSpace < leftSpace)
+      leftDialog = (elementRect.left - 5 - 300) / viewportWidth * 100;
     else
-      leftDialog=(element.clientWidth+elementRect.left+5)/viewportWidth*100;
-    
-    let topDialog=elementRect.top/2;
-    let topDialogaux=topDialog+450
+      leftDialog = (element.clientWidth + elementRect.left + 5) / viewportWidth * 100;
 
- 
-    if (topDialogaux>window.innerHeight)
-    {
+    let topDialog = elementRect.top / 2;
+    let topDialogaux = topDialog + 450
 
-      topDialog=window.innerHeight-450-20
-      
+
+    if (topDialogaux > window.innerHeight) {
+
+      topDialog = window.innerHeight - 450 - 20
+
     }
 
 
-      
+
 
 
     const dialogRef = this.dialog.open(AddCalendarEventComponent,
@@ -252,16 +248,15 @@ export class CalendarComponent implements OnInit {
         data: event,
         width: '300px',
         height: '450px',
-        panelClass:"contact-info-back",
-        position: {top:topDialog+'px', left: leftDialog+'%' }
+        panelClass: "contact-info-back",
+        position: { top: topDialog + 'px', left: leftDialog + '%' }
       }
     )
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) 
-      {
-        this.getDaysFromDate(this.currentDate.getMonth()+1, this.currentDate.getFullYear())
-    
+      if (result) {
+        this.getDaysFromDate(this.currentDate.getMonth() + 1, this.currentDate.getFullYear())
+
       }
     });
   }

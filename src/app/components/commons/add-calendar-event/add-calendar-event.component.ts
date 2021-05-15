@@ -12,8 +12,8 @@ import moment from 'moment';
 })
 export class AddCalendarEventComponent implements OnInit {
 
-  newEvent:CalendarEvent;
-  currentDate:Date;
+  newEvent: CalendarEvent;
+  currentDate: Date;
   week: any = [
     "Lunes",
     "Martes",
@@ -25,42 +25,39 @@ export class AddCalendarEventComponent implements OnInit {
   ];
   monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-  dayName:string;
-  currentMoment:any;
+  dayName: string;
+  currentMoment: any;
 
-  constructor(public dialogRef: MatDialogRef<AddCalendarEventComponent>, @Inject(MAT_DIALOG_DATA) public day:any,private calendarService: CalendarEventsService) 
-  { 
-    this.newEvent=new CalendarEvent(undefined,"","",['Marcos Lopez, Samuel Sanchez'],"Marcos Lopez")
-    this.newEvent.$day=day.dayObject.toDate()
+  constructor(public dialogRef: MatDialogRef<AddCalendarEventComponent>, @Inject(MAT_DIALOG_DATA) public day: any, private calendarService: CalendarEventsService) {
+    this.newEvent = new CalendarEvent(undefined, "", "", ['Marcos Lopez, Samuel Sanchez'], "Marcos Lopez")
+    this.newEvent.$day = day.dayObject.toDate()
     console.log(this.newEvent)
     this.setDayName()
-    
+
   }
-  
-  ngOnInit() 
-  {
+
+  ngOnInit() {
   }
-  
-  setDayName()
-  {
-    this.currentMoment=moment(this.newEvent.$day)
-       
-    this.dayName=
-    this.week[this.currentMoment.isoWeekday()-1]+
-    ", "+this.currentMoment.format('DD')+
-    ' de '+this.monthNames[this.currentMoment.month()]
+
+  setDayName() {
+    this.currentMoment = moment(this.newEvent.$day)
+
+    this.dayName =
+      this.week[this.currentMoment.isoWeekday() - 1] +
+      ", " + this.currentMoment.format('DD') +
+      ' de ' + this.monthNames[this.currentMoment.month()]
 
     console.log(this.newEvent)
-    
+
 
 
   }
 
-  saveEvent(){
+  saveEvent() {
     this.calendarService.addEvent(this.newEvent)
     this.dialogRef.close(true)
   }
 
-  
+
 
 }
