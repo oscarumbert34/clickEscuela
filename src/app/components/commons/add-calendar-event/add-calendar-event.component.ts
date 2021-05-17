@@ -36,8 +36,7 @@ export class AddCalendarEventComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setDayName() {
     this.currentMoment = moment(this.newEvent.$day)
