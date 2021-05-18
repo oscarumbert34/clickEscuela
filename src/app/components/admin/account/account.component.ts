@@ -33,9 +33,6 @@ export class AccountComponent implements OnInit {
   currentDate = new Date()
   selectedRange: any
 
-
-
-
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
@@ -53,10 +50,6 @@ export class AccountComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('weekly', sanitizer.bypassSecurityTrustHtml(SVG_CONST.WEEKLY));
     iconRegistry.addSvgIconLiteral('monthly', sanitizer.bypassSecurityTrustHtml(SVG_CONST.MONTHLY));
     iconRegistry.addSvgIconLiteral('custom-date', sanitizer.bypassSecurityTrustHtml(SVG_CONST.CUSTOM_DATE));
-
-
-
-
 
     this.accounts = []
 
