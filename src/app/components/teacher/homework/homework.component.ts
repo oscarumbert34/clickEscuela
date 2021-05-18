@@ -9,7 +9,7 @@ import { AddHomeworkComponent } from '../add-homework/add-homework.component';
 @Component({
   selector: 'app-homework',
   templateUrl: './homework.component.html',
-  styleUrls: ['./homework.component.css']
+  styleUrls: ['./homework.component.scss']
 })
 export class HomeworkComponent implements OnInit {
 
