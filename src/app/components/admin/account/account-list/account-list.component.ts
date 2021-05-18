@@ -45,7 +45,6 @@ export class AccountListComponent implements OnInit {
         state: this.getAccountState(student.id)
       }
 
-      console.log(account)
       this.accounts.push(account)
     }
   }
@@ -62,7 +61,6 @@ export class AccountListComponent implements OnInit {
     this.dataSource.data = this.accounts;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    console.log(this.accounts)
   }
 
   showDebtors()
@@ -81,7 +79,6 @@ export class AccountListComponent implements OnInit {
 
 
     }
-    console.log(accountsDebtor)
     
     }else{
       this.dataSource.data = this.accounts;

@@ -1,3 +1,4 @@
+import { CommonsModule } from './components/commons/commons.module';
 
 import { NormalizeWordPipe } from './pipes/normalize-word.pipe';
 import { StudentModule } from './components/student/student.module';
@@ -50,7 +51,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule,StudentModule,HttpClientModule
+    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule,StudentModule,HttpClientModule,
+    CommonsModule
 
     ],
   providers: [],

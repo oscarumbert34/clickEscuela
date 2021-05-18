@@ -33,6 +33,7 @@
     "jquery": "^3.5.1",
     "jspdf": "^1.5.3",
     "jspdf-autotable": "^2.3.5",
+    "moment": "^2.29.1",
     "ng2-file-upload": "^1.4.0",
     "path": "^0.12.7",
     "pdfjs-dist": "^2.6.347",
