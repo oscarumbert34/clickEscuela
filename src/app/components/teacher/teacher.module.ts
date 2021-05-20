@@ -1,3 +1,4 @@
+import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReportCardListComponent } from "./report-card-list/report-card-list.component";
 import { ReportCardComponent } from "./report-card/report-card.component";
@@ -107,7 +108,8 @@ import { AddReportCardComponent } from "./add-report-card/add-report-card.compon
     MatNativeDateModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

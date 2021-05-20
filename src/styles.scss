@@ -67,14 +67,6 @@ body { margin: 0;
   
 }
 
-.form-control:focus{
-  outline: 0 none;
-  transition: 0.5s ease-in-out;
-  border-bottom: 2px solid $green;
-  box-shadow: none;
-
- 
-}
 
 textarea{
   outline: 0;

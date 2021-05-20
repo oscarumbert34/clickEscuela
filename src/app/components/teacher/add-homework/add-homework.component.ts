@@ -18,6 +18,13 @@ export class AddHomeworkComponent implements OnInit {
   currentHomework: Homework;
   existData: boolean;
   localData: any;
+  courses=[
+    "1A","2A","1B","2B"
+  ]
+  matters=[
+    "Historia","Geografia","Matematicas","Ciencias Sociales","Ingles","Lengua","Quimica"
+  ]
+  
   constructor(public dialogRef: MatDialogRef<AddHomeworkComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private homeworkService: HomeworkService) {
@@ -75,6 +82,9 @@ export class AddHomeworkComponent implements OnInit {
     this.dialogRef.close()
   }
 
+  onClose(){
+    this.dialogRef.close(false)
+  }
 
 
   ngOnInit() {

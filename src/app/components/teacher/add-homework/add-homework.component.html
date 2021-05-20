@@ -20,19 +20,26 @@
   <div class="row">
     <div class="col-12">
 
-      <form>
 
-        <div class="row form-group">
+      
+
+      <form >
+
+        <div class="row no-gutters form-group">
+          
           <div class="col-md-6 col-12 form-group">
-            <label for="code">Nombre de tarea</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Ingrese el nombre de la tarea..."
-              [(ngModel)]="currentHomework.name" #code required>
+            <mat-form-field class="example-full-width">
+            <mat-label>Nombre de la tarea</mat-label>
+            <input matInput placeholder="Ingrese el nombre de la tarea..." 
+            [(ngModel)]="currentHomework.name" #code required
+            [ngModelOptions]="{standalone:true}">
+          </mat-form-field>
           </div>
-
+         
           <div class="col-md-6 col-12 form-group">
-            <mat-form-field appearance="fill">
+            <mat-form-field>
               <mat-label>Fecha de entrega</mat-label>
-              <input [(ngModel)]="currentHomework.deliveryDate" name="deliveryDate" matInput [matDatepicker]="picker">
+              <input [(ngModel)]="currentHomework.deliveryDate" name="deliveryDate" matInput [matDatepicker]="picker" [ngModelOptions]="{standalone:true}">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -43,14 +50,18 @@
 
 
 
-        <div class="row form-group">
+        <div class="row ">
 
-          <div class="col-12 form-group">
-            <label for="description">Descripcion</label>
-            <textarea type="text" name="description" id="description" class="form-control"
-              placeholder="Ingrese descripcion..." [(ngModel)]="currentHomework.description" #description
+          <div class="col-12">
+            <mat-form-field class="example-full-width">
+            <mat-label>Descripcion de la tarea</mat-label>
+             <textarea matInput type="text"  id="description" class="form-control"
+              placeholder="Ingrese descripcion..." [(ngModel)]="currentHomework.description" [ngModelOptions]="{standalone:true}" #description
               required></textarea>
+             </mat-form-field>
           </div>
+
+           
 
 
 
@@ -60,30 +71,26 @@
         </div>
 
         <div class="row form-group">
-          <div class="col-md-6 col-12 form-group">
-            <label for="course">Curso</label>
-            <select type="text" name="course" id="course" class="form-control" [(ngModel)]="currentHomework.course"
-              #course required>
-              <option value="default">Seleccione el Curso...</option>
-              <option value="2A">2A</option>
-              <option value="3B">3B</option>
-              <option value="2B">2B</option>
-              <!-- <option *ngFor="let matter of matters">Implementar</option> -->
-
-            </select>
+          <div class="col-md-6 col-12">
+            <mat-form-field appearance="fill">
+              <mat-label>Curso</mat-label>
+              <mat-select [(ngModel)]="currentHomework.course" [ngModelOptions]="{standalone:true}">
+                <mat-option *ngFor="let course of courses" [value]="course">
+                  {{course}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
 
           <div class="col-md-6 col-12 form-group">
-            <label for="matter">Materia</label>
-            <select type="text" name="matter" id="matter" class="form-control" [(ngModel)]="currentHomework.matter"
-              #matter required>
-              <option value="default">Seleccione la materia...</option>
-              <option value="Historia">Historia</option>
-              <option value="Matematicas">Matematicas</option>
-              <option value="Geografia">Geografia</option>
-              <!-- <option *ngFor="let matter of matters">Implementar</option> -->
-
-            </select>
+              <mat-form-field appearance="fill">
+                <mat-label>Materia</mat-label>
+                <mat-select [(ngModel)]="currentHomework.matter" [ngModelOptions]="{standalone:true}">
+                  <mat-option *ngFor="let matter of matters" [value]="matter">
+                    {{matter}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
           </div>
 
 
@@ -101,7 +108,17 @@
 
         <div class="row">
           <div class="col-12" *ngIf="!existData">
-            <button class="btn btn-primary btn-block" (click)="addHomework()">Añadir Tarea</button>
+            <div class="row">
+               <div class="col-6">
+
+              <button class="btn btn-primary btn-block" (click)="addHomework()" style="width: 95%;">Añadir Tarea</button>
+            </div>
+            <div class="col-6">
+
+              <button class="btn btn-primary btn-block" (click)="onClose()" style="width: 95%; background-color: rgb(223, 72, 72);">Cancelar</button>
+            </div>
+            </div>
+           
           </div>
 
           <div class="col-12" *ngIf="existData">
