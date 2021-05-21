@@ -1,6 +1,7 @@
+import { AccountService } from 'src/app/services/account.service';
 import { Payment } from './../../../../models/payment';
 import { PaymentService } from './../../../../services/payment.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,6 +18,7 @@ export class PaymentListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: any;
   currentDate = new Date()
+  @Input() idStudent;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -26,8 +28,8 @@ export class PaymentListComponent implements OnInit {
   takeAsistance: boolean;
 
 
-  constructor(private paymentService: PaymentService) {
-    this.paymentList = paymentService.paymentList
+  constructor(private paymentService: AccountService) {
+    console.log(this.paymentList)
   }
 
   getBillName() {
@@ -62,6 +64,8 @@ export class PaymentListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.paymentList = this.paymentService.accountsList.filter(a=>a.$titularId===this.idStudent)[0].$payments
+
     this.displayedColumns = ['amount', 'status', 'expiration', 'paybill'];
 
 
@@ -72,11 +76,12 @@ export class PaymentListComponent implements OnInit {
     this.dataSource.sort = this.sort;
 
     console.log(this.paymentList)
+    console.log(this.idStudent)
   }
 
   refreshTable() {
     console.log("Refresh exitoso")
-    this.dataSource.data = this.paymentService.paymentList
+    this.dataSource.data = this.paymentService.accountsList.filter(a=>a.$titularId==this.idStudent)[0].$payments
   }
 
 
