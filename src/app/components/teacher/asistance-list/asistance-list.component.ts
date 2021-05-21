@@ -103,11 +103,13 @@ export class AsistanceListComponent implements OnInit {
   }
 
   changeTakeAsistance() {
+    console.log(this.asistanceListAux)
     if (!this.takeAsistance) {
       this.takeAsistance = !this.takeAsistance;
-      this.dataSource.data = this.asistanceListAux;
       this.paginator.pageSize = this.asistanceListAux.length;
-      this.refreshTable()
+      this.dataSource.data = this.asistanceListAux;
+      console.log(this.paginator)
+     
 
     }
     else {
@@ -133,7 +135,7 @@ export class AsistanceListComponent implements OnInit {
   refreshTable() {
     console.log("Refresh exitoso")
     
-    this.dataSource.data = this.asistanceService.asistancesList
+    this.dataSource.data = this.asistanceList
   }
 
 
@@ -161,9 +163,11 @@ export class AsistanceListComponent implements OnInit {
 
     }
 
-    console.log(this.asistanceList.length)
 
     this.takeAsistance = false;
+    this.paginator.pageSize = 5;
+
+    this.refreshTable()
   }
 
 }
