@@ -22,7 +22,7 @@ export class AsistanceService {
   }
 
   get asistancesList() {
-    return this.asistances
+    return this.asistances.sort((v1, v2) => v1.date > v2.date ? -1 : v1.date < v2.date ? 1 : 0)
   }
 
   changeStatus(index: number, status: boolean) {

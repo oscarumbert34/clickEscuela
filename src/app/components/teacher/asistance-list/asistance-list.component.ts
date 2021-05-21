@@ -6,6 +6,8 @@ import { Asistance } from 'src/app/models/Asistance';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import moment from 'moment';
+
 
 @Component({
   selector: 'app-asistance-list',
@@ -78,6 +80,7 @@ export class AsistanceListComponent implements OnInit {
       }
       else {
         this.dataSource.data = asis;
+        this.openSnackbar("Se encontraron los siguientes resultados para la fecha seleccionada")
 
 
       }
@@ -129,7 +132,8 @@ export class AsistanceListComponent implements OnInit {
 
   refreshTable() {
     console.log("Refresh exitoso")
-    this.dataSource.data = this.asistanceList
+    
+    this.dataSource.data = this.asistanceService.asistancesList
   }
 
 

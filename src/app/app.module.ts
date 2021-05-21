@@ -31,7 +31,7 @@ import { DashboardVerticalComponent } from './components/commons/dashboard-verti
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { MatRippleModule } from '@angular/material/core';
+import { MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -55,7 +55,10 @@ import { HttpClientModule } from '@angular/common/http';
     CommonsModule
 
     ],
-  providers: [],
+    providers: [
+      {provide: MAT_DATE_LOCALE, useValue: 'es-AR'},
+    ],
+  
   bootstrap: [AppComponent],
   exports:[NormalizeWordPipe]
 })

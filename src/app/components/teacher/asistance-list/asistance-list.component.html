@@ -15,7 +15,7 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <button class="button-menu" (click)="filterByDate()">
+    <button class="button-menu" (click)="filterByDate()" matTooltip="Buscar por fecha">
       <img width="17px" src="./assets/images/search.svg" alt="">
     </button>
   </div>
@@ -23,7 +23,7 @@
   <div class="col-12 col-sm-2 button-action-present">
 
     <svg class="add-button" [ngClass]="{'cancelAsistance': takeAsistance}"
-      (click)="changeTakeAsistance();takeAsistance ? save.disabled=false : save.disabled=true" #changeAsistance
+      (click)="changeTakeAsistance();takeAsistance ? save.disabled=false : save.disabled=true" [matTooltip]="!takeAsistance ? 'Tomar Lista' : 'Cancelar' " #changeAsistance
       id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298.78 296.15">
       <defs></defs>
       <path class="cls-1"
@@ -53,7 +53,7 @@
         transform="translate(-74.61 -75.93)" />
     </svg>
 
-    <button class="save-button" #save [disabled]='takeAsistance==false' (click)="savePresents();refreshTable()">
+    <button class="save-button" #save [disabled]='takeAsistance==false' matTooltip="Guardar Asistencia" (click)="savePresents();refreshTable()">
       <img width="18px" src="./assets/images/save.svg" alt="">
 
     </button>
@@ -82,8 +82,8 @@
     <ng-container matColumnDef="date">
       <th id="column3" mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
       <td mat-cell *matCellDef="let row">
-        <p *ngIf="!takeAsistance">{{row.date | date: 'shortDate'}} </p>
-        <p *ngIf="takeAsistance">Tomando lista: {{currentDate | date: 'shortDate'}}</p>
+        <p *ngIf="!takeAsistance">{{row.date | date: 'd/M/yyyy'}} </p>
+        <p *ngIf="takeAsistance">Tomando lista: {{currentDate | date: 'd/M/yyyy'}}</p>
 
       </td>
     </ng-container>

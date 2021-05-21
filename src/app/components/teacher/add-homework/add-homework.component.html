@@ -122,7 +122,16 @@
           </div>
 
           <div class="col-12" *ngIf="existData">
-            <button class="btn btn-primary btn-block" (click)="modifyHomework()">Modificar Tarea</button>
+            <div class="row">
+              <div class="col-6">
+
+                <button class="btn btn-primary btn-block" (click)="modifyHomework()" style="width: 95%;">Modificar Tarea</button>
+              </div>
+              <div class="col-6">
+
+                <button class="btn btn-primary btn-block" (click)="onClose()" style="width: 95%; background-color: rgb(223, 72, 72);">Cancelar</button>
+              </div>
+            </div>
           </div>
         </div>
 
