@@ -34,9 +34,9 @@
     <ng-container matColumnDef="actions">
       <th id="column6" mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
       <td mat-cell *matCellDef="let index=index; let grade">
-        <button matTooltip="Modificar" class="button-action">
+        <button matTooltip="Modificar" class="button-action" (click)="openModify(index,grade)">
 
-          <img width="20px" src="./assets/images/edit.svg" alt="" (click)="openModify(index,grade)">
+          <img width="20px" src="./assets/images/edit.svg" alt="" >
         </button>
         <button matTooltip="Eliminar" class="button-action" (click)="confirmDelete(index)">
 

@@ -1,6 +1,6 @@
-import { PopupMenuComponent } from './../../commons/popupMenu/popupMenu.component';
-import { ConfirmDialogComponent } from './../../commons/confirm-dialog/confirm-dialog.component';
-import { GradesService } from './../../../services/grades.service';
+import { PopupMenuComponent } from '../../../commons/popupMenu/popupMenu.component';
+import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
+import { GradesService } from '../../../../services/grades.service';
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { Grade } from 'src/app/models/Grade';
 import { MatPaginator } from '@angular/material/paginator';

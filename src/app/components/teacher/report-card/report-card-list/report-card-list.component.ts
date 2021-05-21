@@ -1,12 +1,12 @@
-import { ReportCardService } from './../../../services/reportCard.service';
+import { ReportCardService } from '../../../../services/reportCard.service';
 import { MatDialog } from '@angular/material/dialog';
-import { studentService } from './../../../services/student.service';
+import { studentService } from '../../../../services/student.service';
 import { Student } from 'src/app/models/student';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ConfirmDialogComponent } from '../../commons/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
 import { AddReportCardComponent } from '../add-report-card/add-report-card.component';
 
 @Component({

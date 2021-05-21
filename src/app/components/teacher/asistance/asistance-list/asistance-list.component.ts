@@ -1,4 +1,4 @@
-import { AsistanceService } from './../../../services/asistance.service';
+import { AsistanceService } from '../../../../services/asistance.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
