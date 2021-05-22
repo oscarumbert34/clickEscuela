@@ -75,6 +75,7 @@ import { ParentModule } from '../parent/parent.module';
     MatSelectModule,
     MatGridListModule,
     MatChipsModule,
+    MatSelectModule
   ],
   declarations: [
     CalendarComponent,
