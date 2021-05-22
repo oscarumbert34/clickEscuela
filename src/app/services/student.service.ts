@@ -1,4 +1,4 @@
-import { Parent } from 'src/app/models/Parent';
+import { Parent } from '../models/Parent';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Student } from '../models/student';
 import { Subject } from 'rxjs/internal/Subject';
@@ -16,7 +16,7 @@ interface SearchResult {
   total: number;
 }
 
-interface State {
+interface State { 
   page: number;
   pageSize: number;
   searchTerm: string;
