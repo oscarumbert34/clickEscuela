@@ -1,3 +1,4 @@
+import { Student } from './../../../models/student';
 import { HomeworkListComponent } from './homework-list/homework-list.component';
 import { Input, QueryList, ViewChildren } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
@@ -16,10 +17,11 @@ export class HomeworkComponent implements OnInit {
   @Input() currentNotification: Notification;
   @Input() isNotification: boolean;
   @ViewChildren(HomeworkListComponent) homeworkList: QueryList<HomeworkListComponent>;
+  student:Student
 
 
   constructor(public dialog: MatDialog) {
-
+    
   }
 
   openDialog(input) {
@@ -31,7 +33,7 @@ export class HomeworkComponent implements OnInit {
       }
     )
 
-    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens() })
+    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens()})
 
   }
 

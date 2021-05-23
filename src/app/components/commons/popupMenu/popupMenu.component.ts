@@ -104,11 +104,18 @@ export class PopupMenuComponent implements OnInit {
   }
 
   modifyGrade() {
+    if (this.currentGrade.student==''){
+      this.currentGrade.student==this.data.student
+    }
     this.gradesService.modifyGrade(this.data.index, this.data.grade);
     this.dialogRef.close();
   }
 
   ngOnInit() {
     console.log(this.data.grade);
+  }
+
+  onClose(){
+    this.dialogRef.close(false)
   }
 }

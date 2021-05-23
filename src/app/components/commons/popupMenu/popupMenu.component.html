@@ -122,6 +122,7 @@
               <mat-select
                 [(ngModel)]="currentGrade.student"
                 [ngModelOptions]="{ standalone: true }"
+                
 
                 >
                 <mat-option *ngIf="studentsList.length===0">Seleccione un curso...</mat-option>
@@ -133,21 +134,24 @@
           </div>
         </div>
 
-        <div class="row" *ngIf="existData == true">
-          <div class="col-12">
-            <button class="btn btn-primary btn-block" (click)="modifyGrade()">
-              Modificar Nota
-            </button>
-          </div>
-        </div>
+   
+        
+          <div class="row">
+            <div class="col-6">
+              
+              <button *ngIf="!existData" class="btn btn-primary btn-block" (click)="addGrade()">Añadir Nota</button>
+              <button *ngIf="existData" class="btn btn-primary btn-block" (click)="modifyGrade()">Modificar Nota</button>
 
-        <div class="row" *ngIf="existData == false">
-          <div class="col-12">
-            <button class="btn btn-primary btn-block" (click)="addGrade()">
-              Añadir Nota
-            </button>
+
+            </div>
+            <div class="col-6">
+
+              <button class="btn btn-primary btn-block" (click)="onClose()" style="width: 95%; background-color: rgb(223, 72, 72);">Cancelar</button>
+            </div>
           </div>
-        </div>
+       
+
+        
       </form>
     </div>
   </div>

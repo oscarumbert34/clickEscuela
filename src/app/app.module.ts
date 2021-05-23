@@ -56,7 +56,7 @@ import { HttpClientModule } from '@angular/common/http';
 
     ],
     providers: [
-      {provide: MAT_DATE_LOCALE, useValue: 'es-AR'},
+      {provide: MAT_DATE_LOCALE, useValue: 'es-AR'}
     ],
   
   bootstrap: [AppComponent],

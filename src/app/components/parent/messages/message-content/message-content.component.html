@@ -9,7 +9,7 @@
 
   <div class="chat-options">
 
-    <button class="button-menu close-chat" (click)="closeChat();" style="margin-left: 3em;"
+    <button matTooltip="Cerrar Chat" class="button-menu close-chat" (click)="closeChat();" style="margin-left: 3em;"
       [ngClass]="{'button-animate': chatOpen}">
       <img width="15px" src="./assets/images/cancel.svg" alt="">
 
@@ -17,7 +17,7 @@
 
 
     <div style="position: relative;">
-      <button class="button-menu search-chat" #buttonSearch [ngClass]="{'button-animate': chatOpen}">
+      <button matTooltip="Buscar en el chat" class="button-menu search-chat" #buttonSearch [ngClass]="{'button-animate': chatOpen}">
         <img *ngIf="!openSearch" width="15px" style="margin-left: 0.6em;" src="./assets/images/search.svg" alt=""
           (click)="viewInputSearch()">
         <img *ngIf="openSearch" width="15px" style="margin-left: 0.6em;" src="./assets/images/cancel.svg" alt=""
@@ -27,12 +27,12 @@
       </button>
 
       <div style="display: flex;flex-direction: column; position: absolute;top: -7px;right: -29px;">
-        <button *ngIf="openSearch" class="no-button" [disabled]="!currentSearch" (click)="previousWord()">
+        <button matTooltip="Siguiente resultado" *ngIf="openSearch" class="no-button" [disabled]="!currentSearch" (click)="previousWord()">
           <img width="15px" style="margin-left: 0.6em; transform: rotate(180deg);" src="./assets/images/option.svg"
             alt="">
 
         </button>
-        <button *ngIf="openSearch" class="no-button" [disabled]="!currentSearch" (click)="nextWord()">
+        <button matTooltip="Anterior resultado" *ngIf="openSearch" class="no-button" [disabled]="!currentSearch" (click)="nextWord()">
           <img width=" 15px" style="margin-left: 0.6em;" src="./assets/images/option.svg" alt="">
 
         </button>
@@ -41,13 +41,28 @@
     </div>
 
 
-    <button class="button-menu close-chat" [ngClass]="{'button-animate': chatOpen}"
-      (click)="searchWord(searchInput.value)">
+    <button [matMenuTriggerFor]="options" matTooltip="Opciones" class="button-menu close-chat" [ngClass]="{'button-animate': chatOpen}">
       <img width="15px" src="./assets/images/edit.svg" alt="">
-
     </button>
 
-    <button class="button-menu close-chat" (click)="minimizeChat()" [ngClass]="{'button-animate': chatOpen}"
+    <mat-menu #options="matMenu">
+      <button (click)="confirmDialog()" mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Vaciar Chat</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
+
+
+    <button matTooltip="Minimizar chat" class="button-menu close-chat" (click)="minimizeChat()" [ngClass]="{'button-animate': chatOpen}"
       [ngClass]="{'rotated': minimizedChat}">
       <img width="15px" src="./assets/images/option.svg" alt="">
 

@@ -78,7 +78,8 @@ import { ReportCardListComponent } from './report-card/report-card-list/report-c
     MatButtonModule,
     MatFormFieldModule,
     MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule,
-    CommonsModule
+    CommonsModule,
+    MatMenuModule
   ], 
   exports:[ReportCardComponent, GradesComponent,MessagesComponent, FirstLetterPipe, MessagesComponent]
 

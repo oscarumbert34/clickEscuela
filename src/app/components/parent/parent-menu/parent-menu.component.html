@@ -228,9 +228,13 @@
         <div class="col-1" style="background-color: transparent;"></div>
         <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">
 
-          <div *ngSwitchCase="'parent-asistance'">
-            <app-asistance-parents></app-asistance-parents>
+          <div *ngSwitchCase="'home'">
+            <app-asistance-parents [route]="blockDinamicActually"></app-asistance-parents>
           </div>
+          <div *ngSwitchCase="'parent-asistance'">
+            <app-asistance-parents [route]="blockDinamicActually"></app-asistance-parents>
+          </div>
+          
         
           <div *ngSwitchCase="'payment'">
             <app-payment></app-payment>

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MessagesService {
+  
 
   messagesList: Message[]
 
@@ -20,6 +21,10 @@ export class MessagesService {
     this.messagesList.push(new Message("Pago de cuota", "Sres Padres le informamos que al dia de la fecha adeuda la cuota de noviembre, le pedimos por favor que regularize el pago.", "Notificacion", new Date(), ""))
 
 
+  }
+
+  clear() {
+    this.messagesList=[]
   }
 
   get messageList() {

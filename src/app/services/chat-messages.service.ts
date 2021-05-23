@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ChatmessagesService {
+  
 
   chatmodules: ChatModule[];
 
@@ -49,6 +50,10 @@ export class ChatmessagesService {
 
 
 
+  }
+
+  clear() {
+   this.chatmodules=[]
   }
 
   addChatModule(autor) {

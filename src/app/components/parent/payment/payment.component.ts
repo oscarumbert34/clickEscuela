@@ -22,6 +22,7 @@ export class PaymentComponent implements OnInit {
   faultpayments: Payment[];
   currentStudent:Student;
   idStudent='1'
+  detailShow=true;
 
   paymentDebt = 0;
 
@@ -53,6 +54,15 @@ export class PaymentComponent implements OnInit {
 
       }
     });
+
+  }
+
+  closeDetail()
+  {
+    this.detailShow=false;
+  }
+  showDetail(){
+    this.detailShow=true;
 
   }
 

@@ -107,25 +107,14 @@
       </div> -->
 
         <div class="row">
-          <div class="col-12" *ngIf="!existData">
-            <div class="row">
-               <div class="col-6">
-
-              <button class="btn btn-primary btn-block" (click)="addHomework()" style="width: 95%;">Añadir Tarea</button>
-            </div>
-            <div class="col-6">
-
-              <button class="btn btn-primary btn-block" (click)="onClose()" style="width: 95%; background-color: rgb(223, 72, 72);">Cancelar</button>
-            </div>
-            </div>
-           
-          </div>
-
-          <div class="col-12" *ngIf="existData">
+        
+          
+          <div class="col-12" >
             <div class="row">
               <div class="col-6">
-
-                <button class="btn btn-primary btn-block" (click)="modifyHomework()" style="width: 95%;">Modificar Tarea</button>
+                
+                <button *ngIf="!existData" class="btn btn-primary btn-block" (click)="addHomework()" style="width: 95%;">Añadir Tarea</button>
+                <button *ngIf="existData" class="btn btn-primary btn-block" (click)="modifyHomework()" style="width: 95%;">Modificar Tarea</button>
               </div>
               <div class="col-6">
 
