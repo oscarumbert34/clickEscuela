@@ -1,4 +1,4 @@
-import { ProvinceService } from './../../../../services/province.service';
+import { GeoRefService } from './../../../../services/geoRef.service';
 import { studentService } from "../../../../services/student.service";
 import { StudentsComponent } from "../../../teacher/students/students.component";
 import { StudentBaseModelComponent } from "../student-base-model/student-base-model.component";
@@ -13,7 +13,7 @@ import { Province } from 'src/app/models/Province';
   selector: "app-add-student",
   templateUrl: "./add-student.component.html",
   styleUrls: ["./add-student.component.scss"],
-  providers:[ProvinceService]
+  providers:[GeoRefService]
 })
 export class AddStudentComponent implements OnInit {
   secondParent: boolean;
@@ -22,16 +22,28 @@ export class AddStudentComponent implements OnInit {
   parent_2: Parent;
   typeIDs = ["DNI", "CI", "LE", "LC"];
   provinces:Province[];
+  districts:Province[];
+  selectedProvince:string;
+  sortByname= (a,b)=>{ 
+    if (a.nombre > b.nombre) {
+    return 1;
+  }
+  if (a.nombre < b.nombre) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;}
 
   constructor(
     private snackBar: MatSnackBar,
     private matDialogRef: MatDialog,
     private studentsService: studentService,
-    private provinceService:ProvinceService
+    private geoRefService:GeoRefService
   ) {
     this.secondParent = false;
     this.resetStudentModel();
     this.provinces=[]
+    this.selectedProvince='06';
   }
 
   resetStudentModel() {
@@ -75,15 +87,29 @@ export class AddStudentComponent implements OnInit {
   ngOnInit()
   {
     this.getAllProvinces()
+    this.getAllDistricts(this.selectedProvince)
   }
 
   getAllProvinces(){
-    this.provinceService.getProvinces().subscribe(data=>
+    this.geoRefService.getProvinces().subscribe(data=>
       {
-        this.provinces=data
+        
+        this.provinces=data.provincias.sort(sortByname)
         console.log(this.provinces)
       })
   }
+
+  getAllDistricts(id:string)
+  {
+    this.geoRefService.getDistricts(id).subscribe(data=>
+      {
+        this.districts=data.municipios.sort(sortByname)
+        console.log(this.districts)
+      })
+  }
+
+ 
+  
   
   
 
@@ -115,4 +141,15 @@ export class AddStudentComponent implements OnInit {
   showSnackBar(message: string) {
     this.snackBar.open(message, "Aceptar", { duration: 5500 });
   }
+}
+
+function sortByname(a,b) {
+  if (a.nombre > b.nombre) {
+    return 1;
+  }
+  if (a.nombre < b.nombre) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
 }
