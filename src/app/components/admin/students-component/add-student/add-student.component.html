@@ -55,7 +55,7 @@
 
 <div class="container" id="studentForm">
   <div id="buttonsTab" class="row mt-4 mb-4">
-    <div class="col-lg-6 col-md-2 col-4 svg-content">
+    <div class="col-6 svg-content">
       <h5>Datos del alumno</h5>
     </div>
 
@@ -78,9 +78,19 @@
   </div>
   <div class="row">
     <div class="col-12 col-md-6">
-      <mat-form-field>
+      
+      <mat-form-field  style="width: 40%; padding-right: 15px;">
+        <mat-label>Tipo:</mat-label>
+        <mat-select [(ngModel)]="currentStudent.idType">
+          <mat-option *ngFor="let type of  typeIDs" [value]="type" >
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 60%; padding-left: 15px;">
         <mat-label>Numero de documento</mat-label>
-        <input matInput [(ngModel)]="currentStudent.idNumber" />
+        <input  matInput [(ngModel)]="currentStudent.idNumber">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
@@ -124,7 +134,7 @@
 
 <div class="container" id="firstParentForm">
   <div id="buttonsTab" class="row mt-4 mb-4">
-    <div class="col-lg-6 col-md-2 col-4 svg-content">
+    <div class="col-6 svg-content">
       <h5>Datos de los padres</h5>
     </div>
 
@@ -161,9 +171,18 @@
   </div>
   <div class="row">
     <div class="col-12 col-md-6">
-      <mat-form-field>
+      <mat-form-field  style="width: 40%; padding-right: 15px;">
+        <mat-label>Tipo:</mat-label>
+        <mat-select [(ngModel)]="currentStudent.parent1.idType">
+          <mat-option *ngFor="let type of  typeIDs" [value]="type" >
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 60%; padding-left: 15px;">
         <mat-label>Numero de documento</mat-label>
-        <input matInput [(ngModel)]="currentStudent.parent1.idNumber" />
+        <input  matInput [(ngModel)]="currentStudent.parent1.idNumber">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
@@ -201,7 +220,7 @@
 
 <div class="container" id="secondParentForm" *ngIf="secondParent">
   <div id="buttonsTab" class="row mt-4 mb-4">
-    <div class="col-lg-6 col-md-2 col-4 svg-content">
+    <div class="col-6 svg-content">
       <h5>Datos de los padres</h5>
     </div>
 
@@ -238,9 +257,19 @@
   </div>
   <div class="row">
     <div class="col-12 col-md-6">
-      <mat-form-field>
+    
+      <mat-form-field  style="width: 40%; padding-right: 15px;">
+        <mat-label>Tipo:</mat-label>
+        <mat-select [(ngModel)]="currentStudent.parent2.idType">
+          <mat-option *ngFor="let type of  typeIDs" [value]="type" >
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 60%; padding-left: 15px;">
         <mat-label>Numero de documento</mat-label>
-        <input matInput [(ngModel)]="currentStudent.parent2.idNumber" />
+        <input  matInput [(ngModel)]="currentStudent.parent2.idNumber">
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">

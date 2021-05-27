@@ -17,6 +17,7 @@ export class AddStudentComponent implements OnInit {
   currentStudent: Student;
   parent_1: Parent;
   parent_2: Parent;
+  typeIDs = ["DNI", "CI", "LE", "LC"];
 
   constructor(
     private snackBar: MatSnackBar,
