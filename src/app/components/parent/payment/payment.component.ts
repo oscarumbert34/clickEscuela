@@ -36,6 +36,8 @@ export class PaymentComponent implements OnInit {
     this.currentStudent= studentsService.studentsList.filter(a=>a.id===this.idStudent)[0]
     this.faultpayments = []
 
+    
+
   }
 
   getDetail() {

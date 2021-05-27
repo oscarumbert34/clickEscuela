@@ -4,7 +4,7 @@ import { AccountService } from "./../../../../services/account.service";
 import { Student } from "./../../../../models/student";
 import { PaymentService } from "./../../../../services/payment.service";
 import { studentService } from "./../../../../services/student.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
@@ -16,6 +16,7 @@ import { PaymentsDetailComponent } from "src/app/components/commons/payments-det
   styleUrls: ["./account-list.component.scss"],
 })
 export class AccountListComponent implements OnInit {
+
   accounts: any[];
   studentsList: Student[];
 
@@ -31,11 +32,17 @@ export class AccountListComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
+    this.studentsList= []
     this.accounts = [];
-
+    
     this.studentsList = this.studentsService.studentsList;
-    for (let student of this.studentsList) {
-      this.checked = false;
+
+
+    this.checked = false;
+
+   
+
+    for (let student of this.studentsService.studentsList) {
       let account = {
         name: student.name,
         surname: student.surname,
@@ -43,12 +50,13 @@ export class AccountListComponent implements OnInit {
         titular: student.parent1.name + " " + student.parent1.surname,
         titularId: student.id,
         idAccount: student.parent1.id,
-        state: this.getAccountState(student.id),
+        state: this.accountsService.accountsList.filter((a) => a.$titularId === student.id)[0].$state
       };
 
       this.accounts.push(account);
     }
   }
+  
 
   ngOnInit() {
     this.displayedColumns = [
@@ -65,6 +73,7 @@ export class AccountListComponent implements OnInit {
     this.dataSource.data = this.accounts;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
   }
 
   showDebtors() {
@@ -91,11 +100,7 @@ export class AccountListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  getAccountState(id: string) {
-    return this.accountsService.accountsList.filter(
-      (a) => a.$titularId === id
-    )[0].$state;
-  }
+  
 
   getPaymentDetail(id: string, student) {
     let payment = this.accountsService.accountsList.filter(

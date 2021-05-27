@@ -31,17 +31,32 @@ export class RegisterComponent implements OnInit {
   @ViewChild("drawer", { static: true }) sidenav: MatSidenav;
   @ViewChild("menuNav", { static: true }) menuNav: ElementRef;
 
-  blockDinamicActually = "student";
+  showFiller = true;
+  notificationShow = false;
+  notificationsDisplay = 'col-2 notifications-show';
+  dinamicDisplay = 'col-10 size-display-dinamic';
+  notificationChild = false;
+  dashboard = 'Cant. Aprobados';
+  checked = false;
+  classMenu = 'menu';
+  blockDinamicActually = 'account';
+  sidenavClass = 'sidenav-open';
   showHomeButton = false;
 
-  currentEdit: any;
+  currentNotification: Notification;
+  isNotification: boolean;
+  numberNotifications: number;
 
-  constructor(private studentService: studentService) {
-    this.currentEdit = studentService.editStudent;
+ 
+
+  constructor() 
+  {
+    
   }
 
   ngOnInit() {
     this.sidenav.open();
+    console.log(this.blockDinamicActually)
   }
 
   changeBlock(newBlock: string) {

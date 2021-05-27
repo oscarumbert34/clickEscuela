@@ -1,6 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpensesService } from './../../../services/expenses.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -27,6 +27,8 @@ export class AccountComponent implements OnInit {
 
 
   @ViewChild('tabGroup', { static: false }) tab: ElementRef;
+
+  @Input() route:string;
 
   accounts: any[];
   studentsList: Student[]
@@ -56,18 +58,24 @@ export class AccountComponent implements OnInit {
     this.studentsList = this.studentsService.studentsList
 
     for (let student of this.studentsList) {
+      
       let account =
       {
         name: student.name,
         surname: student.surname,
         course: student.course,
         titular: student.parent1.name + ' ' + student.parent1.surname,
-        state: this.getAccountState(student.id),
+        state: this.accountsService.accountsList.filter(a => a.$titularId == student.id)[0].$state,
         titularID: student.id,
         idAccount: student.parent1.id
       }
 
-      this.selectedRange = {
+      
+
+      this.accounts.push(account)
+    }
+    
+    this.selectedRange = {
         range:
         {
           start: Date,
@@ -76,14 +84,9 @@ export class AccountComponent implements OnInit {
         option: -1
       }
 
-      this.accounts.push(account)
-    }
-
   }
 
-  getAccountState(id: string) {
-    return this.accountsService.accountsList.filter(a => a.$titularId == id)[0].$state
-  }
+  
 
   generateDebtorsReport(method: number) {
     //alert("Se esta generando el repore")
@@ -133,7 +136,8 @@ export class AccountComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
   }
 
   arrayObjToCsv(ar) {
