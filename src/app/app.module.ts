@@ -52,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     FormsModule,
     MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule,StudentModule,HttpClientModule,
-    CommonsModule
+    CommonsModule,
+    HttpClientModule
 
     ],
     providers: [

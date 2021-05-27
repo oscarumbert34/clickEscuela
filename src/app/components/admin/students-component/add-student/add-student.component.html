@@ -103,14 +103,15 @@
     </div>
   </div>
   <div class="row">
+   
     <div class="col-12 col-md-6">
       <mat-form-field>
-        <mat-label>Direccion</mat-label>
-        <input matInput [(ngModel)]="currentStudent.adress" />
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="currentStudent.email" />
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
-      <mat-form-field>
+      <mat-form-field (click)="getAllProvinces()">
         <mat-label>Grado</mat-label>
         <input matInput [(ngModel)]="currentStudent.course" />
       </mat-form-field>
@@ -118,17 +119,22 @@
   </div>
   <div class="row">
     <div class="col-12 col-md-6">
-      <mat-form-field>
-        <mat-label>Numero de telefono</mat-label>
-        <input matInput [(ngModel)]="currentStudent.telephone" />
+      <mat-form-field >
+        <mat-label>Provincia:</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let pr of provinces.provincias" [value]="pr.id" >
+            {{pr.nombre}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="col-12 col-md-6">
       <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="currentStudent.email" />
+        <mat-label>Direccion</mat-label>
+        <input matInput [(ngModel)]="currentStudent.adress" />
       </mat-form-field>
     </div>
+   
   </div>
 </div>
 
