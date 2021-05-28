@@ -145,8 +145,14 @@
       <div class="col-12 col-md-6">
       <mat-form-field>
         <mat-label>Direccion</mat-label>
-        <input matInput [(ngModel)]="currentStudent.adress" />
+        <input matInput [(ngModel)]="currentStudent.adress" #adressInput [matAutocomplete]='auto' (keyup)="getNormalizedDirections(adressInput.value)"/>
       </mat-form-field>
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let normalizedDirection of normalizedDirections" [value]="normalizedDirection.direccion">
+          {{normalizedDirection.direccion}}
+        </mat-option>
+      </mat-autocomplete>
     </div>
   </div>
 </div>

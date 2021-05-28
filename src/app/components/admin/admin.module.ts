@@ -105,6 +105,7 @@ import { PaymentsDetailComponent } from "../commons/payments-detail/payments-det
     MatGridListModule,
     MatChipsModule,
     CommonsModule,
+    MatAutocompleteModule
   ],
   exports: [RegisterComponent],
 })

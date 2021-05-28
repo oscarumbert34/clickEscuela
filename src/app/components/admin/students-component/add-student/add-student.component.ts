@@ -1,4 +1,4 @@
-import { GeoRefService } from './../../../../services/geoRef.service';
+import { GeoRefService } from "./../../../../services/geoRef.service";
 import { studentService } from "../../../../services/student.service";
 import { StudentsComponent } from "../../../teacher/students/students.component";
 import { StudentBaseModelComponent } from "../student-base-model/student-base-model.component";
@@ -7,13 +7,13 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Component, OnInit } from "@angular/core";
 import { Student } from "src/app/models/student";
 import { Parent } from "src/app/models/Parent";
-import { Province } from 'src/app/models/Province';
+import { Province } from "src/app/models/Province";
 
 @Component({
   selector: "app-add-student",
   templateUrl: "./add-student.component.html",
   styleUrls: ["./add-student.component.scss"],
-  providers:[GeoRefService]
+  providers: [GeoRefService],
 })
 export class AddStudentComponent implements OnInit {
   secondParent: boolean;
@@ -21,29 +21,27 @@ export class AddStudentComponent implements OnInit {
   parent_1: Parent;
   parent_2: Parent;
   typeIDs = ["DNI", "CI", "LE", "LC"];
-  provinces:Province[];
-  districts:Province[];
-  selectedProvince:string;
-  sortByname= (a,b)=>{ 
-    if (a.nombre > b.nombre) {
-    return 1;
-  }
-  if (a.nombre < b.nombre) {
-    return -1;
-  }
-  // a must be equal to b
-  return 0;}
+  provinces: Province[];
+  districts: Province[];
+  selectedProvince: string;
+  normalizedDirections;
+  sortByname = (a, b) => {
+    if (a.nombre > b.nombre) return 1;
+    if (a.nombre < b.nombre) return -1;
+    return 0;
+  };
 
   constructor(
     private snackBar: MatSnackBar,
     private matDialogRef: MatDialog,
     private studentsService: studentService,
-    private geoRefService:GeoRefService
+    private geoRefService: GeoRefService
   ) {
     this.secondParent = false;
     this.resetStudentModel();
-    this.provinces=[]
-    this.selectedProvince='06';
+    this.provinces = [];
+    this.selectedProvince = "06";
+
   }
 
   resetStudentModel() {
@@ -80,38 +78,39 @@ export class AddStudentComponent implements OnInit {
         email: "",
       },
     };
-
-
   }
 
-  ngOnInit()
+  ngOnInit() {
+    this.getAllProvinces();
+    this.getAllDistricts(this.selectedProvince);
+  }
+
+  getAllProvinces() {
+    this.geoRefService.getProvinces().subscribe((data) => {
+      this.provinces = data.provincias.sort(this.sortByname);
+      console.log(this.provinces);
+    });
+  }
+
+  getNormalizedDirections(direction:string)
   {
-    this.getAllProvinces()
-    this.getAllDistricts(this.selectedProvince)
+    if (direction.length>3)
+    {
+ this.geoRefService.normalizeDirection(direction).subscribe(data=>{
+      this.normalizedDirections=data.direccionesNormalizadas
+      console.log(this.normalizedDirections)
+    })
+    }
+   
   }
 
-  getAllProvinces(){
-    this.geoRefService.getProvinces().subscribe(data=>
-      {
-        
-        this.provinces=data.provincias.sort(sortByname)
-        console.log(this.provinces)
-      })
+  getAllDistricts(id: string) {
+    this.geoRefService.getDistricts(id).subscribe((data) => {
+      data.municipios.push({ id: "222", nombre: "Malvinas Argentinas" });
+      this.districts = data.municipios.sort(this.sortByname);
+      console.log(this.districts);
+    });
   }
-
-  getAllDistricts(id:string)
-  {
-    this.geoRefService.getDistricts(id).subscribe(data=>
-      {
-        this.districts=data.municipios.sort(sortByname)
-        console.log(this.districts)
-      })
-  }
-
- 
-  
-  
-  
 
   addParent() {
     this.secondParent = !this.secondParent;
@@ -143,13 +142,3 @@ export class AddStudentComponent implements OnInit {
   }
 }
 
-function sortByname(a,b) {
-  if (a.nombre > b.nombre) {
-    return 1;
-  }
-  if (a.nombre < b.nombre) {
-    return -1;
-  }
-  // a must be equal to b
-  return 0;
-}

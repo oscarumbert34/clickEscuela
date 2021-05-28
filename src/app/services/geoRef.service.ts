@@ -25,4 +25,9 @@ getDistricts(id:string):Observable<any>
  return this.connector.get<any>(path)
 }
 
+normalizeDirection(direction:string):Observable<any>{
+  const path="http://servicios.usig.buenosaires.gob.ar/normalizar/?direccion="+direction
+  return this.connector.get<any>(path)
+}
+
 }
