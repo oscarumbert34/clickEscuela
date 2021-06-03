@@ -1,8 +1,7 @@
 import { GeoRefService } from "./../../../../services/geoRef.service";
 import { studentService } from "../../../../services/student.service";
-import { StudentsComponent } from "../../../teacher/students/students.component";
 import { StudentBaseModelComponent } from "../student-base-model/student-base-model.component";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Component, OnInit } from "@angular/core";
 import { Student } from "src/app/models/student";
@@ -16,6 +15,7 @@ import { Province } from "src/app/models/Province";
   providers: [GeoRefService],
 })
 export class AddStudentComponent implements OnInit {
+
   secondParent: boolean;
   currentStudent: Student;
   parent_1: Parent;
@@ -25,6 +25,7 @@ export class AddStudentComponent implements OnInit {
   districts: Province[];
   selectedProvince: string;
   normalizedDirections;
+  
   sortByname = (a, b) => {
     if (a.nombre > b.nombre) return 1;
     if (a.nombre < b.nombre) return -1;
@@ -41,7 +42,6 @@ export class AddStudentComponent implements OnInit {
     this.resetStudentModel();
     this.provinces = [];
     this.selectedProvince = "06";
-
   }
 
   resetStudentModel() {
@@ -92,21 +92,19 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
-  getNormalizedDirections(direction:string)
-  {
-    if (direction.length>3)
-    {
- this.geoRefService.normalizeDirection(direction).subscribe(data=>{
-      this.normalizedDirections=data.direccionesNormalizadas
-      console.log(this.normalizedDirections)
-    })
+  getNormalizedDirections(direction: string) {
+    if (direction.length > 3) {
+      this.geoRefService.normalizeDirection(direction).subscribe((data) => {
+        this.normalizedDirections = data.direccionesNormalizadas;
+        console.log(this.normalizedDirections);
+      });
     }
-   
   }
 
   getAllDistricts(id: string) {
     this.geoRefService.getDistricts(id).subscribe((data) => {
-      data.municipios.push({ id: "222", nombre: "Malvinas Argentinas" });
+      if (id === "02")
+        data.municipios.push({ id: "222", nombre: "Malvinas Argentinas" });
       this.districts = data.municipios.sort(this.sortByname);
       console.log(this.districts);
     });
@@ -141,4 +139,3 @@ export class AddStudentComponent implements OnInit {
     this.snackBar.open(message, "Aceptar", { duration: 5500 });
   }
 }
-

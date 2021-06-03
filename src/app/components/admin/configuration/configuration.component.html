@@ -127,12 +127,14 @@
             <textarea
               id="emailSubject"
               matInput
-              #emailSubject
+              #emailSubjectTA
               maxlength="100"
               placeholder="Personalize el asunto del mensaje"
+              [(ngModel)]="emailSubject"
+              [ngModelOptions]="{standalone: true}" 
             ></textarea>
             <mat-hint align="end"
-              >{{ emailSubject.value.length }} / 100</mat-hint
+              >{{ emailSubjectTA.value.length }} / 100</mat-hint
             >
           </mat-form-field>
 
@@ -141,12 +143,17 @@
             <textarea
               id="emailBody"
               matInput
-              #emailBody
+              #emailBodyTA
               maxlength="600"
               placeholder="Personalize el cuerpo del email"
+              [(ngModel)]="emailContent"
+              [ngModelOptions]="{standalone: true}"
             ></textarea>
-            <mat-hint align="end">{{ emailBody.value.length }} / 600</mat-hint>
+            <mat-hint align="end">{{ emailBodyTA.value.length }} / 600</mat-hint>
           </mat-form-field>
+
+          <button mat-raised-button (click)="saveEmailConfig();goToMainMenu()">Guardar</button>
+          <button mat-raised-button (click)="goToMainMenu()">Cancelar</button>
         </form>
       </div>
     </div>

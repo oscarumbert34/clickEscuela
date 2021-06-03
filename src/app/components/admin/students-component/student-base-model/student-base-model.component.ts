@@ -14,7 +14,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Student } from "src/app/models/student";
 import { ConfirmDialogComponent } from "../../../commons/confirm-dialog/confirm-dialog.component";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { EditStudentComponent } from "../edit-student/edit-student.component";
 import { ContactInfoComponent } from "src/app/components/commons/contact-info/contact-info.component";
 
@@ -34,11 +34,11 @@ export class StudentBaseModelComponent implements OnInit {
 
   constructor(
     private studentsService: studentService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public dialogRef:MatDialogRef<StudentBaseModelComponent>
   ) {
     this.studentsArray = this.studentsService.studentsList;
     this.displayedColumns = [
-      "id",
       "name",
       "surname",
       "birthDate",
@@ -53,9 +53,13 @@ export class StudentBaseModelComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  onClose(){
+    this.dialogRef.close(false)
+  }
+
   ngOnInit() {
     this.displayedColumns = [
-      "id",
+     
       "name",
       "surname",
       "birthDate",
