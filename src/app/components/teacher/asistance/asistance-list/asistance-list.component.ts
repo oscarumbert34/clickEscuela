@@ -1,4 +1,4 @@
-import { AsistanceService } from './../../../services/asistance.service';
+import { AsistanceService } from '../../../../services/asistance.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -6,6 +6,8 @@ import { Asistance } from 'src/app/models/Asistance';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import moment from 'moment';
+
 
 @Component({
   selector: 'app-asistance-list',
@@ -78,6 +80,7 @@ export class AsistanceListComponent implements OnInit {
       }
       else {
         this.dataSource.data = asis;
+        this.openSnackbar("Se encontraron los siguientes resultados para la fecha seleccionada")
 
 
       }
@@ -100,11 +103,13 @@ export class AsistanceListComponent implements OnInit {
   }
 
   changeTakeAsistance() {
+    console.log(this.asistanceListAux)
     if (!this.takeAsistance) {
       this.takeAsistance = !this.takeAsistance;
-      this.dataSource.data = this.asistanceListAux;
       this.paginator.pageSize = this.asistanceListAux.length;
-      this.refreshTable()
+      this.dataSource.data = this.asistanceListAux;
+      console.log(this.paginator)
+     
 
     }
     else {
@@ -129,6 +134,7 @@ export class AsistanceListComponent implements OnInit {
 
   refreshTable() {
     console.log("Refresh exitoso")
+    
     this.dataSource.data = this.asistanceList
   }
 
@@ -157,9 +163,11 @@ export class AsistanceListComponent implements OnInit {
 
     }
 
-    console.log(this.asistanceList.length)
 
     this.takeAsistance = false;
+    this.paginator.pageSize = 5;
+
+    this.refreshTable()
   }
 
 }

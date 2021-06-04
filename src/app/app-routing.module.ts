@@ -7,12 +7,11 @@ import { MenuComponent } from './components/commons/menu/menu.component';
 import { ParentMenuComponent } from './components/parent/parent-menu/parent-menu.component';
 
 
-const routes: Routes = [{ path: 'teacher/menu' , component: MenuComponent},
-                        { path: 'admin/register', component: RegisterComponent },
-                        { path: 'student/menu', component: StudentMenuComponent },
-
-
-                        { path: 'parent/menu', component: ParentMenuComponent}];
+const routes: Routes = [
+  { path: 'teacher/menu', component: MenuComponent },
+  { path: 'admin/register', component: RegisterComponent },
+  { path: 'student/menu', component: StudentMenuComponent },
+  { path: 'parent/menu', component: ParentMenuComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

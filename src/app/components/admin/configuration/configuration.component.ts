@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { ConfigurationService } from './../../../services/configuration.service';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-configuration',
-  templateUrl: './configuration.component.html',
-  styleUrls: ['./configuration.component.scss']
+  selector: "app-configuration",
+  templateUrl: "./configuration.component.html",
+  styleUrls: ["./configuration.component.scss"],
 })
 export class ConfigurationComponent implements OnInit {
-
   selectedMenu: boolean;
-  selectedOption: number
+  selectedOption: number;
 
-  constructor() {
+  emailSubject:string;
+  emailContent:string;
+
+  constructor(private confService:ConfigurationService) {
     this.selectedOption = 0;
+    this.emailSubject=confService.getEmailSubject
+    this.emailContent=confService.getEmailContent;
   }
 
   selectMenuOption(opt: number) {
@@ -20,11 +25,15 @@ export class ConfigurationComponent implements OnInit {
   }
 
   goToMainMenu() {
-    this.selectedMenu = false
-    this.selectedOption = 0
+    this.selectedMenu = false;
+    this.selectedOption = 0;
   }
 
-  ngOnInit() {
+  saveEmailConfig()
+  {
+    this.confService.setEmailContent(this.emailContent)
+    this.confService.setEmailSubject(this.emailSubject)
   }
 
+  ngOnInit() {}
 }

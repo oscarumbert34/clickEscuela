@@ -1,8 +1,14 @@
-<div>
 	<div class="container-fluid">
 
+		<div *ngIf="route=='parent-asistance'" class="row mt-2 mb-2 welcome">
+    
+			<img width="150px" src="./assets/images/logo-dark.svg" alt="">
+			<h4 >Bienvenidos</h4>
+	  
+		</div>
+
 		<div id="buttonsTab" class="row mt-4 mb-4">
-			<div class="col-lg-6 col-md-2 col-4 svg-content">
+			<div class="col-4 svg-content">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
 					style="enable-background:new 0 0 448 448;" xml:space="preserve">
@@ -52,9 +58,11 @@
 
 			</div>
 
-			<div class="col-lg-6 col-md-10 col-8 text-center">
-				<h5>Asistencia</h5>
+			<div class="col-4 text-center">
+				<h5>Asistencias</h5>
+			</div>
 
+			<div class="col-4 actions-buttons">
 			</div>
 		</div>
 
@@ -72,4 +80,3 @@
 
 
 
-</div>

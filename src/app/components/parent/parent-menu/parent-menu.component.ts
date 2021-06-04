@@ -99,7 +99,8 @@ export class ParentMenuComponent implements OnInit {
 
   ngOnInit() {
     this.sidenav.open();
-
+    console.log(this.blockDinamicActually)
+    
     //console.log(this.router.url)
 
   }

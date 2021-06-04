@@ -1,4 +1,4 @@
-@import '../../../stylings/color-pallete';
+@import '../../../../stylings/color-pallete';
 
 
 .buttonSelect img
@@ -130,13 +130,13 @@ animation: pointingRelative 0.8s ease-in-out  2}
     outline: none;
     border: 0;
     appearance: none;
-    background: url(../../../../assets/images/cancel.svg);
+    background: url(../../../../../assets/images/cancel.svg);
     background-repeat: no-repeat;
    }
 
    input[type='checkbox']:checked
    {
-    background: url(../../../../assets/images/accept.svg);
+    background: url(../../../../../assets/images/accept.svg);
     background-repeat: no-repeat;
    }
   

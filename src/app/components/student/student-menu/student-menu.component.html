@@ -2,7 +2,7 @@
   <img id="background-img" src="../../../../assets/images/background.png" alt="">
   <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side">
     <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
-      <div class="col-12" (click)="changeBlock('home')">
+      <div class="col-12" (click)="changeBlock('reportCard')" *ngIf="blockDinamicActually!=='reportCard'">
         <div>
           <img class="image-fluid" src="./assets/images/logo.svg" alt="">
         </div>
@@ -14,13 +14,20 @@
           <img class="image-fluid circle-user" src="./assets/images/teacher.jpg" alt="">
         </div>
         <p>Marta Lopez</p>
-      </div>
+      </div>  
     </div>
 
 
     <!-- Lista de opciones de menu de parent/menu -->
 
     <mat-list>
+
+      <mat-list-item *ngIf="blockDinamicActually != 'reportCard'" class="button-menu-container" id="responsivehomeButton"
+      [ngClass]="{'animate-logo': blockDinamicActually !== 'reportCard'}">
+      <button class="home-button mb-2" mat-button color (click)="changeBlock('reportCard'); notNotification()">
+        <img width="130px" src="./assets/images/logo.svg" alt="" >
+      </button>
+    </mat-list-item>
 
       <mat-list-item class="button-menu-container">
         <button class="button-menu" [ngClass]="{'option-selected': blockDinamicActually=='reportCard'}" mat-button color
@@ -268,8 +275,9 @@
         <div class="col-1" style="background-color: transparent;"></div>
         <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">
 
+          
           <div *ngSwitchCase="'reportCard'">
-            <app-report-card></app-report-card>
+            <app-report-card [route]="blockDinamicActually"></app-report-card>
           </div>
           <div *ngSwitchCase="'grades'">
             <app-grades></app-grades>

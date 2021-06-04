@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div id="buttonsTab" class="row mt-4 mb-4">
-    <div class="col-lg-6 col-md-2 col-4 svg-content">
+    <div class="col-4 svg-content">
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298.62 296.14">
         <defs>
           <style>
@@ -31,14 +31,51 @@
 
     </div>
 
-    <div class="col-lg-6 col-md-10 col-8 text-center">
+    <div class="col-4 text-center">
       <h5>Central de pagos</h5>
 
+    </div>
+
+    <div class="col-4 action-buttons" >
+      <div  [ngClass]="{'show': !detailShow}" (click)="showDetail()" class="action-item show-detail" matTooltip="Ver Detalle">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 428.23 403.41">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #9acd8d;
+              }
+
+              .cls-2 {
+                fill: none;
+                stroke: #9acd8d;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 20px;
+              }
+            </style>
+          </defs>
+          <path class="cls-1" d="M242,150" transform="translate(-7.26 -14.23)" />
+          <path class="cls-1"
+            d="M221.38,327.36c-40.55,0-83.51-11.38-124.23-32.92C62.93,276.33,31,251.16,9.67,225.36a10.53,10.53,0,0,1,0-13.42c40.7-49.13,124.31-102,211.71-102,40.84,0,84.06,11.53,125,33.35,34,18.1,65.56,43.12,86.72,68.65a10.53,10.53,0,0,1,0,13.42c-20.76,25-51.86,49.79-85.32,67.89C306.49,315.57,262.79,327.36,221.38,327.36Zm0-196.24c-48.72,0-88.36,39.27-88.36,87.53s39.64,87.53,88.36,87.53,88.36-39.27,88.36-87.53S270.1,131.12,221.37,131.12ZM308.8,153a108,108,0,0,1,0,131.38l-4.61,6,7-2.94c49.59-20.89,85-54.07,97.9-67.37l1.35-1.39-1.35-1.4c-27.69-28.55-62.46-52.46-97.89-67.34l-7-2.92Zm-177.2-3.08C82,170.78,46.62,204,33.7,217.26l-1.35,1.39,1.35,1.4c27.69,28.55,62.45,52.47,97.89,67.34l7,2.92-4.6-6A108,108,0,0,1,134,153l4.61-6Z"
+            transform="translate(-7.26 -14.23)" />
+          <path class="cls-1"
+            d="M221.38,258.46a39.81,39.81,0,1,1,0-79.62c22.17,0,40.22,17.86,40.22,39.81S243.55,258.46,221.38,258.46Zm0-60.44a20.63,20.63,0,1,0,20.79,20.63A20.74,20.74,0,0,0,221.38,198Z"
+            transform="translate(-7.26 -14.23)" />
+          <line id="line6" class="cls-2" x1="108.68" y1="17.78" x2="138.01" y2="64.5" />
+          <line id="line5" class="cls-2" x1="319.55" y1="17.78" x2="290.22" y2="64.5" />
+          <line id="line4" class="cls-2" x1="207.7" y1="10" x2="207.7" y2="57.02" />
+          <line id="line3" class="cls-2" x1="108.68" y1="385.63" x2="138.01" y2="338.9" />
+          <line id="line2" class="cls-2" x1="319.55" y1="385.63" x2="290.22" y2="338.9" />
+          <line id="line1" class="cls-2" x1="207.7" y1="393.41" x2="207.7" y2="346.38" />
+        </svg>
+      </div>
     </div>
   </div>
 </div>
 
-<mat-card class="example-card" class="mb-4">
+<div class="container detail" [ngClass]="{'close': !detailShow}" >
+  <mat-card  class="example-card" class="mb-4" >
+  <div class="close-detail" matTooltip="Cerrar Detalle" (click)="closeDetail()" ><img src="../../../../assets/images/cancel.svg" alt=""></div>
   <mat-card-header>
     <div mat-card-avatar [ngClass]="{'ok-pay': paymentDebt===0, 'fault-pay': paymentDebt>0}"></div>
     <mat-card-title *ngIf="paymentDebt>0; else noFault">Su cuenta presenta deuda</mat-card-title>
@@ -61,6 +98,8 @@
     <button mat-button (click)="getDetail()">Ver detalle</button>
   </mat-card-actions>
 </mat-card>
+</div>
+
 
 <div>
   <div class="container-fluid">
@@ -70,7 +109,7 @@
     <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
       <mat-tab label="Pagos">
 
-        <app-payment-list #appList></app-payment-list>
+        <app-payment-list [idStudent]="idStudent" #appList></app-payment-list>
 
       </mat-tab>
 

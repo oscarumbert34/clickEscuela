@@ -65,7 +65,17 @@ import { ParentModule } from '../parent/parent.module';
     MatDatepickerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatNativeDateModule, MatMenuModule, MatCheckboxModule, MatTooltipModule, MatProgressSpinnerModule, MatExpansionModule, MatRippleModule, MatSelectModule, MatGridListModule,MatChipsModule,
+    MatNativeDateModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatSelectModule
   ],
   declarations: [
     CalendarComponent,

@@ -43,7 +43,7 @@
 
     <ng-container matColumnDef="actions">
       <th id="column4" mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
-      <td mat-cell *matCellDef="let index=index; let reportCard" style="display: inline-flex">
+      <td mat-cell *matCellDef="let index=index; let reportCard" >
 
 
         <button [disabled]="!reportCard.load" class="button-action" (click)="openModify(index,reportCard)">

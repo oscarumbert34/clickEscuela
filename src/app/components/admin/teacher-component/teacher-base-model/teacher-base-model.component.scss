@@ -14,3 +14,7 @@ th.mat-cell{
 .contact-info-back{
     background: url(../../../../../assets/images/background.png);
    }
+
+::ng-deep .mat-dialog-container{
+    position: relative;
+}

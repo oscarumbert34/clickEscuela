@@ -2,7 +2,7 @@
   <img id="background-img" src="../../../../assets/images/background.png" alt="">
   <mat-drawer #drawer class="menu-nav" [ngClass]="sidenavClass" mode="side">
     <div id="showButton" *ngIf="showHomeButton" class="row mb-4 px-2 home-button">
-      <div class="col-12" (click)="changeBlock('home')">
+      <div class="col-12" (click)="changeBlock('parent-asistance')" *ngIf="blockDinamicActually!='parent-asistance'">
         <div>
           <img class="image-fluid" src="./assets/images/logo.svg" alt="">
         </div>
@@ -21,6 +21,13 @@
     <!-- Lista de opciones de menu de parent/menu -->
 
     <mat-list>
+
+      <mat-list-item *ngIf="blockDinamicActually != 'parent-asistance'" class="button-menu-container" id="responsivehomeButton"
+        [ngClass]="{'animate-logo': blockDinamicActually !== 'parent-asistance'}">
+        <button class="home-button mb-2" mat-button color (click)="changeBlock('parent-asistance'); notNotification()">
+          <img width="130px" src="./assets/images/logo.svg" alt="" >
+        </button>
+      </mat-list-item>
 
       <mat-list-item class="button-menu-container">
         <button class="button-menu" [ngClass]="{'option-selected': blockDinamicActually=='parent-asistance'}" mat-button
@@ -228,9 +235,12 @@
         <div class="col-1" style="background-color: transparent;"></div>
         <div [ngClass]="dinamicDisplay" (mouseover)="hideNotificaction()" [ngSwitch]="blockDinamicActually">
 
+       
+          
           <div *ngSwitchCase="'parent-asistance'">
-            <app-asistance-parents></app-asistance-parents>
+            <app-asistance-parents [route]="blockDinamicActually"></app-asistance-parents>
           </div>
+          
         
           <div *ngSwitchCase="'payment'">
             <app-payment></app-payment>

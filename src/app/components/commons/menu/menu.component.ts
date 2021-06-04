@@ -62,6 +62,8 @@ export class MenuComponent implements OnInit {
       this.dinamicDisplay = 'col-10 size-display-dinamic';
       this.home.changeSizeDashboard(false);
     }
+
+    
   }
 
 
@@ -93,6 +95,7 @@ export class MenuComponent implements OnInit {
     this.showHomeButton = newBlock != 'home' ? true : false;
     this.blockDinamicActually = newBlock;
     console.log(newBlock)
+    console.log(this.blockDinamicActually)
   }
 
   notNotification() {

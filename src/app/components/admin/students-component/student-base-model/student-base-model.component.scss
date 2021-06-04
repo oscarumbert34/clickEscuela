@@ -11,3 +11,12 @@ th.mat-cell{
 
 }
 
+::ng-deep .mat-paginator-page-size{
+    display: none;
+}
+
+::ng-deep .mat-dialog-container{
+    position: relative;
+}
+
+
