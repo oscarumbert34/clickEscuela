@@ -1,7 +1,7 @@
 import { TeacherBaseModelComponent } from './../teacher-base-model/teacher-base-model.component';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -44,6 +44,7 @@ export class AddTeacherComponent implements OnInit {
 
   @ViewChild('gradeInput') gradeInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  @ViewChild(MatAutocompleteTrigger) matAutocompleteTrigger: MatAutocompleteTrigger;
   //Fin de chips
 
 
@@ -69,8 +70,22 @@ export class AddTeacherComponent implements OnInit {
   resetModelTeacher()
   {
     this.currentTeacher=new Teacher("","",undefined,"","","","","",[])
-   
   }
+
+  openListChips(){
+    console.log("Se hizo click")
+    if (!this.matAutocompleteTrigger.panelOpen)
+    {
+      this.matAutocompleteTrigger.openPanel()
+      console.log("abierto")
+
+    }
+    else{
+      this.matAutocompleteTrigger.closePanel()
+      console.log("cerrado")
+    }
+  }
+ 
 
   ngOnInit() {
     console.log(this.teachersService.teacherList)
