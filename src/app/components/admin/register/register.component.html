@@ -23,7 +23,7 @@
 
       <mat-list-item *ngIf="blockDinamicActually != 'account'" class="button-menu-container" id="responsivehomeButton"
       [ngClass]="{'animate-logo': blockDinamicActually !== 'account'}">
-      <button class="home-button mb-2" mat-button color (click)="changeBlock('account'); notNotification()">
+      <button class="home-button mb-2" mat-button color (click)="changeBlock('account');">
         <img width="130px" src="./assets/images/logo.svg" alt="" >
       </button>
     </mat-list-item>

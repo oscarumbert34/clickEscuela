@@ -6,6 +6,7 @@ export class Grade {
     description: string;
     matter: string;
     grade: number;
+    course: string;
 
     constructor(
         student: string,
@@ -18,6 +19,6 @@ export class Grade {
         this.code = code;
         this.description = description;
         this.matter = matter;
-        this.grade = grade
+        this.grade = grade;
     }
 }

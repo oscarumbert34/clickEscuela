@@ -67,6 +67,7 @@ export class PopupMenuComponent implements OnInit {
         description: "",
         matter: "",
         grade: 0,
+        course: '5B'
       };
       this.localData = {
         grade: {
@@ -75,6 +76,7 @@ export class PopupMenuComponent implements OnInit {
           description: "",
           matter: "",
           grade: 0,
+          course: '6B'
         },
         index: 0,
       };
