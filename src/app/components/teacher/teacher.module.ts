@@ -5,7 +5,6 @@ import { ReportCardComponent } from "./report-card/report-card.component";
 import { AsistanceListComponent } from "./asistance/asistance-list/asistance-list.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ConfirmDialogComponent } from "./../commons/confirm-dialog/confirm-dialog.component";
-import { PopupMenuComponent } from "./../commons/popupMenu/popupMenu.component";
 import { AsistanceComponent } from "./asistance/asistance.component";
 import { GradesComponent } from "./grades/grades.component";
 import { HomeworkComponent } from "./homework/homework.component";
@@ -50,6 +49,7 @@ import { HomeworkListComponent } from "./homework/homework-list/homework-list.co
 import { AddHomeworkComponent } from "./homework/add-homework/add-homework.component";
 import { MenuComponent } from "../commons/menu/menu.component";
 import { AddReportCardComponent } from "./report-card/add-report-card/add-report-card.component";
+import { addGradeComponent } from './add-grade/add-grade.component';
 
 @NgModule({
   declarations: [
@@ -67,14 +67,14 @@ import { AddReportCardComponent } from "./report-card/add-report-card/add-report
     AsistanceComponent,
     StudentsComponent,
     GradesListComponent,
-    PopupMenuComponent,
-    ConfirmDialogComponent,
     HomeworkListComponent,
     AddHomeworkComponent,
     AsistanceListComponent,
     ReportCardComponent,
     ReportCardListComponent,
     AddReportCardComponent,
+    addGradeComponent
+  
   ],
   imports: [
     BrowserModule,

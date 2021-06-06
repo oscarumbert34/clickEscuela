@@ -1,4 +1,3 @@
-import { PopupMenuComponent } from '../../../commons/popupMenu/popupMenu.component';
 import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
 import { GradesService } from '../../../../services/grades.service';
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
@@ -7,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { addGradeComponent } from '../../add-grade/add-grade.component';
 
 
 
@@ -92,7 +92,7 @@ export class GradesListComponent implements OnInit {
   }
 
   openModify(index, grade) {
-    const dialogRef = this.dialog.open(PopupMenuComponent,
+    const dialogRef = this.dialog.open(addGradeComponent,
       {
 
         data: { grade: grade, index: index },

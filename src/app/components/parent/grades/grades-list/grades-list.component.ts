@@ -8,9 +8,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { GradesService } from 'src/app/services/grades.service';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
-import { PopupMenuComponent } from 'src/app/components/commons/popupMenu/popupMenu.component';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
 import { MatTabGroupHarness } from '@angular/material/tabs/testing';
+import { addGradeComponent } from 'src/app/components/teacher/add-grade/add-grade.component';
 
 
 
@@ -131,7 +131,7 @@ export class GradesListComponent implements OnInit {
   }
 
   openModify(index, grade) {
-    const dialogRef = this.dialog.open(PopupMenuComponent,
+    const dialogRef = this.dialog.open(addGradeComponent,
       {
 
         data: { grade: grade, index: index },

@@ -45,8 +45,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { ParentModule } from "../parent/parent.module";
 import { MatChipsModule } from "@angular/material/chips";
-import { ContactInfoComponent } from "../commons/contact-info/contact-info.component";
-import { PaymentsDetailComponent } from "../commons/payments-detail/payments-detail.component";
+
 
 @NgModule({
   declarations: [
@@ -59,8 +58,6 @@ import { PaymentsDetailComponent } from "../commons/payments-detail/payments-det
     TeacherBaseModelComponent,
     AddTeacherComponent,
     EditTeacherComponent,
-    ContactInfoComponent,
-    PaymentsDetailComponent,
     ConfigurationComponent,
     RangeSelectorComponent,
   ],

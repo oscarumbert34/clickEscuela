@@ -13,11 +13,11 @@ import { Student } from "src/app/models/student";
 import { MatSelect } from "@angular/material/select";
 
 @Component({
-  selector: "app-popupMenu",
-  templateUrl: "./popupMenu.component.html",
-  styleUrls: ["./popupMenu.component.scss"],
+  selector: "app-addGrade",
+  templateUrl: "./add-grade.component.html",
+  styleUrls: ["./add-grade.component.scss"],
 })
-export class PopupMenuComponent implements OnInit {
+export class addGradeComponent implements OnInit {
   currentGrade: Grade;
   studentsList: Student[];
   existData: boolean;
@@ -55,7 +55,7 @@ export class PopupMenuComponent implements OnInit {
   
 
   constructor(
-    public dialogRef: MatDialogRef<PopupMenuComponent>,
+    public dialogRef: MatDialogRef<addGradeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private gradesService: GradesService,
     private studentsService: studentService
@@ -67,6 +67,7 @@ export class PopupMenuComponent implements OnInit {
         description: "",
         matter: "",
         grade: 0,
+        course:""
       };
       this.localData = {
         grade: {
@@ -75,6 +76,7 @@ export class PopupMenuComponent implements OnInit {
           description: "",
           matter: "",
           grade: 0,
+          course: ''
         },
         index: 0,
       };
