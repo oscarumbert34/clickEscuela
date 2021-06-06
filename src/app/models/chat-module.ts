@@ -1,4 +1,4 @@
-import { ChatMessage } from './ChatMessage';
+import { ChatMessage } from './chat-message';
 export class ChatModule {
    autor: string;
    messages: ChatMessage[];

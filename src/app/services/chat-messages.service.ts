@@ -1,5 +1,5 @@
-import { ChatMessage } from '../models/ChatMessage';
-import { ChatModule } from '../models/ChatModule';
+import { ChatMessage } from '../models/chat-message';
+import { ChatModule } from '../models/chat-module';
 import { Injectable } from '@angular/core';
 
 @Injectable({

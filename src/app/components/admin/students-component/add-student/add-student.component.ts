@@ -5,8 +5,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Component, OnInit } from "@angular/core";
 import { Student } from "src/app/models/student";
-import { Parent } from "src/app/models/Parent";
-import { Province } from "src/app/models/Province";
+import { Parent } from "src/app/models/parent";
+import { Province } from "src/app/models/province";
 
 @Component({
   selector: "app-add-student",

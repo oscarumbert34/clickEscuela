@@ -1,4 +1,4 @@
-import { ReportCard } from './../models/ReportCard';
+import { ReportCard } from '../models/report-card';
 import { Injectable } from '@angular/core';
 
 @Injectable({

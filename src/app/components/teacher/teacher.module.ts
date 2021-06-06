@@ -49,7 +49,7 @@ import { HomeworkListComponent } from "./homework/homework-list/homework-list.co
 import { AddHomeworkComponent } from "./homework/add-homework/add-homework.component";
 import { MenuComponent } from "../commons/menu/menu.component";
 import { AddReportCardComponent } from "./report-card/add-report-card/add-report-card.component";
-import { addGradeComponent } from './add-grade/add-grade.component';
+import { addGradeComponent } from './grades/add-grade/add-grade.component';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-import { LibraryFile } from './../models/LibraryFile';
+import { LibraryFile } from '../models/library-file';
 import { Injectable } from '@angular/core';
 
 @Injectable({

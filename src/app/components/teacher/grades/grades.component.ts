@@ -3,7 +3,7 @@ import { GradesListComponent } from './grades-list/grades-list.component';
 import { ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { addGradeComponent } from '../add-grade/add-grade.component';
+import { addGradeComponent } from './add-grade/add-grade.component';
 
 @Component({
   selector: 'app-grades',

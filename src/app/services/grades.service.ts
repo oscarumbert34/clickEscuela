@@ -1,7 +1,7 @@
 import { studentService } from './student.service';
 import { Student } from './../models/student';
 import { Injectable } from '@angular/core';
-import { Grade } from '../models/Grade';
+import { Grade } from '../models/grade';
 
 
 

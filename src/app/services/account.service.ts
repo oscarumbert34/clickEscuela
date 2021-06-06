@@ -1,4 +1,4 @@
-import { Account } from './../models/Account';
+import { Account } from '../models/account';
 import { Injectable } from '@angular/core';
 import { Payment } from '../models/payment';
 

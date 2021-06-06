@@ -1,4 +1,4 @@
-import { Message } from '../../app/models/Message';
+import { Message } from '../models/message';
 import { Injectable } from '@angular/core';
 
 @Injectable({

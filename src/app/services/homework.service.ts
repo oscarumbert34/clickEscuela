@@ -1,4 +1,4 @@
-import { Homework } from './../models/Homework';
+import { Homework } from '../models/homework';
 import { Injectable } from '@angular/core';
 
 @Injectable({

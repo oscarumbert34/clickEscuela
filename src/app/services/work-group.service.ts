@@ -1,6 +1,6 @@
-import { Comment } from './../models/Comment';
+import { Comment } from '../models/comment';
 import { Injectable } from '@angular/core';
-import { WorkGroup } from '../models/WorkGroup';
+import { WorkGroup } from '../models/work-group';
 
 
 @Injectable({

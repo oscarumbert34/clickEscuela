@@ -1,4 +1,4 @@
-import { Parent } from '../models/Parent';
+import { Parent } from '../models/parent';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Student } from '../models/student';
 import { Subject } from 'rxjs/internal/Subject';

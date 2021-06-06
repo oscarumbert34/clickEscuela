@@ -1,8 +1,8 @@
 import { MatDialog } from '@angular/material/dialog';
-import { ChatMessage } from "./../../../../models/ChatMessage";
+import { ChatMessage } from "../../../../models/chat-message";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ChatmessagesService } from "../../../../services/chat-messages.service";
-import { ChatModule } from "./../../../../models/ChatModule";
+import { ChatModule } from "../../../../models/chat-module";
 import { element } from "protractor";
 import { style } from "@angular/animations";
 import { MessagesService } from "./../../../../services/messages.service";
@@ -16,7 +16,7 @@ import {
   Input,
   Renderer2,
 } from "@angular/core";
-import { Message } from "src/app/models/Message";
+import { Message } from "src/app/models/message";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";

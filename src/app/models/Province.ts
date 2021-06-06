@@ -1,4 +1,4 @@
-import { Centroide } from "./Centroide";
+import { Centroide } from "./centroide";
 
 export interface Province
 {

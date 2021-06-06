@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, Output, Input } from '@angular/core';
-import { Grade } from 'src/app/models/Grade';
+import { Grade } from 'src/app/models/grade';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +10,8 @@ import { GradesService } from 'src/app/services/grades.service';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
 import { MatTabGroupHarness } from '@angular/material/tabs/testing';
-import { addGradeComponent } from 'src/app/components/teacher/add-grade/add-grade.component';
+import { addGradeComponent } from 'src/app/components/teacher/grades/add-grade/add-grade.component';
+
 
 
 

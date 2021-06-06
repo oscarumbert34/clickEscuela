@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Asistance } from '../models/Asistance';
+import { Asistance } from '../models/asistance';
 
 @Injectable({
   providedIn: 'root'

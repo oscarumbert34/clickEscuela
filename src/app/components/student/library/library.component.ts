@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { LibraryServiceService } from './../../../services/libraryService.service';
-import { LibraryFile } from './../../../models/LibraryFile';
+import { LibraryFile } from '../../../models/library-file';
 import { ProxyService } from './../../../services/proxyService.service';
 import { element } from 'protractor';
 import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild, Renderer2 } from '@angular/core';

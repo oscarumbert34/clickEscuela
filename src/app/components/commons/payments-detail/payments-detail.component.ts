@@ -1,4 +1,4 @@
-import { School } from './../../../models/School';
+import { School } from '../../../models/school';
 import { style } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
