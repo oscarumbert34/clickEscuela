@@ -1,4 +1,4 @@
-import { GeoRefService } from "./../../../../services/geoRef.service";
+import { GeoRefService } from "../../../../services/geo-ref.service";
 import { studentService } from "../../../../services/student.service";
 import { StudentBaseModelComponent } from "../student-base-model/student-base-model.component";
 import { MatDialog } from "@angular/material/dialog";

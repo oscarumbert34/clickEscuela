@@ -30,13 +30,12 @@ export class LibraryComponent implements OnInit {
     this.currentURL = '';
   }
 
-  ngOnInit() { console.log('hello'); }
-
-  ngAfterViewInit() {
+  ngOnInit() {
     for (let i = 0; i < this.canvasList.length; i++) {
       this.getPdf(this.canvasList[i].url, i);
     }
   }
+
 
   openFrame(index) {
     console.log(index);
