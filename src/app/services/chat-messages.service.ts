@@ -64,7 +64,7 @@ export class ChatmessagesService {
   get messagesLenght() {
     let i = 0;
     for (const module of this.chatmodules) {
-      for (const messages of module.messages) {
+      for (const m of module.messages) {
         i++;
       }
     }

@@ -12,7 +12,10 @@ export class MessagesService {
     this.messagesList.push(
       new Message(
         'Profesor Gabriel',
-        'Buenos dias. Sres papas le informamos que el dia 25/05 sera el acto del dia de la revolución de Mayo. Se les solicita a los alumos interesados en participar en el acto anotarse en la lista de candidatos. El vestuario se encuentra en el establecimiento, desde ya muchas gracias por su atencion. \n Atte la direccion',
+        'Buenos dias. Sres papas le informamos que el dia 25/05 sera el acto del dia' +
+        ' de la revolución de Mayo. Se les solicita a los alumos interesados en participar' +
+        ' en el acto anotarse en la lista de candidatos. El vestuario se encuentra en el establecimiento,' +
+        ' desde ya muchas gracias por su atencion. \n Atte la direccion',
         'Mensaje',
         new Date(),
         'roberto'

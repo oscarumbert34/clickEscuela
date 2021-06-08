@@ -24,7 +24,7 @@ interface State {
   sortDirection: SortDirection;
 }
 
-const compare = (v1: string | number | Parent| Date, v2: string | number | Parent| Date) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+const compare = (v1: string | number | Parent| Date, v2: string | number | Parent| Date) => v1 < v2 ? -1 : (v1 > v2 ? 1 : 0);
 
 function sort(students: Student[], column: SortColumn, direction: string): Student[] {
   if (direction === '' || column === '') {
