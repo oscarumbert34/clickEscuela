@@ -19,6 +19,6 @@ export class Grade {
         this.code = code;
         this.description = description;
         this.matter = matter;
-        this.grade = grade
+        this.grade = grade;
     }
 }
