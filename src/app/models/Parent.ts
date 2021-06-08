@@ -8,6 +8,7 @@ export class Parent
      adress: string;
      telephone: string;
      email: string;
+     idType: string;
 
    
 

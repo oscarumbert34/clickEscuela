@@ -67,7 +67,7 @@ export class addGradeComponent implements OnInit {
         description: "",
         matter: "",
         grade: 0,
-        course:""
+        course: '5B'
       };
       this.localData = {
         grade: {
@@ -76,7 +76,7 @@ export class addGradeComponent implements OnInit {
           description: "",
           matter: "",
           grade: 0,
-          course: ''
+          course: '6B'
         },
         index: 0,
       };

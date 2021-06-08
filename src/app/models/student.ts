@@ -15,6 +15,7 @@ export class Student {
 
      parent1: Parent;
      parent2: Parent;
+     idType: string;
 
      constructor(id: string,
           name: string,
