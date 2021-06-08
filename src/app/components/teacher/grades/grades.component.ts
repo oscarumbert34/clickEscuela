@@ -3,7 +3,7 @@ import { GradesListComponent } from './grades-list/grades-list.component';
 import { ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupMenuComponent } from '../../commons/popupMenu/popupMenu.component';
+import { addGradeComponent } from './add-grade/add-grade.component';
 
 @Component({
   selector: 'app-grades',
@@ -22,7 +22,7 @@ export class GradesComponent implements OnInit {
   }
 
   openDialog(input) {
-    const dialogRef = this.dialog.open(PopupMenuComponent,
+    const dialogRef = this.dialog.open(addGradeComponent,
       {
         data: input,
         width: '80%',

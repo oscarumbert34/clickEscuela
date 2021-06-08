@@ -1,4 +1,4 @@
-import { Parent } from "./Parent";
+import { Parent } from "./parent";
 
 export class Student {
      public id: string;

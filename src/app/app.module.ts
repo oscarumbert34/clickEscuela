@@ -29,18 +29,13 @@ import { DashboardChartAdvanceComponent } from './components/commons/dashboard-c
 import { VerticalBarChartComponent } from './components/commons/vertical-bar-chart/vertical-bar-chart.component';
 import { DashboardVerticalComponent } from './components/commons/dashboard-vertical/dashboard-vertical.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DetailStudentComponent,
-    VerticalBarChartComponent,
-    NormalizeWordPipe
-  ],
+  declarations: [AppComponent, VerticalBarChartComponent, NormalizeWordPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,16 +46,21 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    MatDialogModule,MatTooltipModule,MatProgressSpinnerModule,MatSnackBarModule,MatExpansionModule,MatRippleModule,CommonModule,StudentModule,HttpClientModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatRippleModule,
+    CommonModule,
+    StudentModule,
+    HttpClientModule,
     CommonsModule,
-    HttpClientModule
+    HttpClientModule,
+  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
 
-    ],
-    providers: [
-      {provide: MAT_DATE_LOCALE, useValue: 'es-AR'}
-    ],
-  
   bootstrap: [AppComponent],
-  exports:[NormalizeWordPipe]
+  exports: [NormalizeWordPipe],
 })
-export class AppModule { }
+export class AppModule {}

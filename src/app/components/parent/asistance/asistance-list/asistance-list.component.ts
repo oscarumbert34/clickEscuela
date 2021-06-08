@@ -1,9 +1,9 @@
 import { element } from 'protractor';
-import { AsistanceParent } from './../../../../models/AsistanceParent';
+import { AsistanceParent } from '../../../../models/asistance-parent';
 import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Asistance } from 'src/app/models/Asistance';
+import { Asistance } from 'src/app/models/asistance';
 import { MatTableDataSource } from '@angular/material/table';
 import { AsistanceParentService } from 'src/app/services/asistance-parent.service';
 

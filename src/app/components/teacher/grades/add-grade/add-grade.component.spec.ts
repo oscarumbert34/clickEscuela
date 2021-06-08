@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PopupMenuComponent } from './popupMenu.component';
+import { addGradeComponent } from './add-grade.component';
 
-describe('PopupMenuComponent', () => {
-  let component: PopupMenuComponent;
-  let fixture: ComponentFixture<PopupMenuComponent>;
+describe('addGradeComponent', () => {
+  let component: addGradeComponent;
+  let fixture: ComponentFixture<addGradeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopupMenuComponent ]
+      declarations: [ addGradeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupMenuComponent);
+    fixture = TestBed.createComponent(addGradeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

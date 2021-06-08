@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WorkGroup } from 'src/app/models/WorkGroup';
+import { WorkGroup } from 'src/app/models/work-group';
 import { WorkGroupService } from 'src/app/services/work-group.service';
 
 @Component({

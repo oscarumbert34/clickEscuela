@@ -1,7 +1,7 @@
 import { TeacherService } from "src/app/services/teacher.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { ConfirmDialogComponent } from "src/app/components/commons/confirm-dialog/confirm-dialog.component";
-import { Teacher } from "src/app/models/Teacher";
+import { Teacher } from "src/app/models/teacher";
 import { EditTeacherComponent } from "../edit-teacher/edit-teacher.component";
 import {
   Component,

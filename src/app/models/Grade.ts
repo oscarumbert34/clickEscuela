@@ -7,7 +7,7 @@ export class Grade {
     matter: string;
     grade: number;
     course: string;
-
+    
     constructor(
         student: string,
         code: string,

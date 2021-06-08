@@ -1,9 +1,9 @@
 import { of } from 'rxjs/internal/observable/of';
 import { WorkGroupService } from './../../../../services/work-group.service';
-import { History } from './../../../../models/History';
+import { History } from '../../../../models/history';
 
-import { Comment } from './../../../../models/Comment';
-import { WorkGroup } from './../../../../models/WorkGroup';
+import { Comment } from '../../../../models/comment';
+import { WorkGroup } from '../../../../models/work-group';
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';

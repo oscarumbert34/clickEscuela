@@ -1,7 +1,5 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async, inject } from '@angular/core/testing';
-import { GeoRefService } from './geoRef.service';
+import { TestBed, inject } from '@angular/core/testing';
+import { GeoRefService } from './geo-ref.service';
 
 describe('Service: Province', () => {
   beforeEach(() => {

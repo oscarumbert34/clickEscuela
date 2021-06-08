@@ -1,8 +1,8 @@
-import { Comment } from './../../../../../models/Comment';
+import { Comment } from '../../../../../models/comment';
 import { ModalEditComponent } from './../../../modal-edit/modal-edit.component';
 import { WorkGroupService } from './../../../../../services/work-group.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { WorkGroup } from 'src/app/models/WorkGroup';
+import { WorkGroup } from 'src/app/models/work-group';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 

@@ -44,8 +44,8 @@ export class PaymentComponent implements OnInit {
     const dialogRef = this.dialog.open(PaymentsDetailComponent,
       {
         data:{payment:this.paymentList,student:this.currentStudent},
-        width: '80vw',
-        height: '300px'
+        width: "100vw",
+      height: "95vh",
       }
     )
 

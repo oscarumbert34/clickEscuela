@@ -4,7 +4,7 @@ import { Component, Inject, OnInit, ElementRef, ViewChild, ViewChildren, Input, 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportCardService } from 'src/app/services/reportCard.service';
 import { TrimesterService } from 'src/app/services/trimester.service';
-import { ReportCard } from 'src/app/models/ReportCard';
+import { ReportCard } from 'src/app/models/report-card';
 
 @Component({
   selector: 'app-addReportCard',

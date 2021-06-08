@@ -1,4 +1,4 @@
-import { AsistanceParent } from './../models/AsistanceParent';
+import { AsistanceParent } from '../models/asistance-parent';
 import { Injectable } from '@angular/core';
 
 @Injectable({

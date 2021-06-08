@@ -14,7 +14,7 @@ import { StudentBaseModelComponent } from '../../students-component/student-base
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, startWith } from 'rxjs/operators';
-import { Teacher } from 'src/app/models/Teacher';
+import { Teacher } from 'src/app/models/teacher';
 import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({

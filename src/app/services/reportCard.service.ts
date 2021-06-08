@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReportCard } from '../models/ReportCard';
+import { ReportCard } from '../models/report-card';
 
 @Injectable({
   providedIn: 'root'
@@ -13,27 +13,27 @@ export class ReportCardService {
 
     this.mattersList =
       [
-        "Matematicas", "Lengua", "Ciencias Sociales", "Ciencias Naturales", "Geografia", "Ingles", "Educacion fisica"
+        'Matematicas', 'Lengua', 'Ciencias Sociales', 'Ciencias Naturales', 'Geografia', 'Ingles', 'Educacion fisica'
 
-      ]
+      ];
     this.reportCardList = [];
-    this.reportCardList.push(new ReportCard('Jazmin', "Fernandez",new Date()))
-    this.reportCardList.push(new ReportCard('Eduardo', 'Gomez',new Date()))
-    this.reportCardList.push(new ReportCard('Mijail', 'Andrada',new Date()))
+    this.reportCardList.push(new ReportCard('Jazmin', 'Fernandez', new Date()));
+    this.reportCardList.push(new ReportCard('Eduardo', 'Gomez', new Date()));
+    this.reportCardList.push(new ReportCard('Mijail', 'Andrada', new Date()));
 
-    this.loadMatters(this.mattersList, 0)
-    this.loadMatters(this.mattersList, 1)
-    this.loadMatters(this.mattersList, 2)
+    this.loadMatters(this.mattersList, 0);
+    this.loadMatters(this.mattersList, 1);
+    this.loadMatters(this.mattersList, 2);
 
-    this.reportCardList[1].loadMatter("Lengua", 5);
-    this.reportCardList[1].loadMatter("Matematicas", 10)
+    this.reportCardList[1].loadMatter('Lengua', 5);
+    this.reportCardList[1].loadMatter('Matematicas', 10);
 
 
 
   }
 
   loadMatters(matters: string[], index) {
-    for (let matter of matters) {
+    for (const matter of matters) {
       this.reportCardList[index].loadMatter(matter, 0);
     }
 
@@ -44,11 +44,11 @@ export class ReportCardService {
     for (let i = 0; i < this.mattersList.length; i++) {
 
 
-      this.reportCardList[index].loadMatter(this.mattersList[i], grades[i])
+      this.reportCardList[index].loadMatter(this.mattersList[i], grades[i]);
 
     }
 
-    console.log(this.reportCardList[index])
+    console.log(this.reportCardList[index]);
   }
 
   reportCardIndex(index) {
@@ -56,8 +56,8 @@ export class ReportCardService {
   }
 
   deleteReportCard(index) {
-    console.log("Se eliminara " + index)
-    this.reportCardList[index].matters = new Map()
+    console.log('Se eliminara ' + index);
+    this.reportCardList[index].matters = new Map();
 
   }
 

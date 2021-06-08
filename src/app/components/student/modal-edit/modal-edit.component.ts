@@ -1,4 +1,4 @@
-import { Comment } from './../../../models/Comment';
+import { Comment } from '../../../models/comment';
 import { Component, Inject, OnInit, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
