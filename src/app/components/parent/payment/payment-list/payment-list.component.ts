@@ -17,7 +17,7 @@ export class PaymentListComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: any;
-  currentDate = new Date()
+  currentDate = new Date();
   @Input() idStudent;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -29,33 +29,34 @@ export class PaymentListComponent implements OnInit {
 
 
   constructor(private paymentService: AccountService) {
-    console.log(this.paymentList)
+    console.log(this.paymentList);
   }
 
   getBillName() {
-    let date = new Date()
-    return 'bill' + date.getDate() + date.getHours() + date.getSeconds()
+    const date = new Date();
+    return 'bill' + date.getDate() + date.getHours() + date.getSeconds();
   }
 
   public downloadPDF(index): void {
-    let date = new Date()
-    let billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds()
+    const date = new Date();
+    const billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds();
 
-    let payment = this.paymentList[index]
+    const payment = this.paymentList[index];
 
     const doc = new jsPDF();
 
 
-    let src = 'D:/clickEscuela/src/assets/images/payOK.jpg'
+    const src = 'D:/clickEscuela/src/assets/images/payOK.jpg';
 
-    var imgData = btoa(src)
-    //doc.addImage(imgData, 'jpg', 10, 78, 12, 15)
+    const imgData = btoa(src);
+    // doc.addImage(imgData, 'jpg', 10, 78, 12, 15)
 
 
-    doc.text("Generando factura para el periodo: " + payment.period.getDate() + "/" + (payment.period.getMonth() + 1) + "/" + payment.period.getFullYear(), 10, 10);
-    doc.text("Por un monto de: " + payment.amount, 10, 20);
-    doc.text("La Factura se encuentra: " + (payment.status ? 'Paga' : "Pendiente de pago"), 10, 30);
-    doc.text("Esto es un documento de prueba", 10, 50);
+    doc.text('Generando factura para el periodo: ' + payment.period.getDate() + '/' +
+     (payment.period.getMonth() + 1) + '/' + payment.period.getFullYear(), 10, 10);
+    doc.text('Por un monto de: ' + payment.amount, 10, 20);
+    doc.text('La Factura se encuentra: ' + (payment.status ? 'Paga' : 'Pendiente de pago'), 10, 30);
+    doc.text('Esto es un documento de prueba', 10, 50);
 
 
 
@@ -64,7 +65,7 @@ export class PaymentListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.paymentList = this.paymentService.accountsList.filter(a=>a.$titularId===this.idStudent)[0].$payments
+    this.paymentList = this.paymentService.accountsList.filter(a => a.$titularId === this.idStudent)[0].$payments;
 
     this.displayedColumns = ['amount', 'status', 'expiration', 'paybill'];
 
@@ -75,13 +76,13 @@ export class PaymentListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    console.log(this.paymentList)
-    console.log(this.idStudent)
+    console.log(this.paymentList);
+    console.log(this.idStudent);
   }
 
   refreshTable() {
-    console.log("Refresh exitoso")
-    this.dataSource.data = this.paymentService.accountsList.filter(a=>a.$titularId==this.idStudent)[0].$payments
+    console.log('Refresh exitoso');
+    this.dataSource.data = this.paymentService.accountsList.filter(a => a.$titularId === this.idStudent)[0].$payments;
   }
 
 

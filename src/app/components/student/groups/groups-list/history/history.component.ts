@@ -12,20 +12,18 @@ export class HistoryComponent implements OnInit {
   @Input() group: WorkGroup;
   @Input() currentIndex: number;
   @Input() currentSender: string;
-  @Input() showSpan:boolean;
+  @Input() showSpan: boolean;
 
   constructor(private workGroupService: WorkGroupService) { }
 
   ngOnInit() {
   }
 
-  addComment(index,comment)
-  {
-    this.workGroupService.addComment(index,this.currentSender,comment)
+  addComment(index, comment) {
+    this.workGroupService.addComment(index, this.currentSender, comment);
   }
 
-  addHistory(index,history)
-  {
-    this.workGroupService.addHistory(index,this.currentSender,history)
+  addHistory(index, history) {
+    this.workGroupService.addHistory(index, this.currentSender, history);
   }
 }

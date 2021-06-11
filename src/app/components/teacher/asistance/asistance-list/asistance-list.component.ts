@@ -17,7 +17,7 @@ import moment from 'moment';
 export class AsistanceListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: any;
-  currentDate = new Date()
+  currentDate = new Date();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -34,12 +34,13 @@ export class AsistanceListComponent implements OnInit {
   constructor(private asistanceService: AsistanceService, private snackbar: MatSnackBar) {
     this.takeAsistance = false;
 
-    this.asistanceList = []
+    this.asistanceList = [];
     this.asistanceListAux = [];
 
-    this.asistanceList = asistanceService.asistancesList
-    for (let asistance of this.asistanceList)
-      this.asistanceListAux.push(asistance)
+    this.asistanceList = asistanceService.asistancesList;
+    for (const asistance of this.asistanceList) {
+      this.asistanceListAux.push(asistance);
+    }
 
     this.presentsList = new Array(this.asistanceListAux.length);
 
@@ -47,10 +48,10 @@ export class AsistanceListComponent implements OnInit {
       this.presentsList[i] = false;
     }
 
-    this.currentDate.setHours(0)
-    this.currentDate.setMinutes(0)
-    this.currentDate.setSeconds(0)
-    this.currentDate.setMilliseconds(0)
+    this.currentDate.setHours(0);
+    this.currentDate.setMinutes(0);
+    this.currentDate.setSeconds(0);
+    this.currentDate.setMilliseconds(0);
 
 
 
@@ -71,22 +72,20 @@ export class AsistanceListComponent implements OnInit {
 
   filterByDate() {
     if (this.picker.startAt != null) {
-      let asis = this.asistanceService.asistancesList.filter(a => a.date.getTime() === this.picker.startAt.getTime())
+      const asis = this.asistanceService.asistancesList.filter(a => a.date.getTime() === this.picker.startAt.getTime());
 
-      if (asis.length == 0) {
-        this.openSnackbar("No se encontraron entradas para la fecha seleccionada")
+      if (asis.length === 0) {
+        this.openSnackbar('No se encontraron entradas para la fecha seleccionada');
 
-        this.refreshTable()
-      }
-      else {
+        this.refreshTable();
+      } else {
         this.dataSource.data = asis;
-        this.openSnackbar("Se encontraron los siguientes resultados para la fecha seleccionada")
+        this.openSnackbar('Se encontraron los siguientes resultados para la fecha seleccionada');
 
 
       }
-    }
-    else {
-      this.openSnackbar("No selecciono una fecha")
+    } else {
+      this.openSnackbar('No selecciono una fecha');
     }
 
 
@@ -103,19 +102,18 @@ export class AsistanceListComponent implements OnInit {
   }
 
   changeTakeAsistance() {
-    console.log(this.asistanceListAux)
+    console.log(this.asistanceListAux);
     if (!this.takeAsistance) {
       this.takeAsistance = !this.takeAsistance;
       this.paginator.pageSize = this.asistanceListAux.length;
       this.dataSource.data = this.asistanceListAux;
-      console.log(this.paginator)
-     
+      console.log(this.paginator);
 
-    }
-    else {
+
+    } else {
       this.takeAsistance = !this.takeAsistance;
       this.paginator.pageSize = 5;
-      this.refreshTable()
+      this.refreshTable();
 
 
 
@@ -129,13 +127,13 @@ export class AsistanceListComponent implements OnInit {
 
   changeStatus(index: number, status: boolean) {
     this.asistanceService.changeStatus(index, status);
-    this.refreshTable()
+    this.refreshTable();
   }
 
   refreshTable() {
-    console.log("Refresh exitoso")
-    
-    this.dataSource.data = this.asistanceList
+    console.log('Refresh exitoso');
+
+    this.dataSource.data = this.asistanceList;
   }
 
 
@@ -149,17 +147,17 @@ export class AsistanceListComponent implements OnInit {
   }
 
   setPresent($event: Event, index: number) {
-    console.log($event)
-    let check = ($event.target as HTMLInputElement).checked
+    console.log($event);
+    const check = ($event.target as HTMLInputElement).checked;
     this.presentsList[index] = check;
   }
 
   savePresents() {
 
     for (let i = 0; i < this.presentsList.length; i++) {
-      let newasistance = new Asistance(this.asistanceList[i].name, this.asistanceList[i].surname, this.currentDate, this.presentsList[i])
+      const newasistance = new Asistance(this.asistanceList[i].name, this.asistanceList[i].surname, this.currentDate, this.presentsList[i]);
 
-      this.asistanceService.addAsistance(newasistance)
+      this.asistanceService.addAsistance(newasistance);
 
     }
 
@@ -167,7 +165,7 @@ export class AsistanceListComponent implements OnInit {
     this.takeAsistance = false;
     this.paginator.pageSize = 5;
 
-    this.refreshTable()
+    this.refreshTable();
   }
 
 }

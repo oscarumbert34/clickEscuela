@@ -21,7 +21,7 @@ export class ReportCardListComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: any;
-  currentDate = new Date()
+  currentDate = new Date();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -31,7 +31,7 @@ export class ReportCardListComponent implements OnInit {
 
 
   constructor(private reportCardService: ReportCardService, public dialog: MatDialog, private snackBar: MatSnackBar) {
-    this.reportCardList = reportCardService.reportCardList
+    this.reportCardList = reportCardService.reportCardList;
   }
 
   ngOnInit() {
@@ -48,29 +48,29 @@ export class ReportCardListComponent implements OnInit {
   }
 
   public downloadPDF(index): void {
-    let date = new Date()
-    let billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds()
+    const date = new Date();
+    const billname = 'bill' + date.getDate() + date.getHours() + date.getSeconds();
 
-    let reportCard = this.reportCardList[index]
-    console.log(reportCard)
+    const reportCard = this.reportCardList[index];
+    console.log(reportCard);
 
     const doc = new jsPDF();
 
 
-    let src = 'D:/clickEscuela/src/assets/images/payOK.jpg'
+    const src = 'D:/clickEscuela/src/assets/images/payOK.jpg';
 
-    var imgData = btoa(src)
-    //doc.addImage(imgData, 'jpg', 10, 78, 12, 15)
+    const imgData = btoa(src);
+    // doc.addImage(imgData, 'jpg', 10, 78, 12, 15)
 
 
-    let lineOffset = 10;
-    var columns = ["Materia", "Nota"]
-    var data = [];
+    const lineOffset = 10;
+    const columns = ['Materia', 'Nota'];
+    const data = [];
 
-    for (let [clave, valor] of reportCard.matters) {
-      data.push([clave, valor])
+    for (const [clave, valor] of reportCard.matters) {
+      data.push([clave, valor]);
     }
-    console.log(data)
+    console.log(data);
 
     doc.autoTable(columns, data,
       { margin: { top: 25 } }
@@ -84,20 +84,20 @@ export class ReportCardListComponent implements OnInit {
   }
 
   confirmDownload(row, index) {
-    console.log(row)
+    console.log(row);
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent,
       {
-        data: "¿Desea descargar el boletin de " + row,
+        data: '¿Desea descargar el boletin de ' + row,
         width: '60%',
         height: '150px'
       }
-    )
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.downloadPDF(index)
-        this.snackBar.open("Se descargo el boletin de " + row, "OK", { duration: 3000 })
+        this.downloadPDF(index);
+        this.snackBar.open('Se descargo el boletin de ' + row, 'OK', { duration: 3000 });
 
 
       }

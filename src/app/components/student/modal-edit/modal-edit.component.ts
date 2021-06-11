@@ -9,27 +9,25 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ModalEditComponent implements OnInit {
 
-  returnDataComment:any;
+  returnDataComment: any;
 
-  constructor(public dialogRef: MatDialogRef<ModalEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Comment) 
-  {
-    this.returnDataComment="holita"
+  constructor(public dialogRef: MatDialogRef<ModalEditComponent>, @Inject(MAT_DIALOG_DATA) public data: Comment) {
+    this.returnDataComment = 'holita';
    }
 
-  ngOnInit()
-  {
-    
-  }
-  closeOperation(comment){
-
-    if(comment!=this.data.content)
-    this.returnDataComment=comment
-    else this.returnDataComment=false;
-    this.dialogRef.close(this.returnDataComment)
+  ngOnInit() {
 
   }
-  getCommentContent(){
-    return this.data.content
+  closeOperation(comment) {
+
+    if (comment !== this.data.content) {
+    this.returnDataComment = comment;
+    } else { this.returnDataComment = false; }
+    this.dialogRef.close(this.returnDataComment);
+
+  }
+  getCommentContent() {
+    return this.data.content;
   }
 
 }

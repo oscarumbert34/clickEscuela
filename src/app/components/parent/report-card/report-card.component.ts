@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ReportCardComponent implements OnInit {
 
-  @Input() route:string;
+  @Input() route: string;
   constructor() { }
 
   ngOnInit(): void {

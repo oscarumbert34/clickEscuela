@@ -9,16 +9,14 @@ import { WorkGroupService } from 'src/app/services/work-group.service';
 })
 export class GroupsComponent implements OnInit {
 
-  workGroupList:WorkGroup[];
-  constructor(private workgroupService: WorkGroupService) 
-  { 
-    this.workGroupList=[];
-    this.workGroupList=workgroupService.groupsList
+  workGroupList: WorkGroup[];
+  constructor(private workgroupService: WorkGroupService) {
+    this.workGroupList = [];
+    this.workGroupList = workgroupService.groupsList;
 
   }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
   }
 
 }

@@ -11,7 +11,7 @@ export class PieChartComponent implements OnInit {
 
   @Input()
   dashBoardProperties: Dashboardproperties;
-  
+
   constructor() {
     Object.assign(this, { single });
   }
@@ -20,8 +20,8 @@ export class PieChartComponent implements OnInit {
   view: any[] = [500, 200];
 
   // options
-  showLegend: boolean = true;
-  showLabels: boolean = true;
+  showLegend = true;
+  showLabels = true;
 
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']

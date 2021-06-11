@@ -11,7 +11,7 @@ export class DashboardVerticalComponent implements OnInit {
   @Input()
   dashBoardProperties: Dashboardproperties;
   constructor() {
-    Object.assign(this, { single })
+    Object.assign(this, { single });
 
    }
   single: any[];

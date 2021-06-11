@@ -8,18 +8,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ModalFrameComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalFrameComponent>, @Inject(MAT_DIALOG_DATA) public data: any)
-  {
-   
+  constructor(public dialogRef: MatDialogRef<ModalFrameComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+
   }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
   }
 
-  onClose(){
-    
-    this.dialogRef.close()
+  onClose() {
+
+    this.dialogRef.close();
   }
 
 }

@@ -17,11 +17,11 @@ export class HomeworkComponent implements OnInit {
   @Input() currentNotification: Notification;
   @Input() isNotification: boolean;
   @ViewChildren(HomeworkListComponent) homeworkList: QueryList<HomeworkListComponent>;
-  student:Student
+  student: Student;
 
 
   constructor(public dialog: MatDialog) {
-    
+
   }
 
   openDialog(input) {
@@ -31,15 +31,15 @@ export class HomeworkComponent implements OnInit {
         width: '80%',
         height: '75%'
       }
-    )
+    );
 
-    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens()})
+    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens(); });
 
   }
 
   refreshAllChildrens() {
-    for (let comp of this.homeworkList) {
-      comp.refreshTable()
+    for (const comp of this.homeworkList) {
+      comp.refreshTable();
     }
 
   }

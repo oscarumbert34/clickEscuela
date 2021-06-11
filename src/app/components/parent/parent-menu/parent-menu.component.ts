@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, Directive, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Student } from 'src/app/models/student';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Notification } from '../../interfaces/Notification';
 import { HomeComponent } from '../../teacher/home/home.component';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-parent-menu',
@@ -82,15 +81,15 @@ export class ParentMenuComponent implements OnInit {
   receiveNotification($event) {
     this.currentNotification = $event;
     this.isNotification = true;
-    this.changeBlock($event.type == 'Tarea' ? 'homework' : 'grade');
+    this.changeBlock($event.type === 'Tarea' ? 'homework' : 'grade');
 
   }
 
   changeBlock(newBlock: string) {
     console.log(this.showHomeButton);
-    this.showHomeButton = newBlock != 'home' ? true : false;
+    this.showHomeButton = newBlock !== 'home' ? true : false;
     this.blockDinamicActually = newBlock;
-    console.log(newBlock)
+    console.log(newBlock);
   }
 
   notNotification() {
@@ -99,9 +98,9 @@ export class ParentMenuComponent implements OnInit {
 
   ngOnInit() {
     this.sidenav.open();
-    console.log(this.blockDinamicActually)
-    
-    //console.log(this.router.url)
+    console.log(this.blockDinamicActually);
+
+    // console.log(this.router.url)
 
   }
 

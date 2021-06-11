@@ -10,14 +10,14 @@ export class GradesComponent implements OnInit {
   sonParent: string[];
 
   constructor() {
-    this.sonParent = []
-    this.sonParent.push("Alberto Sanchez")
-    this.sonParent.push("Daniel Sanchez")
+    this.sonParent = [];
+    this.sonParent.push('Alberto Sanchez');
+    this.sonParent.push('Daniel Sanchez');
 
   }
 
   showSon(son: string) {
-    console.log(son)
+    console.log(son);
   }
 
   ngOnInit(): void {

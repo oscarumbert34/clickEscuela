@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { addGradeComponent } from '../add-grade/add-grade.component';
+import { AddGradeComponent } from '../add-grade/add-grade.component';
 
 
 
@@ -33,7 +33,7 @@ export class GradesListComponent implements OnInit {
   constructor(private gradeService: GradesService, public dialog: MatDialog) {
 
     this.gradesList = new Array();
-    this.gradesList = gradeService.gradesList
+    this.gradesList = gradeService.gradesList;
 
   }
 
@@ -62,15 +62,15 @@ export class GradesListComponent implements OnInit {
   deleteGrade(index) {
 
     this.gradeService.deleteGrade(index);
-    this.refreshTable()
+    this.refreshTable();
   }
 
   modifyGrade(index, grade) {
-    this.gradeService.modifyGrade(index, grade)
+    this.gradeService.modifyGrade(index, grade);
   }
 
   confirmDelete(index) {
-    this.confirmDialog("¿Desea eliminar la nota?", index);
+    this.confirmDialog('¿Desea eliminar la nota?', index);
   }
 
   confirmDialog(input, index) {
@@ -81,43 +81,43 @@ export class GradesListComponent implements OnInit {
         width: '60%',
         height: '150px'
       }
-    )
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.deleteGrade(index)
+        this.deleteGrade(index);
 
       }
     });
   }
 
   openModify(index, grade) {
-    const dialogRef = this.dialog.open(addGradeComponent,
+    const dialogRef = this.dialog.open(AddGradeComponent,
       {
 
-        data: { grade: grade, index: index },
+        data: { grade, index },
         width: '80%',
         height: '75%'
 
       }
 
 
-    )
+    );
 
-    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens() })
+    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens(); });
 
   }
 
 
   refreshAllChildrens() {
-    for (let comp of this.listGrades) {
-      comp.refreshTable()
+    for (const comp of this.listGrades) {
+      comp.refreshTable();
     }
 
   }
 
   refreshTable() {
-    console.log("Refresh exitoso")
+    console.log('Refresh exitoso');
     this.dataSource.data = this.gradesList;
   }
 }

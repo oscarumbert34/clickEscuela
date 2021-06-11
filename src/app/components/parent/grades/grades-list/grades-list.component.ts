@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 
-import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, Output, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, Input } from '@angular/core';
 import { Grade } from 'src/app/models/grade';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -8,9 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { GradesService } from 'src/app/services/grades.service';
 import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import { MatTabGroupHarness } from '@angular/material/tabs/testing';
-import { addGradeComponent } from 'src/app/components/teacher/grades/add-grade/add-grade.component';
+import { AddGradeComponent } from 'src/app/components/teacher/grades/add-grade/add-grade.component';
 
 
 
@@ -35,7 +33,7 @@ export class GradesListComponent implements OnInit {
 
   @Input() son;
 
-  routeLink: string
+  routeLink: string;
 
 
 
@@ -47,14 +45,14 @@ export class GradesListComponent implements OnInit {
   constructor(private gradeService: GradesService, public dialog: MatDialog, private router: Router) {
 
     this.gradesList = new Array();
-    this.gradesList = gradeService.gradesList.filter(a => a.student == "Alberto Sanchez")
-    this.routeLink=this.router.url
+    this.gradesList = gradeService.gradesList.filter(a => a.student === 'Alberto Sanchez');
+    this.routeLink = this.router.url;
 
   }
 
   applySonFilter() {
-    this.gradesList = this.gradeService.gradesList.filter(a => a.student == this.son)
-    this.dataSource = this.gradesList
+    this.gradesList = this.gradeService.gradesList.filter(a => a.student === this.son);
+    this.dataSource = this.gradesList;
 
   }
 
@@ -62,19 +60,15 @@ export class GradesListComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.routeLink==="/parent/menu")
-    {
+    if (this.routeLink === '/parent/menu') {
 
       this.displayedColumns = ['student', 'description', 'matter', 'grade'];
-    }
-
-    else
-    {
+    } else {
 
       this.displayedColumns = ['description', 'matter', 'grade'];
     }
 
-    console.log(this.displayedColumns)
+    console.log(this.displayedColumns);
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
@@ -82,9 +76,9 @@ export class GradesListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    this.applySonFilter()
+    this.applySonFilter();
 
-    console.log(this.routeLink)
+    console.log(this.routeLink);
 
 
   }
@@ -100,17 +94,17 @@ export class GradesListComponent implements OnInit {
   deleteGrade(index) {
 
     this.gradeService.deleteGrade(index);
-    this.refreshTable()
+    this.refreshTable();
   }
 
 
 
   modifyGrade(index, grade) {
-    this.gradeService.modifyGrade(index, grade)
+    this.gradeService.modifyGrade(index, grade);
   }
 
   confirmDelete(index) {
-    this.confirmDialog("¿Desea eliminar la nota?", index);
+    this.confirmDialog('¿Desea eliminar la nota?', index);
   }
 
   confirmDialog(input, index) {
@@ -121,48 +115,48 @@ export class GradesListComponent implements OnInit {
         width: '60%',
         height: '150px'
       }
-    )
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.deleteGrade(index)
+        this.deleteGrade(index);
 
       }
     });
   }
 
   openModify(index, grade) {
-    const dialogRef = this.dialog.open(addGradeComponent,
+    const dialogRef = this.dialog.open(AddGradeComponent,
       {
 
-        data: { grade: grade, index: index },
+        data: { grade, index },
         width: '80%',
         height: '75%'
 
       }
 
 
-    )
+    );
 
-    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens() })
+    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens(); });
 
   }
 
 
   refreshAllChildrens() {
-    for (let comp of this.listGrades) {
-      comp.refreshTable()
+    for (const comp of this.listGrades) {
+      comp.refreshTable();
     }
 
   }
 
   refreshTable() {
-    console.log("Refresh exitoso")
+    console.log('Refresh exitoso');
     this.dataSource.data = this.gradesList;
   }
 
   showSon() {
-    console.log(this.son)
+    console.log(this.son);
   }
 
 }

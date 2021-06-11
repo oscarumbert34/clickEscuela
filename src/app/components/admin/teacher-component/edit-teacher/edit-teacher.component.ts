@@ -15,7 +15,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 })
 export class EditTeacherComponent implements OnInit {
 
-    //variables para hacer funcionar los chips
+    // variables para hacer funcionar los chips
     visible = true;
     selectable = true;
     removable = true;
@@ -23,48 +23,46 @@ export class EditTeacherComponent implements OnInit {
     gradeCtrl = new FormControl();
     filteredgrades: Observable<string[]>;
     allgrades: string[] = [];
-  
-    gradeChar = ['A', 'B', 'C', "D"]
-    typeIDs:string[]
-  
-  
-  
+
+    gradeChar = ['A', 'B', 'C', 'D'];
+    typeIDs: string[];
+
+
+
     @ViewChild('gradeInput') gradeInput: ElementRef<HTMLInputElement>;
     @ViewChild('auto') matAutocomplete: MatAutocomplete;
-    //Fin de chips
+    // Fin de chips
 
   constructor(
-    public dialogRef: MatDialogRef<EditTeacherComponent>, 
+    public dialogRef: MatDialogRef<EditTeacherComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar, 
-    private teachersService: TeacherService) 
-    { for (let i = 1; i <= 6; i++) {
+    private snackBar: MatSnackBar,
+    private teachersService: TeacherService) { for (let i = 1; i <= 6; i++) {
       for (let j = 0; j <= 3; j++) {
-        this.allgrades.push(i + this.gradeChar[j])
+        this.allgrades.push(i + this.gradeChar[j]);
       }
-      
-      this.typeIDs = ["DNI", "CI", "LE", "LC"];
+
+      this.typeIDs = ['DNI', 'CI', 'LE', 'LC'];
   }
 }
 
   ngOnInit() {
-    console.log(this.data.teacher)
-    console.log(this.allgrades)
-    
+    console.log(this.data.teacher);
+    console.log(this.allgrades);
+
   }
 
-  onClose(){
-    this.dialogRef.close(true)
+  onClose() {
+    this.dialogRef.close(true);
   }
-  showSnackBar(message:string)
-  { 
-    this.snackBar.open(message, "Aceptar" ,{duration:5500})
+  showSnackBar(message: string) {
+    this.snackBar.open(message, 'Aceptar' , {duration: 5500});
   }
 
-  editTeacher(index){
-    this.teachersService.editTeacher(index,this.data.teacher)
+  editTeacher(index) {
+    this.teachersService.editTeacher(index, this.data.teacher);
     this.onClose();
-    this.showSnackBar("Se edito la entrada")
+    this.showSnackBar('Se edito la entrada');
   }
 
   add(event: MatChipInputEvent): void {
@@ -75,23 +73,23 @@ export class EditTeacherComponent implements OnInit {
     if ((value || '').trim()) {
       this.data.teacher.courses.push(value.trim());
     }
-    
+
     // Reset the input value
     if (input) {
       input.value = '';
     }
-    
+
     this.gradeCtrl.setValue(null);
   }
-  
+
   remove(grade: string): void {
     const index = this.data.teacher.courses.indexOf(grade);
-    
+
     if (index >= 0) {
       this.data.teacher.courses.splice(index, 1);
     }
   }
-  
+
   selected(event: MatAutocompleteSelectedEvent): void {
     this.data.teacher.courses.push(event.option.viewValue);
     this.gradeInput.nativeElement.value = '';

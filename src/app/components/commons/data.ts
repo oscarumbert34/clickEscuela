@@ -1,10 +1,10 @@
-export var trabajoPractico = [
+export let trabajoPractico = [
     {
-      "name": "Entregado",
-      "value": 70
+      name: 'Entregado',
+      value: 70
     },
     {
-      "name": "No entregado",
-      "value": 30
+      name: 'No entregado',
+      value: 30
     }
   ];
