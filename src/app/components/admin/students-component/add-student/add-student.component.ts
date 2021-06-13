@@ -48,7 +48,7 @@ export class AddStudentComponent implements OnInit {
       id: '',
       name: '',
       surname: '',
-      bornDate: undefined,
+      birthday: undefined,
       absences: 0,
       observation: '',
       course: '',

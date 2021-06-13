@@ -11,6 +11,7 @@ import { SortColumn, SortDirection } from '../components/directives/sortable.dir
 import { Observable } from 'rxjs/internal/Observable';
 import { PipeTransform, Injectable } from '@angular/core';
 import { of } from 'rxjs/internal/observable/of';
+import { HttpClient } from '@angular/common/http';
 interface SearchResult {
   students: Student[];
   total: number;
@@ -64,7 +65,9 @@ export class studentService {
   editCurrentStudent: Student;
 
 
-  constructor(private pipe: DecimalPipe) {
+  constructor(
+    private pipe: DecimalPipe,
+    private connector: HttpClient) {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -224,6 +227,14 @@ export class studentService {
   edit(index, data: Student) {
     this.studentsArray.splice(index, 1, data);
   }
+
+  // Aca incia el codigo para consumo de api
+
+  getStudents(fulldetail: boolean): Observable<any> {
+    const path = 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/1365/student?fullDetail=' + fulldetail;
+    return this.connector.get<any>(path);
+  }
+
 
 
 

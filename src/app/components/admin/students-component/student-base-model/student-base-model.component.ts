@@ -37,9 +37,10 @@ export class StudentBaseModelComponent implements OnInit {
     this.displayedColumns = [
       'name',
       'surname',
-      'birthDate',
-      'absences',
-      'observations',
+      'birthday',
+      'document'
+      // 'absences',
+      // 'observations',
     ];
 
     // Assign the data to the data source for the table to render
@@ -54,13 +55,20 @@ export class StudentBaseModelComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.studentsService.getStudents(false).subscribe( (data) => {
+      console.log(data);
+      this.studentsArray = data;
+    });
+
     this.displayedColumns = [
 
       'name',
       'surname',
-      'birthDate',
-      'absences',
-      'observations',
+      'birthday',
+      'document'
+      // 'absences',
+      // 'observations',
     ];
 
     // Assign the data to the data source for the table to render
