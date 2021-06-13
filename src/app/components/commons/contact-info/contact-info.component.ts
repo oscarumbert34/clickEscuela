@@ -10,27 +10,25 @@ export class ContactInfoComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ContactInfoComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit() 
-  {
-    console.log(this.data.web)
-    this.dialogRef.updateSize("550px",this.defineHeightSize()+"px")
+  ngOnInit() {
+    console.log(this.data.web);
+    this.dialogRef.updateSize('550px', this.defineHeightSize() + 'px');
   }
-  
-  defineHeightSize()
-  {
-    let size= 0;
-    if (this.data.adress){size+=45}
-    if (this.data.telephone){size+=45}
-    if (this.data.email){size+=45}
-    if (this.data.web){size+=45}
-    if (this.data.celular){size+=45}
-    if (this.data.whatsapp){size+=45}
-    if (this.data.telegram){size+=45}
-    if (this.data.linkedin){size+=45}
 
-    size+=45+24+24
-    
-    console.log(size)
+  defineHeightSize() {
+    let size = 0;
+    if (this.data.adress) {size += 45; }
+    if (this.data.telephone) {size += 45; }
+    if (this.data.email) {size += 45; }
+    if (this.data.web) {size += 45; }
+    if (this.data.celular) {size += 45; }
+    if (this.data.whatsapp) {size += 45; }
+    if (this.data.telegram) {size += 45; }
+    if (this.data.linkedin) {size += 45; }
+
+    size += 45 + 24 + 24;
+
+    console.log(size);
     return size;
 
 

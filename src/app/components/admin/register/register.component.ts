@@ -1,35 +1,33 @@
-import { studentService } from "./../../../services/student.service";
-import { MatDialogRef } from "@angular/material/dialog";
-import {animate,state,style,transition,trigger,} from "@angular/animations";
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { MatSidenav } from "@angular/material/sidenav";
+import {animate, state, style, transition, trigger, } from '@angular/animations';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
   animations: [
-    trigger("changeDisplay", [
+    trigger('changeDisplay', [
       state(
-        "notifications-hide",
+        'notifications-hide',
         style({
-          display: "none",
+          display: 'none',
         })
       ),
       state(
-        "notifications-show",
+        'notifications-show',
         style({
-          display: "block",
+          display: 'block',
         })
       ),
-      transition("notifications-hide=>notifications-show", animate("4500ms")),
-      transition("notifications-show=>notifications-hide", animate("4000ms")),
+      transition('notifications-hide=>notifications-show', animate('4500ms')),
+      transition('notifications-show=>notifications-hide', animate('4000ms')),
     ]),
   ],
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild("drawer", { static: true }) sidenav: MatSidenav;
-  @ViewChild("menuNav", { static: true }) menuNav: ElementRef;
+  @ViewChild('drawer', { static: true }) sidenav: MatSidenav;
+  @ViewChild('menuNav', { static: true }) menuNav: ElementRef;
 
   showFiller = true;
   notificationShow = false;
@@ -47,21 +45,17 @@ export class RegisterComponent implements OnInit {
   isNotification: boolean;
   numberNotifications: number;
 
- 
-
-  constructor() 
-  {
-    
+  constructor() {
+    console.log('register');
   }
 
   ngOnInit() {
     this.sidenav.open();
-    console.log(this.blockDinamicActually)
   }
 
   changeBlock(newBlock: string) {
     console.log(this.showHomeButton);
-    this.showHomeButton = newBlock != "home" ? true : false;
+    this.showHomeButton = newBlock !== 'home' ? true : false;
     this.blockDinamicActually = newBlock;
     console.log(newBlock);
   }

@@ -25,7 +25,7 @@ export class HomeworkListComponent implements OnInit {
   homeworkList = [];
 
   constructor(private homeworkService: HomeworkService, public dialog: MatDialog) {
-    this.homeworkList = homeworkService.homeworkList
+    this.homeworkList = homeworkService.homeworkList;
   }
 
   ngOnInit() {
@@ -41,12 +41,12 @@ export class HomeworkListComponent implements OnInit {
   }
 
   refreshTable() {
-    console.log("Refresh exitoso")
+    console.log('Refresh exitoso');
     this.dataSource.data = this.homeworkList;
   }
 
   confirmDelete(index) {
-    this.confirmDialog("¿Desea eliminar la nota?", index);
+    this.confirmDialog('¿Desea eliminar la nota?', index);
   }
 
   confirmDialog(input, index) {
@@ -57,29 +57,29 @@ export class HomeworkListComponent implements OnInit {
         width: '260px',
         height: '150px'
       }
-    )
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.deleteHomework(index)
+        this.deleteHomework(index);
 
       }
     });
   }
 
   openModify(index, homework) {
-    console.log(homework)
+    console.log(homework);
     const dialogRef = this.dialog.open(AddHomeworkComponent,
       {
 
-        data: { homework: homework, index: index },
+        data: { homework, index },
         width: '80%',
         height: '75%'
 
       }
 
 
-    )
+    );
 
     // dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
 
@@ -88,11 +88,11 @@ export class HomeworkListComponent implements OnInit {
   deleteHomework(index) {
 
     this.homeworkService.deleteHomework(index);
-    this.refreshTable()
+    this.refreshTable();
   }
 
   applyFilter(event: Event) {
-    console.log((event.target as HTMLInputElement).value)
+    console.log((event.target as HTMLInputElement).value);
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

@@ -20,9 +20,9 @@ export class ReportCardComponent implements OnInit {
         width: '80%',
         height: '75%'
       }
-    )
+    );
 
-    //dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
+    // dialogRef.afterClosed().subscribe(res =>{this.refreshAllChildrens()})
 
   }
 

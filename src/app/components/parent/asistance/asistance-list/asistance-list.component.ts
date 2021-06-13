@@ -1,6 +1,5 @@
-import { element } from 'protractor';
 import { AsistanceParent } from '../../../../models/asistance-parent';
-import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Asistance } from 'src/app/models/asistance';
@@ -16,7 +15,7 @@ export class AsistanceListComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: any;
-  currentDate = new Date()
+  currentDate = new Date();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -43,17 +42,17 @@ export class AsistanceListComponent implements OnInit {
 
 
   constructor(private asistanceService: AsistanceParentService) {
-    this.asistanceList = []
-    this.asistanceList = asistanceService.asistanceList
-    this.currentFile = "";
+    this.asistanceList = [];
+    this.asistanceList = asistanceService.asistanceList;
+    this.currentFile = '';
     this.loadIndex = [];
-    this.loadAnimation = []
+    this.loadAnimation = [];
     this.progressPercentaje = 0;
     this.progressPercentajeList = [];
-    this.isFinalyload = []
-    for (let asis of this.asistanceList) {
-      this.progressPercentajeList.push(0)
-      this.isFinalyload.push(true)
+    this.isFinalyload = [];
+    for (const asis of this.asistanceList) {
+      this.progressPercentajeList.push(0);
+      this.isFinalyload.push(true);
     }
 
 
@@ -66,39 +65,39 @@ export class AsistanceListComponent implements OnInit {
 
 
     const inter = setInterval(() => {
-      this.progressPercentajeList[index] += Math.floor(Math.random() * (30 - 0)) + 0;;
+      this.progressPercentajeList[index] += Math.floor(Math.random() * (30 - 0)) + 0;
       this.isFinalyload[index] = this.progressPercentajeList[index] < 100;
-      console.log(this.progressPercentajeList[index] + '  ' + this.isFinalyload)
+      console.log(this.progressPercentajeList[index] + '  ' + this.isFinalyload);
 
       if (this.progressPercentajeList[index] > 100) {
-        clearInterval(inter)
+        clearInterval(inter);
 
       }
-    }, 2000)
+    }, 2000);
 
 
   }
 
   getPercentaje(index) {
-    console.log(this.progressPercentajeList[index])
-    return this.progressPercentajeList[index]
+    console.log(this.progressPercentajeList[index]);
+    return this.progressPercentajeList[index];
   }
 
   getFinaly(index) {
 
-    return this.isFinalyload[index]
+    return this.isFinalyload[index];
   }
 
 
   viewFileName(index) {
 
-    return this.indexedMap.get(index).files[0].name
+    return this.indexedMap.get(index).files[0].name;
   }
 
   loadFile(index) {
-    this.loadIndex.splice(index, 1)
-    this.loadAnimation.push(index)
-    console.log(this.loadIndex)
+    this.loadIndex.splice(index, 1);
+    this.loadAnimation.push(index);
+    console.log(this.loadIndex);
 
   }
 
@@ -119,17 +118,17 @@ export class AsistanceListComponent implements OnInit {
 
 
   viewFileList(index, ele) {
-    this.loadIndex.push(index)
+    this.loadIndex.push(index);
 
-    this.indexedMap.set(index, ele)
-    console.log(this.loadIndex)
+    this.indexedMap.set(index, ele);
+    console.log(this.loadIndex);
 
 
   }
 
   refreshTable() {
-    console.log("Refresh exitoso")
-    this.dataSource.data = this.asistanceService.asistanceList
+    console.log('Refresh exitoso');
+    this.dataSource.data = this.asistanceService.asistanceList;
   }
 
 

@@ -1,19 +1,18 @@
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { MatDialog } from "@angular/material/dialog";
-import { AccountService } from "./../../../../services/account.service";
-import { Student } from "./../../../../models/student";
-import { PaymentService } from "./../../../../services/payment.service";
-import { studentService } from "./../../../../services/student.service";
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { MatTableDataSource } from "@angular/material/table";
-import { PaymentsDetailComponent } from "src/app/components/commons/payments-detail/payments-detail.component";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountService } from './../../../../services/account.service';
+import { Student } from './../../../../models/student';
+import { studentService } from './../../../../services/student.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { PaymentsDetailComponent } from 'src/app/components/commons/payments-detail/payments-detail.component';
 
 @Component({
-  selector: "app-account-list",
-  templateUrl: "./account-list.component.html",
-  styleUrls: ["./account-list.component.scss"],
+  selector: 'app-account-list',
+  templateUrl: './account-list.component.html',
+  styleUrls: ['./account-list.component.scss'],
 })
 export class AccountListComponent implements OnInit {
 
@@ -32,22 +31,22 @@ export class AccountListComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
-    this.studentsList= []
+    this.studentsList = [];
     this.accounts = [];
-    
+
     this.studentsList = this.studentsService.studentsList;
 
 
     this.checked = false;
 
-   
 
-    for (let student of this.studentsService.studentsList) {
-      let account = {
+
+    for (const student of this.studentsService.studentsList) {
+      const account = {
         name: student.name,
         surname: student.surname,
         course: student.course,
-        titular: student.parent1.name + " " + student.parent1.surname,
+        titular: student.parent1.name + ' ' + student.parent1.surname,
         titularId: student.id,
         idAccount: student.parent1.id,
         state: this.accountsService.accountsList.filter((a) => a.$titularId === student.id)[0].$state
@@ -56,16 +55,16 @@ export class AccountListComponent implements OnInit {
       this.accounts.push(account);
     }
   }
-  
+
 
   ngOnInit() {
     this.displayedColumns = [
-      "name",
-      "surname",
-      "course",
-      "titular",
-      "state",
-      "actions",
+      'name',
+      'surname',
+      'course',
+      'titular',
+      'state',
+      'actions',
     ];
 
     // Assign the data to the data source for the table to render
@@ -78,15 +77,15 @@ export class AccountListComponent implements OnInit {
 
   showDebtors() {
     if (this.checked) {
-      let accountsDebtor = this.accounts.filter((a) => a.state == false);
+      const accountsDebtor = this.accounts.filter((a) => a.state === false);
       if (accountsDebtor.length > 0) {
         this.dataSource.data = accountsDebtor;
         this.showSnackBar(
-          "Se encontraron las siguientes cuentas a regularizar"
+          'Se encontraron las siguientes cuentas a regularizar'
         );
       } else {
         this.dataSource.data = this.accounts;
-        this.showSnackBar("No se encontraron cuentas a regularizar");
+        this.showSnackBar('No se encontraron cuentas a regularizar');
       }
     } else {
       this.dataSource.data = this.accounts;
@@ -100,17 +99,17 @@ export class AccountListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  
+
 
   getPaymentDetail(id: string, student) {
-    let payment = this.accountsService.accountsList.filter(
+    const payment = this.accountsService.accountsList.filter(
       (a) => a.$titularId === id
     )[0].$payments;
     const dialogRef = this.dialog.open(PaymentsDetailComponent, {
-      data: { payment: payment, student: student },
-      width: "100vw",
-      height: "95vh",
-      maxWidth: "95vw",
+      data: { payment, student },
+      width: '100vw',
+      height: '95vh',
+      maxWidth: '95vw',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -121,6 +120,6 @@ export class AccountListComponent implements OnInit {
   }
 
   showSnackBar(message: string) {
-    this.snackBar.open(message, "Aceptar", { duration: 5500 });
+    this.snackBar.open(message, 'Aceptar', { duration: 5500 });
   }
 }

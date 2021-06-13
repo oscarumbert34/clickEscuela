@@ -3,7 +3,14 @@ import { element } from 'protractor';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarEventsService } from './../../../services/calendar-events.service';
 import { SVG_CONST } from './../../../enums/svg-constants';
-import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import moment from 'moment';
@@ -12,38 +19,45 @@ import { EventDetailComponent } from '../event-detail/event-detail.component';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
-  weeks: any[]
+  weeks: any[];
 
-  @ViewChild("monthNum") monthNumberElement: ElementRef;
-  @ViewChild("yearNumber") yearNumberElement: ElementRef;
+  @ViewChild('monthNum') monthNumberElement: ElementRef;
+  @ViewChild('yearNumber') yearNumberElement: ElementRef;
 
-  calendarType: number
-
-
+  calendarType: number;
 
   currentDate: Date;
 
-  monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  monthNames = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
   monthNumber: any;
   monthName: any;
   yearName: any;
 
-  week: any =
-    [
-      "Lunes",
-      "Martes",
-      "Miercoles",
-      "Jueves",
-      "Viernes",
-      "Sabado",
-      "Domingo"
-    ];
-
-
-
+  week: any = [
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
+    'Domingo',
+  ];
 
   monthSelect: any[];
   dateSelect: any;
@@ -51,216 +65,185 @@ export class CalendarComponent implements OnInit {
 
   innerWidth: any;
 
-
   currentDay: string;
 
+  constructor(
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+    private calendarService: CalendarEventsService,
+    private dialog: MatDialog
+  ) {
+    iconRegistry.addSvgIconLiteral(
+      'leftSvg',
+      sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'rightSvg',
+      sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW)
+    );
+    this.currentDate = new Date();
 
+    this.innerWidth = window.innerWidth;
+    this.calendarType = 2;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private calendarService: CalendarEventsService, private dialog: MatDialog) {
+    this.currentDay = moment(this.currentDate).format('DD/MM/yyyy');
 
-    iconRegistry.addSvgIconLiteral('leftSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW))
-    iconRegistry.addSvgIconLiteral('rightSvg', sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW))
-    this.currentDate = new Date()
-
-    this.innerWidth = window.innerWidth
-    this.calendarType = 2
-
-    this.currentDay = moment(this.currentDate).format("DD/MM/yyyy")
-
-    console.log(this.currentDay)
-
-
-
-
+    console.log(this.currentDay);
   }
 
   selectType(num: number) {
-    console.log(num)
-    this.calendarType = num
+    console.log(num);
+    this.calendarType = num;
   }
-
-
 
   ngOnInit() {
-
-
-    this.getDaysFromDate(this.currentDate.getMonth() + 1, this.currentDate.getFullYear())
-
-
+    this.getDaysFromDate(
+      this.currentDate.getMonth() + 1,
+      this.currentDate.getFullYear()
+    );
   }
   getPrevMonth() {
-    const prevDate = this.dateSelect.clone().subtract(1, "month").format("MM");
-    return this.monthNames[parseInt(prevDate)]
-
-
+    const prevDate = this.dateSelect.clone().subtract(1, 'month').format('MM');
+    return this.monthNames[parseInt(prevDate, 10)];
   }
 
   getNextMonth() {
-    const nextDate = this.dateSelect.clone().add(1, "month").format("MM");
-    return this.monthNames[parseInt(nextDate)]
-
+    const nextDate = this.dateSelect.clone().add(1, 'month').format('MM');
+    return this.monthNames[parseInt(nextDate, 10)];
   }
 
-  geyDaysFromWeek() {
-
-
-
-  }
+  geyDaysFromWeek() {}
 
   getDaysFromDate(month, year) {
-
-    const startDate = moment.utc(`${year}/${month}/01`)
-    const endDate = startDate.clone().endOf('month')
+    const startDate = moment.utc(`${year}/${month}/01`);
+    const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
-
-    const diffDays = endDate.diff(startDate, 'days', true)
+    const diffDays = endDate.diff(startDate, 'days', true);
     const numberDays = Math.round(diffDays);
 
     const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
-      a = parseInt(a) + 1;
+      a = parseInt(a, 10) + 1;
       const dayObject = moment(`${year}-${month}-${a}`);
       return {
-        name: dayObject.format("dddd"),
+        name: dayObject.format('dddd'),
         value: a,
         indexWeek: dayObject.isoWeekday(),
-        completeDate: dayObject.format("DD/MM/yyyy"),
-        dayObject: dayObject,
-        events: this.calendarService.eventsList.filter(c => moment(c.$day).isSame(dayObject, "day"))
+        completeDate: dayObject.format('DD/MM/yyyy'),
+        dayObject,
+        events: this.calendarService.eventsList.filter((c) =>
+          moment(c.$day).isSame(dayObject, 'day')
+        ),
       };
     });
 
     this.monthSelect = arrayDays;
 
-
-    var m = this.dateSelect.format("MM");
-    this.monthName = this.monthNames[parseInt(m) - 1]
+    const m = this.dateSelect.format('MM');
+    this.monthName = this.monthNames[parseInt(m, 10) - 1];
     this.monthNumber = m;
 
-    var y = this.dateSelect.clone().subtract(1, "month").format("YYYY");
+    const y = this.dateSelect.clone().subtract(1, 'month').format('YYYY');
     this.yearName = y;
   }
 
   changeMonth(flag) {
     if (flag < 0) {
-      const prevDate = this.dateSelect.clone().subtract(1, "month");
-      this.getDaysFromDate(prevDate.format("MM"), prevDate.format("YYYY"));
+      const prevDate = this.dateSelect.clone().subtract(1, 'month');
+      this.getDaysFromDate(prevDate.format('MM'), prevDate.format('YYYY'));
     } else {
-      const nextDate = this.dateSelect.clone().add(1, "month");
-      this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
+      const nextDate = this.dateSelect.clone().add(1, 'month');
+      this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
     }
   }
 
   clickDay(day) {
-    const monthYear = this.dateSelect.format('YYYY-MM')
-    const parse = `${monthYear}-${day.value}`
-    const objectDate = moment(parse)
+    const monthYear = this.dateSelect.format('YYYY-MM');
+    const parse = `${monthYear}-${day.value}`;
+    const objectDate = moment(parse);
     this.dateValue = objectDate;
-
-
   }
 
-  showEvent(element: Element, event: Event) {
+  showEvent(eventElement: Element, event: Event) {
+    let leftDialog = 0;
 
-    let leftDialog = 0
+    const elementRect = eventElement.getBoundingClientRect();
 
-    let elementRect = element.getBoundingClientRect()
+    const viewportWidth = window.innerWidth;
+    const leftSpace = elementRect.left;
+    const elementWidth = elementRect.width;
 
-    let viewportWidth = window.innerWidth;
-    let leftSpace = elementRect.left
-    let elementWidth = elementRect.width;
+    const rightSpace = viewportWidth - elementWidth - leftSpace;
 
-
-    let rightSpace = viewportWidth - elementWidth - leftSpace;
-
-
-
-    if (rightSpace < leftSpace)
-      leftDialog = (elementRect.left - 5 - 300) / viewportWidth * 100;
-    else
-      leftDialog = (element.clientWidth + elementRect.left + 5) / viewportWidth * 100;
-
-    let topDialog = elementRect.top / 2;
-    let topDialogaux = topDialog + 450
-
-
-    if (topDialogaux > window.innerHeight) {
-
-      topDialog = window.innerHeight - 450 - 20
-
+    if (rightSpace < leftSpace) {
+      leftDialog = ((elementRect.left - 5 - 300) / viewportWidth) * 100;
+    } else {
+      leftDialog =
+        ((eventElement.clientWidth + elementRect.left + 5) / viewportWidth) * 100;
     }
 
+    let topDialog = elementRect.top / 2;
+    const topDialogaux = topDialog + 450;
 
+    if (topDialogaux > window.innerHeight) {
+      topDialog = window.innerHeight - 450 - 20;
+    }
 
-
-
-    const dialogRef = this.dialog.open(EventDetailComponent,
-      {
-        data: event,
-        width: '300px',
-        height: '450px',
-        panelClass: "contact-info-back",
-        position: { top: topDialog + 'px', left: leftDialog + '%' }
-      }
-    )
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) { console.log("finish") }
+    const dialogRef = this.dialog.open(EventDetailComponent, {
+      data: event,
+      width: '300px',
+      height: '450px',
+      panelClass: 'contact-info-back',
+      position: { top: topDialog + 'px', left: leftDialog + '%' },
     });
-  }
 
-  addEvent(element: Element, event: Event) {
-
-    let leftDialog = 0
-
-    let elementRect = element.getBoundingClientRect()
-
-    let viewportWidth = window.innerWidth;
-    let leftSpace = elementRect.left
-    let elementWidth = elementRect.width;
-
-
-    let rightSpace = viewportWidth - elementWidth - leftSpace;
-
-
-
-    if (rightSpace < leftSpace)
-      leftDialog = (elementRect.left - 5 - 300) / viewportWidth * 100;
-    else
-      leftDialog = (element.clientWidth + elementRect.left + 5) / viewportWidth * 100;
-
-    let topDialog = elementRect.top / 2;
-    let topDialogaux = topDialog + 450
-
-
-    if (topDialogaux > window.innerHeight) {
-
-      topDialog = window.innerHeight - 450 - 20
-
-    }
-
-
-
-
-
-    const dialogRef = this.dialog.open(AddCalendarEventComponent,
-      {
-        data: event,
-        width: '300px',
-        height: '450px',
-        panelClass: "contact-info-back",
-        position: { top: topDialog + 'px', left: leftDialog + '%' }
-      }
-    )
-
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.getDaysFromDate(this.currentDate.getMonth() + 1, this.currentDate.getFullYear())
-
+        console.log('finish');
       }
     });
   }
 
+  addEvent(eventElement: Element, event: Event) {
+    let leftDialog = 0;
+
+    const elementRect = eventElement.getBoundingClientRect();
+
+    const viewportWidth = window.innerWidth;
+    const leftSpace = elementRect.left;
+    const elementWidth = elementRect.width;
+
+    const rightSpace = viewportWidth - elementWidth - leftSpace;
+
+    if (rightSpace < leftSpace) {
+      leftDialog = ((elementRect.left - 5 - 300) / viewportWidth) * 100;
+    } else {
+      leftDialog =
+        ((eventElement.clientWidth + elementRect.left + 5) / viewportWidth) * 100;
+    }
+
+    let topDialog = elementRect.top / 2;
+    const topDialogaux = topDialog + 450;
+
+    if (topDialogaux > window.innerHeight) {
+      topDialog = window.innerHeight - 450 - 20;
+    }
+
+    const dialogRef = this.dialog.open(AddCalendarEventComponent, {
+      data: event,
+      width: '300px',
+      height: '450px',
+      panelClass: 'contact-info-back',
+      position: { top: topDialog + 'px', left: leftDialog + '%' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getDaysFromDate(
+          this.currentDate.getMonth() + 1,
+          this.currentDate.getFullYear()
+        );
+      }
+    });
+  }
 }
-
-

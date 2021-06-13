@@ -10,26 +10,26 @@ import { Dashboardproperties } from 'src/app/models/dashboard-properties';
 export class DashboardChartComponent implements OnInit {
   @Input()
   dashBoardProperties: Dashboardproperties;
-  
-  //single: any[];
+
+  // single: any[];
   view: any[] = [220, 150];
 
   // options
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showLabels: boolean = false;
-  isDoughnut: boolean = false;
-  legendPosition: string = 'below';
+  gradient = true;
+  showLegend = true;
+  showLabels = false;
+  isDoughnut = false;
+  legendPosition = 'below';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
   constructor() {
-    
+
   }
   ngOnInit(): void {
-    let information = this.dashBoardProperties.getInformation();
+    const information = this.dashBoardProperties.getInformation();
     Object.assign(this, { information });
   }
 

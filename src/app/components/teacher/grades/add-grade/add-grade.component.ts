@@ -1,80 +1,80 @@
-import { studentService } from "../../../../services/student.service";
-import { GradesService } from "../../../../services/grades.service";
+import { studentService } from '../../../../services/student.service';
+import { GradesService } from '../../../../services/grades.service';
 import {
   Component,
   Inject,
   OnInit,
   ViewChild,
   ElementRef,
-} from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Grade } from "src/app/models/grade";
-import { Student } from "src/app/models/student";
-import { MatSelect } from "@angular/material/select";
+} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Grade } from 'src/app/models/grade';
+import { Student } from 'src/app/models/student';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
-  selector: "app-addGrade",
-  templateUrl: "./add-grade.component.html",
-  styleUrls: ["./add-grade.component.scss"],
+  selector: 'app-add-grade',
+  templateUrl: './add-grade.component.html',
+  styleUrls: ['./add-grade.component.scss'],
 })
-export class addGradeComponent implements OnInit {
+export class AddGradeComponent implements OnInit {
   currentGrade: Grade;
   studentsList: Student[];
   existData: boolean;
   localData: any;
-  @ViewChild('course') course:MatSelect
+  @ViewChild('course') course: MatSelect;
 
-  courses = ["3B","2A"];
+  courses = ['3B', '2A'];
   matters = [
-    "Historia",
-    "Geografia",
-    "Matemáticas",
-    "Ciencias Sociales",
-    "Ingles",
-    "Lengua",
-    "Quimica",
+    'Historia',
+    'Geografia',
+    'Matemáticas',
+    'Ciencias Sociales',
+    'Ingles',
+    'Lengua',
+    'Quimica',
   ];
-  homeworks=
+  homeworks =
   [
     {
-      code:"T00001",
-      name:"Evaluacion 2"
+      code: 'T00001',
+      name: 'Evaluacion 2'
     },
     {
-      code:"T00002",
-      name:"Tarea Pagina 32"
+      code: 'T00002',
+      name: 'Tarea Pagina 32'
     },
     {
-      code:"T00003",
-      name:"Tarea Recreativa"
+      code: 'T00003',
+      name: 'Tarea Recreativa'
     }
-  ]
+  ];
 
-  selectedCourse=""
-    
-  
+  selectedCourse = '';
+
+
 
   constructor(
-    public dialogRef: MatDialogRef<addGradeComponent>,
+    public dialogRef: MatDialogRef<AddGradeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private gradesService: GradesService,
     private studentsService: studentService
   ) {
     if (data.grade === undefined) {
       this.currentGrade = {
-        student: "default",
-        code: "",
-        description: "",
-        matter: "",
+        student: 'default',
+        code: '',
+        description: '',
+        matter: '',
         grade: 0,
         course: '5B'
       };
       this.localData = {
         grade: {
-          student: "",
-          code: "",
-          description: "",
-          matter: "",
+          student: '',
+          code: '',
+          description: '',
+          matter: '',
           grade: 0,
           course: '6B'
         },
@@ -92,7 +92,7 @@ export class addGradeComponent implements OnInit {
   }
 
   loadStudents() {
-    
+
     this.studentsList = this.studentsService.studentsList.filter(
       a => a.course === this.selectedCourse
     );
@@ -106,8 +106,9 @@ export class addGradeComponent implements OnInit {
   }
 
   modifyGrade() {
-    if (this.currentGrade.student==''){
-      this.currentGrade.student==this.data.student
+    if (this.currentGrade.student === '') {
+      // tslint:disable-next-line: no-unused-expression
+      this.currentGrade.student === this.data.student;
     }
     this.gradesService.modifyGrade(this.data.index, this.data.grade);
     this.dialogRef.close();
@@ -117,7 +118,7 @@ export class addGradeComponent implements OnInit {
     console.log(this.data.grade);
   }
 
-  onClose(){
-    this.dialogRef.close(false)
+  onClose() {
+    this.dialogRef.close(false);
   }
 }

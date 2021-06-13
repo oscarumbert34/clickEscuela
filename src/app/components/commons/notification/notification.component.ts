@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-  checked: boolean = false;
+  checked = false;
   notificationsHomework: Notification[];
   notificationsChat: Notification[];
 
@@ -23,7 +23,7 @@ export class NotificationComponent implements OnInit {
   }
 
   showNotification(notification: Notification) {
-    this.openNotification.emit(notification)
+    this.openNotification.emit(notification);
   }
 
   shownotificationsNumber() {
@@ -33,15 +33,15 @@ export class NotificationComponent implements OnInit {
 
 
   constructor(notifications: NotificationsService) {
-    this.notificationsHomework = notifications.homeworks
+    this.notificationsHomework = notifications.homeworks;
 
-    this.notificationsChat = notifications.chats
+    this.notificationsChat = notifications.chats;
 
   }
 
   ngOnInit() {
 
-    this.shownotificationsNumber()
+    this.shownotificationsNumber();
   }
 
 }

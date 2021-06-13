@@ -1,18 +1,23 @@
 
-import { element } from 'protractor';
-import { Component, Inject, OnInit, ElementRef, ViewChild, ViewChildren, Input, QueryList } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnInit,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportCardService } from 'src/app/services/reportCard.service';
 import { TrimesterService } from 'src/app/services/trimester.service';
 import { ReportCard } from 'src/app/models/report-card';
 
 @Component({
-  selector: 'app-addReportCard',
+  selector: 'app-add-report-card',
   templateUrl: './add-report-card.component.html',
-  styleUrls: ['./add-report-card.component.scss']
+  styleUrls: ['./add-report-card.component.scss'],
 })
 export class AddReportCardComponent implements OnInit {
-
   mattersList: string[];
   trimesterList: ReportCard[];
   existData: boolean;
@@ -26,90 +31,81 @@ export class AddReportCardComponent implements OnInit {
 
   currentData: ReportCard;
 
-  constructor(public dialogRef: MatDialogRef<AddReportCardComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private reporcardService: ReportCardService, private trimesterService: TrimesterService) {
-    this.existData = this.data.component !== undefined
-    this.trimesterList = this.trimesterService.reportCardList
+  constructor(
+    public dialogRef: MatDialogRef<AddReportCardComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private reporcardService: ReportCardService,
+    private trimesterService: TrimesterService
+  ) {
+    this.existData = this.data.component !== undefined;
+    this.trimesterList = this.trimesterService.reportCardList;
     this.currentData = data.component;
-    this.trimesterNumber = "Cargando notificaciones..."
+    this.trimesterNumber = 'Cargando notificaciones...';
   }
 
   changeSelectedTrimester(trimes) {
-    if (trimes == this.selectedTrimester)
-      this.selectedTrimester = -1;
-    else
-      this.selectedTrimester = trimes;
+    if (trimes === this.selectedTrimester) { this.selectedTrimester = -1; } else { this.selectedTrimester = trimes; }
 
-    this.currentData = this.trimesterService.trimesterList[trimes]
-    console.log(this.trimesterNumber + "   " + this.selectedTrimester)
+    this.currentData = this.trimesterService.trimesterList[trimes];
+    console.log(this.trimesterNumber + '   ' + this.selectedTrimester);
 
     switch (this.selectedTrimester) {
-      case 0: this.trimesterNumber = "Calificaciones: Primer Trimestre"
+      case 0:
+        this.trimesterNumber = 'Calificaciones: Primer Trimestre';
         break;
-      case 1: this.trimesterNumber = "Calificaciones: Segundo Trimestre"
+      case 1:
+        this.trimesterNumber = 'Calificaciones: Segundo Trimestre';
         break;
 
-      case 2: this.trimesterNumber = "Calificaciones: Tercer Trimestres"
+      case 2:
+        this.trimesterNumber = 'Calificaciones: Tercer Trimestres';
         break;
 
       default:
         {
-          this.trimesterNumber = "Cargando Calfificaciones"
+          this.trimesterNumber = 'Cargando Calfificaciones';
 
-          this.currentData = this.data.component
+          this.currentData = this.data.component;
         }
         break;
-
     }
   }
-
-
 
   changeTrimester() {
-
-
-
     if (!this.showTrimester) {
-      this.trimesterList = this.trimesterService.trimesterList.filter(a => a.nameStudent == this.data.component.nameStudent && a.surnameStudent == this.data.component.surname)
-      console.log(this.trimesterList.length)
-
-
-
+      this.trimesterList = this.trimesterService.trimesterList.filter(
+        (a) =>
+          a.nameStudent === this.data.component.nameStudent &&
+          a.surnameStudent === this.data.component.surname
+      );
+      console.log(this.trimesterList.length);
 
       for (let i = 0; i < this.trimesterList.length; i++) {
-        console.log(this.tabs.filter((element, index) => index === i))
+        console.log(this.tabs.filter((elem, index) => index === i));
 
-        this.tabs.filter((element, index) => index === i)[0].nativeElement.disabled = false;
+        this.tabs.filter(
+          (elem, index) => index === i
+        )[0].nativeElement.disabled = false;
 
         this.showTrimester = true;
-
       }
     }
-
   }
 
-
-
   closeOnClick() {
-    this.dialogRef.close()
+    this.dialogRef.close();
     this.showTrimester = false;
-
   }
 
   ngOnInit() {
-    console.log(this.existData)
+    console.log(this.existData);
   }
 
   addReportCard(index) {
-    let gradesList = [];
-    for (let elem of this.inputs) {
-      gradesList.push(elem.nativeElement.value)
+    const gradesList = [];
+    for (const elem of this.inputs) {
+      gradesList.push(elem.nativeElement.value);
     }
-    this.reporcardService.addReportCard(gradesList, index)
+    this.reporcardService.addReportCard(gradesList, index);
   }
-
-
-
-
-
-
 }

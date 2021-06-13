@@ -8,22 +8,22 @@ import { Dashboardproperties } from 'src/app/models/dashboard-properties';
 export class DashboardChartAdvanceComponent implements OnInit {
   @Input()
   dashBoardProperties: Dashboardproperties;
-  
-  //single: any[];
+
+  // single: any[];
   view: any[] = [580, 200];
 
   // options
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showLabels: boolean = true;
-  isDoughnut: boolean = false;
+  gradient = true;
+  showLegend = true;
+  showLabels = true;
+  isDoughnut = false;
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
   constructor() {
-   
+
   }
 
   onSelect(data): void {
@@ -38,7 +38,7 @@ export class DashboardChartAdvanceComponent implements OnInit {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
   ngOnInit(): void {
-    let information = this.dashBoardProperties.getInformation();
+    const information = this.dashBoardProperties.getInformation();
     Object.assign(this, {information});
   }
 

@@ -1,14 +1,14 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { Student } from "src/app/models/student";
-import { dataStudents } from "./students";
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { Student } from 'src/app/models/student';
+import { dataStudents } from './students';
 
 @Component({
-  selector: "app-students",
-  templateUrl: "./students.component.html",
-  styleUrls: ["./students.component.css"],
+  selector: 'app-students',
+  templateUrl: './students.component.html',
+  styleUrls: ['./students.component.css'],
 })
 export class StudentsComponent implements OnInit {
   displayedColumns: string[];
@@ -22,12 +22,12 @@ export class StudentsComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {
     this.displayedColumns = [
-   
-      "name",
-      "surname",
-      "birthDate",
-      "absences",
-      "observations",
+
+      'name',
+      'surname',
+      'birthDate',
+      'absences',
+      'observations',
     ];
 
     this.dataSource = new MatTableDataSource();

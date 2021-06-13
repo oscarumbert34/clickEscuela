@@ -10,15 +10,15 @@ export class AsistanceParentService {
 
   constructor() {
     this.asistanceList = [];
-    this.asistanceList.push(new AsistanceParent("Claudio", true, new Date(), ''))
-    this.asistanceList.push(new AsistanceParent("Felipe", false, new Date(), ''))
-    this.asistanceList.push(new AsistanceParent("Omar", false, new Date(), ''))
-    this.asistanceList.push(new AsistanceParent("Marta", false, new Date(), ''))
+    this.asistanceList.push(new AsistanceParent('Claudio', true, new Date(), ''));
+    this.asistanceList.push(new AsistanceParent('Felipe', false, new Date(), ''));
+    this.asistanceList.push(new AsistanceParent('Omar', false, new Date(), ''));
+    this.asistanceList.push(new AsistanceParent('Marta', false, new Date(), ''));
 
   }
 
   get asistantList() {
-    return this.asistanceList
+    return this.asistanceList;
   }
 
 }

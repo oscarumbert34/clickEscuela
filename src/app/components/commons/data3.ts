@@ -1,10 +1,10 @@
-export var tareas = [
+export let tareas = [
     {
-      "name": "Corregido",
-      "value": 20
+      name: 'Corregido',
+      value: 20
     },
     {
-      "name": "No corregido",
-      "value": 20
+      name: 'No corregido',
+      value: 20
     }
   ];

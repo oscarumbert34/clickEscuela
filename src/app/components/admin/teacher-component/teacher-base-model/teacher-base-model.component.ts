@@ -1,25 +1,22 @@
-import { TeacherService } from "src/app/services/teacher.service";
-import { MatTableDataSource } from "@angular/material/table";
-import { ConfirmDialogComponent } from "src/app/components/commons/confirm-dialog/confirm-dialog.component";
-import { Teacher } from "src/app/models/teacher";
-import { EditTeacherComponent } from "../edit-teacher/edit-teacher.component";
+import { TeacherService } from 'src/app/services/teacher.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmDialogComponent } from 'src/app/components/commons/confirm-dialog/confirm-dialog.component';
+import { Teacher } from 'src/app/models/teacher';
+import { EditTeacherComponent } from '../edit-teacher/edit-teacher.component';
 import {
   Component,
   OnInit,
-  Output,
   ViewChild,
-  EventEmitter,
-  Input,
-} from "@angular/core";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { ContactInfoComponent } from "src/app/components/commons/contact-info/contact-info.component";
+} from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
 
 @Component({
-  selector: "app-teacher-base-model",
-  templateUrl: "./teacher-base-model.component.html",
-  styleUrls: ["./teacher-base-model.component.scss"],
+  selector: 'app-teacher-base-model',
+  templateUrl: './teacher-base-model.component.html',
+  styleUrls: ['./teacher-base-model.component.scss'],
 })
 export class TeacherBaseModelComponent implements OnInit {
   displayedColumns: string[];
@@ -33,16 +30,16 @@ export class TeacherBaseModelComponent implements OnInit {
   constructor(
     private teachersService: TeacherService,
     public dialog: MatDialog,
-    public dialogRef:MatDialogRef<TeacherBaseModelComponent>
+    public dialogRef: MatDialogRef<TeacherBaseModelComponent>
   ) {
     this.teachersArray = this.teachersService.teachersList;
     this.displayedColumns = [
-      "name",
-      "surname",
-      "bornDate",
-      "idNumber",
-      "courses",
-      "actions",
+      'name',
+      'surname',
+      'bornDate',
+      'idNumber',
+      'courses',
+      'actions',
     ];
 
     // Assign the data to the data source for the table to render
@@ -52,18 +49,18 @@ export class TeacherBaseModelComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  onClose(){
-    this.dialogRef.close(false)
+  onClose() {
+    this.dialogRef.close(false);
   }
 
   ngOnInit() {
     this.displayedColumns = [
-      "name",
-      "surname",
-      "bornDate",
-      "idNumber",
-      "courses",
-      "actions",
+      'name',
+      'surname',
+      'bornDate',
+      'idNumber',
+      'courses',
+      'actions',
     ];
 
     // Assign the data to the data source for the table to render
@@ -85,21 +82,21 @@ export class TeacherBaseModelComponent implements OnInit {
   deleteTeacher(index, input) {
     console.log(input);
     this.confirmDialog(
-      "Desea eliminar el alumno " + input.name + " " + input.surname,
+      'Desea eliminar el alumno ' + input.name + ' ' + input.surname,
       index
     );
   }
 
   refreshTable() {
-    console.log("Refresh exitoso");
+    console.log('Refresh exitoso');
     this.dataSource.data = this.teachersService.teachersList;
   }
 
   confirmDialog(input, index) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: input,
-      width: "260px",
-      height: "150px",
+      width: '260px',
+      height: '150px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -111,17 +108,17 @@ export class TeacherBaseModelComponent implements OnInit {
   }
 
   openContactInfo(input) {
-    input.web = "clickEscuela.com";
+    input.web = 'clickEscuela.com';
     const dialogRef = this.dialog.open(ContactInfoComponent, {
       data: input,
-      width: "550px",
-      height: "300px",
-      panelClass: "contact-info-back",
+      width: '550px',
+      height: '300px',
+      panelClass: 'contact-info-back',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log("finish");
+        console.log('finish');
       }
     });
   }
@@ -129,9 +126,9 @@ export class TeacherBaseModelComponent implements OnInit {
   editTeacher(ind, input) {
     const dialogRef = this.dialog.open(EditTeacherComponent, {
       data: { teacher: input, index: ind },
-      width: "100vw",
-      height: "95vh",
-      maxWidth: "95vw",
+      width: '100vw',
+      height: '95vh',
+      maxWidth: '95vw',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

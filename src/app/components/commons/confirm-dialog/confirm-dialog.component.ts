@@ -10,17 +10,17 @@ export class ConfirmDialogComponent implements OnInit {
 
   confirmState = false;
   typeEntrie: any;
-  entrieIsList: boolean
+  entrieIsList: boolean;
 
 
 
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>, @Inject(MAT_DIALOG_DATA) public message: any) {
-    this.typeEntrie = typeof message
-    this.entrieIsList = this.typeEntrie == 'object'
+    this.typeEntrie = typeof message;
+    this.entrieIsList = this.typeEntrie === 'object';
   }
 
   ngOnInit() {
-    console.log(this.typeEntrie)
+    console.log(this.typeEntrie);
   }
 
 

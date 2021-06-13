@@ -45,12 +45,12 @@ export class StudentMenuComponent implements OnInit {
 
   routeLink: string;
 
-  view:string;
-  
+  view: string;
+
 
   constructor(private router: Router) {
-    this.routeLink=router.url
-    this.view="student"
+    this.routeLink = router.url;
+    this.view = 'student';
    }
 
   theEvent$;
@@ -86,15 +86,15 @@ export class StudentMenuComponent implements OnInit {
   receiveNotification($event) {
     this.currentNotification = $event;
     this.isNotification = true;
-    this.changeBlock($event.type == 'Tarea' ? 'homework' : 'grade');
+    this.changeBlock($event.type === 'Tarea' ? 'homework' : 'grade');
 
   }
 
   changeBlock(newBlock: string) {
     console.log(this.showHomeButton);
-    this.showHomeButton = newBlock != 'home' ? true : false;
+    this.showHomeButton = newBlock !== 'home' ? true : false;
     this.blockDinamicActually = newBlock;
-    console.log(newBlock)
+    console.log(newBlock);
   }
 
   notNotification() {
@@ -104,7 +104,7 @@ export class StudentMenuComponent implements OnInit {
   ngOnInit() {
     this.sidenav.open();
 
-    console.log(this.router.url)
+    console.log(this.router.url);
 
   }
 

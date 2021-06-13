@@ -17,7 +17,7 @@ export class AsistanceComponent implements OnInit {
   }
 
   showPicker() {
-    console.log(this.picker.startAt)
+    console.log(this.picker.startAt);
 
   }
 

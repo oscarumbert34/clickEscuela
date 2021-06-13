@@ -10,10 +10,10 @@ export class AsistanceComponent implements OnInit {
 
   constructor() { }
 
-  @Input() route:string;
+  @Input() route: string;
 
   ngOnInit(): void {
-    console.log("holis se abrior asistencia")
+    console.log('holis se abrior asistencia');
   }
 
 }
