@@ -91,7 +91,6 @@ export class AddStudentComponent implements OnInit {
   getAllProvinces() {
     this.geoRefService.getProvinces().subscribe((data) => {
       this.provinces = data.provincias.sort(this.sortByname);
-      console.log(this.provinces);
     });
   }
 
@@ -99,7 +98,6 @@ export class AddStudentComponent implements OnInit {
     if (direction.length > 3) {
       this.geoRefService.normalizeDirection(direction).subscribe((data) => {
         this.normalizedDirections = data.direccionesNormalizadas;
-        console.log(this.normalizedDirections);
       });
     }
   }
@@ -110,7 +108,6 @@ export class AddStudentComponent implements OnInit {
         data.municipios.push({ id: '222', nombre: 'Malvinas Argentinas' });
       }
       this.districts = data.municipios.sort(this.sortByname);
-      console.log(this.districts);
     });
   }
 

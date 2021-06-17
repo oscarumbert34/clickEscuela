@@ -75,7 +75,6 @@ export class studentService {
       delay(200),
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
-      console.log(result);
     });
 
     this._search$.next();

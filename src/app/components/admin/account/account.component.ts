@@ -68,12 +68,8 @@ export class AccountComponent implements OnInit {
         titularID: student.id,
         idAccount: student.parent1.id
       };
-
-
-
       this.accounts.push(account);
     }
-
     this.selectedRange = {
         range:
         {
@@ -85,18 +81,12 @@ export class AccountComponent implements OnInit {
 
   }
 
-
-
   generateDebtorsReport(method: number) {
-    // alert("Se esta generando el repore")
-
     const doc = new jsPDF('a4');
     const columns = ['Nombre', 'Apellido', 'Curso', 'Titular'];
     const debtors = this.accounts.filter(a => a.state === false);
 
     const tableData = this.generateTableData(debtors);
-
-
     if (method === 1) {
       doc.autoTable(columns, tableData,
         {
@@ -111,26 +101,14 @@ export class AccountComponent implements OnInit {
         }
 
       );
-
       const uriString = doc.output('datauristring');
-
       const url = this.sanitazer.bypassSecurityTrustResourceUrl(uriString);
-
-
       this.openModalFrame(url);
     } else if (method === 2) {
 
       tableData.splice(0, 0, columns);
       this.arrayObjToCsv(tableData);
-
-
-
     }
-
-
-
-
-
   }
 
   ngOnInit() {
@@ -189,8 +167,6 @@ export class AccountComponent implements OnInit {
   }
 
   getExpensesReport(period, method) {
-
-
     const doc = new jsPDF('a4');
     const columns = ['Importe', 'Descripcion', 'Fecha'];
     let expenses = [];
@@ -203,7 +179,6 @@ export class AccountComponent implements OnInit {
       expenses =
         (
           this.expensesService.expenseList.filter(
-
             a =>
               a.$date.getDate() === this.currentDate.getDate() &&
               a.$date.getMonth() === this.currentDate.getMonth() &&
@@ -214,11 +189,7 @@ export class AccountComponent implements OnInit {
       }
     }
     if (period === WEEK) {
-
       console.log(weekDays);
-
-
-
       expenses =
         (this.expensesService.expenseList.filter(a =>
           moment(a.$date, 'DD-MM-YYYY').isSameOrAfter(moment(weekDays[0], 'DD-MM-YYYY'), 'day') &&
@@ -231,8 +202,6 @@ export class AccountComponent implements OnInit {
           ' => ' +
           moment(weekDays[weekDays.length - 1]).format('DD/MM/YYYY'));
       }
-
-
     }
     if (period === MONTH) {
       expenses = (this.expensesService.expenseList.filter(a => a.$date.getMonth() ===
@@ -241,10 +210,7 @@ export class AccountComponent implements OnInit {
     if (period === CUSTOM_PERIOD) {
       console.log(this.selectedRange);
 
-
-
       expenses =
-
         (this.expensesService.expenseList.filter(a =>
           moment(a.$date, 'DD-MM-YYYY').isSameOrAfter(moment(this.selectedRange.range.start, 'DD-MM-YYYY'), 'day') &&
           moment(a.$date, 'DD-MM-YYYY').isSameOrBefore(moment(this.selectedRange.range.end, 'DD-MM-YYYY'), 'day')
@@ -265,7 +231,6 @@ export class AccountComponent implements OnInit {
         const text1 = 'Reporte de gastos ' + TYPE[period];
         const text2 = 'Generado el dia ' + moment(this.currentDate).format('DD/MM/YYYY');
 
-
         doc.setFontSize(15);
         doc.text(text1, this.centerText(0, 210, doc.getTextWidth(text1)), 25);
         doc.setFontSize(12);
@@ -277,7 +242,6 @@ export class AccountComponent implements OnInit {
           doc.text(text3, this.centerText(0, 210, doc.getTextWidth(text3)), 45);
 
         }
-
         doc.autoTable(columns, tableData,
           {
             margin: { top: 60 },
@@ -293,12 +257,8 @@ export class AccountComponent implements OnInit {
         );
 
         const uriString = doc.output('datauristring');
-
         const url = this.sanitazer.bypassSecurityTrustResourceUrl(uriString);
-
         this.openModalFrame(url);
-
-
 
       } else if (method === 2) {
         tableData.splice(0, 0, columns);
@@ -308,14 +268,7 @@ export class AccountComponent implements OnInit {
     } else {
       // this.showSnackBar("No existen entradas para el reporte: "+period)
     }
-
-
-
-
-
-
   }
-
 
   openModalFrame(url) {
  this.dialog.open (ModalFrameComponent,
@@ -336,18 +289,10 @@ export class AccountComponent implements OnInit {
     const tableData = [];
 
     for (const obj of data) {
-
-
       const row = (Array.from(Object.values(obj)));
-
       tableData.push(row);
-
-
-
     }
-
     console.log(tableData);
-
     return tableData;
   }
 
@@ -380,21 +325,14 @@ export class AccountComponent implements OnInit {
   openDateRangeSelector() {
     const dialogRef = this.dialog.open(RangeSelectorComponent,
       {
-
         width: '400px',
         height: '250px'
       }
     );
 
     dialogRef.afterClosed().subscribe(result => {
-
-
       this.selectedRange = result;
-
-
-
       this.getExpensesReport('CUSTOM_PERIOD', result.option);
-
     });
   }
 

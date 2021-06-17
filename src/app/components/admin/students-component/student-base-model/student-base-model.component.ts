@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { dataStudents } from './../../../teacher/students/students';
 
 import { studentService } from '../../../../services/student.service';
 import {
@@ -22,7 +24,12 @@ import { ContactInfoComponent } from 'src/app/components/commons/contact-info/co
 export class StudentBaseModelComponent implements OnInit {
   displayedColumns: string[];
   dataSource: any;
-  studentsArray: Student[] = new Array(5);
+  studentsArray: Student[];
+  loadStudentsService: boolean;
+  reload: boolean;
+
+  loadError: boolean;
+  messageError: string;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -31,9 +38,10 @@ export class StudentBaseModelComponent implements OnInit {
   constructor(
     private studentsService: studentService,
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<StudentBaseModelComponent>
+    public dialogRef: MatDialogRef<StudentBaseModelComponent>,
+    public snackbar: MatSnackBar
   ) {
-    this.studentsArray = this.studentsService.studentsList;
+    this.loadStudentsService = false;
     this.displayedColumns = [
       'name',
       'surname',
@@ -43,11 +51,16 @@ export class StudentBaseModelComponent implements OnInit {
       // 'observations',
     ];
 
-    // Assign the data to the data source for the table to render
+    this.loadError = false;
+
+    this.reload = false;
+    this.studentsArray = [];
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = this.studentsService.studentsList;
+    this.dataSource.data = this.studentsArray;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.loadStudentsList();
+
   }
 
   onClose() {
@@ -56,11 +69,6 @@ export class StudentBaseModelComponent implements OnInit {
 
   ngOnInit() {
 
-    this.studentsService.getStudents(false).subscribe( (data) => {
-      console.log(data);
-      this.studentsArray = data;
-    });
-
     this.displayedColumns = [
 
       'name',
@@ -73,7 +81,7 @@ export class StudentBaseModelComponent implements OnInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = this.studentsService.studentsList;
+    this.dataSource.data = this.studentsArray;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -110,9 +118,32 @@ export class StudentBaseModelComponent implements OnInit {
     );
   }
 
+  loadStudentsList() {
+
+    this.reload = true;
+    this.studentsService.getStudents(false).subscribe(
+      data => {
+        this.dataSource.data = data;
+        if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
+          this.snackbar.open('Recarga exitosa. No se encontraron nuevas entradas', 'Aceptar', { duration: 3000 });
+        } else {
+          this.snackbar.open('Recarga exitosa', 'Aceptar', { duration: 3000 });
+          this.studentsArray = data;
+        }
+        setTimeout(() => { this.loadStudentsService = true; this.reload = false; }, 500);
+        console.log(this.loadStudentsService);
+      },
+      err => {
+        console.log(err);
+        this.snackbar.open('Se produjo un error.', 'Aceptar', { duration: 3000 });
+        this.loadError = true;
+        this.messageError = err.message;
+      }
+    );
+  }
   refreshTable() {
     console.log('Refresh exitoso');
-    this.dataSource.data = this.studentsService.studentsList;
+    this.loadStudentsList();
   }
 
   confirmDialog(input, index) {
