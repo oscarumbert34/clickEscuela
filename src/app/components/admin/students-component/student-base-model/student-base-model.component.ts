@@ -54,9 +54,9 @@ export class StudentBaseModelComponent implements OnInit {
       'name',
       'surname',
       'birthday',
-      'document'
+      'document',
       // 'absences',
-      // 'observations',
+      'observations',
     ];
 
     this.loadError = false;
@@ -74,6 +74,8 @@ export class StudentBaseModelComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
+
+
   ngOnInit() {
 
     console.log(this.data)
@@ -82,9 +84,9 @@ export class StudentBaseModelComponent implements OnInit {
       'name',
       'surname',
       'birthday',
-      'document'
+      'document',
       // 'absences',
-      // 'observations',
+      'observations',
     ];
 
     // Assign the data to the data source for the table to render
