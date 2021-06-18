@@ -1,9 +1,8 @@
+import { IconGeneratorService } from './../../../services/icon-generator.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpensesService } from './../../../services/expenses.service';
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Student } from 'src/app/models/student';
@@ -12,7 +11,6 @@ import { studentService } from 'src/app/services/student.service';
 import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
 import moment from 'moment';
 import { RangeSelectorComponent } from '../../commons/range-selector/range-selector.component';
-import { SVG_CONST } from '../svg-constants';
 import { DAY, TYPE, MONTH, WEEK, CUSTOM_PERIOD } from '../type-constants';
 
 
@@ -36,22 +34,13 @@ export class AccountComponent implements OnInit {
   selectedRange: any;
 
   constructor(
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
     private accountsService: AccountService,
     private studentsService: studentService,
-    private sanitazer: DomSanitizer,
+    private iconsService: IconGeneratorService,
     private dialog: MatDialog,
     private expensesService: ExpensesService,
     private snackBar: MatSnackBar) {
-    iconRegistry.addSvgIconLiteral('out-expenses', sanitizer.bypassSecurityTrustHtml(SVG_CONST.EXPENSES));
-    iconRegistry.addSvgIconLiteral('debtors', sanitizer.bypassSecurityTrustHtml(SVG_CONST.DEBTORS));
-    iconRegistry.addSvgIconLiteral('csv-icon', sanitizer.bypassSecurityTrustHtml(SVG_CONST.CSV_ICON));
-    iconRegistry.addSvgIconLiteral('pdf-icon', sanitizer.bypassSecurityTrustHtml(SVG_CONST.PDF_ICON));
-    iconRegistry.addSvgIconLiteral('daily', sanitizer.bypassSecurityTrustHtml(SVG_CONST.DAILY));
-    iconRegistry.addSvgIconLiteral('weekly', sanitizer.bypassSecurityTrustHtml(SVG_CONST.WEEKLY));
-    iconRegistry.addSvgIconLiteral('monthly', sanitizer.bypassSecurityTrustHtml(SVG_CONST.MONTHLY));
-    iconRegistry.addSvgIconLiteral('custom-date', sanitizer.bypassSecurityTrustHtml(SVG_CONST.CUSTOM_DATE));
+
 
     this.accounts = [];
 
@@ -102,7 +91,7 @@ export class AccountComponent implements OnInit {
 
       );
       const uriString = doc.output('datauristring');
-      const url = this.sanitazer.bypassSecurityTrustResourceUrl(uriString);
+      const url = this.iconsService.sanitizer.bypassSecurityTrustResourceUrl(uriString);
       this.openModalFrame(url);
     } else if (method === 2) {
 
@@ -257,7 +246,7 @@ export class AccountComponent implements OnInit {
         );
 
         const uriString = doc.output('datauristring');
-        const url = this.sanitazer.bypassSecurityTrustResourceUrl(uriString);
+        const url = this.iconsService.sanitizer.bypassSecurityTrustResourceUrl(uriString);
         this.openModalFrame(url);
 
       } else if (method === 2) {

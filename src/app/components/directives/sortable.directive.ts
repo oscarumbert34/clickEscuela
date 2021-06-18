@@ -3,7 +3,7 @@ import { Student } from 'src/app/models/student';
 
 export type SortColumn = keyof Student | '';
 export type SortDirection = 'asc' | 'desc' | '';
-const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
+const rotate: {[key: string]: SortDirection} = { asc: 'desc', desc: '', '': 'asc' };
 
 export interface SortEvent {
   column: SortColumn;

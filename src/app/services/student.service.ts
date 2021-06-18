@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { PipeTransform, Injectable } from '@angular/core';
 import { of } from 'rxjs/internal/observable/of';
 import { HttpClient } from '@angular/common/http';
+import { StudentI } from '../components/interfaces/student';
 interface SearchResult {
   students: Student[];
   total: number;
@@ -229,10 +230,16 @@ export class studentService {
 
   // Aca incia el codigo para consumo de api
 
-  getStudents(fulldetail: boolean): Observable<any> {
-    const path = 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/1365/student?fullDetail=' + fulldetail;
+  getStudents(fulldetail: boolean, idSchool: string): Observable<any> {
+    const path = 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + idSchool + '/student?fullDetail=' + fulldetail;
     return this.connector.get<any>(path);
   }
+
+  addStudentPost(student: StudentI, idSchool: string): Observable<StudentI> {
+    const path = 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + idSchool + '/student';
+    return this.connector.post<StudentI>(path, student);
+  }
+
 
 
 

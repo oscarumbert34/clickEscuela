@@ -1,9 +1,13 @@
+import { SnackBarService } from './../../../../services/snack-bar.service';
+import { IconGeneratorService } from './../../../../services/icon-generator.service';
+import { MatIconRegistry } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dataStudents } from './../../../teacher/students/students';
 
 import { studentService } from '../../../../services/student.service';
 import {
   Component,
+  Inject,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -12,9 +16,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/models/student';
 import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SVG_CONST } from '../../svg-constants';
 
 @Component({
   selector: 'app-student-base-model',
@@ -31,6 +37,8 @@ export class StudentBaseModelComponent implements OnInit {
   loadError: boolean;
   messageError: string;
 
+  principalLogo: any;
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -39,7 +47,9 @@ export class StudentBaseModelComponent implements OnInit {
     private studentsService: studentService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<StudentBaseModelComponent>,
-    public snackbar: MatSnackBar
+    public snackbar: SnackBarService,
+    private iconsService: IconGeneratorService,
+    @Inject(MAT_DIALOG_DATA) public data: string
   ) {
     this.loadStudentsService = false;
     this.displayedColumns = [
@@ -60,7 +70,6 @@ export class StudentBaseModelComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.loadStudentsList();
-
   }
 
   onClose() {
@@ -69,6 +78,7 @@ export class StudentBaseModelComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.data)
     this.displayedColumns = [
 
       'name',
@@ -121,13 +131,13 @@ export class StudentBaseModelComponent implements OnInit {
   loadStudentsList() {
 
     this.reload = true;
-    this.studentsService.getStudents(false).subscribe(
+    this.studentsService.getStudents(false, this.data).subscribe(
       data => {
         this.dataSource.data = data;
         if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
-          this.snackbar.open('Recarga exitosa. No se encontraron nuevas entradas', 'Aceptar', { duration: 3000 });
+          this.snackbar.showSnackBar('Recarga exitosa. No se encontraron nuevas entradas', 'Aceptar','NORMAL');
         } else {
-          this.snackbar.open('Recarga exitosa', 'Aceptar', { duration: 3000 });
+          this.snackbar.showSnackBar('Recarga exitosa', 'Aceptar','SUCCES');
           this.studentsArray = data;
         }
         setTimeout(() => { this.loadStudentsService = true; this.reload = false; }, 500);
@@ -135,7 +145,7 @@ export class StudentBaseModelComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.snackbar.open('Se produjo un error.', 'Aceptar', { duration: 3000 });
+        this.snackbar.showSnackBar('Se produjo un error.', 'Aceptar','ERROR');
         this.loadError = true;
         this.messageError = err.message;
       }
