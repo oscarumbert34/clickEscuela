@@ -19,8 +19,6 @@ import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
-import { DomSanitizer } from '@angular/platform-browser';
-import { SVG_CONST } from '../../svg-constants';
 
 @Component({
   selector: 'app-student-base-model',

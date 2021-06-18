@@ -4,11 +4,9 @@ import { GeoRefService } from '../../../../services/geo-ref.service';
 import { studentService } from '../../../../services/student.service';
 import { StudentBaseModelComponent } from '../student-base-model/student-base-model.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
-// import { Student } from 'src/app/models/student';
-// import { Parent } from 'src/app/models/parent';
 import { Province } from 'src/app/models/province';
+import { MODEL } from 'src/app/enums/ng-models';
 
 @Component({
   selector: 'app-add-student',
@@ -48,42 +46,8 @@ export class AddStudentComponent implements OnInit {
   }
 
   resetStudentModel() {
-    this.currentStudent = {
-      name: 'Martin',
-      surname: 'Lopez',
-      birthday: '1993-05-05',
-      gender: 'MALE',
-      document: '37984176',
-      level: 'PREESCOLAR',
-      grade: '3',
-      school: 'Raggio',
-      schoolId: this.schoolId,
-      division: 'A',
-      adress:
-      {
-        street: 'Buenos Aires',
-        number: '200',
-        locality: 'Buenos Aires'
-      },
-      cellPhone: '1567947913',
-      email: 'nico@gmail.com ',
-      parent: {
-        name: 'Eduardo',
-        surname: 'Gimenez',
-        adress:
-        {
-          street: 'Buenos Aires',
-          number: '200',
-          locality: 'Buenos Aires'
-        },
-        cellPhone: '145748744',
-        email: 'eduardo@gmail.com',
-        gender: 'MALE',
-        document: '22500771',
-        birthday: '1845-05-05'
-
-      }
-    };
+    this.currentStudent = MODEL.CURRENT_STUDENT;
+    this.currentStudent.schoolId = this.schoolId;
   }
 
   ngOnInit() {
@@ -117,18 +81,18 @@ export class AddStudentComponent implements OnInit {
   addParent() {
     this.secondParent = !this.secondParent;
     this.secondParent
-      ? this.snackBarService.showSnackBar('Se agrego un familiar','Aceptar', 'NORMAL')
-      : this.snackBarService.showSnackBar('Se quito el familiar adicional','Aceptar', 'NORMAL');
+      ? this.snackBarService.showSnackBar('Se agrego un familiar', 'Aceptar', 'NORMAL')
+      : this.snackBarService.showSnackBar('Se quito el familiar adicional', 'Aceptar', 'NORMAL');
   }
 
   addStudent() {
     console.log(this.currentStudent);
     this.studentsService.addStudentPost(this.currentStudent, this.schoolId).subscribe(
       data => {
-        this.snackBarService.showSnackBar('El alumno se creo satisfactoriamente','Aceptar', 'SUCCES');
+        this.snackBarService.showSnackBar('El alumno se creo satisfactoriamente', 'Aceptar', 'SUCCES');
       },
       error => {
-        this.snackBarService.showSnackBar(this.formatErrorMessage(error.status.toString()),'Aceptar', 'ERROR');
+        this.snackBarService.showSnackBar(this.formatErrorMessage(error.status.toString()), 'Aceptar', 'ERROR');
         console.log(error, 'hubo un error');
     }
 
@@ -146,7 +110,7 @@ export class AddStudentComponent implements OnInit {
 
   cancelAdd() {
     this.resetStudentModel();
-    this.snackBarService.showSnackBar('Se limpiaron los formularios','Aceptar', 'NORMAL');
+    this.snackBarService.showSnackBar('Se limpiaron los formularios', 'Aceptar', 'NORMAL');
   }
 
   openStudentModelBase() {
