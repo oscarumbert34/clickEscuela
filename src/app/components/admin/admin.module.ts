@@ -100,7 +100,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatGridListModule,
     MatChipsModule,
     CommonsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    
   ],
   exports: [RegisterComponent],
 })

@@ -14,7 +14,7 @@ showSnackBar(message: string, action: string, type: string) {
   this.snackBar.open(
      message,
      action, {
-      duration: 5500,
+      duration: 3000,
       panelClass: type.toLowerCase()
     });
   }

@@ -46,7 +46,7 @@ export class StudentBaseModelComponent implements OnInit {
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<StudentBaseModelComponent>,
     public snackbar: SnackBarService,
-    private iconsService: IconGeneratorService,
+   
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {
     this.loadStudentsService = false;
@@ -78,7 +78,7 @@ export class StudentBaseModelComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.data)
+    console.log(this.data);
     this.displayedColumns = [
 
       'name',
@@ -135,9 +135,9 @@ export class StudentBaseModelComponent implements OnInit {
       data => {
         this.dataSource.data = data;
         if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
-          this.snackbar.showSnackBar('Recarga exitosa. No se encontraron nuevas entradas', 'Aceptar','NORMAL');
+          this.snackbar.showSnackBar('Recarga exitosa. No se encontraron nuevas entradas', 'Aceptar', 'NORMAL');
         } else {
-          this.snackbar.showSnackBar('Recarga exitosa', 'Aceptar','SUCCES');
+          this.snackbar.showSnackBar('Recarga exitosa', 'Aceptar', 'SUCCES');
           this.studentsArray = data;
         }
         setTimeout(() => { this.loadStudentsService = true; this.reload = false; }, 500);
@@ -145,7 +145,7 @@ export class StudentBaseModelComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.snackbar.showSnackBar('Se produjo un error.', 'Aceptar','ERROR');
+        this.snackbar.showSnackBar('Se produjo un error.', 'Aceptar', 'ERROR');
         this.loadError = true;
         this.messageError = err.message;
       }

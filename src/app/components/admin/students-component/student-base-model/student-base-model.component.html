@@ -4,35 +4,7 @@
    <img src="../../../../../assets/images/cancel.svg" alt="">
  </div>
 
- <div class="container" *ngIf="!loadStudentsService && !loadError" class="students-load">
-   <div class="row" style="margin-bottom:1em;">
-     <div class="col-12" class="svg-loader">
-       
-       <!-- <mat-spinner class="mb-4 custom-color" diameter="40"></mat-spinner> -->
-       <mat-icon class="option-icon" svgIcon="principal-logo"></mat-icon>
-
-     </div>
-   </div>
-   <div class="col-12">
-     Cargando Lista de estudiantes...
-   </div>
- </div>
-
- <div class="container" *ngIf="loadError" class="students-load">
-  <div class="row">
-    <div class="col-12">
-      <div class="img-error-container">
-        
-        <img width="25px" src="../../../../../assets/images/cancel.svg" alt="">
-      </div>
-    </div>
-  </div>
-  <div class="col-12">
-    Se Produjo un error al intentar obtener la lista de estudiantes:
-    <p style="color: red;margin-top: 1em;">{{messageError}}</p>
-  </div>
-</div>
-
+ <app-load-screen [loadService]="loadStudentsService" [loadError]="loadError" [messageError]="messageError"></app-load-screen>
 
  <div class="div-content" *ngIf="loadStudentsService">
    <div class="row">
