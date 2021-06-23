@@ -8,7 +8,7 @@
           <img src="../../../../assets/images/contact-icons/adress.svg" alt="">
         </div>
         <p>Direccion particular:</p>
-        {{data.adress}}
+        {{data.adress.street+', '+ data.adress.number+', '+data.adress.locality}}
       </div>
 
       <div class="row" class="contact-item" *ngIf="data.telephone">

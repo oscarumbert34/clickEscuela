@@ -1,3 +1,4 @@
+import { MESSAGES } from './../../../../enums/messages-constants';
 import { SnackBarService} from '../../../../services/snack-bar.service';
 import { StudentI } from './../../../interfaces/student';
 import { GeoRefService } from '../../../../services/geo-ref.service';
@@ -81,18 +82,18 @@ export class AddStudentComponent implements OnInit {
   addParent() {
     this.secondParent = !this.secondParent;
     this.secondParent
-      ? this.snackBarService.showSnackBar('Se agrego un familiar', 'Aceptar', 'NORMAL')
-      : this.snackBarService.showSnackBar('Se quito el familiar adicional', 'Aceptar', 'NORMAL');
+      ? this.snackBarService.showSnackBar(MESSAGES.PARENT.SUCCES, 'Aceptar', 'SUCCES')
+      : this.snackBarService.showSnackBar(MESSAGES.PARENT.NORMAL, 'Aceptar', 'NORMAL');
   }
 
   addStudent() {
     console.log(this.currentStudent);
     this.studentsService.addStudentPost(this.currentStudent, this.schoolId).subscribe(
       data => {
-        this.snackBarService.showSnackBar('El alumno se creo satisfactoriamente', 'Aceptar', 'SUCCES');
+        this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.SUCCES, 'Aceptar', 'SUCCES');
       },
       error => {
-        this.snackBarService.showSnackBar(this.formatErrorMessage(error.status.toString()), 'Aceptar', 'ERROR');
+        this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.ERROR[error.status], 'Aceptar', 'ERROR');
         console.log(error, 'hubo un error');
     }
 
@@ -101,16 +102,10 @@ export class AddStudentComponent implements OnInit {
     this.resetStudentModel();
   }
 
-  formatErrorMessage(status: string) {
-    switch (status) {
-      case '400':
-        return 'El alumno ya existe en la base de datos';
-    }
-  }
 
   cancelAdd() {
     this.resetStudentModel();
-    this.snackBarService.showSnackBar('Se limpiaron los formularios', 'Aceptar', 'NORMAL');
+    this.snackBarService.showSnackBar(MESSAGES.CLEAR_FORMS, 'Aceptar', 'NORMAL');
   }
 
   openStudentModelBase() {

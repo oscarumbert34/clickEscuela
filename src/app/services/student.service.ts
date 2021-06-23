@@ -1,3 +1,5 @@
+
+import { environment } from './../../environments/environment';
 import { Parent } from '../models/parent';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Student } from '../models/student';
@@ -13,6 +15,7 @@ import { PipeTransform, Injectable } from '@angular/core';
 import { of } from 'rxjs/internal/observable/of';
 import { HttpClient } from '@angular/common/http';
 import { StudentI } from '../components/interfaces/student';
+import { id } from '@swimlane/ngx-charts';
 interface SearchResult {
   students: Student[];
   total: number;
@@ -231,12 +234,12 @@ export class studentService {
   // Aca incia el codigo para consumo de api
 
   getStudents(fulldetail: boolean, idSchool: string): Observable<any> {
-    const path = 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + idSchool + '/student?fullDetail=' + fulldetail;
+    const path = environment.GET_STUDENT_URL.replace('$', idSchool).replace('$', fulldetail + '');
     return this.connector.get<any>(path);
   }
 
   addStudentPost(student: StudentI, idSchool: string): Observable<StudentI> {
-    const path = 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + idSchool + '/student';
+    const path = environment.POST_STUDENT_URL.replace('$', idSchool);
     return this.connector.post<StudentI>(path, student);
   }
 

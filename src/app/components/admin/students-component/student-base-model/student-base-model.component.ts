@@ -1,3 +1,4 @@
+import { MESSAGES } from './../../../../enums/messages-constants';
 import { SnackBarService } from './../../../../services/snack-bar.service';
 import { IconGeneratorService } from './../../../../services/icon-generator.service';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -78,7 +79,6 @@ export class StudentBaseModelComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.data);
     this.displayedColumns = [
 
       'name',
@@ -135,9 +135,9 @@ export class StudentBaseModelComponent implements OnInit {
       data => {
         this.dataSource.data = data;
         if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
-          this.snackbar.showSnackBar('Recarga exitosa. No se encontraron nuevas entradas', 'Aceptar', 'NORMAL');
+          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.NORMAL, 'Aceptar', 'NORMAL');
         } else {
-          this.snackbar.showSnackBar('Recarga exitosa', 'Aceptar', 'SUCCES');
+          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.SUCCES, 'Aceptar', 'SUCCES');
           this.studentsArray = data;
         }
         setTimeout(() => { this.loadStudentsService = true; this.reload = false; }, 500);
@@ -145,7 +145,7 @@ export class StudentBaseModelComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.snackbar.showSnackBar('Se produjo un error.', 'Aceptar', 'ERROR');
+        this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.ERROR, 'Aceptar', 'ERROR');
         this.loadError = true;
         this.messageError = err.message;
       }
