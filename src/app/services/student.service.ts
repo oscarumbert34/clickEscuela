@@ -234,13 +234,18 @@ export class studentService {
   // Aca incia el codigo para consumo de api
 
   getStudents(fulldetail: boolean, idSchool: string): Observable<any> {
-    const path = environment.GET_STUDENT_URL.replace('$', idSchool).replace('$', fulldetail + '');
+    const path = environment.GET_STUDENT_URL.replace('{schoolId}', idSchool).replace('{fullDetail}', fulldetail + '');
     return this.connector.get<any>(path);
   }
 
   addStudentPost(student: StudentI, idSchool: string): Observable<StudentI> {
-    const path = environment.POST_STUDENT_URL.replace('$', idSchool);
+    const path = environment.POST_STUDENT_URL.replace('{schoolId}', idSchool);
     return this.connector.post<StudentI>(path, student);
+  }
+
+  editStudentPut(student: StudentI, idSchool: string): Observable<StudentI> {
+    const path = environment.POST_STUDENT_URL.replace('{schoolId}', idSchool);
+    return this.connector.put<StudentI>(path, student);
   }
 
 

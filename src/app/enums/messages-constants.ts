@@ -14,6 +14,9 @@ POST: {
     NORMAL: 'Sin cambios en el agregado de alumnos'
 },
 PUT: {
+    SUCCES: 'Se edito correctamente el alumno',
+    ERROR: 'Se produjo un error al editar el alumno',
+    NORMAL: 'No hubo cambios en el editado del alumno'
 }
 },
 

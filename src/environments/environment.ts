@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  GET_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '$' + '/student?fullDetail=' + '$',
-  POST_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '$' + '/student'
+  GET_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '{schoolId}' + '/student?fullDetail=' + '{fullDetail}',
+  POST_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '{schoolId}' + '/student'
 };
 
 /*
