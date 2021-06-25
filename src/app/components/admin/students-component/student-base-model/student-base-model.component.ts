@@ -48,7 +48,7 @@ export class StudentBaseModelComponent implements OnInit {
     public dialogRef: MatDialogRef<StudentBaseModelComponent>,
     public snackbar: SnackBarService,
    
-    @Inject(MAT_DIALOG_DATA) public data: string
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.loadStudentsService = false;
     this.displayedColumns = [
@@ -171,9 +171,9 @@ export class StudentBaseModelComponent implements OnInit {
     });
   }
 
-  editStudent(ind, input) {
+  editStudent(input) {
     const dialogRef = this.dialog.open(EditStudentComponent, {
-      data: { student: input, index: ind },
+      data: { student: input, schoolId: this.data },
       width: '100vw',
       height: '95vh',
       maxWidth: '95vw',
