@@ -21,12 +21,17 @@ export class AddStudentComponent implements OnInit {
   currentStudent: StudentI;
   schoolId = '10';
 
+  addingStudent:boolean;
+
 
   typeIDs = ['DNI', 'CI', 'LE', 'LC'];
   provinces: Province[];
   districts: Province[];
   selectedProvince: string;
   normalizedDirections;
+
+  messageInfo = 'Espere creando estudiante...'
+  messageInfoClass = 'white'
 
   sortByname = (a, b) => {
     if (a.nombre > b.nombre) { return 1; }
@@ -44,6 +49,7 @@ export class AddStudentComponent implements OnInit {
     this.resetStudentModel();
     this.provinces = [];
     this.selectedProvince = '06';
+    this.addingStudent = false;
   }
 
   resetStudentModel() {
@@ -87,17 +93,18 @@ export class AddStudentComponent implements OnInit {
   }
 
   addStudent() {
+    this.addingStudent = true;
     console.log(this.currentStudent);
     this.studentsService.addStudentPost(this.currentStudent, this.schoolId).subscribe(
       data => {
+
         this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.SUCCES, 'Aceptar', 'SUCCES');
+        setTimeout(() => { this.addingStudent = false; }, 500);
       },
       error => {
         this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.ERROR[error.status], 'Aceptar', 'ERROR');
-        console.log(error, 'hubo un error');
+        setTimeout(() => { this.addingStudent = false; }, 500);
     }
-
-
     );
     this.resetStudentModel();
   }
