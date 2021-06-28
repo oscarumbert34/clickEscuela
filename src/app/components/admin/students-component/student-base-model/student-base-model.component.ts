@@ -38,6 +38,9 @@ export class StudentBaseModelComponent implements OnInit {
 
   principalLogo: any;
 
+  messageInfo = "Cargando lista de estudiantes..."
+  messageInfoClass = 'black'
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;

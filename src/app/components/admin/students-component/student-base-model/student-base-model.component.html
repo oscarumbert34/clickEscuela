@@ -4,7 +4,7 @@
    <img src="../../../../../assets/images/cancel.svg" alt="">
  </div>
 
- <app-load-screen [loadService]="loadStudentsService" [loadError]="loadError" [messageError]="messageError"></app-load-screen>
+ <app-load-screen [loadService]="loadStudentsService" [loadError]="loadError" [messageError]="messageError" [messageInfo]="messageInfo" [messageInfoClass]='messageInfoClass'></app-load-screen>
 
  <div class="div-content" *ngIf="loadStudentsService">
    <div class="row">

@@ -11,10 +11,13 @@ export class LoadScreenComponent implements OnInit {
   @Input() loadError: string;
   @Input() loadService: string;
   @Input() messageError: string;
+  @Input() messageInfo: string;
+  @Input() messageInfoClass: string;
 
   constructor( private iconsService: IconGeneratorService) { }
 
   ngOnInit() {
+    console.log(this.messageInfoClass);
   }
 
 }
