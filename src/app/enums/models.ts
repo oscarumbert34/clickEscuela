@@ -35,4 +35,7 @@ CURRENT_STUDENT: {
 
     }
   }
+,
+TYPE_ID:['DNI', 'CI', 'LE', 'LC']
+
 }

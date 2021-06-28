@@ -27,7 +27,7 @@
   </div>
 
   <div class="col-4 action-buttons">
-    <div class="action-item" matTooltip="Buscar Alumnos" (click)="openStudentModelBase()">
+    <div class="action-item" matTooltip="Buscar Alumnos">
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.93 287.31">
         <defs>
           <style>
@@ -82,7 +82,7 @@
       <mat-form-field  style="width: 40%; padding-right: 15px;">
         <mat-label>Tipo:</mat-label>
         <mat-select>
-          <mat-option *ngFor="let type of  typeIDs" [value]="type" >
+          <mat-option *ngFor="let type of typeIDs" [value]="type" >
             {{type}}
           </mat-option>
         </mat-select>

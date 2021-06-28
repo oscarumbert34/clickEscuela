@@ -1,3 +1,4 @@
+import { FUNCTION } from './../../../../enums/functions';
 import { MESSAGES } from './../../../../enums/messages-constants';
 import { SnackBarService} from '../../../../services/snack-bar.service';
 import { StudentI } from './../../../interfaces/student';
@@ -7,7 +8,7 @@ import { StudentBaseModelComponent } from '../student-base-model/student-base-mo
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Province } from 'src/app/models/province';
-import { MODEL } from 'src/app/enums/ng-models';
+import { MODEL } from 'src/app/enums/models';
 
 @Component({
   selector: 'app-add-student',
@@ -24,7 +25,7 @@ export class AddStudentComponent implements OnInit {
   addingStudent:boolean;
 
 
-  typeIDs = ['DNI', 'CI', 'LE', 'LC'];
+  typeIDs = MODEL.TYPE_ID;
   provinces: Province[];
   districts: Province[];
   selectedProvince: string;
@@ -32,12 +33,6 @@ export class AddStudentComponent implements OnInit {
 
   messageInfo = 'Espere creando estudiante...'
   messageInfoClass = 'white'
-
-  sortByname = (a, b) => {
-    if (a.nombre > b.nombre) { return 1; }
-    if (a.nombre < b.nombre) { return -1; }
-    return 0;
-  }
 
   constructor(
     private snackBarService: SnackBarService,
@@ -64,7 +59,7 @@ export class AddStudentComponent implements OnInit {
 
   getAllProvinces() {
     this.geoRefService.getProvinces().subscribe((data) => {
-      this.provinces = data.provincias.sort(this.sortByname);
+      this.provinces = data.provincias.sort(FUNCTION.SORT.BY_NAME);
     });
   }
 
@@ -81,7 +76,7 @@ export class AddStudentComponent implements OnInit {
       if (id === '02') {
         data.municipios.push({ id: '222', nombre: 'Malvinas Argentinas' });
       }
-      this.districts = data.municipios.sort(this.sortByname);
+      this.districts = data.municipios.sort(FUNCTION.SORT.BY_NAME);
     });
   }
 
