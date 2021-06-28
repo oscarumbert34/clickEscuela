@@ -41,7 +41,6 @@ export class AccountComponent implements OnInit {
     private expensesService: ExpensesService,
     private snackBar: MatSnackBar) {
 
-
     this.accounts = [];
 
     this.studentsList = this.studentsService.studentsList;
