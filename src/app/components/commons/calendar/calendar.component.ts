@@ -104,12 +104,12 @@ export class CalendarComponent implements OnInit {
   }
   getPrevMonth() {
     const prevDate = this.dateSelect.clone().subtract(1, 'month').format('MM');
-    return this.monthNames[parseInt(prevDate, 10)];
+    return this.monthNames[parseInt(prevDate, 10) - 1];
   }
 
   getNextMonth() {
     const nextDate = this.dateSelect.clone().add(1, 'month').format('MM');
-    return this.monthNames[parseInt(nextDate, 10)];
+    return this.monthNames[parseInt(nextDate, 10) - 1];
   }
 
   geyDaysFromWeek() {}

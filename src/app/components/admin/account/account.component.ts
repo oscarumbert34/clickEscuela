@@ -1,9 +1,8 @@
+import { IconGeneratorService } from './../../../services/icon-generator.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpensesService } from './../../../services/expenses.service';
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Student } from 'src/app/models/student';
@@ -12,7 +11,6 @@ import { studentService } from 'src/app/services/student.service';
 import { ModalFrameComponent } from '../../student/modal-frame/modal-frame.component';
 import moment from 'moment';
 import { RangeSelectorComponent } from '../../commons/range-selector/range-selector.component';
-import { SVG_CONST } from '../svg-constants';
 import { DAY, TYPE, MONTH, WEEK, CUSTOM_PERIOD } from '../type-constants';
 
 
@@ -36,22 +34,12 @@ export class AccountComponent implements OnInit {
   selectedRange: any;
 
   constructor(
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
     private accountsService: AccountService,
     private studentsService: studentService,
-    private sanitazer: DomSanitizer,
+    private iconsService: IconGeneratorService,
     private dialog: MatDialog,
     private expensesService: ExpensesService,
     private snackBar: MatSnackBar) {
-    iconRegistry.addSvgIconLiteral('out-expenses', sanitizer.bypassSecurityTrustHtml(SVG_CONST.EXPENSES));
-    iconRegistry.addSvgIconLiteral('debtors', sanitizer.bypassSecurityTrustHtml(SVG_CONST.DEBTORS));
-    iconRegistry.addSvgIconLiteral('csv-icon', sanitizer.bypassSecurityTrustHtml(SVG_CONST.CSV_ICON));
-    iconRegistry.addSvgIconLiteral('pdf-icon', sanitizer.bypassSecurityTrustHtml(SVG_CONST.PDF_ICON));
-    iconRegistry.addSvgIconLiteral('daily', sanitizer.bypassSecurityTrustHtml(SVG_CONST.DAILY));
-    iconRegistry.addSvgIconLiteral('weekly', sanitizer.bypassSecurityTrustHtml(SVG_CONST.WEEKLY));
-    iconRegistry.addSvgIconLiteral('monthly', sanitizer.bypassSecurityTrustHtml(SVG_CONST.MONTHLY));
-    iconRegistry.addSvgIconLiteral('custom-date', sanitizer.bypassSecurityTrustHtml(SVG_CONST.CUSTOM_DATE));
 
     this.accounts = [];
 
@@ -68,12 +56,8 @@ export class AccountComponent implements OnInit {
         titularID: student.id,
         idAccount: student.parent1.id
       };
-
-
-
       this.accounts.push(account);
     }
-
     this.selectedRange = {
         range:
         {
@@ -85,18 +69,12 @@ export class AccountComponent implements OnInit {
 
   }
 
-
-
   generateDebtorsReport(method: number) {
-    // alert("Se esta generando el repore")
-
     const doc = new jsPDF('a4');
     const columns = ['Nombre', 'Apellido', 'Curso', 'Titular'];
     const debtors = this.accounts.filter(a => a.state === false);
 
     const tableData = this.generateTableData(debtors);
-
-
     if (method === 1) {
       doc.autoTable(columns, tableData,
         {
@@ -111,26 +89,14 @@ export class AccountComponent implements OnInit {
         }
 
       );
-
       const uriString = doc.output('datauristring');
-
-      const url = this.sanitazer.bypassSecurityTrustResourceUrl(uriString);
-
-
+      const url = this.iconsService.sanitizer.bypassSecurityTrustResourceUrl(uriString);
       this.openModalFrame(url);
     } else if (method === 2) {
 
       tableData.splice(0, 0, columns);
       this.arrayObjToCsv(tableData);
-
-
-
     }
-
-
-
-
-
   }
 
   ngOnInit() {
@@ -189,8 +155,6 @@ export class AccountComponent implements OnInit {
   }
 
   getExpensesReport(period, method) {
-
-
     const doc = new jsPDF('a4');
     const columns = ['Importe', 'Descripcion', 'Fecha'];
     let expenses = [];
@@ -203,7 +167,6 @@ export class AccountComponent implements OnInit {
       expenses =
         (
           this.expensesService.expenseList.filter(
-
             a =>
               a.$date.getDate() === this.currentDate.getDate() &&
               a.$date.getMonth() === this.currentDate.getMonth() &&
@@ -214,11 +177,7 @@ export class AccountComponent implements OnInit {
       }
     }
     if (period === WEEK) {
-
       console.log(weekDays);
-
-
-
       expenses =
         (this.expensesService.expenseList.filter(a =>
           moment(a.$date, 'DD-MM-YYYY').isSameOrAfter(moment(weekDays[0], 'DD-MM-YYYY'), 'day') &&
@@ -231,8 +190,6 @@ export class AccountComponent implements OnInit {
           ' => ' +
           moment(weekDays[weekDays.length - 1]).format('DD/MM/YYYY'));
       }
-
-
     }
     if (period === MONTH) {
       expenses = (this.expensesService.expenseList.filter(a => a.$date.getMonth() ===
@@ -241,10 +198,7 @@ export class AccountComponent implements OnInit {
     if (period === CUSTOM_PERIOD) {
       console.log(this.selectedRange);
 
-
-
       expenses =
-
         (this.expensesService.expenseList.filter(a =>
           moment(a.$date, 'DD-MM-YYYY').isSameOrAfter(moment(this.selectedRange.range.start, 'DD-MM-YYYY'), 'day') &&
           moment(a.$date, 'DD-MM-YYYY').isSameOrBefore(moment(this.selectedRange.range.end, 'DD-MM-YYYY'), 'day')
@@ -265,7 +219,6 @@ export class AccountComponent implements OnInit {
         const text1 = 'Reporte de gastos ' + TYPE[period];
         const text2 = 'Generado el dia ' + moment(this.currentDate).format('DD/MM/YYYY');
 
-
         doc.setFontSize(15);
         doc.text(text1, this.centerText(0, 210, doc.getTextWidth(text1)), 25);
         doc.setFontSize(12);
@@ -277,7 +230,6 @@ export class AccountComponent implements OnInit {
           doc.text(text3, this.centerText(0, 210, doc.getTextWidth(text3)), 45);
 
         }
-
         doc.autoTable(columns, tableData,
           {
             margin: { top: 60 },
@@ -293,12 +245,8 @@ export class AccountComponent implements OnInit {
         );
 
         const uriString = doc.output('datauristring');
-
-        const url = this.sanitazer.bypassSecurityTrustResourceUrl(uriString);
-
+        const url = this.iconsService.sanitizer.bypassSecurityTrustResourceUrl(uriString);
         this.openModalFrame(url);
-
-
 
       } else if (method === 2) {
         tableData.splice(0, 0, columns);
@@ -308,14 +256,7 @@ export class AccountComponent implements OnInit {
     } else {
       // this.showSnackBar("No existen entradas para el reporte: "+period)
     }
-
-
-
-
-
-
   }
-
 
   openModalFrame(url) {
  this.dialog.open (ModalFrameComponent,
@@ -336,18 +277,10 @@ export class AccountComponent implements OnInit {
     const tableData = [];
 
     for (const obj of data) {
-
-
       const row = (Array.from(Object.values(obj)));
-
       tableData.push(row);
-
-
-
     }
-
     console.log(tableData);
-
     return tableData;
   }
 
@@ -380,21 +313,14 @@ export class AccountComponent implements OnInit {
   openDateRangeSelector() {
     const dialogRef = this.dialog.open(RangeSelectorComponent,
       {
-
         width: '400px',
         height: '250px'
       }
     );
 
     dialogRef.afterClosed().subscribe(result => {
-
-
       this.selectedRange = result;
-
-
-
       this.getExpensesReport('CUSTOM_PERIOD', result.option);
-
     });
   }
 

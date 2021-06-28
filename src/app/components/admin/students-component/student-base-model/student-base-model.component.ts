@@ -1,7 +1,14 @@
+import { MESSAGES } from './../../../../enums/messages-constants';
+import { SnackBarService } from './../../../../services/snack-bar.service';
+import { IconGeneratorService } from './../../../../services/icon-generator.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { dataStudents } from './../../../teacher/students/students';
 
 import { studentService } from '../../../../services/student.service';
 import {
   Component,
+  Inject,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -10,7 +17,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/models/student';
 import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
 
@@ -22,7 +29,17 @@ import { ContactInfoComponent } from 'src/app/components/commons/contact-info/co
 export class StudentBaseModelComponent implements OnInit {
   displayedColumns: string[];
   dataSource: any;
-  studentsArray: Student[] = new Array(5);
+  studentsArray: Student[];
+  loadStudentsService: boolean;
+  reload: boolean;
+
+  loadError: boolean;
+  messageError: string;
+
+  principalLogo: any;
+
+  messageInfo = "Cargando lista de estudiantes..."
+  messageInfoClass = 'black'
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -31,41 +48,53 @@ export class StudentBaseModelComponent implements OnInit {
   constructor(
     private studentsService: studentService,
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<StudentBaseModelComponent>
+    public dialogRef: MatDialogRef<StudentBaseModelComponent>,
+    public snackbar: SnackBarService,
+   
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.studentsArray = this.studentsService.studentsList;
+    this.loadStudentsService = false;
     this.displayedColumns = [
       'name',
       'surname',
-      'birthDate',
-      'absences',
+      'birthday',
+      'document',
+      // 'absences',
       'observations',
     ];
 
-    // Assign the data to the data source for the table to render
+    this.loadError = false;
+
+    this.reload = false;
+    this.studentsArray = [];
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = this.studentsService.studentsList;
+    this.dataSource.data = this.studentsArray;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.loadStudentsList();
   }
 
   onClose() {
     this.dialogRef.close(false);
   }
 
+
+
   ngOnInit() {
+
     this.displayedColumns = [
 
       'name',
       'surname',
-      'birthDate',
-      'absences',
+      'birthday',
+      'document',
+      // 'absences',
       'observations',
     ];
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = this.studentsService.studentsList;
+    this.dataSource.data = this.studentsArray;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -102,9 +131,32 @@ export class StudentBaseModelComponent implements OnInit {
     );
   }
 
+  loadStudentsList() {
+
+    this.reload = true;
+    this.studentsService.getStudents(false, this.data).subscribe(
+      data => {
+        this.dataSource.data = data;
+        if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
+          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.NORMAL, 'Aceptar', 'NORMAL');
+        } else {
+          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.SUCCES, 'Aceptar', 'SUCCES');
+          this.studentsArray = data;
+        }
+        setTimeout(() => { this.loadStudentsService = true; this.reload = false; }, 500);
+        console.log(this.loadStudentsService);
+      },
+      err => {
+        console.log(err);
+        this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.ERROR, 'Aceptar', 'ERROR');
+        this.loadError = true;
+        this.messageError = err.message;
+      }
+    );
+  }
   refreshTable() {
     console.log('Refresh exitoso');
-    this.dataSource.data = this.studentsService.studentsList;
+    this.loadStudentsList();
   }
 
   confirmDialog(input, index) {
@@ -122,9 +174,9 @@ export class StudentBaseModelComponent implements OnInit {
     });
   }
 
-  editStudent(ind, input) {
+  editStudent(input) {
     const dialogRef = this.dialog.open(EditStudentComponent, {
-      data: { student: input, index: ind },
+      data: { student: input, schoolId: this.data },
       width: '100vw',
       height: '95vh',
       maxWidth: '95vw',

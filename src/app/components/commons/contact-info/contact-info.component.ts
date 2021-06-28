@@ -26,7 +26,7 @@ export class ContactInfoComponent implements OnInit {
     if (this.data.telegram) {size += 45; }
     if (this.data.linkedin) {size += 45; }
 
-    size += 45 + 24 + 24;
+    size += 45 + 48;
 
     console.log(size);
     return size;

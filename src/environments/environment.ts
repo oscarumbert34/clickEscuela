@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  GET_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '{schoolId}' + '/student?fullDetail=' + '{fullDetail}',
+  POST_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '{schoolId}' + '/student'
 };
 
 /*

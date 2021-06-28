@@ -1,6 +1,5 @@
 import { AccountService } from 'src/app/services/account.service';
 import { Payment } from './../../../../models/payment';
-import { PaymentService } from './../../../../services/payment.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';

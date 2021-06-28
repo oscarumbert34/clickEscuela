@@ -1,12 +1,13 @@
+import { MESSAGES } from './../../../../enums/messages-constants';
+import { SnackBarService} from '../../../../services/snack-bar.service';
+import { StudentI } from './../../../interfaces/student';
 import { GeoRefService } from '../../../../services/geo-ref.service';
 import { studentService } from '../../../../services/student.service';
 import { StudentBaseModelComponent } from '../student-base-model/student-base-model.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
-import { Student } from 'src/app/models/student';
-import { Parent } from 'src/app/models/parent';
 import { Province } from 'src/app/models/province';
+import { MODEL } from 'src/app/enums/ng-models';
 
 @Component({
   selector: 'app-add-student',
@@ -17,13 +18,20 @@ import { Province } from 'src/app/models/province';
 export class AddStudentComponent implements OnInit {
 
   secondParent: boolean;
-  currentStudent: Student;
+  currentStudent: StudentI;
+  schoolId = '10';
+
+  addingStudent:boolean;
+
 
   typeIDs = ['DNI', 'CI', 'LE', 'LC'];
   provinces: Province[];
   districts: Province[];
   selectedProvince: string;
   normalizedDirections;
+
+  messageInfo = 'Espere creando estudiante...'
+  messageInfoClass = 'white'
 
   sortByname = (a, b) => {
     if (a.nombre > b.nombre) { return 1; }
@@ -32,7 +40,7 @@ export class AddStudentComponent implements OnInit {
   }
 
   constructor(
-    private snackBar: MatSnackBar,
+    private snackBarService: SnackBarService,
     private matDialogRef: MatDialog,
     private studentsService: studentService,
     private geoRefService: GeoRefService
@@ -41,46 +49,12 @@ export class AddStudentComponent implements OnInit {
     this.resetStudentModel();
     this.provinces = [];
     this.selectedProvince = '06';
+    this.addingStudent = false;
   }
 
   resetStudentModel() {
-    this.currentStudent = {
-      id: '',
-      name: '',
-      surname: '',
-      bornDate: undefined,
-      absences: 0,
-      observation: '',
-      course: '',
-      idNumber: null,
-      adress: '',
-      telephone: '',
-      email: '',
-      idType: '',
-      parent1: {
-        id: '',
-        name: '',
-        surname: '',
-        bornDate: undefined,
-        idNumber: null,
-        adress: '',
-        telephone: '',
-        email: '',
-        idType: ''
-
-      },
-      parent2: {
-        id: '',
-        name: '',
-        surname: '',
-        bornDate: undefined,
-        idNumber: null,
-        adress: '',
-        telephone: '',
-        email: '',
-        idType: ''
-      },
-    };
+    this.currentStudent = MODEL.CURRENT_STUDENT;
+    this.currentStudent.schoolId = this.schoolId;
   }
 
   ngOnInit() {
@@ -91,7 +65,6 @@ export class AddStudentComponent implements OnInit {
   getAllProvinces() {
     this.geoRefService.getProvinces().subscribe((data) => {
       this.provinces = data.provincias.sort(this.sortByname);
-      console.log(this.provinces);
     });
   }
 
@@ -99,7 +72,6 @@ export class AddStudentComponent implements OnInit {
     if (direction.length > 3) {
       this.geoRefService.normalizeDirection(direction).subscribe((data) => {
         this.normalizedDirections = data.direccionesNormalizadas;
-        console.log(this.normalizedDirections);
       });
     }
   }
@@ -110,36 +82,45 @@ export class AddStudentComponent implements OnInit {
         data.municipios.push({ id: '222', nombre: 'Malvinas Argentinas' });
       }
       this.districts = data.municipios.sort(this.sortByname);
-      console.log(this.districts);
     });
   }
 
   addParent() {
     this.secondParent = !this.secondParent;
     this.secondParent
-      ? this.showSnackBar('Se agrego un familiar')
-      : this.showSnackBar('Se quito el familiar adicional');
+      ? this.snackBarService.showSnackBar(MESSAGES.PARENT.SUCCES, 'Aceptar', 'SUCCES')
+      : this.snackBarService.showSnackBar(MESSAGES.PARENT.NORMAL, 'Aceptar', 'NORMAL');
   }
 
   addStudent() {
-    this.studentsService.addStudent(this.currentStudent);
+    this.addingStudent = true;
+    console.log(this.currentStudent);
+    this.studentsService.addStudentPost(this.currentStudent, this.schoolId).subscribe(
+      data => {
+
+        this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.SUCCES, 'Aceptar', 'SUCCES');
+        setTimeout(() => { this.addingStudent = false; }, 500);
+      },
+      error => {
+        this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.ERROR[error.status], 'Aceptar', 'ERROR');
+        setTimeout(() => { this.addingStudent = false; }, 500);
+    }
+    );
     this.resetStudentModel();
-    this.showSnackBar('Se creo el nuevo alumno');
   }
+
 
   cancelAdd() {
     this.resetStudentModel();
-    this.showSnackBar('Se limpiaron los formularios');
+    this.snackBarService.showSnackBar(MESSAGES.CLEAR_FORMS, 'Aceptar', 'NORMAL');
   }
 
   openStudentModelBase() {
     this.matDialogRef.open(StudentBaseModelComponent, {
+      data: this.schoolId,
       height: '90vh',
       width: '100vw',
     });
   }
 
-  showSnackBar(message: string) {
-    this.snackBar.open(message, 'Aceptar', { duration: 5500 });
-  }
 }

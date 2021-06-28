@@ -26,6 +26,7 @@ font-size: 1.5em;
 }
 
 
+
       
       .wrapper-calendar{
         
@@ -212,4 +213,16 @@ font-size: 1.5em;
           transform: translateX(10%);
         }
 
+       .grid-days .event-chip:last-child{
+         margin-bottom: 2em;
+       }
+
+       .new-event{
+         opacity: 0;
+         transition: 0.5s ease-in-out;
+       }
+
+       li:hover .new-event{
+         opacity: 1;
+       }
 

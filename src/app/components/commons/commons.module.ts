@@ -1,3 +1,4 @@
+import { LoadScreenComponent } from './load-screen/load-screen.component';
 import { DetailStudentComponent } from './detail-student/detail-student.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
@@ -87,7 +88,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     PaymentsDetailComponent,
     ContactInfoComponent,
     ConfirmDialogComponent,
-    DetailStudentComponent
+    DetailStudentComponent,
+    LoadScreenComponent
   ],
   exports: [
     CalendarComponent,
@@ -96,7 +98,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     PaymentsDetailComponent,
     ContactInfoComponent,
     ConfirmDialogComponent,
-    DetailStudentComponent
+    DetailStudentComponent,
+    LoadScreenComponent
   ],
 })
 export class CommonsModule {}

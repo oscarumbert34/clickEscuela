@@ -1,3 +1,5 @@
+import { SnackBarService } from './../../../../services/snack-bar.service';
+import { MESSAGES } from './../../../../enums/messages-constants';
 import { studentService } from '../../../../services/student.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Student } from '../../../../models/student';
@@ -13,8 +15,8 @@ export class EditStudentComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar,
-    private studentsService: studentService
+    private studentsService: studentService,
+    private snackbarService: SnackBarService
   ) {}
 
   secondParent: boolean;
@@ -27,21 +29,27 @@ export class EditStudentComponent implements OnInit {
   addParent() {
     this.secondParent = !this.secondParent;
     this.secondParent
-      ? this.showSnackBar('Se agrego un familiar')
-      : this.showSnackBar('Se quito el familiar adicional');
+      ? this.snackbarService.showSnackBar(MESSAGES.PARENT.SUCCES, 'Aceptar', 'SUCCES')
+      : this.snackbarService.showSnackBar(MESSAGES.PARENT.NORMAL, 'Aceptar', 'NORMAL');
   }
 
   onClose() {
     this.dialogRef.close();
   }
 
-  showSnackBar(message: string) {
-    this.snackBar.open(message, 'Aceptar', { duration: 5500 });
-  }
 
-  editStudent(index) {
-    this.studentsService.edit(index, this.data.student);
-    this.onClose();
-    this.showSnackBar('Se edito la entrada');
+
+  editStudent() {
+    this.data.student.schoolId = this.data.schoolId;
+    this.studentsService.editStudentPut(this.data.student, this.data.schoolId).subscribe(
+      data => {
+        console.log(data);
+        this.snackbarService.showSnackBar(MESSAGES.STUDENT.PUT.SUCCES, 'Aceptar', 'SUCCES');
+      },
+      error => {
+        console.log(error);
+        this.snackbarService.showSnackBar(MESSAGES.STUDENT.PUT.ERROR, 'Aceptar', 'ERROR');
+      }
+    );
   }
 }

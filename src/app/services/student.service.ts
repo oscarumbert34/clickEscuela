@@ -1,3 +1,5 @@
+
+import { environment } from './../../environments/environment';
 import { Parent } from '../models/parent';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Student } from '../models/student';
@@ -11,6 +13,9 @@ import { SortColumn, SortDirection } from '../components/directives/sortable.dir
 import { Observable } from 'rxjs/internal/Observable';
 import { PipeTransform, Injectable } from '@angular/core';
 import { of } from 'rxjs/internal/observable/of';
+import { HttpClient } from '@angular/common/http';
+import { StudentI } from '../components/interfaces/student';
+import { id } from '@swimlane/ngx-charts';
 interface SearchResult {
   students: Student[];
   total: number;
@@ -64,7 +69,9 @@ export class studentService {
   editCurrentStudent: Student;
 
 
-  constructor(private pipe: DecimalPipe) {
+  constructor(
+    private pipe: DecimalPipe,
+    private connector: HttpClient) {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -72,7 +79,6 @@ export class studentService {
       delay(200),
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
-      console.log(result);
     });
 
     this._search$.next();
@@ -224,6 +230,25 @@ export class studentService {
   edit(index, data: Student) {
     this.studentsArray.splice(index, 1, data);
   }
+
+  // Aca incia el codigo para consumo de api
+
+  getStudents(fulldetail: boolean, idSchool: string): Observable<any> {
+    const path = environment.GET_STUDENT_URL.replace('{schoolId}', idSchool).replace('{fullDetail}', fulldetail + '');
+    return this.connector.get<any>(path);
+  }
+
+  addStudentPost(student: StudentI, idSchool: string): Observable<StudentI> {
+    const path = environment.POST_STUDENT_URL.replace('{schoolId}', idSchool);
+    return this.connector.post<StudentI>(path, student);
+  }
+
+  editStudentPut(student: StudentI, idSchool: string): Observable<StudentI> {
+    const path = environment.POST_STUDENT_URL.replace('{schoolId}', idSchool);
+    return this.connector.put<StudentI>(path, student);
+  }
+
+
 
 
 
