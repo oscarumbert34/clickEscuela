@@ -1,3 +1,4 @@
+import { CommonsModule } from './../commons/commons.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReportCardListComponent } from './report-card/report-card-list/report-card-list.component';
@@ -107,7 +108,8 @@ import { AddGradeComponent } from './grades/add-grade/add-grade.component';
     MatMenuModule,
     MatCheckboxModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    CommonsModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

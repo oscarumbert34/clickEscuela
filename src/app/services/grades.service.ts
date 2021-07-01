@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
+import { GradeI } from './../components/interfaces/grade';
 import { studentService } from './student.service';
 import { Student } from './../models/student';
 import { Injectable } from '@angular/core';
 import { Grade } from '../models/grade';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 
 
@@ -12,13 +16,10 @@ export class GradesService {
 
 
   private grades: Grade[];
-  private studentsArray: Student[];
 
-  constructor(studentsService: studentService) {
+  constructor(private connector: HttpClient) {
 
     this.grades = [];
-    this.studentsArray = studentsService.studentsList;
-    console.log(this.studentsArray);
 
     this.grades.push(new Grade('Alberto Sanchez', 'T00001', 'Evaluacion 1. Sumas y restas, separación de términos', 'Matemáticas', 10));
 
@@ -40,6 +41,11 @@ export class GradesService {
 
 
 
+  }
+
+  getGrades(idSchool: string): Observable<GradeI[]> {
+    const path = environment.GET_GRADES.replace('{schoolId}', idSchool);
+    return this.connector.get<GradeI[]>(path);
   }
 
   addGrade(grade: Grade) {
