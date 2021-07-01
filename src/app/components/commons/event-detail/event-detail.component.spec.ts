@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { EventDetailComponent } from './eventDetail.component';
+import { EventDetailComponent } from './event-detail.component';
 
 describe('EventDetailComponent', () => {
   let component: EventDetailComponent;

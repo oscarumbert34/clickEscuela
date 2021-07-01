@@ -1,3 +1,6 @@
+import { AddGradeComponent } from './add-grade/add-grade.component';
+import { GradesListComponent } from './grades-list/grades-list.component';
+import { MatDialog } from '@angular/material/dialog';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -11,7 +14,8 @@ describe('GradesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GradesComponent ]
+      declarations: [ GradesComponent ],
+      providers: [MatDialog]
     })
     .compileComponents();
   }));
@@ -25,4 +29,17 @@ describe('GradesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Add-Grade open dialog', () => {
+    spyOn(component.dialog,'open').and.callThrough();
+    component.openDialog('');
+    expect(component.dialog.open).toHaveBeenCalledWith(AddGradeComponent,
+      {
+        data: '',
+        width: '80%',
+        height: '75%'
+      }
+    );
+    });
+
 });
