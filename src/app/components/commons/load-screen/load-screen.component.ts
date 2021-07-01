@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { IconGeneratorService } from 'src/app/services/icon-generator.service';
 
 @Component({
@@ -14,10 +14,16 @@ export class LoadScreenComponent implements OnInit {
   @Input() messageInfo: string;
   @Input() messageInfoClass: string;
 
+  @Output() cancel = new EventEmitter<string>();
+
   constructor( private iconsService: IconGeneratorService) { }
 
   ngOnInit() {
     console.log(this.messageInfoClass);
+  }
+
+  cancelRequest() {
+    this.cancel.emit('Cancelando Evento');
   }
 
 }

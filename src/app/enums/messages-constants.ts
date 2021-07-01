@@ -17,6 +17,9 @@ PUT: {
     SUCCES: 'Se edito correctamente el alumno',
     ERROR: 'Se produjo un error al editar el alumno',
     NORMAL: 'No hubo cambios en el editado del alumno'
+},
+CANCEL: {
+    USER: 'Evento Cancelado por el usuario'
 }
 },
 

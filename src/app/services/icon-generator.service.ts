@@ -23,6 +23,10 @@ constructor(
     iconRegister.addSvgIcon('user', sanitizer.bypassSecurityTrustResourceUrl('../assets/images/user.svg'));
     iconRegister.addSvgIcon('cancel-error', sanitizer.bypassSecurityTrustResourceUrl('../assets/images/error.svg'));
     iconRegister.addSvgIcon('plus', sanitizer.bypassSecurityTrustResourceUrl('../assets/images/plus.svg'));
+    iconRegister.addSvgIcon('search', sanitizer.bypassSecurityTrustResourceUrl('../assets/images/search.svg'));
+    iconRegister.addSvgIcon('add-student', sanitizer.bypassSecurityTrustResourceUrl('../assets/images/add-student.svg'));
+
+  
   }
 
 

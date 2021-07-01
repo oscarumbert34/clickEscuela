@@ -1,3 +1,4 @@
+import { IconGeneratorService } from './../../../../services/icon-generator.service';
 import { FUNCTION } from './../../../../enums/functions';
 import { MESSAGES } from './../../../../enums/messages-constants';
 import { SnackBarService} from '../../../../services/snack-bar.service';
@@ -9,20 +10,23 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Province } from 'src/app/models/province';
 import { MODEL } from 'src/app/enums/models';
+import { COMMONS } from 'src/app/enums/commons';
 
 @Component({
   selector: 'app-add-student',
   templateUrl: './add-student.component.html',
   styleUrls: ['./add-student.component.scss'],
-  providers: [GeoRefService],
+  providers: [GeoRefService, IconGeneratorService],
 })
 export class AddStudentComponent implements OnInit {
+
+  serviceRequest: any = null;
 
   secondParent: boolean;
   currentStudent: StudentI;
   schoolId = '10';
 
-  addingStudent:boolean;
+  addingStudent: boolean;
 
 
   typeIDs = MODEL.TYPE_ID;
@@ -31,14 +35,14 @@ export class AddStudentComponent implements OnInit {
   selectedProvince: string;
   normalizedDirections;
 
-  messageInfo = 'Espere creando estudiante...'
-  messageInfoClass = 'white'
+  messageInfo = 'Espere creando estudiante...';
+  messageInfoClass = 'white';
 
   constructor(
     private snackBarService: SnackBarService,
     private matDialogRef: MatDialog,
     private studentsService: studentService,
-    private geoRefService: GeoRefService
+    private geoRefService: GeoRefService,
   ) {
     this.secondParent = false;
     this.resetStudentModel();
@@ -83,31 +87,57 @@ export class AddStudentComponent implements OnInit {
   addParent() {
     this.secondParent = !this.secondParent;
     this.secondParent
-      ? this.snackBarService.showSnackBar(MESSAGES.PARENT.SUCCES, 'Aceptar', 'SUCCES')
-      : this.snackBarService.showSnackBar(MESSAGES.PARENT.NORMAL, 'Aceptar', 'NORMAL');
+      ? this.snackBarService.showSnackBar(
+        MESSAGES.PARENT.SUCCES,
+        COMMONS.SNACK_BAR.ACTION.ACCEPT,
+        COMMONS.SNACK_BAR.TYPE.SUCCES)
+      : this.snackBarService.showSnackBar(
+        MESSAGES.PARENT.NORMAL,
+        COMMONS.SNACK_BAR.ACTION.ACCEPT,
+        COMMONS.SNACK_BAR.TYPE.NORMAL);
   }
 
   addStudent() {
     this.addingStudent = true;
     console.log(this.currentStudent);
-    this.studentsService.addStudentPost(this.currentStudent, this.schoolId).subscribe(
+    this.serviceRequest = this.studentsService.addStudentPost(this.currentStudent, this.schoolId).subscribe(
       data => {
 
-        this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.SUCCES, 'Aceptar', 'SUCCES');
-        setTimeout(() => { this.addingStudent = false; }, 500);
+
+        setTimeout(() => {
+          this.addingStudent = false;
+          this.snackBarService.showSnackBar(
+            MESSAGES.STUDENT.POST.SUCCES,
+            COMMONS.SNACK_BAR.ACTION.ACCEPT,
+            COMMONS.SNACK_BAR.TYPE.SUCCES); },
+          500);
       },
       error => {
-        this.snackBarService.showSnackBar(MESSAGES.STUDENT.POST.ERROR[error.status], 'Aceptar', 'ERROR');
-        setTimeout(() => { this.addingStudent = false; }, 500);
+
+        setTimeout(() => {
+          this.addingStudent = false;
+          this.snackBarService.showSnackBar(
+            MESSAGES.STUDENT.POST.ERROR[error.status],
+            COMMONS.SNACK_BAR.ACTION.ACCEPT,
+            COMMONS.SNACK_BAR.TYPE.ERROR); },
+          500);
     }
     );
     this.resetStudentModel();
   }
 
+  cancelRequest() {
+    console.log('Se cancelo evento');
+    this.serviceRequest.unsubscribe();
+    }
+
 
   cancelAdd() {
     this.resetStudentModel();
-    this.snackBarService.showSnackBar(MESSAGES.CLEAR_FORMS, 'Aceptar', 'NORMAL');
+    this.snackBarService.showSnackBar(
+      MESSAGES.CLEAR_FORMS,
+      COMMONS.SNACK_BAR.ACTION.ACCEPT,
+      COMMONS.SNACK_BAR.TYPE.NORMAL);
   }
 
   openStudentModelBase() {

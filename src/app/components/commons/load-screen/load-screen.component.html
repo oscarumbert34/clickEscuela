@@ -13,7 +13,11 @@
         {{messageInfo}}
       </div>
     </div>
+    <div class="row justify-content-center mt-4">
+      <button mat-raised-button (click) ='cancelRequest()'>Cancelar</button>
+    </div>
   </div>
+  
 </div>
 
 <div class="container" *ngIf="loadError" class="load-container">
