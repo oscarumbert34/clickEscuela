@@ -1,3 +1,3 @@
-export const school = {
-    id: '12345'
+export const SCHOOL = {
+    ID: '12345'
 };

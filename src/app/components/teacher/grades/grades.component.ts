@@ -38,6 +38,7 @@ export class GradesComponent implements OnInit {
     for (const comp of this.listGrades) {
       comp.refreshTable();
     }
+    return true;
 
   }
 

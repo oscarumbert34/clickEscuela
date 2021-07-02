@@ -11,6 +11,7 @@ import { GradesComponent } from './grades.component';
 describe('GradesComponent', () => {
   let component: GradesComponent;
   let fixture: ComponentFixture<GradesComponent>;
+  let dialog: MatDialog;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,6 +25,7 @@ describe('GradesComponent', () => {
     fixture = TestBed.createComponent(GradesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    dialog = component.dialog;
   });
 
   it('should create', () => {
@@ -31,7 +33,7 @@ describe('GradesComponent', () => {
   });
 
   it('Add-Grade open dialog', () => {
-    spyOn(component.dialog,'open').and.callThrough();
+    spyOn(component.dialog, 'open').and.callThrough();
     component.openDialog('Agregar nueva nota');
     expect(component.dialog.open).toHaveBeenCalledWith(AddGradeComponent,
       {
@@ -42,4 +44,7 @@ describe('GradesComponent', () => {
     );
     });
 
+  it ('Refresh childrens', () => {
+    expect(component.refreshAllChildrens()).toEqual(true);
+  });
 });

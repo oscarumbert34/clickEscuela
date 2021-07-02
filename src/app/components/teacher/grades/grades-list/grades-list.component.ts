@@ -9,7 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGradeComponent } from '../add-grade/add-grade.component';
-import { school } from 'src/environments/school-data';
+import { SCHOOL } from 'src/environments/school-data';
 
 
 
@@ -22,7 +22,7 @@ export class GradesListComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: any;
-  idSchool = school.id;
+  idSchool = SCHOOL.ID;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -107,17 +107,13 @@ export class GradesListComponent implements OnInit {
     });
   }
 
-  openModify(index, grade) {
+  openModify(grade) {
     const dialogRef = this.dialog.open(AddGradeComponent,
       {
-
-        data: { grade, index },
+        data: grade,
         width: '80%',
         height: '75%'
-
       }
-
-
     );
 
     dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens(); });

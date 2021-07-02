@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import { Grade } from '../models/grade';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { school } from 'src/environments/school-data';
+import { SCHOOL } from 'src/environments/school-data';
 
 
 
@@ -50,7 +50,7 @@ export class GradesService {
   }
 
   addGrade(grade: GradeI): Observable<GradeI> {
-    const path = environment.GRADES_URL.replace('{schoolId}', school.id);
+    const path = environment.GRADES_URL.replace('{schoolId}', SCHOOL.ID);
     return this.connector.post<GradeI>(path, grade);
   }
 
