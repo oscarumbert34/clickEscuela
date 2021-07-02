@@ -1,3 +1,4 @@
+import { environment } from './../../../../../environments/environment.prod';
 import { GradeI } from './../../../interfaces/grade';
 import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
 import { GradesService } from '../../../../services/grades.service';
@@ -8,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGradeComponent } from '../add-grade/add-grade.component';
+import { school } from 'src/environments/school-data';
 
 
 
@@ -20,7 +22,7 @@ export class GradesListComponent implements OnInit {
 
   displayedColumns: string[];
   dataSource: any;
-  idSchool = '12345';
+  idSchool = school.id;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 

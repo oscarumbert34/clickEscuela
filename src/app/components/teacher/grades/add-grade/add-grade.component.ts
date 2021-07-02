@@ -99,11 +99,11 @@ export class AddGradeComponent implements OnInit {
     console.log(this.selectedCourse);
   }
 
-  addGrade() {
-    this.gradesService.addGrade(this.currentGrade);
-    console.log(this.gradesService.gradesList);
-    this.dialogRef.close();
-  }
+  // addGrade() {
+  //   this.gradesService.addGrade(this.currentGrade);
+  //   console.log(this.gradesService.gradesList);
+  //   this.dialogRef.close();
+  // }
 
   modifyGrade() {
     if (this.currentGrade.student === '') {

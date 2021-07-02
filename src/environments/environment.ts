@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   GET_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '{schoolId}' + '/student?fullDetail=' + '{fullDetail}',
   POST_STUDENT_URL: 'https://click-admin.herokuapp.com/click-escuela/admin-core/school/' + '{schoolId}' + '/student',
-  GET_GRADES: 'http://18.118.163.213:8081/click-escuela/teacher-core/school/{schoolId}/grade'
+  GET_GRADES: 'http://18.118.163.213:8081/click-escuela/teacher-core/school/{schoolId}/grade',
+  POST_GRADES: 'http://18.118.163.213:8081/click-escuela/teacher-core/school/{schoolId}/grade'
+
 };
 
 /*

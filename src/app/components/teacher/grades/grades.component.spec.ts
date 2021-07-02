@@ -32,10 +32,10 @@ describe('GradesComponent', () => {
 
   it('Add-Grade open dialog', () => {
     spyOn(component.dialog,'open').and.callThrough();
-    component.openDialog('');
+    component.openDialog('Agregar nueva nota');
     expect(component.dialog.open).toHaveBeenCalledWith(AddGradeComponent,
       {
-        data: '',
+        data: 'Agregar nueva nota',
         width: '80%',
         height: '75%'
       }

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Grade } from '../models/grade';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { school } from 'src/environments/school-data';
 
 
 
@@ -44,11 +45,16 @@ export class GradesService {
   }
 
   getGrades(idSchool: string): Observable<GradeI[]> {
-    const path = environment.GET_GRADES.replace('{schoolId}', idSchool);
+    const path = environment.GRADES_URL.replace('{schoolId}', idSchool);
     return this.connector.get<GradeI[]>(path);
   }
 
-  addGrade(grade: Grade) {
+  addGrade(grade: GradeI): Observable<GradeI> {
+    const path = environment.GRADES_URL.replace('{schoolId}', school.id);
+    return this.connector.post<GradeI>(path, grade);
+  }
+
+  addGradeMock(grade: Grade) {
     this.grades.push(grade);
   }
 
