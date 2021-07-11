@@ -22,6 +22,8 @@ export class GradesComponent implements OnInit {
   }
 
   openDialog(input) {
+    console.log(this.listGrades);
+
     const dialogRef = this.dialog.open(AddGradeComponent,
       {
         data: input,
@@ -30,7 +32,10 @@ export class GradesComponent implements OnInit {
       }
     );
 
-    dialogRef.afterClosed().subscribe(res => { this.refreshAllChildrens(); });
+    dialogRef.afterClosed().subscribe(res => {
+       this.refreshAllChildrens();
+
+      });
 
   }
 
@@ -43,6 +48,7 @@ export class GradesComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }

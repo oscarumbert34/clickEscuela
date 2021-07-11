@@ -1,9 +1,10 @@
+import { CalendarEventsService } from './../../../services/calendar-events.service';
+import { MatDialogModule } from '@angular/material/dialog';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { CalendarComponent } from './calendar.component';
+
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
@@ -11,7 +12,9 @@ describe('CalendarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarComponent ]
+      imports: [MatDialogModule],
+      declarations: [ CalendarComponent ],
+      providers: [CalendarEventsService]
     })
     .compileComponents();
   }));

@@ -1,3 +1,5 @@
+import { HomeworkService } from './../../../../services/homework.service';
+import { MatDialogModule } from '@angular/material/dialog';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -11,7 +13,9 @@ describe('HomeworkListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeworkListComponent ]
+      imports: [MatDialogModule],
+      declarations: [ HomeworkListComponent ],
+      providers:[HomeworkService]
     })
     .compileComponents();
   }));

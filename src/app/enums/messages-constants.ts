@@ -29,7 +29,32 @@ PARENT:
     ERROR: 'No se pueden agregar mas familiares',
     NORMAL: 'Se quito el familiar adicional'
 },
-CLEAR_FORMS: 'Se limpiaron los formularios'
+CLEAR_FORMS: 'Se limpiaron los formularios',
+ASISTANCE_LIST: {
+    NO_FOUND: 'No se encontraron entradas para la fecha seleccionada',
+    FOUND: 'Se encontraron los siguientes resultados para la fecha seleccionada',
+    NO_SELECTED: 'No selecciono una fecha'
+},
+
+GRADES: {
+    GET: {
+        SUCCES: 'Se cargo la lista de notas correctamente',
+        ERROR: 'Se produjo un error al intentar obtener las notas de los cursos asignados',
+        NORMAL: 'Recarga exitosa.'
+    },
+    POST: {
+        SUCCES: 'Se agrego la nota correctamente.',
+        ERROR: {
+            400: 'El alumno ya existe en la base de datos'
+        },
+        NORMAL: 'Sin cambios en el agregado de notas'
+    },
+    PUT: {
+        SUCCES: 'Se edito correctamente la nota',
+        ERROR: 'Se produjo un error al editar la nota',
+        NORMAL: 'No hubo cambios en el editado de la nota'
+    }
+}
 
 
 };

@@ -1,6 +1,7 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { AddGradeComponent } from './add-grade/add-grade.component';
 import { GradesListComponent } from './grades-list/grades-list.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -15,6 +16,7 @@ describe('GradesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatDialogModule,RouterTestingModule],
       declarations: [ GradesComponent ],
       providers: [MatDialog]
     })
@@ -45,6 +47,7 @@ describe('GradesComponent', () => {
     });
 
   it ('Refresh childrens', () => {
-    expect(component.refreshAllChildrens()).toEqual(true);
+    let refresh = component.refreshAllChildrens();
+    expect(refresh).toEqual(true);
   });
 });

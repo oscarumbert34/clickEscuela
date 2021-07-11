@@ -1,0 +1,33 @@
+
+.background-message{
+    background-color: rgba(245, 245, 245, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 3em;
+    border-radius: 10px;
+}
+.container.center{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: url(../../../../assets/images/logo-reduced-dark.png);
+    background-position: 50% 50%;
+
+}
+
+
+h4{
+    text-shadow: 0 0 2px white;
+    transition: 0.5s ease-in-out;
+    //animation: animate-text 2s ease-in-out forwards;
+}
+
+@keyframes animate-text {
+    from{
+        letter-spacing: 13em;
+    }
+    to{
+        letter-spacing: 0.1em;
+    }
+}

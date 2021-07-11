@@ -1,3 +1,4 @@
+import { AccountService } from './../../../../services/account.service';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -11,7 +12,8 @@ describe('PaymentListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaymentListComponent ]
+      declarations: [ PaymentListComponent ],
+      providers: [AccountService]
     })
     .compileComponents();
   }));

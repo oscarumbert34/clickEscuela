@@ -1,3 +1,6 @@
+import { COMMONS } from './../../../../enums/commons';
+import { MESSAGES } from './../../../../enums/messages-constants';
+import { SnackBarService } from './../../../../services/snack-bar.service';
 import { environment } from './../../../../../environments/environment.prod';
 import { GradeI } from './../../../interfaces/grade';
 import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-dialog.component';
@@ -33,15 +36,13 @@ export class GradesListComponent implements OnInit {
 
   gradesList: GradeI[];
   loadScreen: boolean;
-  messageInfoClass='black'
-  messageInfo= "Cargando lista de notas";
+  messageInfoClass = 'black';
+  messageInfo = 'Cargando lista de notas';
 
-  constructor(private gradeService: GradesService, public dialog: MatDialog) {
+  constructor(private gradeService: GradesService, public dialog: MatDialog, private snackbar: SnackBarService) {
 
     this.gradesList = [];
-    this.loadScreen= true;
-  
-
+    this.loadScreen = true;
   }
 
 
@@ -54,8 +55,11 @@ export class GradesListComponent implements OnInit {
     this.dataSource.data = this.gradesList;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.getAllGrades();
 
+
+  }
+  ngAfterViewInit() {
+    this.getAllGrades();
   }
 
   getAllGrades() {
@@ -63,7 +67,11 @@ export class GradesListComponent implements OnInit {
       data => {
         this.dataSource.data = data;
         this.gradesList = data;
-        setTimeout(()=> this.loadScreen = false,500);
+        setTimeout(() => this.loadScreen = false, 500);
+      },
+      error => {
+        this.snackbar.showSnackBar(error.message, COMMONS.SNACK_BAR.ACTION.ACCEPT, COMMONS.SNACK_BAR.TYPE.ERROR);
+        setTimeout(() => this.loadScreen = false, 500);
       }
     );
   }
@@ -130,6 +138,7 @@ export class GradesListComponent implements OnInit {
 
   refreshTable() {
     console.log('Refresh exitoso');
-    this.dataSource.data = this.gradesList;
+    this.loadScreen = true;
+    this.getAllGrades();
   }
 }
