@@ -1,5 +1,6 @@
+import { Error404Component } from './components/commons/Error404/Error404.component';
+import { AsistanceComponent } from './components/teacher/asistance/asistance.component';
 import { StudentMenuComponent } from './components/student/student-menu/student-menu.component';
-import { Student } from './models/student';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/admin/register/register.component';
@@ -11,7 +12,10 @@ const routes: Routes = [
   { path: 'teacher/menu', component: MenuComponent },
   { path: 'admin/register', component: RegisterComponent },
   { path: 'student/menu', component: StudentMenuComponent },
-  { path: 'parent/menu', component: ParentMenuComponent }];
+  { path: 'parent/menu', component: ParentMenuComponent },
+  { path: 'teacher/menu/asistance', component: AsistanceComponent},
+  { path: '**', component: Error404Component}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

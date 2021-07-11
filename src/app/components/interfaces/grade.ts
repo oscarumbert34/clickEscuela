@@ -1,7 +1,9 @@
 export interface GradeI {
-    id: string;
+    studentId: string;
     name: string;
     subject: string;
     type: string;
     number: number;
+    courseId: string;
+    schoolId: string;
 }
