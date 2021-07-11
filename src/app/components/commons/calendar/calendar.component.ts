@@ -1,3 +1,4 @@
+import { IconGeneratorService } from './../../../services/icon-generator.service';
 import { AddCalendarEventComponent } from './../add-calendar-event/add-calendar-event.component';
 import { element } from 'protractor';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,6 +21,7 @@ import { EventDetailComponent } from '../event-detail/event-detail.component';
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
+  providers: [IconGeneratorService]
 })
 export class CalendarComponent implements OnInit {
   weeks: any[];
@@ -68,19 +70,9 @@ export class CalendarComponent implements OnInit {
   currentDay: string;
 
   constructor(
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
     private calendarService: CalendarEventsService,
     private dialog: MatDialog
   ) {
-    iconRegistry.addSvgIconLiteral(
-      'leftSvg',
-      sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW)
-    );
-    iconRegistry.addSvgIconLiteral(
-      'rightSvg',
-      sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW)
-    );
     this.currentDate = new Date();
 
     this.innerWidth = window.innerWidth;
