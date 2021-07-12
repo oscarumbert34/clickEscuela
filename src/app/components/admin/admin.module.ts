@@ -1,3 +1,5 @@
+import { AppRoutingModule } from './../../app-routing.module';
+import { RouterModule } from '@angular/router';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { CommonsModule } from './../commons/commons.module';
 import { RangeSelectorComponent } from './../commons/range-selector/range-selector.component';
@@ -101,6 +103,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatChipsModule,
     CommonsModule,
     MatAutocompleteModule,
+    RouterModule,
+    AppRoutingModule
     
   ],
   exports: [RegisterComponent],

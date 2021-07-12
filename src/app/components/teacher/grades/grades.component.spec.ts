@@ -41,19 +41,6 @@ describe('GradesComponent', () => {
     expect(component.dialog.open).toHaveBeenCalled();
     });
 
-  it('Add-Grade open dialog', () => {
-    spyOn(component.dialog, 'open').and.callThrough();
-    component.openDialog('Agregar nueva nota');
-    expect(component.dialog.open).toHaveBeenCalledWith(AddGradeComponent,
-      {
-        data: 'Agregar nueva nota',
-        width: '80%',
-        height: '75%'
-      }
-    );
-    });
-
-
 
   it ('Refresh childrens', () => {
     const refresh = component.refreshAllChildrens();
