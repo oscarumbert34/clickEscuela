@@ -13,7 +13,7 @@ describe('GradesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, MatDialogModule],
+      imports:[HttpClientTestingModule,MatDialogModule],
       declarations: [ GradesListComponent ]
     })
     .compileComponents();

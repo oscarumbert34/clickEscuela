@@ -1,3 +1,6 @@
+import { GradeI } from './../../../interfaces/grade';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarService } from './../../../../services/snack-bar.service';
 import { HttpClientModule } from '@angular/common/http';
 import { studentService } from './../../../../services/student.service';
 import { GradesService } from './../../../../services/grades.service';
@@ -17,7 +20,7 @@ describe('AddGradeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, MatSnackBarModule],
       declarations: [ AddGradeComponent ],
       providers: [
       {
@@ -26,8 +29,9 @@ describe('AddGradeComponent', () => {
       },
       {
         provide: MAT_DIALOG_DATA,
-        useValue:{}
+        useValue: {}
       },
+      SnackBarService,
       GradesService,
       studentService,
       DecimalPipe
@@ -43,6 +47,21 @@ describe('AddGradeComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should create with data', () => {
+    const data: GradeI = {
+      studentId: '',
+      name: 'name',
+      number: 9,
+      subject:'subject',
+      type: 'type',
+      courseId: 'course',
+      schoolId: 'id'
+    };
+
+    component.data.grade = data;
     expect(component).toBeTruthy();
   });
 });

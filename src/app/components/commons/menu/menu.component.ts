@@ -92,8 +92,7 @@ export class MenuComponent implements OnInit {
 
   changeBlock(newBlock: string) {
     this.blockDinamicActually = newBlock;
-    this.router.navigate(['/teacher/menu/'+newBlock]);
-   
+    this.router.navigate(['/teacher/menu/' + newBlock]);
   }
 
   notNotification() {
@@ -103,7 +102,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.sidenav.open();
 
-    this.router.navigate(['/teacher/menu/home'])
+    this.router.navigate(['/teacher/menu/home']);
     console.log(this.router.url);
 
   }

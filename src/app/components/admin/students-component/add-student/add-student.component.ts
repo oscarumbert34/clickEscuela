@@ -1,3 +1,5 @@
+
+import { environment } from 'src/environments/environment';
 import { IconGeneratorService } from './../../../../services/icon-generator.service';
 import { FUNCTION } from './../../../../enums/functions';
 import { MESSAGES } from './../../../../enums/messages-constants';
@@ -24,7 +26,7 @@ export class AddStudentComponent implements OnInit {
 
   secondParent: boolean;
   currentStudent: StudentI;
-  schoolId = '10';
+  schoolId = environment.schoolId;
 
   addingStudent: boolean;
 

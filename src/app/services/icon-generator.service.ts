@@ -28,9 +28,6 @@ constructor(
     iconRegister.addSvgIconLiteral('custom-date', sanitizer.bypassSecurityTrustHtml(SVG_CONST.LEFT_ARROW));
     iconRegister.addSvgIconLiteral('custom-date', sanitizer.bypassSecurityTrustHtml(SVG_CONST.RIGHT_ARROW));
 
-
-
-
   
   }
 
