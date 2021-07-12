@@ -20,6 +20,7 @@ import { ConfirmDialogComponent } from '../../../commons/confirm-dialog/confirm-
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ContactInfoComponent } from 'src/app/components/commons/contact-info/contact-info.component';
+import { COMMONS } from 'src/app/enums/commons';
 
 @Component({
   selector: 'app-student-base-model',
@@ -27,6 +28,9 @@ import { ContactInfoComponent } from 'src/app/components/commons/contact-info/co
   styleUrls: ['./student-base-model.component.scss'],
 })
 export class StudentBaseModelComponent implements OnInit {
+
+  serviceRequest: any = null;
+
   displayedColumns: string[];
   dataSource: any;
   studentsArray: Student[];
@@ -38,8 +42,8 @@ export class StudentBaseModelComponent implements OnInit {
 
   principalLogo: any;
 
-  messageInfo = "Cargando lista de estudiantes..."
-  messageInfoClass = 'black'
+  messageInfo = 'Cargando lista de estudiantes...';
+  messageInfoClass = 'black';
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -50,7 +54,7 @@ export class StudentBaseModelComponent implements OnInit {
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<StudentBaseModelComponent>,
     public snackbar: SnackBarService,
-   
+
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.loadStudentsService = false;
@@ -134,21 +138,27 @@ export class StudentBaseModelComponent implements OnInit {
   loadStudentsList() {
 
     this.reload = true;
+    this.serviceRequest =
     this.studentsService.getStudents(false, this.data).subscribe(
       data => {
-        this.dataSource.data = data;
-        if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
-          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.NORMAL, 'Aceptar', 'NORMAL');
+
+        setTimeout(() => {
+            this.dataSource.data = data;
+            if (JSON.stringify(this.dataSource.data) === JSON.stringify(this.studentsArray)) {
+          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.NORMAL, COMMONS.SNACK_BAR.ACTION.ACCEPT, COMMONS.SNACK_BAR.TYPE.NORMAL);
         } else {
-          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.SUCCES, 'Aceptar', 'SUCCES');
+          this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.SUCCES, COMMONS.SNACK_BAR.ACTION.ACCEPT, COMMONS.SNACK_BAR.TYPE.SUCCES);
           this.studentsArray = data;
         }
-        setTimeout(() => { this.loadStudentsService = true; this.reload = false; }, 500);
+            this.loadStudentsService = true;
+            this.reload = false; },
+
+          500);
         console.log(this.loadStudentsService);
       },
       err => {
         console.log(err);
-        this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.ERROR, 'Aceptar', 'ERROR');
+        this.snackbar.showSnackBar(MESSAGES.STUDENT.GET.ERROR, COMMONS.SNACK_BAR.ACTION.ACCEPT, COMMONS.SNACK_BAR.TYPE.ERROR);
         this.loadError = true;
         this.messageError = err.message;
       }
@@ -158,6 +168,14 @@ export class StudentBaseModelComponent implements OnInit {
     console.log('Refresh exitoso');
     this.loadStudentsList();
   }
+
+  cancelRequest() {
+
+    this.serviceRequest.unsubscribe();
+    this.onClose();
+    this.snackbar.showSnackBar(MESSAGES.STUDENT.CANCEL.USER, 'Cancel', 'NORMAL');
+    }
+
 
   confirmDialog(input, index) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
