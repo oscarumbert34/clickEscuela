@@ -1,3 +1,4 @@
+import { MatDialogMock } from './../../../test-mocks/matDialogmock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AddGradeComponent } from './add-grade/add-grade.component';
 import { GradesListComponent } from './grades-list/grades-list.component';
@@ -16,9 +17,9 @@ describe('GradesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule,RouterTestingModule],
+      imports: [MatDialogModule, RouterTestingModule],
       declarations: [ GradesComponent ],
-      providers: [MatDialog]
+      providers: [{provide: MatDialog, useClass: MatDialogMock}]
     })
     .compileComponents();
   }));
@@ -37,6 +38,12 @@ describe('GradesComponent', () => {
   it('Add-Grade open dialog', () => {
     spyOn(component.dialog, 'open').and.callThrough();
     component.openDialog('Agregar nueva nota');
+    expect(component.dialog.open).toHaveBeenCalled();
+    });
+
+  it('Add-Grade open dialog', () => {
+    spyOn(component.dialog, 'open').and.callThrough();
+    component.openDialog('Agregar nueva nota');
     expect(component.dialog.open).toHaveBeenCalledWith(AddGradeComponent,
       {
         data: 'Agregar nueva nota',
@@ -46,8 +53,10 @@ describe('GradesComponent', () => {
     );
     });
 
+
+
   it ('Refresh childrens', () => {
-    let refresh = component.refreshAllChildrens();
+    const refresh = component.refreshAllChildrens();
     expect(refresh).toEqual(true);
   });
 });
