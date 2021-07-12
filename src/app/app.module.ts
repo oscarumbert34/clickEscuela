@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CommonsModule } from './components/commons/commons.module';
 
 import { NormalizeWordPipe } from './pipes/normalize-word.pipe';
@@ -57,10 +58,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CommonsModule,
     HttpClientModule,
+    RouterModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
 
   bootstrap: [AppComponent],
-  exports: [NormalizeWordPipe],
+  exports: [NormalizeWordPipe,AppRoutingModule],
 })
 export class AppModule {}

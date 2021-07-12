@@ -1,3 +1,5 @@
+import { AppRoutingModule } from './../../app-routing.module';
+import { RouterModule } from '@angular/router';
 import { CommonsModule } from './../commons/commons.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -109,7 +111,10 @@ import { AddGradeComponent } from './grades/add-grade/add-grade.component';
     MatCheckboxModule,
     MatTooltipModule,
     MatSelectModule,
-    CommonsModule
+    CommonsModule,
+    RouterModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [DecimalPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

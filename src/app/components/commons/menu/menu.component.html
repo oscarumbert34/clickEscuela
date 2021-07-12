@@ -31,7 +31,7 @@
 
     <!-- Lista de opciones de menu de teacher/menu -->
 
-    <mat-list *ngIf="routeLink == '/teacher/menu'" [ngClass]="{'home': blockDinamicActually !== 'home'}">
+    <mat-list  [ngClass]="{'home': blockDinamicActually !== 'home'}">
       <mat-list-item
         *ngIf="blockDinamicActually != 'home'"
         class="button-menu-container"
@@ -436,7 +436,8 @@
           (mouseover)="hideNotificaction()"
           [ngSwitch]="blockDinamicActually"
         >
-          <div *ngSwitchCase="'home'">
+        <router-outlet></router-outlet>
+          <!-- <div *ngSwitchCase="'home'">
             <app-home></app-home>
           </div>
 
@@ -467,7 +468,7 @@
             <app-asistance-parents></app-asistance-parents>
           </div>
 
-          <div *ngSwitchDefault>Default Option</div>
+          <div *ngSwitchDefault>Default Option</div> -->
         </div>
         <div [@changeDisplay]="notificationShow" *ngIf="notificationShow">
           <app-notification

@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { LoadScreenComponent } from './load-screen/load-screen.component';
 import { DetailStudentComponent } from './detail-student/detail-student.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
@@ -80,6 +81,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatGridListModule,
     MatChipsModule,
     MatSelectModule,
+    RouterModule
   ],
   declarations: [
     CalendarComponent,
