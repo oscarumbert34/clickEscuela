@@ -1,3 +1,5 @@
+import { MatDialogRef } from '@angular/material/dialog';
+import { TeacherService } from './../../../../services/teacher.service';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -11,7 +13,9 @@ describe('TeacherBaseModelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeacherBaseModelComponent ]
+      imports:[TeacherService],
+      declarations: [ TeacherBaseModelComponent ],
+      providers:[{provide: MatDialogRef,useValue:{}}]
     })
     .compileComponents();
   }));

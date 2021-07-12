@@ -1,3 +1,6 @@
+import { MESSAGES } from './../../../../enums/messages-constants';
+import { COMMONS } from './../../../../enums/commons';
+import { SnackBarService } from './../../../../services/snack-bar.service';
 import { AsistanceService } from '../../../../services/asistance.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,11 +11,10 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import moment from 'moment';
 
-
 @Component({
   selector: 'app-asistance-list',
   templateUrl: './asistance-list.component.html',
-  styleUrls: ['./asistance-list.component.scss']
+  styleUrls: ['./asistance-list.component.scss'],
 })
 export class AsistanceListComponent implements OnInit {
   displayedColumns: string[];
@@ -24,14 +26,16 @@ export class AsistanceListComponent implements OnInit {
 
   @ViewChild('picker') picker: MatDatepicker<Date>;
 
-
   asistanceList: Asistance[];
   asistanceListAux: Asistance[];
   presentsList: boolean[];
 
   takeAsistance: boolean;
 
-  constructor(private asistanceService: AsistanceService, private snackbar: MatSnackBar) {
+  constructor(
+    private asistanceService: AsistanceService,
+    private snackbar: SnackBarService
+  ) {
     this.takeAsistance = false;
 
     this.asistanceList = [];
@@ -52,53 +56,47 @@ export class AsistanceListComponent implements OnInit {
     this.currentDate.setMinutes(0);
     this.currentDate.setSeconds(0);
     this.currentDate.setMilliseconds(0);
-
-
-
   }
 
   ngOnInit() {
-
     this.displayedColumns = ['name', 'surname', 'date', 'status'];
-
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = this.asistanceList;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
   }
 
   filterByDate() {
     if (this.picker.startAt != null) {
-      const asis = this.asistanceService.asistancesList.filter(a => a.date.getTime() === this.picker.startAt.getTime());
+      const asis = this.asistanceService.asistancesList.filter(
+        (a) => a.date.getTime() === this.picker.startAt.getTime()
+      );
 
       if (asis.length === 0) {
-        this.openSnackbar('No se encontraron entradas para la fecha seleccionada');
+        this.snackbar.showSnackBar(
+          MESSAGES.ASISTANCE_LIST.NO_FOUND,
+          COMMONS.SNACK_BAR.ACTION.ACCEPT,
+          COMMONS.SNACK_BAR.TYPE.ERROR
+        );
 
         this.refreshTable();
       } else {
         this.dataSource.data = asis;
-        this.openSnackbar('Se encontraron los siguientes resultados para la fecha seleccionada');
-
-
+        this.snackbar.showSnackBar(
+          MESSAGES.ASISTANCE_LIST.FOUND,
+          COMMONS.SNACK_BAR.ACTION.ACCEPT,
+          COMMONS.SNACK_BAR.TYPE.ERROR
+        );
       }
     } else {
-      this.openSnackbar('No selecciono una fecha');
+      this.snackbar.showSnackBar(
+      MESSAGES.ASISTANCE_LIST.NO_SELECTED,
+      COMMONS.SNACK_BAR.ACTION.ACCEPT,
+      COMMONS.SNACK_BAR.TYPE.ERROR
+        );
     }
-
-
-
-  }
-
-
-
-  openSnackbar(message: string) {
-    this.snackbar.open(message, '', {
-      duration: 3000
-    });
-
   }
 
   changeTakeAsistance() {
@@ -108,22 +106,12 @@ export class AsistanceListComponent implements OnInit {
       this.paginator.pageSize = this.asistanceListAux.length;
       this.dataSource.data = this.asistanceListAux;
       console.log(this.paginator);
-
-
     } else {
       this.takeAsistance = !this.takeAsistance;
       this.paginator.pageSize = 5;
       this.refreshTable();
-
-
-
     }
-
-
-
   }
-
-
 
   changeStatus(index: number, status: boolean) {
     this.asistanceService.changeStatus(index, status);
@@ -135,7 +123,6 @@ export class AsistanceListComponent implements OnInit {
 
     this.dataSource.data = this.asistanceList;
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -153,19 +140,20 @@ export class AsistanceListComponent implements OnInit {
   }
 
   savePresents() {
-
     for (let i = 0; i < this.presentsList.length; i++) {
-      const newasistance = new Asistance(this.asistanceList[i].name, this.asistanceList[i].surname, this.currentDate, this.presentsList[i]);
+      const newasistance = new Asistance(
+        this.asistanceList[i].name,
+        this.asistanceList[i].surname,
+        this.currentDate,
+        this.presentsList[i]
+      );
 
       this.asistanceService.addAsistance(newasistance);
-
     }
-
 
     this.takeAsistance = false;
     this.paginator.pageSize = 5;
 
     this.refreshTable();
   }
-
 }

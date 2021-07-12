@@ -1,7 +1,11 @@
+import { TeacherService } from './../../../../services/teacher.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+
 
 import { AddTeacherComponent } from './add-teacher.component';
 
@@ -11,7 +15,9 @@ describe('AddTeacherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTeacherComponent ]
+      imports:[MatSnackBarModule,MatDialogModule],
+      declarations: [ AddTeacherComponent ],
+      providers: [TeacherService]
     })
     .compileComponents();
   }));

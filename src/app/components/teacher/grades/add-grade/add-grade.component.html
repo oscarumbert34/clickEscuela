@@ -28,10 +28,10 @@
                 id="description"
                 class="form-control"
                 placeholder="Ingrese Descripcion..."
-                [(ngModel)]="currentGrade.description"
+                [(ngModel)]="currentGrade.name"
                 #description
                 required
-                [ngModel]="localData.grade.description"
+                [ngModel]="localData.grade.name"
               ></textarea>
             </mat-form-field>
           </div>
@@ -60,9 +60,9 @@
             <mat-form-field appearance="fill">
               <mat-label>Materia</mat-label>
               <mat-select
-                [(ngModel)]="currentGrade.matter"
+                [(ngModel)]="currentGrade.subject"
                 [ngModelOptions]="{ standalone: true }"
-                [ngModel]="localData.grade.matter"
+                [ngModel]="localData.grade.subject"
               >
                 <mat-option *ngFor="let matter of matters" [value]="matter">
                   {{ matter }}
@@ -77,15 +77,15 @@
             <mat-form-field appearance="fill">
               <mat-label>Materia</mat-label>
               <mat-select
-                [(ngModel)]="currentGrade.code"
+                [(ngModel)]="currentGrade.type"
                 [ngModelOptions]="{ standalone: true }"
-                [ngModel]="localData.grade.code"
+                [ngModel]="localData.grade.type"
               >
                 <mat-option
-                  *ngFor="let homework of homeworks"
-                  [value]="homework.code"
+                  *ngFor="let type of types"
+                  [value]="type.code"
                 >
-                  {{ homework.name }}
+                  {{ type.name }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -105,10 +105,10 @@
                   id="grade"
                   class="form-control"
                   placeholder="Ingrese Nota..."
-                  [(ngModel)]="currentGrade.grade"
+                  [(ngModel)]="currentGrade.number"
                   #grade
                   required
-                  [ngModel]="localData.grade.grade"
+                  [ngModel]="localData.grade.number"
                 />
               </mat-form-field>
             </div>

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class SnackBarService {
 
-constructor(private snackBar: MatSnackBar) { }
+constructor(public snackBar: MatSnackBar) { }
 
 
 showSnackBar(message: string, action: string, type: string) {
