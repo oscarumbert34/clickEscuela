@@ -43,9 +43,9 @@
               <mat-label>Curso</mat-label>
               <mat-select
                 [(value)]="selectedCourse"
-                [(ngModel)]="currentGrade.course"
+                
                 [ngModelOptions]="{ standalone: true }"
-                [ngModel]="localData.grade.course"
+               
                 (selectionChange)="loadStudents()"
                 #course
               >
@@ -120,7 +120,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Alumno</mat-label>
               <mat-select
-                [(ngModel)]="currentGrade.student"
+                
                 [ngModelOptions]="{ standalone: true }"
                 
 
